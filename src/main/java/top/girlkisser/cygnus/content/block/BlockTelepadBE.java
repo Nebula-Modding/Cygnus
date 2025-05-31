@@ -92,7 +92,6 @@ public class BlockTelepadBE extends BlockEntity implements ITickableBE
 		{
 			ticks.put(player, teleportingPlayers.containsKey(player) ? teleportingPlayers.get(player) : new AtomicInteger(0));
 
-			System.out.println(ticks.get(player).get());
 			if (ticks.get(player).incrementAndGet() >= TICKS_FOR_TELEPORT)
 			{
 				teleportPlayer(level, player);
