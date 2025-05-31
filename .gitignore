@@ -119,4 +119,7 @@ runs/
 !gradle-wrapper.jar
 
 # Generate resources cache
-src/generated/resources/.cache/
+/src/generated/resources/.cache/
+
+# Local repo
+/repo
