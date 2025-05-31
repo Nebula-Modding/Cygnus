@@ -1,0 +1,74 @@
+itemGroup.cygnus: Cygnus
+
+block.cygnus:
+  # Decoration
+  steel_block: Steel Block
+  steel_tiles: Steel Tiles
+  steel_sheet_metal: Steel Sheet Metal
+
+  # Functional
+  terminal: Terminal
+  telepad: Telepad
+  command_centre: Command Center
+  command_centre.tooltip: The Space Station Creation Station
+
+item.cygnus:
+  # Ingredients
+  steel_ingot: Steel Ingot
+  steel_sheet: Steel Sheet
+  steel_rod: Steel Rod
+  steel_nugget: Steel Nugget
+  aluminium_ingot: Aluminum Ingot
+  aluminium_sheet: Aluminum Sheet
+  aluminium_rod: Aluminum Rod
+  aluminium_nugget: Aluminum Nugget
+  titanium_ingot: Titanium Ingot
+  titanium_sheet: Titanium Sheet
+  titanium_rod: Titanium Rod
+  titanium_nugget: Titanium Nugget
+  electronic_circuit: Electronic Circuit
+
+  # Tools
+  oxygen_drill: Oxygen Drill
+  oxygen_drill.tooltip: Consumes oxygen to drill blocks efficiently
+
+  # Misc
+  oxygen_gas_bucket: Oxygen Gas Bucket
+
+galaxy.cygnus:
+  milky_way: The Milky Way
+
+star.cygnus:
+  sun: The Sun
+
+planet.cygnus:
+  space: Outer Space
+
+  earth: Earth
+  nether: Nether
+  the_moon: The Moon
+  the_moon_moon: The Moon Moon
+
+screen.cygnus:
+  terminal:
+    # Buttons
+    navigation: Navigation
+    land: Landing
+    terminal: Console
+    comms: Comms
+    stats: Stats
+    execute: Execute
+    launch_to: "Launch to %s"
+    # Text boxes
+    execute_terminal_command: Execute terminal command
+    # Status messages
+    space_station_stats: "== Space Station Stats =="
+    orbiting: "Orbiting: %s"
+    telepads: "Telepads: %s"
+
+message.cygnus:
+  # Errors
+  failed_to_place_space_station: Failed to place space station
+  no_such_command: "No such command: %s"
+  no_such_planet: "No such planet: %s"
+  cannot_remove_last_telepad: "Your space station must have at least one telepad."

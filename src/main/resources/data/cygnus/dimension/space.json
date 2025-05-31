@@ -1,0 +1,12 @@
+{
+	"type": "cygnus:space",
+	"generator": {
+		"type": "minecraft:flat",
+		"settings": {
+			"biome": "cygnus:space",
+			"lakes": false,
+			"features": false,
+			"layers": []
+		}
+	}
+}

@@ -1,0 +1,39 @@
+package top.girlkisser.cygnus.datagen.server
+
+import martian.dapper.api.server.DapperTagProvider
+import net.minecraft.world.level.ItemLike
+import net.neoforged.neoforge.data.event.GatherDataEvent
+import top.girlkisser.cygnus.Cygnus
+import top.girlkisser.cygnus.content.registry.CygnusItems.*
+
+class CygnusItemTagProvider(event: GatherDataEvent) : DapperTagProvider.Companion.Items(event, Cygnus.MODID)
+{
+    override fun addTags()
+    {
+        "steel".apply {
+            STEEL_INGOT addIngot this
+            STEEL_SHEET addPlate this
+            STEEL_ROD addRod this
+            STEEL_NUGGET addNugget this
+        }
+        "aluminium".apply {
+            ALUMINIUM_INGOT addIngot this
+            ALUMINIUM_SHEET addPlate this
+            ALUMINIUM_ROD addRod this
+            ALUMINIUM_NUGGET addNugget this
+        }
+        "titanium".apply {
+            TITANIUM_INGOT addIngot this
+            TITANIUM_SHEET addPlate this
+            TITANIUM_ROD addRod this
+            TITANIUM_NUGGET addNugget this
+        }
+
+        OXYGEN_DRILL addTo "c:tools/drills"
+    }
+
+    infix fun ItemLike.addIngot(id: String) = (this.asItem() addTo "c:ingots/$id")!!
+    infix fun ItemLike.addPlate(id: String) = (this.asItem() addTo "c:plates/$id")!!
+    infix fun ItemLike.addRod(id: String) = (this.asItem() addTo "c:rods/$id")!!
+    infix fun ItemLike.addNugget(id: String) = (this.asItem() addTo "c:nuggets/$id")!!
+}

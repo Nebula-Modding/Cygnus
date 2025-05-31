@@ -1,0 +1,18 @@
+{
+	"type": "cygnus:space_station_crafting",
+	"ingredients": [
+		{
+			"tag": "c:ingots/steel",
+			"count": 128
+		},
+		{
+			"tag": "c:ingots/aluminum",
+			"count": 64
+		},
+		{
+			"tag": "c:ingots/titanium",
+			"count": 32
+		}
+	],
+	"structure": "cygnus:space_station"
+}

@@ -1,0 +1,59 @@
+package top.girlkisser.cygnus.content;
+
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.material.Fluid;
+import org.jetbrains.annotations.ApiStatus;
+import top.girlkisser.cygnus.Cygnus;
+
+@ApiStatus.NonExtendable
+public interface CygnusTags
+{
+	@ApiStatus.NonExtendable
+	interface Items
+	{
+		private static TagKey<Item> c(String path)
+		{
+			return TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", path));
+		}
+
+		private static TagKey<Item> mod(String path)
+		{
+			return TagKey.create(Registries.ITEM, Cygnus.id(path));
+		}
+
+		TagKey<Item>
+			INGOTS_STEEL = c("ingots/steel"),
+			PLATES_STEEL = c("ingots/steel"),
+			RODS_STEEL = c("rods/steel"),
+			NUGGETS_STEEL = c("nuggets/steel"),
+			STORAGE_BLOCKS_STEEL = c("storage_blocks/steel"),
+
+			INGOTS_ALUMINIUM = c("ingots/aluminium"),
+			PLATES_ALUMINIUM = c("ingots/aluminium"),
+			RODS_ALUMINIUM = c("rods/aluminium"),
+			NUGGETS_ALUMINIUM = c("nuggets/aluminium"),
+			STORAGE_BLOCKS_ALUMINIUM = c("storage_blocks/aluminium"),
+
+			INGOTS_TITANIUM = c("ingots/titanium"),
+			PLATES_TITANIUM = c("ingots/titanium"),
+			RODS_TITANIUM = c("rods/titanium"),
+			NUGGETS_TITANIUM = c("nuggets/titanium"),
+			STORAGE_BLOCKS_TITANIUM = c("storage_blocks/titanium");
+	}
+
+	@ApiStatus.NonExtendable
+	interface Blocks
+	{
+		TagKey<Block> INCORRECT_FOR_OXYGEN_DRILl = TagKey.create(Registries.BLOCK, Cygnus.id("incorrect_for_oxygen_drill"));
+	}
+
+	@ApiStatus.NonExtendable
+	interface Fluids
+	{
+		TagKey<Fluid> OXYGEN = TagKey.create(Registries.FLUID, ResourceLocation.fromNamespaceAndPath("c", "oxygen"));
+	}
+}

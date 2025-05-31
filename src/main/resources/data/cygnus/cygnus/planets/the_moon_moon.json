@@ -1,0 +1,18 @@
+{
+	"dimension": "minecraft:the_end",
+	"map_texture": "cygnus:the_moon",
+	"gravity": 1.62,
+	"has_oxygen": false,
+	"day_length": 12000,
+	"night_length": 12000,
+	"year_length": 31,
+	"ambient_temperature_curve": [
+		{ "x": 0.00, "y": 10 }, // dawn
+		{ "x": 0.25, "y": 10 }, // midday
+		{ "x": 0.50, "y": 10 }, // midnight
+		{ "x": 1.00, "y": 10 } // dawn
+	],
+	"ambient_radiation": 0,
+	"moons": [],
+	"atmospheric_pressure": -1
+}
