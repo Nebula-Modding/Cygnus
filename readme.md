@@ -8,6 +8,6 @@ developed planets with enough content to be *enjoyable* to explore and colonize.
 ## Credits
 
 EmmaTheMartian - Project Lead, Lead Developer
-Avery - Artist, Composer
+Avery - Composer
 Frogballoon - Artist, Composer
 TheObviousLemon - Artist
