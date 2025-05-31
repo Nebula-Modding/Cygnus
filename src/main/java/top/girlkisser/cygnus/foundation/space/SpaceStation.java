@@ -36,7 +36,12 @@ public final class SpaceStation
 		BlockPos.CODEC.fieldOf("origin").forGetter(SpaceStation::origin),
 		ResourceLocation.CODEC.fieldOf("orbiting").forGetter(SpaceStation::orbiting),
 		ResourceLocation.CODEC.fieldOf("structure").forGetter(SpaceStation::structure),
-		BlockPos.CODEC.listOf().fieldOf("telepads").forGetter(SpaceStation::telepads)
+		BlockPos.CODEC.listOf()
+			.xmap(
+				list -> list,
+				ArrayList::new
+			)
+			.fieldOf("telepads").forGetter(SpaceStation::telepads)
 	).apply(it, SpaceStation::new));
 
 	public static final StreamCodec<RegistryFriendlyByteBuf, SpaceStation> STREAM_CODEC = ByteBufCodecs.fromCodecWithRegistries(CODEC);

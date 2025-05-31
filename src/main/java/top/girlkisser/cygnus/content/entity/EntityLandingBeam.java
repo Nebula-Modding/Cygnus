@@ -145,19 +145,18 @@ public class EntityLandingBeam extends VehicleEntity
 	@Override
 	protected void readAdditionalSaveData(@NotNull CompoundTag compound)
 	{
-		if (spaceStationUUID != null)
-		{
-			compound.putUUID("spaceStationUUID", spaceStationUUID);
-		}
-		compound.putBoolean("isTheDestinationAPlanet", isTheDestinationAPlanet);
+		if (compound.hasUUID("spaceStationUUID"))
+			spaceStationUUID = compound.getUUID("spaceStationUUID");
+
+		isTheDestinationAPlanet = compound.getBoolean("isTheDestinationAPlanet");
 	}
 
 	@Override
 	protected void addAdditionalSaveData(@NotNull CompoundTag compound)
 	{
-		if (compound.hasUUID("spaceStationUUID"))
-			spaceStationUUID = compound.getUUID("spaceStationUUID");
-		if (compound.contains("isTheDestinationAPlanet"))
-			isTheDestinationAPlanet = compound.getBoolean("isTheDestinationAPlanet");
+		if (spaceStationUUID != null)
+			compound.putUUID("spaceStationUUID", spaceStationUUID);
+
+		compound.putBoolean("isTheDestinationAPlanet", isTheDestinationAPlanet);
 	}
 }

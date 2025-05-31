@@ -93,7 +93,7 @@ public final class SpaceStationManager extends SavedData
 			player.getUUID(),
 			name,
 			nextOrigin.immutable(),
-			Cygnus.id("terestrius/overworld"),
+			Cygnus.id("earth"),
 			structure,
 			telepadList
 		));

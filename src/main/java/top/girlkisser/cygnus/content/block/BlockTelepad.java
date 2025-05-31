@@ -41,7 +41,10 @@ public class BlockTelepad extends AbstractBlockWithEntity<BlockTelepadBE>
 		{
 			SpaceStationManager manager = SpaceStationManager.get(serverLevel.getServer());
 			Optional<SpaceStation> closestSpaceStation = manager.getClosestSpaceStationTo(serverLevel, pos);
-			closestSpaceStation.ifPresent(spaceStation -> spaceStation.telepads().add(pos));
+			closestSpaceStation.ifPresent(spaceStation -> {
+				spaceStation.telepads().add(pos);
+				manager.setDirty();
+			});
 		}
 	}
 
@@ -55,7 +58,10 @@ public class BlockTelepad extends AbstractBlockWithEntity<BlockTelepadBE>
 		{
 			SpaceStationManager manager = SpaceStationManager.get(serverLevel.getServer());
 			Optional<SpaceStation> closestSpaceStation = manager.getClosestSpaceStationTo(serverLevel, pos);
-			closestSpaceStation.ifPresent(spaceStation -> spaceStation.telepads().removeIf(it -> it.equals(pos)));
+			closestSpaceStation.ifPresent(spaceStation -> {
+				spaceStation.telepads().removeIf(it -> it.equals(pos));
+				manager.setDirty();
+			});
 		}
 	}
 
