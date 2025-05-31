@@ -1,4 +1,10 @@
+<div align="center">
+
 # Cygnus
+
+<hr>
+
+</div>
 
 A space mod for Minecraft, aiming to have rich, fun, and unique planets.
 
@@ -8,6 +14,9 @@ developed planets with enough content to be *enjoyable* to explore and colonize.
 ## Credits
 
 EmmaTheMartian - Project Lead, Lead Developer
+
 Avery - Composer
+
 Frogballoon - Artist, Composer
+
 TheObviousLemon - Artist
