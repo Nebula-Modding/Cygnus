@@ -9,6 +9,9 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.neoforge.common.NeoForge;
 import org.slf4j.Logger;
+import top.girlkisser.config.CygnusClientConfig;
+import top.girlkisser.config.CygnusServerConfig;
+import top.girlkisser.cygnus.client.CygnusClientListeners;
 import top.girlkisser.cygnus.content.registry.*;
 import top.girlkisser.cygnus.content.terminal.CommandSetDestination;
 import top.girlkisser.cygnus.content.terminal.ITerminalCommand;
@@ -32,13 +35,14 @@ public class Cygnus
 
 		// Registration
 		CygnusBlocks.R.register(bus);
-		CygnusBlockEntities.R.register(bus);
+		CygnusBlockEntityTypes.R.register(bus);
 		CygnusDataComponents.R.register(bus);
 		CygnusEntityTypes.R.register(bus);
 		CygnusFluids.R.register(bus);
 		CygnusFluidTypes.R.register(bus);
 		CygnusItems.R.register(bus);
 		CygnusMenuTypes.R.register(bus);
+		CygnusParticleTypes.R.register(bus);
 		CygnusRecipeSerializers.R.register(bus);
 		CygnusRecipeTypes.R.register(bus);
 		CygnusTabs.R.register(bus);
@@ -47,11 +51,17 @@ public class Cygnus
 		ITerminalCommand.COMMANDS.put("setdest", new CommandSetDestination());
 
 		// Register configs
+		mod.registerConfig(ModConfig.Type.CLIENT, CygnusClientConfig.SPEC);
 		mod.registerConfig(ModConfig.Type.SERVER, CygnusServerConfig.SPEC);
 	}
 
 	public static ResourceLocation id(String path)
 	{
 		return ResourceLocation.fromNamespaceAndPath(MODID, path);
+	}
+
+	public static ResourceLocation id(String namespace, String path)
+	{
+		return ResourceLocation.fromNamespaceAndPath(namespace, path);
 	}
 }

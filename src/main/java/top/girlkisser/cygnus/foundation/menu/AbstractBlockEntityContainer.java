@@ -20,7 +20,7 @@ public abstract class AbstractBlockEntityContainer<T extends BlockEntity> extend
 
 	public AbstractBlockEntityContainer(@Nullable MenuType<?> menuType, Block block, int slotCount, int containerId, Inventory playerInventory, BlockPos pos)
 	{
-		super(menuType, slotCount, containerId);
+		super(menuType, slotCount, containerId, playerInventory);
 
 		this.block = block;
 		this.pos = pos;

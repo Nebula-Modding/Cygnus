@@ -19,18 +19,19 @@ public class TerminalIconButton extends Button
 	protected float animationProgress = 0f;
 	protected float animationSpeed = 0.05f;
 
-	protected TerminalIconButton(int x, int y, Component hoverMessage, CreateNarration createNarration, OnPress onPress, ResourceLocation icon, ResourceLocation hoverIcon)
+	public TerminalIconButton(int x, int y, Component hoverMessage, CreateNarration createNarration, OnPress onPress, ResourceLocation icon, ResourceLocation hoverIcon)
 	{
 		super(x, y, SIZE, SIZE, hoverMessage, onPress, createNarration);
 		this.icon = icon;
 		this.hoverIcon = hoverIcon;
 	}
 
-	protected TerminalIconButton(int x, int y, Component hoverMessage, CreateNarration createNarration, OnPress onPress, ResourceLocation icon, ResourceLocation hoverIcon, boolean renderMessageOnRight)
+	public TerminalIconButton(int x, int y, Component hoverMessage, CreateNarration createNarration, OnPress onPress, ResourceLocation icon, ResourceLocation hoverIcon, boolean renderMessageOnRight)
 	{
 		this(x, y, hoverMessage, createNarration, onPress, icon, hoverIcon);
 		this.renderMessageOnRight = renderMessageOnRight;
 	}
+
 	@Override
 	protected void renderWidget(@NotNull GuiGraphics graphics, int mouseX, int mouseY, float partialTick)
 	{
@@ -42,7 +43,7 @@ public class TerminalIconButton extends Button
 			graphics.blitSprite(hoverIcon, this.getX(), this.getY(), 23, 23);
 			if (animationProgress > 0)
 			{
-				int width = (int)(TOOLTIP_ANIMATION_CURVE.sample(animationProgress).y * TOOLTIP_WIDTH);
+				int width = (int) (TOOLTIP_ANIMATION_CURVE.sample(animationProgress).y * TOOLTIP_WIDTH);
 				int x = renderMessageOnRight ? this.getX() + 24 : this.getX() - 1 - width;
 				graphics.blitSprite(TerminalButton.BUTTON_SELECTED, x, this.getY(), width, 23);
 				int y = (this.getY() + (this.getY() + this.getHeight()) - 9) / 2 + 1;

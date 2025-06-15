@@ -1,0 +1,36 @@
+{
+	"type": "cygnus:the_moon",
+	"generator": {
+		"type": "minecraft:noise",
+		"biome_source": {
+			"biomes": [
+				{
+					"biome": "cygnus:lunar_flats",
+					"parameters": {
+						"continentalness": 0,
+						"depth": 0,
+						"erosion": 0,
+						"humidity": 0,
+						"offset": 0,
+						"temperature": 0,
+						"weirdness": 0
+					}
+				},
+				{
+					"biome": "cygnus:lunar_maria",
+					"parameters": {
+						"continentalness": 0,
+						"depth": 0,
+						"erosion": 0,
+						"humidity": 0,
+						"offset": 0.175,
+						"temperature": -0.5,
+						"weirdness": 0
+					}
+				}
+			],
+			"type": "minecraft:multi_noise"
+		},
+		"settings": "cygnus:the_moon"
+	}
+}

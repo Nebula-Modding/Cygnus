@@ -4,13 +4,11 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.UUIDUtil;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtUtils;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
@@ -23,10 +21,7 @@ import top.girlkisser.cygnus.content.CygnusResourceKeys;
 import top.girlkisser.cygnus.content.entity.EntityLandingBeam;
 import top.girlkisser.cygnus.management.SpaceStationManager;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.UUID;
+import java.util.*;
 
 public final class SpaceStation
 {
@@ -39,9 +34,10 @@ public final class SpaceStation
 		BlockPos.CODEC.listOf()
 			.xmap(
 				list -> list,
-				ArrayList::new
+				ArrayList::new // We do this so that the list is made mutable
 			)
-			.fieldOf("telepads").forGetter(SpaceStation::telepads)
+			.fieldOf("telepads")
+			.forGetter(SpaceStation::telepads)
 	).apply(it, SpaceStation::new));
 
 	public static final StreamCodec<RegistryFriendlyByteBuf, SpaceStation> STREAM_CODEC = ByteBufCodecs.fromCodecWithRegistries(CODEC);
@@ -105,7 +101,7 @@ public final class SpaceStation
 		tag.putString("structure", structure.toString());
 
 		CompoundTag telepadsTag = new CompoundTag();
-		for (int i = 0; i < telepads.size(); i++)
+		for (int i = 0 ; i < telepads.size() ; i++)
 		{
 			BlockPos pos = telepads.get(i);
 			telepadsTag.put(Integer.toString(i), NbtUtils.writeBlockPos(pos));
@@ -133,22 +129,34 @@ public final class SpaceStation
 	}
 
 	public UUID player()
-	{ return player; }
+	{
+		return player;
+	}
 
 	public String name()
-	{ return name; }
+	{
+		return name;
+	}
 
 	public BlockPos origin()
-	{ return origin; }
+	{
+		return origin;
+	}
 
 	public ResourceLocation orbiting()
-	{ return orbiting; }
+	{
+		return orbiting;
+	}
 
 	public ResourceLocation structure()
-	{ return structure; }
+	{
+		return structure;
+	}
 
 	public List<BlockPos> telepads()
-	{ return telepads; }
+	{
+		return telepads;
+	}
 
 	public void setPlayer(MinecraftServer server, UUID value)
 	{

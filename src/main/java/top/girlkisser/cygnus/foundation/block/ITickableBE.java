@@ -8,9 +8,11 @@ import net.neoforged.api.distmarker.OnlyIn;
 public interface ITickableBE
 {
 	default void serverTick(ServerLevel level)
-	{ }
+	{
+	}
 
 	@OnlyIn(Dist.CLIENT)
 	default void clientTick(ClientLevel level)
-	{ }
+	{
+	}
 }

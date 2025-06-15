@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "cygnus:block/lunar_deepslate_pillar_end",
+    "side": "cygnus:block/lunar_deepslate_pillar_side"
+  }
+}

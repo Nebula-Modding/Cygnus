@@ -7,6 +7,7 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.jetbrains.annotations.ApiStatus;
 import top.girlkisser.cygnus.Cygnus;
+import top.girlkisser.cygnus.content.crafting.RecipeChroniteBlasting;
 import top.girlkisser.cygnus.content.crafting.RecipeSpaceStationCrafting;
 
 @SuppressWarnings("unused")
@@ -22,4 +23,7 @@ public interface CygnusRecipeTypes
 
 	DeferredHolder<RecipeType<?>, RecipeType<RecipeSpaceStationCrafting>> SPACE_STATION_CRAFTING =
 		reg("space_station_crafting", RecipeSpaceStationCrafting.TYPE);
+
+	DeferredHolder<RecipeType<?>, RecipeType<RecipeChroniteBlasting>> CHRONITE_BLASTING =
+		reg("chronite_blasting", RecipeChroniteBlasting.TYPE);
 }

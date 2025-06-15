@@ -4,6 +4,13 @@
     "cygnus:steel_tiles",
     "cygnus:steel_sheet_metal",
     "cygnus:command_centre",
-    "cygnus:telepad"
+    "cygnus:telepad",
+    "cygnus:chronite_blast_furnace",
+    "cygnus:chronite_block",
+    "cygnus:chronite_cluster",
+    "cygnus:budding_chronite",
+    "cygnus:small_chronite_bud",
+    "cygnus:medium_chronite_bud",
+    "cygnus:large_chronite_bud"
   ]
 }

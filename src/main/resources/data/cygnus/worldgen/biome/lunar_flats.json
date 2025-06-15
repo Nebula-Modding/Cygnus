@@ -1,0 +1,37 @@
+{
+	"carvers": {
+		"air": [
+			"minecraft:cave",
+			"minecraft:cave_extra_underground",
+			"minecraft:canyon"
+		]
+	},
+	"downfall": 0,
+	"effects": {
+		"fog_color": 0,
+		"sky_color": 0,
+		"water_color": 4159204,
+		"water_fog_color": 329011
+	},
+	"features": [
+		[],
+		[
+			"minecraft:lake_lava_underground"
+		],
+		[
+			"cygnus:chronite_geode"
+		],
+		[],
+		[],
+		[],
+		[],
+		[],
+		[],
+		[],
+		[]
+	],
+	"has_precipitation": false,
+	"spawn_costs": {},
+	"spawners": {},
+	"temperature": 0
+}

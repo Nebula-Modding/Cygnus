@@ -12,6 +12,8 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import org.apache.commons.lang3.function.TriFunction;
 import org.jetbrains.annotations.ApiStatus;
 import top.girlkisser.cygnus.Cygnus;
+import top.girlkisser.cygnus.content.menu.ContainerChroniteBlastFurnace;
+import top.girlkisser.cygnus.content.menu.ContainerCommandCentre;
 import top.girlkisser.cygnus.content.menu.ContainerTerminal;
 import top.girlkisser.cygnus.foundation.space.SpaceStation;
 
@@ -21,14 +23,22 @@ public interface CygnusMenuTypes
 {
 	DeferredRegister<MenuType<?>> R = DeferredRegister.create(Registries.MENU, Cygnus.MODID);
 
-	static <T extends AbstractContainerMenu> DeferredHolder<MenuType<?>, MenuType<T>> reg(String id, IContainerFactory<T> factory) {
+	static <T extends AbstractContainerMenu> DeferredHolder<MenuType<?>, MenuType<T>> reg(String id, IContainerFactory<T> factory)
+	{
 		return R.register(id, () -> IMenuTypeExtension.create(factory));
 	}
 
-	static <T extends AbstractContainerMenu> DeferredHolder<MenuType<?>, MenuType<T>> regSimple(String id, TriFunction<Integer, Inventory, BlockPos, T> factory) {
+	static <T extends AbstractContainerMenu> DeferredHolder<MenuType<?>, MenuType<T>> regSimple(String id, TriFunction<Integer, Inventory, BlockPos, T> factory)
+	{
 		return reg(id, (windowId, inventory, buf) -> factory.apply(windowId, inventory, buf.readBlockPos()));
 	}
 
 	DeferredHolder<MenuType<?>, MenuType<ContainerTerminal>> TERMINAL = reg("terminal", (windowId, inventory, buf) ->
-		new ContainerTerminal(windowId, inventory, buf.readBlockPos(), SpaceStation.STREAM_CODEC.decode(buf)));
+		new ContainerTerminal(windowId, inventory, buf.readBlockPos(), buf.readBoolean() ? SpaceStation.STREAM_CODEC.decode(buf) : null));
+
+	DeferredHolder<MenuType<?>, MenuType<ContainerCommandCentre>> COMMAND_CENTRE = reg("command_centre", (windowId, inventory, buf) ->
+		new ContainerCommandCentre(windowId, inventory, buf.readBlockPos(), buf.readBoolean() ? SpaceStation.STREAM_CODEC.decode(buf) : null));
+
+	DeferredHolder<MenuType<?>, MenuType<ContainerChroniteBlastFurnace>> CHRONITE_BLAST_FURNACE = reg("chronite_blast_function", (windowId, inventory, buf) ->
+		new ContainerChroniteBlastFurnace(windowId, inventory, buf.readBlockPos()));
 }

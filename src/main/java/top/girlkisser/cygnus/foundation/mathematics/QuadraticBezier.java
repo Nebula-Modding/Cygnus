@@ -23,7 +23,8 @@ public record QuadraticBezier(Vector2f start, Vector2f control, Vector2f end)
 
 	public static final Codec<QuadraticBezier> LIST_CODEC = MiscCygnusCodecs.VECTOR2F.listOf(3, 3).xmap(
 		(List<Vector2f> value) -> new QuadraticBezier(value.getFirst(), value.get(1), value.get(2)),
-		(QuadraticBezier value) -> {
+		(QuadraticBezier value) ->
+		{
 			List<Vector2f> points = new ArrayList<>();
 			points.add(value.start);
 			points.add(value.control);
@@ -60,7 +61,7 @@ public record QuadraticBezier(Vector2f start, Vector2f control, Vector2f end)
 	public List<Vector2f> getPoints(float resolution)
 	{
 		List<Vector2f> points = new ArrayList<>();
-		for (float t = resolution; t < 1; t += resolution)
+		for (float t = resolution ; t < 1 ; t += resolution)
 		{
 			points.add(sample(t));
 		}

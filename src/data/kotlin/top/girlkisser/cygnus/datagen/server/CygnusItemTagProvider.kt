@@ -1,6 +1,7 @@
 package top.girlkisser.cygnus.datagen.server
 
 import martian.dapper.api.server.DapperTagProvider
+import net.minecraft.world.item.Items
 import net.minecraft.world.level.ItemLike
 import net.neoforged.neoforge.data.event.GatherDataEvent
 import top.girlkisser.cygnus.Cygnus
@@ -16,7 +17,7 @@ class CygnusItemTagProvider(event: GatherDataEvent) : DapperTagProvider.Companio
             STEEL_ROD addRod this
             STEEL_NUGGET addNugget this
         }
-        "aluminium".apply {
+        "aluminum".apply {
             ALUMINIUM_INGOT addIngot this
             ALUMINIUM_SHEET addPlate this
             ALUMINIUM_ROD addRod this
@@ -29,7 +30,10 @@ class CygnusItemTagProvider(event: GatherDataEvent) : DapperTagProvider.Companio
             TITANIUM_NUGGET addNugget this
         }
 
+		HAMMER addTo "c:tools/hammers"
         OXYGEN_DRILL addTo "c:tools/drills"
+
+		Items.LEATHER_BOOTS addTo "cygnus:can_walk_on_chronite"
     }
 
     infix fun ItemLike.addIngot(id: String) = (this.asItem() addTo "c:ingots/$id")!!

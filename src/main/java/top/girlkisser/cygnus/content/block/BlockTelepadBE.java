@@ -16,7 +16,7 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.Nullable;
 import top.girlkisser.cygnus.client.CygnusClient;
-import top.girlkisser.cygnus.content.registry.CygnusBlockEntities;
+import top.girlkisser.cygnus.content.registry.CygnusBlockEntityTypes;
 import top.girlkisser.cygnus.foundation.block.ITickableBE;
 import top.girlkisser.cygnus.foundation.client.particle.DustParticlePresets;
 import top.girlkisser.cygnus.foundation.client.particle.ParticleHelper;
@@ -26,7 +26,10 @@ import top.girlkisser.cygnus.foundation.world.AABBHelpers;
 import top.girlkisser.cygnus.management.SpaceStationManager;
 
 import javax.annotation.ParametersAreNonnullByDefault;
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class BlockTelepadBE extends BlockEntity implements ITickableBE
@@ -41,7 +44,7 @@ public class BlockTelepadBE extends BlockEntity implements ITickableBE
 
 	public BlockTelepadBE(BlockPos pos, BlockState blockState)
 	{
-		super(CygnusBlockEntities.TELEPAD.get(), pos, blockState);
+		super(CygnusBlockEntityTypes.TELEPAD.get(), pos, blockState);
 	}
 
 	public void setDestination(@Nullable UUID uuid)

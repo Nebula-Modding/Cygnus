@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "cygnus:block/titanium_plating",
+    "east": "cygnus:block/titanium_plating",
+    "north": "cygnus:block/titanium_plating",
+    "particle": "cygnus:block/titanium_plating",
+    "south": "cygnus:block/titanium_plating",
+    "up": "cygnus:block/titanium_plating",
+    "west": "cygnus:block/titanium_plating"
+  }
+}

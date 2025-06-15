@@ -1,5 +1,6 @@
 package top.girlkisser.cygnus.foundation.space;
 
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
@@ -17,7 +18,6 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.level.portal.DimensionTransition;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
-import org.joml.Vector2d;
 import top.girlkisser.cygnus.Cygnus;
 import top.girlkisser.cygnus.content.entity.EntityLandingBeam;
 import top.girlkisser.cygnus.foundation.CygnusRegistries;
@@ -143,7 +143,20 @@ public record Planet(
 
 	public static List<Planet> getPlanets(RegistryAccess registryAccess)
 	{
-		return registryAccess.lookup(CygnusRegistries.PLANET).orElseThrow().listElements().map(Holder.Reference::value).toList();
+		return registryAccess.lookup(CygnusRegistries.PLANET)
+			.orElseThrow()
+			.listElements()
+			.map(Holder.Reference::value)
+			.toList();
+	}
+
+	public static List<Pair<ResourceKey<Planet>, Planet>> getPlanetsWithIds(RegistryAccess registryAccess)
+	{
+		return registryAccess.lookup(CygnusRegistries.PLANET)
+			.orElseThrow()
+			.listElements()
+			.map(it -> new Pair<>(it.key(), it.value()))
+			.toList();
 	}
 
 	public static Optional<Holder.Reference<Planet>> getPlanetById(RegistryAccess registryAccess, ResourceKey<Planet> id)

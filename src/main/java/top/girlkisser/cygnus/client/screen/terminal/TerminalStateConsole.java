@@ -1,25 +1,22 @@
 package top.girlkisser.cygnus.client.screen.terminal;
 
-import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.network.chat.Component;
-import net.neoforged.neoforge.network.PacketDistributor;
-import top.girlkisser.cygnus.content.network.ServerboundRunTerminalCommand;
 
 import java.util.function.Supplier;
 
 public class TerminalStateConsole implements ITerminalState
 {
-	private final ScreenTerminal screen;
+	private final ScreenTerminal<?> screen;
 	private EditBox editBox;
 
-	public TerminalStateConsole(ScreenTerminal screen)
+	public TerminalStateConsole(ScreenTerminal<?> screen)
 	{
 		this.screen = screen;
 	}
 
 	@Override
-	public ScreenTerminal screen()
+	public ScreenTerminal<?> screen()
 	{
 		return screen;
 	}
@@ -41,14 +38,9 @@ public class TerminalStateConsole implements ITerminalState
 			screen.getGuiTop() + 71,
 			Component.translatable("screen.cygnus.terminal.execute"),
 			Supplier::get,
-			this::executeCommandCallback,
+			button -> sendTerminalCommand(editBox.getValue()),
 			TerminalButton.EXECUTE,
 			TerminalButton.EXECUTE_SELECTED
 		));
-	}
-
-	private void executeCommandCallback(Button button)
-	{
-		PacketDistributor.sendToServer(new ServerboundRunTerminalCommand(this.screen.getMenu().pos, editBox.getValue()));
 	}
 }

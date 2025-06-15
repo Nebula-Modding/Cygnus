@@ -9,21 +9,27 @@ import net.minecraft.client.gui.narration.NarratableEntry;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.NotNull;
-import top.girlkisser.cygnus.content.menu.ContainerTerminal;
 import top.girlkisser.cygnus.foundation.client.screen.AbstractCygnusMenuScreen;
+import top.girlkisser.cygnus.foundation.menu.AbstractTerminalContainer;
 
 import java.util.function.Function;
 
-public class ScreenTerminal extends AbstractCygnusMenuScreen<ContainerTerminal>
+public class ScreenTerminal<T extends AbstractTerminalContainer<?>> extends AbstractCygnusMenuScreen<T>
 {
 	private ITerminalState state;
 
-	public ScreenTerminal(ContainerTerminal menu, Component title)
+	public ScreenTerminal(T menu, Component title)
 	{
 		super(menu, title);
 		this.imageHeight = 218;
 		this.imageWidth = 229;
-		state = new TerminalStateMainMenu(this);
+		this.state = new TerminalStateMainMenu(this);
+	}
+
+	public ScreenTerminal(T menu, Component title, Function<ScreenTerminal<?>, ITerminalState> stateFunction)
+	{
+		this(menu, title);
+		this.state = stateFunction.apply(this);
 	}
 
 	public void setState(ITerminalState state)
@@ -34,7 +40,7 @@ public class ScreenTerminal extends AbstractCygnusMenuScreen<ContainerTerminal>
 		this.init();
 	}
 
-	public void setState(Function<ScreenTerminal, ITerminalState> state)
+	public void setState(Function<ScreenTerminal<T>, ITerminalState> state)
 	{
 		setState(state.apply(this));
 	}
@@ -64,30 +70,31 @@ public class ScreenTerminal extends AbstractCygnusMenuScreen<ContainerTerminal>
 	protected void renderBg(@NotNull GuiGraphics graphics, float partialTick, int mouseX, int mouseY)
 	{
 		super.renderBg(graphics, partialTick, mouseX, mouseY);
-		graphics.drawString(font, this.menu.spaceStation.name(), this.leftPos + 43, this.topPos + 24, 0xFF00FF00);
+		graphics.drawString(font, state.getMenuName(), this.leftPos + 43, this.topPos + 24, 0xFF00FF00);
 		state.renderBg(graphics, partialTick, mouseX, mouseY);
 	}
 
 	@Override
-	public boolean isPauseScreen() {
+	public boolean isPauseScreen()
+	{
 		return false;
 	}
 
 	// Expose some methods as public so that ITerminalState inheritors can use them
 	@Override
-	public <T extends GuiEventListener & Renderable & NarratableEntry> @NotNull T addRenderableWidget(@NotNull T widget)
+	public <T2 extends GuiEventListener & Renderable & NarratableEntry> @NotNull T2 addRenderableWidget(@NotNull T2 widget)
 	{
 		return super.addRenderableWidget(widget);
 	}
 
 	@Override
-	public <T extends Renderable> @NotNull T addRenderableOnly(@NotNull T renderable)
+	public <T2 extends Renderable> @NotNull T2 addRenderableOnly(@NotNull T2 renderable)
 	{
 		return super.addRenderableOnly(renderable);
 	}
 
 	@Override
-	public <T extends GuiEventListener & NarratableEntry> @NotNull T addWidget(@NotNull T listener)
+	public <T2 extends GuiEventListener & NarratableEntry> @NotNull T2 addWidget(@NotNull T2 listener)
 	{
 		return super.addWidget(listener);
 	}

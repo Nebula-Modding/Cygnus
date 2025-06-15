@@ -2,7 +2,6 @@ package top.girlkisser.cygnus;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -10,19 +9,18 @@ import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.event.OnDatapackSyncEvent;
 import net.neoforged.neoforge.event.entity.living.LivingFallEvent;
-import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import net.neoforged.neoforge.event.tick.ServerTickEvent;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 import net.neoforged.neoforge.registries.DataPackRegistryEvent;
-import top.girlkisser.cygnus.content.CygnusResourceKeys;
-import top.girlkisser.cygnus.content.block.BlockTelepadBE;
+import net.neoforged.neoforge.registries.datamaps.RegisterDataMapTypesEvent;
 import top.girlkisser.cygnus.content.network.ClientboundSyncTerminal;
+import top.girlkisser.cygnus.content.network.ServerboundAttemptSpaceStationConstruction;
 import top.girlkisser.cygnus.content.network.ServerboundRunTerminalCommand;
-import top.girlkisser.cygnus.content.registry.CygnusBlockEntities;
 import top.girlkisser.cygnus.content.registry.CygnusBlocks;
+import top.girlkisser.cygnus.content.registry.CygnusDataMaps;
 import top.girlkisser.cygnus.content.registry.CygnusItems;
 import top.girlkisser.cygnus.foundation.CygnusRegistries;
 import top.girlkisser.cygnus.foundation.TickScheduler;
@@ -40,7 +38,7 @@ final class CygnusListeners
 		@SubscribeEvent
 		static void onRegisterComponents(RegisterCapabilitiesEvent event)
 		{
-			event.registerItem(Capabilities.FluidHandler.ITEM, (stack, _void) -> ((CygnusItem)stack.getItem()).makeFluidHandler(stack), CygnusItems.OXYGEN_DRILL);
+			event.registerItem(Capabilities.FluidHandler.ITEM, (stack, _void) -> ((CygnusItem) stack.getItem()).makeFluidHandler(stack), CygnusItems.OXYGEN_DRILL);
 		}
 
 		@SubscribeEvent
@@ -57,8 +55,15 @@ final class CygnusListeners
 			PayloadRegistrar registrar = event.registrar("1");
 
 			registrar.playToServer(ServerboundRunTerminalCommand.TYPE, ServerboundRunTerminalCommand.STREAM_CODEC, ServerboundRunTerminalCommand::handle);
+			registrar.playToServer(ServerboundAttemptSpaceStationConstruction.TYPE, ServerboundAttemptSpaceStationConstruction.STREAM_CODEC, ServerboundAttemptSpaceStationConstruction::handle);
 
 			registrar.playToClient(ClientboundSyncTerminal.TYPE, ClientboundSyncTerminal.STREAM_CODEC, ClientboundSyncTerminal::handle);
+		}
+
+		@SubscribeEvent
+		static void onRegisterDataMapTypes(RegisterDataMapTypesEvent event)
+		{
+			event.register(CygnusDataMaps.CHRONITE_BLAST_FURNACE_FUELS);
 		}
 	}
 
@@ -93,23 +98,12 @@ final class CygnusListeners
 			}
 		}
 
-//		@SubscribeEvent
-//		static void onPlayerPlaceBlock(BlockEvent.EntityPlaceEvent event)
-//		{
-//			if (event.getEntity() instanceof ServerPlayer player && !((ServerLevel)event.getLevel()).dimension().equals(CygnusResourceKeys.SPACE))
-//			{
-//				event.getLevel()
-//					.getBlockEntity(event.getPos(), CygnusBlockEntities.TELEPAD.get())
-//					.ifPresent(it -> it.setDestination(player.getUUID()));
-//			}
-//		}
-
 		@SubscribeEvent
 		static void onBlockBreak(BlockEvent.BreakEvent event)
 		{
 			if (event.getState().is(CygnusBlocks.TELEPAD))
 			{
-				ServerPlayer serverPlayer = (ServerPlayer)event.getPlayer();
+				ServerPlayer serverPlayer = (ServerPlayer) event.getPlayer();
 				SpaceStationManager manager = SpaceStationManager.get(serverPlayer.server);
 				Optional<SpaceStation> maybeSpaceStation = manager.getClosestSpaceStationTo(serverPlayer.serverLevel(), event.getPos());
 				// If this is the only telepad left on a space station, don't let players destroy it

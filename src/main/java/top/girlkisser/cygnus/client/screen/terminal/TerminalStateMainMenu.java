@@ -1,15 +1,13 @@
 package top.girlkisser.cygnus.client.screen.terminal;
 
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
 import org.apache.commons.lang3.function.TriFunction;
-import top.girlkisser.cygnus.Cygnus;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Supplier;
 
-public record TerminalStateMainMenu(ScreenTerminal screen) implements ITerminalState
+public class TerminalStateMainMenu extends AbstractButtonTerminalState
 {
 	public static List<TriFunction<Integer, Integer, ITerminalState, TerminalButton>> buttons = new ArrayList<>();
 
@@ -66,22 +64,14 @@ public record TerminalStateMainMenu(ScreenTerminal screen) implements ITerminalS
 		));
 	}
 
-	@Override
-	public void init()
+	public TerminalStateMainMenu(ScreenTerminal<?> screen)
 	{
-		int y = screen.getGuiTop() + 44;
-		for (var buttonBuilder : buttons)
-		{
-			var button = buttonBuilder.apply(screen.getGuiLeft() + 17, y, this);
-			screen.addRenderableWidget(button);
-			y += 27;
-		}
+		super(screen);
 	}
 
-	@Override
-	public ResourceLocation getUI()
+	protected List<TriFunction<Integer, Integer, ITerminalState, TerminalButton>> getButtons()
 	{
-		return Cygnus.id("textures/gui/terminal_with_right_sidebar.png");
+		return buttons;
 	}
 
 	@Override

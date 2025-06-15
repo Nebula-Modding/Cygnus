@@ -22,6 +22,7 @@ object CygnusDataGen
         },
         server =
         {
+			it.add(CygnusBlockDropsProvider(event))
             it.add(CygnusBlockTagProvider(event))
             it.add(CygnusFluidTagProvider(event))
             it.add(CygnusItemTagProvider(event))

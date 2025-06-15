@@ -3,7 +3,6 @@ package top.girlkisser.cygnus.content.terminal;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import org.jetbrains.annotations.Nullable;
-import top.girlkisser.cygnus.content.block.BlockTerminalBE;
 import top.girlkisser.cygnus.foundation.space.SpaceStation;
 
 import java.util.HashMap;
@@ -15,10 +14,11 @@ public interface ITerminalCommand
 
 	int getArgCount();
 
-	ExecuteResult execute(String[] args, BlockTerminalBE terminal, ServerPlayer executor, SpaceStation spaceStation);
+	ExecuteResult execute(String[] args, ServerPlayer executor, SpaceStation spaceStation);
 
 	record ExecuteResult(ExecuteStatus status, @Nullable Component message)
-	{ }
+	{
+	}
 
 	enum ExecuteStatus
 	{
@@ -26,7 +26,7 @@ public interface ITerminalCommand
 		ERR,
 	}
 
-	static ExecuteResult execute(String command, BlockTerminalBE terminal, ServerPlayer executor, SpaceStation spaceStation)
+	static ExecuteResult execute(String command, ServerPlayer executor, SpaceStation spaceStation)
 	{
 		String[] s = command.split(" ", 2);
 		if (!COMMANDS.containsKey(s[0]))
@@ -75,6 +75,6 @@ public interface ITerminalCommand
 			args[argIndex] = buf.toString();
 		}
 
-		return cmd.execute(args, terminal, executor, spaceStation);
+		return cmd.execute(args, executor, spaceStation);
 	}
 }

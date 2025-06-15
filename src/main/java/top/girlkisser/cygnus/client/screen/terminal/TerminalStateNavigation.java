@@ -24,7 +24,7 @@ public class TerminalStateNavigation implements ITerminalState
 {
 	protected static final int mapMinX = 45, mapMinY = 40, mapMaxX = 216, mapMaxY = 207;
 
-	public ScreenTerminal screen;
+	public ScreenTerminal<?> screen;
 	protected RegistryAccess registryAccess;
 	protected List<BiFunction<Integer, Integer, TerminalIconButton>> buttons = new ArrayList<>();
 	protected boolean isInitialized = false;
@@ -41,7 +41,7 @@ public class TerminalStateNavigation implements ITerminalState
 	protected int mapPanX = 0, mapPanY = 0;
 	protected float mapZoom = 1f;
 
-	public TerminalStateNavigation(ScreenTerminal screen)
+	public TerminalStateNavigation(ScreenTerminal<?> screen)
 	{
 		this.screen = screen;
 
@@ -50,7 +50,7 @@ public class TerminalStateNavigation implements ITerminalState
 	}
 
 	@Override
-	public ScreenTerminal screen()
+	public ScreenTerminal<?> screen()
 	{
 		return screen;
 	}
@@ -81,7 +81,7 @@ public class TerminalStateNavigation implements ITerminalState
 		{
 			if (CygnusClient.mouseScrollY != 0)
 			{
-				mapZoom = Math.clamp(mapZoom + (float)(CygnusClient.mouseScrollY * screen.getMinecraft().options.mouseWheelSensitivity().get() / 20f), 0.5f, 2.5f);
+				mapZoom = Math.clamp(mapZoom + (float) (CygnusClient.mouseScrollY * screen.getMinecraft().options.mouseWheelSensitivity().get() / 20f), 0.5f, 2.5f);
 			}
 
 			if (CygnusClient.isLeftMouseButtonDown)
@@ -213,9 +213,9 @@ public class TerminalStateNavigation implements ITerminalState
 	{
 		return (
 			mouseX >= screen.getGuiLeft() + mapMinX &&
-			mouseX <= screen.getGuiLeft() + mapMaxX &&
-			mouseY >= screen.getGuiTop() + mapMinY &&
-			mouseY <= screen.getGuiTop() + mapMaxY
+				mouseX <= screen.getGuiLeft() + mapMaxX &&
+				mouseY >= screen.getGuiTop() + mapMinY &&
+				mouseY <= screen.getGuiTop() + mapMaxY
 		);
 	}
 

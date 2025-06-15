@@ -1,0 +1,34 @@
+package top.girlkisser.cygnus.content.item;
+
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.Level;
+import top.girlkisser.cygnus.foundation.item.CygnusItem;
+
+import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.List;
+
+public class ItemChronite extends Item implements CygnusItem
+{
+	public ItemChronite(Properties properties)
+	{
+		super(properties);
+	}
+
+	@ParametersAreNonnullByDefault
+	public void inventoryTick(ItemStack stack, Level level, Entity entity, int slotId, boolean isSelected)
+	{
+		if (isSelected && !entity.fireImmune())
+			entity.hurt(level.damageSources().hotFloor(), 1.0F);
+	}
+
+	@Override
+	@ParametersAreNonnullByDefault
+	public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag)
+	{
+		tooltipComponents.add(Component.translatable("item.cygnus.chronite.tooltip"));
+	}
+}

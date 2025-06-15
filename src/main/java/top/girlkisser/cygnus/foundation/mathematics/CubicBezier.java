@@ -5,7 +5,6 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.ExtraCodecs;
 import org.joml.Vector2f;
 import top.girlkisser.cygnus.foundation.MiscCygnusCodecs;
 
@@ -25,7 +24,8 @@ public record CubicBezier(Vector2f start, Vector2f control1, Vector2f control2, 
 
 	public static final Codec<CubicBezier> LIST_CODEC = MiscCygnusCodecs.VECTOR2F.listOf(4, 4).xmap(
 		(List<Vector2f> value) -> new CubicBezier(value.getFirst(), value.get(1), value.get(2), value.get(3)),
-		(CubicBezier value) -> {
+		(CubicBezier value) ->
+		{
 			List<Vector2f> points = new ArrayList<>();
 			points.add(value.start);
 			points.add(value.control1);
@@ -63,7 +63,7 @@ public record CubicBezier(Vector2f start, Vector2f control1, Vector2f control2, 
 	public List<Vector2f> getPoints(float resolution)
 	{
 		List<Vector2f> points = new ArrayList<>();
-		for (float t = resolution; t < 1; t += resolution)
+		for (float t = resolution ; t < 1 ; t += resolution)
 		{
 			points.add(sample(t));
 		}

@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "cygnus:block/lunar_regolith",
+    "east": "cygnus:block/lunar_regolith",
+    "north": "cygnus:block/lunar_regolith",
+    "particle": "cygnus:block/lunar_regolith",
+    "south": "cygnus:block/lunar_regolith",
+    "up": "cygnus:block/lunar_regolith",
+    "west": "cygnus:block/lunar_regolith"
+  }
+}

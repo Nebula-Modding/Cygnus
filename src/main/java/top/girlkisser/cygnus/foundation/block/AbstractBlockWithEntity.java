@@ -37,7 +37,8 @@ public abstract class AbstractBlockWithEntity<T extends BlockEntity> extends Blo
 
 	@Override
 	@ParametersAreNonnullByDefault
-	public @Nullable <U extends BlockEntity> BlockEntityTicker<U> getTicker(Level level, BlockState state, BlockEntityType<U> blockEntityType) {
+	public @Nullable <U extends BlockEntity> BlockEntityTicker<U> getTicker(Level level, BlockState state, BlockEntityType<U> blockEntityType)
+	{
 		if (!hasTicker)
 			return null;
 

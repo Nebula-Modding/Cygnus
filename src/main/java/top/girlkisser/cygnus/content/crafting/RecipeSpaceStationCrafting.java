@@ -9,10 +9,14 @@ import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.*;
+import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.ApiStatus;
 import top.girlkisser.cygnus.Cygnus;
+import top.girlkisser.cygnus.foundation.container.ContainerUtils;
+import top.girlkisser.cygnus.foundation.crafting.CountedIngredient;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
@@ -20,25 +24,32 @@ import java.util.List;
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
 public record RecipeSpaceStationCrafting(
-	List<Ingredient> ingredients,
+	List<CountedIngredient> ingredients,
 	ResourceLocation structure
-) implements Recipe<IngredientListRecipeInput>
+) implements Recipe<InventoryRecipeInput>
 {
 	public static final RecipeType<RecipeSpaceStationCrafting> TYPE = RecipeType.simple(Cygnus.id("space_station_crafting"));
 	public static final Serializer SERIALIZER = new Serializer();
 
-	@Override
-	public boolean matches(IngredientListRecipeInput input, Level level)
+	public boolean assemble(InventoryRecipeInput input)
 	{
-		for (int i = 0 ; i < ingredients.size() ; i++)
-			if (!ingredients.get(i).test(input.getItem(i)))
+		for (CountedIngredient ingredient : ingredients)
+		{
+			if (ContainerUtils.countItems(input.inventory(), ingredient.ingredient()) >= ingredient.count())
+				ContainerUtils.extractItems(input.inventory(), ingredient.ingredient(), ingredient.count());
+			else
 				return false;
+		}
 		return true;
 	}
 
-	@Override
-	public boolean canCraftInDimensions(int width, int height)
+	public boolean matches(InventoryRecipeInput input)
 	{
+		for (CountedIngredient ingredient : ingredients)
+		{
+			if (ContainerUtils.countItems(input.inventory(), ingredient.ingredient()) < ingredient.count())
+				return false;
+		}
 		return true;
 	}
 
@@ -56,7 +67,21 @@ public record RecipeSpaceStationCrafting(
 
 	@ApiStatus.Obsolete
 	@Override
-	public ItemStack assemble(IngredientListRecipeInput input, HolderLookup.Provider registries)
+	public boolean matches(InventoryRecipeInput input, Level level)
+	{
+		return matches(input);
+	}
+
+	@ApiStatus.Obsolete
+	@Override
+	public boolean canCraftInDimensions(int width, int height)
+	{
+		return true;
+	}
+
+	@ApiStatus.Obsolete
+	@Override
+	public ItemStack assemble(InventoryRecipeInput input, HolderLookup.Provider registries)
 	{
 		return ItemStack.EMPTY;
 	}
@@ -71,7 +96,7 @@ public record RecipeSpaceStationCrafting(
 	public static class Serializer implements RecipeSerializer<RecipeSpaceStationCrafting>
 	{
 		public static final MapCodec<RecipeSpaceStationCrafting> CODEC = RecordCodecBuilder.mapCodec(it -> it.group(
-			Ingredient.LIST_CODEC.fieldOf("ingredients").forGetter(RecipeSpaceStationCrafting::ingredients),
+			CountedIngredient.CODEC.listOf().fieldOf("ingredients").forGetter(RecipeSpaceStationCrafting::ingredients),
 			ResourceLocation.CODEC.fieldOf("structure").forGetter(RecipeSpaceStationCrafting::structure)
 		).apply(it, RecipeSpaceStationCrafting::new));
 

@@ -22,7 +22,10 @@ import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.*;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.DirectionProperty;
+import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -99,6 +102,7 @@ public class BlockTerminal extends Block implements EntityBlock
 				(RegistryFriendlyByteBuf buf) ->
 				{
 					buf.writeBlockPos(pos);
+					buf.writeBoolean(true);
 					SpaceStation.STREAM_CODEC.encode(buf, spaceStation);
 				}
 			);
@@ -146,10 +150,9 @@ public class BlockTerminal extends Block implements EntityBlock
 	}
 
 	@Override
-	protected @NotNull BlockState mirror(BlockState state, Mirror mirror)
+	protected @NotNull BlockState mirror(@NotNull BlockState state, Mirror mirror)
 	{
-		//noinspection deprecation
-		return state.rotate(mirror.getRotation(state.getValue(FACING)));
+		return rotate(state, mirror.getRotation(state.getValue(FACING)));
 	}
 
 	public void setPlacedBy(Level level, BlockPos pos, @NotNull BlockState state, LivingEntity placer, @NotNull ItemStack stack)
@@ -219,7 +222,6 @@ public class BlockTerminal extends Block implements EntityBlock
 				level.levelEvent(player, 2001, below, Block.getId(belowState));
 			}
 		}
-
 	}
 
 	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder)

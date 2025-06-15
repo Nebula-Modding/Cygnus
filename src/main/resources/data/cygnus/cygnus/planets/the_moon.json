@@ -1,5 +1,5 @@
 {
-	"dimension": "minecraft:the_end",
+	"dimension": "cygnus:the_moon",
 	"map_texture": "cygnus:the_moon",
 	"gravity": 1.62,
 	"has_oxygen": false,
@@ -13,8 +13,6 @@
 		{ "x": 1.00, "y": 10 } // dawn
 	],
 	"ambient_radiation": 0,
-	"moons": [
-		"cygnus:the_moon_moon"
-	],
+	"moons": [],
 	"atmospheric_pressure": -1
 }

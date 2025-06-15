@@ -1,0 +1,34 @@
+{
+	"type": "cygnus:space_station_crafting",
+	"ingredients": [
+		{
+			"ingredient": { "tag": "c:plates/steel" },
+			"count": 128
+		},
+		{
+			"ingredient": { "tag": "c:plates/aluminum" },
+			"count": 64
+		},
+		{
+			"ingredient": { "tag": "c:rods/steel" },
+			"count": 64
+		},
+		{
+			"ingredient": { "tag": "c:rods/aluminum" },
+			"count": 32
+		},
+		{
+			"ingredient": { "tag": "c:ingots/titanium" },
+			"count": 32
+		},
+		{
+			"ingredient": { "item": "cygnus:telepad" },
+			"count": 1
+		},
+		{
+			"ingredient": { "item": "cygnus:electronic_circuit" },
+			"count": 4
+		}
+	],
+	"structure": "cygnus:space_station"
+}

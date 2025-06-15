@@ -1,0 +1,60 @@
+{
+	"render_sunset": true,
+
+	"skybox_objects": [
+		{
+			"layers": [{
+				"texture": "cygnus:textures/environment/star/16x16/g_class.png",
+				"size": 20.0,
+				"sky_rotation": [0.0, 0.0, 0.0],
+				"texture_rotation": [0.0, 0.0, 0.0]
+			}],
+			"sky_rotation": [0.0, 0.0, 0.0],
+			"texture_rotation": [0.0, 0.0, 0.0],
+			"sunset_color": 14180147,
+			"backlight": {
+				"texture": "cygnus:textures/environment/backlights/64x64/circle.png",
+				"size": 80.0,
+				"color": [242,205,92,150]
+			}
+		},
+		{
+			"layers": [{
+				"texture": "cygnus:textures/environment/solar_system/earth.png",
+				"size": 20.0,
+				"sky_rotation": [0.0, 0.0, 0.0],
+				"texture_rotation": [0.0, 0.0, 0.0]
+			}],
+			"scale": 2.0,
+			"sky_rotation": [180.0, 0.0, 0.0],
+			"texture_rotation": [0.0, 0.0, 0.0],
+			"sunset_color": 14180147,
+			"backlight": {
+				"texture": "cygnus:textures/environment/backlights/32x32/circle.png",
+				"size": 80.0,
+				"color": [54,65,196,175]
+			}
+		}
+	],
+
+	"stars": {
+		"visibility": "always",
+		"brightness_curve": [
+			{"x": 0, "y": 1.00},
+			{"x": 0, "y": 0.50},
+			{"x": 1, "y": 0.50},
+			{"x": 1, "y": 1.00}
+		],
+		"count": 5000,
+		"palette": [
+			{ "color": [255, 255, 255], "weight": 4 },
+			{ "color": [165, 225, 233], "weight": 1 },
+			{ "color": [140, 207, 237], "weight": 1 },
+			{ "color": [242, 228, 146], "weight": 1 },
+			{ "color": [242, 205, 92], "weight": 1 },
+			{ "color": [242, 169, 78], "weight": 1 },
+			{ "color": [242, 83, 42], "weight": 1 },
+			{ "color": [103, 179, 242], "weight": 1 }
+		]
+	}
+}

@@ -10,6 +10,7 @@
 		"PlayerMixin"
 	],
 	"client": [
+		"client.LevelRendererAccessor"
 	],
 	"injectors": {
 		"defaultRequire": 1

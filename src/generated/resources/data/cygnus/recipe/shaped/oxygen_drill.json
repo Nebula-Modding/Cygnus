@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "tag": "c:storage_blocks/aluminum"
+    },
+    "C": {
+      "item": "cygnus:electronic_circuit"
+    },
+    "R": {
+      "tag": "c:rods/steel"
+    },
+    "S": {
+      "tag": "c:plates/steel"
+    }
+  },
+  "pattern": [
+    " S ",
+    "SBS",
+    "RCR"
+  ],
+  "result": {
+    "count": 1,
+    "id": "cygnus:oxygen_drill"
+  }
+}

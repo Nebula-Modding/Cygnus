@@ -16,12 +16,13 @@ public final class SpaceMapUtils
 	public static final ResourceLocation PLANET_SELECTION = Cygnus.id("planet/planet_selection");
 
 	private SpaceMapUtils()
-	{ }
+	{
+	}
 
 	public static void renderPlanetOnMap(GuiGraphics graphics, int x, int y, int width, int height, float scale, Planet planet)
 	{
 		RenderSystem.enableBlend();
-		graphics.blitSprite(planet.mapTexture().withPrefix("planet/"), (int)(x * scale), (int)(y * scale), (int)(width * scale), (int)(height * scale));
+		graphics.blitSprite(planet.mapTexture().withPrefix("planet/"), (int) (x * scale), (int) (y * scale), (int) (width * scale), (int) (height * scale));
 		RenderSystem.disableBlend();
 	}
 
@@ -30,16 +31,16 @@ public final class SpaceMapUtils
 		renderPlanetOnMap(graphics, x, y, width, height, scale, planet);
 
 		// Render moons in orbit
-		int orbitDistance = (int)(16 * scale);
+		int orbitDistance = (int) (16 * scale);
 		for (ResourceLocation id : planet.moons())
 		{
 			var moon = Planet.getPlanetByIdOrThrow(registryAccess, id);
 			double moonX = x + Math.sin(CygnusClient.clientTicks / moon.yearLength()) * orbitDistance;
 			double moonY = y + Math.cos(CygnusClient.clientTicks / moon.yearLength()) * orbitDistance;
 
-			renderPlanetAndMoonsOnMap(graphics, (int)moonX, (int)moonY, DEFAULT_PLANET_SIZE, DEFAULT_PLANET_SIZE, scale, moon, registryAccess);
+			renderPlanetAndMoonsOnMap(graphics, (int) moonX, (int) moonY, DEFAULT_PLANET_SIZE, DEFAULT_PLANET_SIZE, scale, moon, registryAccess);
 
-			orbitDistance += (int)(16 * scale);
+			orbitDistance += (int) (16 * scale);
 		}
 	}
 
@@ -48,31 +49,31 @@ public final class SpaceMapUtils
 		renderPlanetOnMap(graphics, x, y, width, height, scale, planet);
 
 		// Render moons in orbit
-		int orbitDistance = (int)(16 * scale);
+		int orbitDistance = (int) (16 * scale);
 		for (ResourceLocation id : planet.moons())
 		{
 			var moon = Planet.getPlanetByIdOrThrow(registryAccess, id);
 			double moonX = x + Math.sin(CygnusClient.clientTicks / moon.yearLength()) * orbitDistance;
 			double moonY = y + Math.cos(CygnusClient.clientTicks / moon.yearLength()) * orbitDistance;
 
-			renderPlanetAndMoonsOnMapWithHighlightedMoon(graphics, (int)moonX, (int)moonY, DEFAULT_PLANET_SIZE, DEFAULT_PLANET_SIZE, scale, moon, registryAccess, highlighted);
+			renderPlanetAndMoonsOnMapWithHighlightedMoon(graphics, (int) moonX, (int) moonY, DEFAULT_PLANET_SIZE, DEFAULT_PLANET_SIZE, scale, moon, registryAccess, highlighted);
 
 			// Render highlight (if applicable)
 			if (highlighted.equals(id))
 			{
 				RenderSystem.enableBlend();
-				graphics.blitSprite(PLANET_SELECTION, (int)((moonX - 2) * scale), (int)((moonY - 2) * scale), (int)((width + 4) * scale), (int)((height + 4) * scale));
+				graphics.blitSprite(PLANET_SELECTION, (int) ((moonX - 2) * scale), (int) ((moonY - 2) * scale), (int) ((width + 4) * scale), (int) ((height + 4) * scale));
 				RenderSystem.disableBlend();
 			}
 
-			orbitDistance += (int)(16 * scale);
+			orbitDistance += (int) (16 * scale);
 		}
 	}
 
 	public static void renderStarOnMap(GuiGraphics graphics, int x, int y, int width, int height, float scale, Star star)
 	{
 		RenderSystem.enableBlend();
-		graphics.blitSprite(star.mapTexture().withPrefix("star/"), (int)(x * scale), (int)(y * scale), (int)(width * scale), (int)(height * scale));
+		graphics.blitSprite(star.mapTexture().withPrefix("star/"), (int) (x * scale), (int) (y * scale), (int) (width * scale), (int) (height * scale));
 		RenderSystem.disableBlend();
 	}
 
@@ -81,16 +82,16 @@ public final class SpaceMapUtils
 		renderStarOnMap(graphics, x, y, width, height, scale, star);
 
 		// Render planets in orbit
-		int orbitDistance = (int)(32 * scale);
+		int orbitDistance = (int) (32 * scale);
 		for (ResourceLocation id : star.planets())
 		{
 			var planet = Planet.getPlanetByIdOrThrow(registryAccess, id);
 			double planetX = x + Math.sin(CygnusClient.clientTicks / planet.yearLength()) * orbitDistance;
 			double planetY = y + Math.cos(CygnusClient.clientTicks / planet.yearLength()) * orbitDistance;
 
-			renderPlanetAndMoonsOnMap(graphics, (int)planetX, (int)planetY, DEFAULT_PLANET_SIZE, DEFAULT_PLANET_SIZE, scale, planet, registryAccess);
+			renderPlanetAndMoonsOnMap(graphics, (int) planetX, (int) planetY, DEFAULT_PLANET_SIZE, DEFAULT_PLANET_SIZE, scale, planet, registryAccess);
 
-			orbitDistance += (int)(32 * scale);
+			orbitDistance += (int) (32 * scale);
 		}
 	}
 
@@ -99,31 +100,31 @@ public final class SpaceMapUtils
 		renderStarOnMap(graphics, x, y, width, height, scale, star);
 
 		// Render planets in orbit
-		int orbitDistance = (int)(32 * scale);
+		int orbitDistance = (int) (32 * scale);
 		for (ResourceLocation id : star.planets())
 		{
 			var planet = Planet.getPlanetByIdOrThrow(registryAccess, id);
 			double planetX = x + Math.sin(CygnusClient.clientTicks / planet.yearLength()) * orbitDistance;
 			double planetY = y + Math.cos(CygnusClient.clientTicks / planet.yearLength()) * orbitDistance;
 
-			renderPlanetAndMoonsOnMapWithHighlightedMoon(graphics, (int)planetX, (int)planetY, DEFAULT_PLANET_SIZE, DEFAULT_PLANET_SIZE, scale, planet, registryAccess, highlighted);
+			renderPlanetAndMoonsOnMapWithHighlightedMoon(graphics, (int) planetX, (int) planetY, DEFAULT_PLANET_SIZE, DEFAULT_PLANET_SIZE, scale, planet, registryAccess, highlighted);
 
 			// Render highlight (if applicable)
 			if (highlighted.equals(id))
 			{
 				RenderSystem.enableBlend();
-				graphics.blitSprite(PLANET_SELECTION, (int)((planetX - 2) * scale), (int)((planetY - 2) * scale), (int)((width + 4) * scale), (int)((height + 4) * scale));
+				graphics.blitSprite(PLANET_SELECTION, (int) ((planetX - 2) * scale), (int) ((planetY - 2) * scale), (int) ((width + 4) * scale), (int) ((height + 4) * scale));
 				RenderSystem.disableBlend();
 			}
 
-			orbitDistance += (int)(32 * scale);
+			orbitDistance += (int) (32 * scale);
 		}
 	}
 
 	public static void renderGalaxyOnMap(GuiGraphics graphics, int x, int y, int width, int height, float scale, Galaxy galaxy)
 	{
 		RenderSystem.enableBlend();
-		graphics.blitSprite(galaxy.mapTexture().withPrefix("galaxy/"), (int)(scale * x), (int)(scale * y), (int)(scale * width), (int)(scale * height));
+		graphics.blitSprite(galaxy.mapTexture().withPrefix("galaxy/"), (int) (scale * x), (int) (scale * y), (int) (scale * width), (int) (scale * height));
 		RenderSystem.disableBlend();
 	}
 

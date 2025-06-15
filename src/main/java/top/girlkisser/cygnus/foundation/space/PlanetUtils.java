@@ -1,5 +1,6 @@
 package top.girlkisser.cygnus.foundation.space;
 
+import com.mojang.datafixers.util.Pair;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.Level;
 
@@ -9,13 +10,13 @@ import java.util.Optional;
 
 public class PlanetUtils
 {
-	private static final Map<ResourceKey<Level>, Optional<Planet>> planetCache = new HashMap<>();
+	private static final Map<ResourceKey<Level>, Optional<Pair<ResourceKey<Planet>, Planet>>> planetCache = new HashMap<>();
 
 	private static void cache(Level level)
 	{
-		var planet = Planet.getPlanets(level.registryAccess())
+		var planet = Planet.getPlanetsWithIds(level.registryAccess())
 			.stream()
-			.filter(p -> p.dimension().equals(level.dimension().location()))
+			.filter(p -> p.getSecond().dimension().equals(level.dimension().location()))
 			.findFirst();
 		planetCache.put(level.dimension(), planet);
 	}
@@ -31,6 +32,16 @@ public class PlanetUtils
 	}
 
 	public static Optional<Planet> getPlanetForDimension(Level level)
+	{
+		return getPlanetAndIdForDimension(level).map(Pair::getSecond);
+	}
+
+	public static Optional<ResourceKey<Planet>> getPlanetIdForDimension(Level level)
+	{
+		return getPlanetAndIdForDimension(level).map(Pair::getFirst);
+	}
+
+	public static Optional<Pair<ResourceKey<Planet>, Planet>> getPlanetAndIdForDimension(Level level)
 	{
 		if (!planetCache.containsKey(level.dimension()))
 			cache(level);

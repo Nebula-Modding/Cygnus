@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "tag": "c:ingots/aluminum"
+    },
+    "C": {
+      "item": "cygnus:chronite"
+    },
+    "F": {
+      "item": "minecraft:blast_furnace"
+    }
+  },
+  "pattern": [
+    " A ",
+    "AFA",
+    "ACA"
+  ],
+  "result": {
+    "count": 1,
+    "id": "cygnus:chronite_blast_furnace"
+  }
+}

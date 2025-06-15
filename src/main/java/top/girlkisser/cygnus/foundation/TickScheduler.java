@@ -14,7 +14,8 @@ public class TickScheduler
 
 	public void tick()
 	{
-		scheduled.forEach(it -> {
+		scheduled.forEach(it ->
+		{
 			if (it.getFirst().decrementAndGet() <= 0)
 				it.getSecond().run();
 		});

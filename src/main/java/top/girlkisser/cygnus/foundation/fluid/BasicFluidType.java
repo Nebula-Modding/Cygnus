@@ -14,12 +14,14 @@ import org.joml.Vector3f;
 import javax.annotation.ParametersAreNonnullByDefault;
 
 // https://github.com/Tutorials-By-Kaupenjoe/NeoForge-Course-121-Module-5/blob/2c56e563d3411f9b585c1f3208653196a977087f/src/main/java/net/kaupenjoe/mccourse/fluid/BaseFluidType.java
-public class BasicFluidType extends FluidType {
+public class BasicFluidType extends FluidType
+{
 	public final ResourceLocation stillTexture, flowingTexture, overlayTexture;
 	public final int tintColour;
 	public final Vector3f fogColour;
 
-	public BasicFluidType(ResourceLocation stillTexture, ResourceLocation flowingTexture, ResourceLocation overlayTexture, int tintColour, Vector3f fogColour, FluidType.Properties properties) {
+	public BasicFluidType(ResourceLocation stillTexture, ResourceLocation flowingTexture, ResourceLocation overlayTexture, int tintColour, Vector3f fogColour, FluidType.Properties properties)
+	{
 		super(properties);
 		this.stillTexture = stillTexture;
 		this.flowingTexture = flowingTexture;
@@ -28,37 +30,45 @@ public class BasicFluidType extends FluidType {
 		this.fogColour = fogColour;
 	}
 
-	public static IClientFluidTypeExtensions getClientExtensionsFor(BasicFluidType fluidType) {
-		return new IClientFluidTypeExtensions() {
+	public static IClientFluidTypeExtensions getClientExtensionsFor(BasicFluidType fluidType)
+	{
+		return new IClientFluidTypeExtensions()
+		{
 			@Override
-			public @NotNull ResourceLocation getStillTexture() {
+			public @NotNull ResourceLocation getStillTexture()
+			{
 				return fluidType.stillTexture;
 			}
 
 			@Override
-			public @NotNull ResourceLocation getFlowingTexture() {
+			public @NotNull ResourceLocation getFlowingTexture()
+			{
 				return fluidType.flowingTexture;
 			}
 
 			@Override
-			public @NotNull ResourceLocation getOverlayTexture() {
+			public @NotNull ResourceLocation getOverlayTexture()
+			{
 				return fluidType.overlayTexture;
 			}
 
 			@Override
-			public int getTintColor() {
+			public int getTintColor()
+			{
 				return fluidType.tintColour;
 			}
 
 			@Override
 			@ParametersAreNonnullByDefault
-			public @NotNull Vector3f modifyFogColor(Camera camera, float partialTick, ClientLevel level, int renderDistance, float darkenWorldAmount, Vector3f fluidFogColour) {
+			public @NotNull Vector3f modifyFogColor(Camera camera, float partialTick, ClientLevel level, int renderDistance, float darkenWorldAmount, Vector3f fluidFogColour)
+			{
 				return fluidType.fogColour;
 			}
 
 			@Override
 			@ParametersAreNonnullByDefault
-			public void modifyFogRender(Camera camera, FogRenderer.FogMode fogMode, float renderDistance, float partialTick, float nearDistance, float farDistance, FogShape fogShape) {
+			public void modifyFogRender(Camera camera, FogRenderer.FogMode fogMode, float renderDistance, float partialTick, float nearDistance, float farDistance, FogShape fogShape)
+			{
 				RenderSystem.setShaderFogStart(1f);
 				RenderSystem.setShaderFogEnd(6f); // Distance when the fog starts
 			}

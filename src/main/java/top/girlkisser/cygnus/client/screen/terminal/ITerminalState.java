@@ -9,7 +9,7 @@ import top.girlkisser.cygnus.content.network.ServerboundRunTerminalCommand;
 
 public interface ITerminalState
 {
-	ScreenTerminal screen();
+	ScreenTerminal<?> screen();
 
 	void init();
 
@@ -35,6 +35,11 @@ public interface ITerminalState
 
 	default void sendTerminalCommand(String command)
 	{
-		PacketDistributor.sendToServer(new ServerboundRunTerminalCommand(screen().getMenu().pos, command));
+		PacketDistributor.sendToServer(new ServerboundRunTerminalCommand(screen().getMenu().getSpaceStation().player(), command));
+	}
+
+	default String getMenuName()
+	{
+		return screen().getMenu().getSpaceStation().name();
 	}
 }

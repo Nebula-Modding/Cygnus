@@ -27,22 +27,23 @@ public interface CygnusTags
 
 		TagKey<Item>
 			INGOTS_STEEL = c("ingots/steel"),
-			PLATES_STEEL = c("ingots/steel"),
+			PLATES_STEEL = c("plates/steel"),
 			RODS_STEEL = c("rods/steel"),
 			NUGGETS_STEEL = c("nuggets/steel"),
 			STORAGE_BLOCKS_STEEL = c("storage_blocks/steel"),
-
-			INGOTS_ALUMINIUM = c("ingots/aluminium"),
-			PLATES_ALUMINIUM = c("ingots/aluminium"),
-			RODS_ALUMINIUM = c("rods/aluminium"),
-			NUGGETS_ALUMINIUM = c("nuggets/aluminium"),
-			STORAGE_BLOCKS_ALUMINIUM = c("storage_blocks/aluminium"),
-
+			INGOTS_ALUMINIUM = c("ingots/aluminum"),
+			PLATES_ALUMINIUM = c("plates/aluminum"),
+			RODS_ALUMINIUM = c("rods/aluminum"),
+			NUGGETS_ALUMINIUM = c("nuggets/aluminum"),
+			STORAGE_BLOCKS_ALUMINIUM = c("storage_blocks/aluminum"),
 			INGOTS_TITANIUM = c("ingots/titanium"),
-			PLATES_TITANIUM = c("ingots/titanium"),
+			PLATES_TITANIUM = c("plates/titanium"),
 			RODS_TITANIUM = c("rods/titanium"),
 			NUGGETS_TITANIUM = c("nuggets/titanium"),
 			STORAGE_BLOCKS_TITANIUM = c("storage_blocks/titanium");
+
+		TagKey<Item>
+			CAN_WALK_ON_CHRONITE = mod("can_walk_on_chronite");
 	}
 
 	@ApiStatus.NonExtendable

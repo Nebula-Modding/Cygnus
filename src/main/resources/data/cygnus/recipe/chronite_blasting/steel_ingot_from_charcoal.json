@@ -1,0 +1,10 @@
+{
+	"type": "cygnus:chronite_blasting",
+	"ingredients": [
+		{ "tag": "c:ingots/iron" },
+		{ "item": "minecraft:charcoal" }
+	],
+	"result": {
+		"id": "cygnus:steel_ingot"
+	}
+}

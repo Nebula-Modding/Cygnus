@@ -9,7 +9,7 @@
 	"has_ceiling": false,
 	"coordinate_scale": 1,
 	"ambient_light": 0,
-	"effects": "minecraft:the_end",
+	"effects": "cygnus:space",
 	"infiniburn": "#minecraft:infiniburn_overworld",
 	"min_y": 0,
 	"height": 256,

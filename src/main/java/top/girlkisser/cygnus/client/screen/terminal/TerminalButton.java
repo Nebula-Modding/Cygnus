@@ -35,6 +35,8 @@ public class TerminalButton extends Button
 		PLANET_SELECTED = Cygnus.id("terminal/planet_selected"),
 		LAUNCH = Cygnus.id("terminal/launch"),
 		LAUNCH_SELECTED = Cygnus.id("terminal/launch_selected"),
+		CONSTRUCT = Cygnus.id("terminal/construct"),
+		CONSTRUCT_SELECTED = Cygnus.id("terminal/construct_selected"),
 		BUTTON = Cygnus.id("terminal/button"),
 		BUTTON_SELECTED = Cygnus.id("terminal/button_selected"),
 		BUTTON_WIDE = Cygnus.id("terminal/button_wide"),
@@ -57,9 +59,9 @@ public class TerminalButton extends Button
 		{
 			if (hoverIcon == null)
 			{
-				graphics.blitSprite(BUTTON_WIDE_SELECTED, this.getX() + 24, this.getY(), 119, 23);
+				graphics.blitSprite(BUTTON_WIDE_SELECTED, this.getX(), this.getY(), 119, 23);
 				int y = (this.getY() + (this.getY() + this.getHeight()) - 9) / 2 + 1;
-				graphics.drawString(Minecraft.getInstance().font, this.getMessage(), this.getX(), y, 0xFFFFFFFF);
+				graphics.drawString(Minecraft.getInstance().font, this.getMessage(), this.getX() + 4, y, 0xFFFFFFFF);
 			}
 			else
 			{
@@ -73,9 +75,9 @@ public class TerminalButton extends Button
 		{
 			if (icon == null)
 			{
-				graphics.blitSprite(BUTTON_WIDE, this.getX() + 24, this.getY(), 119, 23);
+				graphics.blitSprite(BUTTON_WIDE, this.getX(), this.getY(), 119, 23);
 				int y = (this.getY() + (this.getY() + this.getHeight()) - 9) / 2 + 1;
-				graphics.drawString(Minecraft.getInstance().font, this.getMessage(), this.getX(), y, 0xFF00FF00);
+				graphics.drawString(Minecraft.getInstance().font, this.getMessage(), this.getX() + 4, y, 0xFF00FF00);
 			}
 			else
 			{

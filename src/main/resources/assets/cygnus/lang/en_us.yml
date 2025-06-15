@@ -1,16 +1,61 @@
 itemGroup.cygnus: Cygnus
 
 block.cygnus:
-  # Decoration
+  # Decorational
   steel_block: Steel Block
   steel_tiles: Steel Tiles
   steel_sheet_metal: Steel Sheet Metal
+  steel_window: Steel Window
+  steel_door: Steel Door
+  steel_trapdoor: Steel Trapdoor
+  steel_vent: Steel Vent
+  steel_pillar: Steel Pillar
+  steel_bulb: Steel Bulb
+  steel_bars: Steel Bars
+  aluminium_block: Aluminum Block
+  aluminium_tiles: Aluminum Tiles
+  aluminium_sheet_metal: Aluminum Sheet Metal
+  titanium_block: Titanium Block
+  titanium_tiles: Titanium Tiles
+  titanium_sheet_metal: Titanium Sheet Metal
+  titanium_plating: Titanium Plating
+  titanium_window: Titanium Window
+
+  # Environmental
+  lunar_regolith: Lunar Regolith
+  lunar_stone: Lunar Stone
+  lunar_cobblestone: Lunar Cobblestone
+  smooth_lunar_stone: Smooth Lunar Stone
+  chiseled_lunar_stone: Chiseled Lunar Stone
+  lunar_stone_bricks: Lunar Stone Bricks
+  cracked_lunar_stone_bricks: Cracked Lunar Stone Bricks
+  lunar_stone_pillar: Lunar Stone Pillar
+  lunar_deepslate: Lunar Deepslate
+  cobbled_lunar_deepslate: Cobbled Lunar Deepslate
+  smooth_lunar_deepslate: Smooth Lunar Deepslate
+  chiseled_lunar_deepslate: Chiseled Lunar Deepslate
+  lunar_deepslate_bricks: Lunar Deepslate Bricks
+  cracked_lunar_deepslate_bricks: Cracked Lunar Deepslate Bricks
+  lunar_deepslate_pillar: Lunar Deepslate Pillar
+  aluminium_ore: Aluminum Ore
+  deepslate_aluminium_ore: Deepslate Aluminum Ore
+  titanium_ore: Titanium Ore
+  deepslate_titanium_ore: Deepslate Titanium Ore
+  chronite_block: Chronite Block
+  budding_chronite: Budding Chronite
+  chronite_cluster: Chronite Cluster
+  large_chronite_bud: Large Chronite Bud
+  medium_chronite_bud: Medium Chronite Bud
+  small_chronite_bud: Small Chronite Bud
 
   # Functional
   terminal: Terminal
   telepad: Telepad
+  telepad.tooltip: Teleports you between your space station and the planet your space station is orbiting
   command_centre: Command Center
   command_centre.tooltip: The Space Station Creation Station
+  chronite_blast_furnace: Chronite Blast Furnace
+  chronite_blast_furnace.tooltip: Utilizes the heat of a Chronite Crystal to alloy metals together
 
 item.cygnus:
   # Ingredients
@@ -26,14 +71,26 @@ item.cygnus:
   titanium_sheet: Titanium Sheet
   titanium_rod: Titanium Rod
   titanium_nugget: Titanium Nugget
+  chronite: Chronite Crystal
+  chronite.tooltip: A mysterious crystal with intense luminosity and scorching heat
+
   electronic_circuit: Electronic Circuit
+  chronite_circuit: Chronite Circuit
 
   # Tools
+  hammer: Hammer
+  hammer.tooltip: Pounds ingots into plates and plates into rods
+  key: Key
+  key.tooltip.1: Crouch and use to lock or unlock lockable doors
+  key.tooltip.2: Locked doors must be opened with redstone whilst unlocked doors can be opened with your hand
   oxygen_drill: Oxygen Drill
   oxygen_drill.tooltip: Consumes oxygen to drill blocks efficiently
 
   # Misc
   oxygen_gas_bucket: Oxygen Gas Bucket
+
+fluid_type.cygnus:
+  oxygen_gas: Oxygen Gas
 
 galaxy.cygnus:
   milky_way: The Milky Way
@@ -65,10 +122,20 @@ screen.cygnus:
     space_station_stats: "== Space Station Stats =="
     orbiting: "Orbiting: %s"
     telepads: "Telepads: %s"
+  command_centre:
+    # Buttons
+    construct: Construct
+    stats: Stats
+    retrieve: Retrieve
 
 message.cygnus:
+  # Shared tooltips
+  door_lockable: Use a Key to toggle between needing redstone to open the door
   # Errors
   failed_to_place_space_station: Failed to place space station
   no_such_command: "No such command: %s"
   no_such_planet: "No such planet: %s"
   cannot_remove_last_telepad: "Your space station must have at least one telepad."
+
+space_station.cygnus:
+  space_station: Space Station

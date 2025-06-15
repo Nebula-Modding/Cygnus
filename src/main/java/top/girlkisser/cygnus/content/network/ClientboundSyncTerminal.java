@@ -30,7 +30,7 @@ public record ClientboundSyncTerminal(SpaceStation spaceStation) implements Cust
 		{
 			if (context.player().containerMenu instanceof ContainerTerminal menu)
 			{
-				menu.spaceStation = packet.spaceStation;
+				menu.setSpaceStation(packet.spaceStation);
 			}
 		});
 	}

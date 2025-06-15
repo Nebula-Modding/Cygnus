@@ -33,7 +33,8 @@ public final class SpaceStationManager extends SavedData
 	private BlockPos.MutableBlockPos nextOrigin = new BlockPos.MutableBlockPos(0, 100, 0);
 
 	private SpaceStationManager()
-	{ }
+	{
+	}
 
 	public SpaceStation getOrCreateSpaceStationForPlayer(ServerPlayer player, ResourceLocation structure)
 	{
@@ -118,7 +119,8 @@ public final class SpaceStationManager extends SavedData
 	@ApiStatus.Internal
 	@Override
 	@ParametersAreNonnullByDefault
-	public @NotNull CompoundTag save(CompoundTag tag, HolderLookup.Provider registries) {
+	public @NotNull CompoundTag save(CompoundTag tag, HolderLookup.Provider registries)
+	{
 		CompoundTag spaceStationsTag = new CompoundTag();
 		spaceStations.forEach(((uuid, spaceStation) -> spaceStationsTag.put(uuid.toString(), spaceStation.save())));
 		tag.put("space_stations", spaceStationsTag);
@@ -132,7 +134,8 @@ public final class SpaceStationManager extends SavedData
 		SpaceStationManager manager = new SpaceStationManager();
 		manager.spaceStations.clear();
 		CompoundTag spaceStationsTag = tag.getCompound("space_stations");
-		spaceStationsTag.getAllKeys().forEach(key -> {
+		spaceStationsTag.getAllKeys().forEach(key ->
+		{
 			var s = SpaceStation.load(spaceStationsTag.getCompound(key));
 			manager.spaceStations.put(s.player(), s);
 		});
