@@ -62,10 +62,15 @@ class CygnusBlockStateProvider(event: GatherDataEvent) : DapperBlockStateProvide
 
 		setOf(
 			STEEL_WINDOW,
-			STEEL_VENT,
 			TITANIUM_WINDOW,
 		).forEach {
 			it.addModel(CubeModel().all(it.id.withPrefix("block/")).renderType(mcLoc("translucent")))
+		}
+
+		setOf(
+			STEEL_VENT,
+		).forEach {
+			it.addModel(CubeModel().all(it.id.withPrefix("block/")).renderType(mcLoc("cutout")))
 		}
 
 		setOf(

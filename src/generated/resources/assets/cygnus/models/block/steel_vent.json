@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube",
-  "render_type": "minecraft:translucent",
+  "render_type": "minecraft:cutout",
   "textures": {
     "down": "cygnus:block/steel_vent",
     "east": "cygnus:block/steel_vent",
