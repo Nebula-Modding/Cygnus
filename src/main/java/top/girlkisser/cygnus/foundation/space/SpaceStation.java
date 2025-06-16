@@ -16,9 +16,11 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.portal.DimensionTransition;
 import net.minecraft.world.phys.Vec3;
+import net.neoforged.neoforge.network.PacketDistributor;
 import org.jetbrains.annotations.Nullable;
 import top.girlkisser.cygnus.content.CygnusResourceKeys;
 import top.girlkisser.cygnus.content.entity.EntityLandingBeam;
+import top.girlkisser.cygnus.content.network.ClientboundSyncSpaceStation;
 import top.girlkisser.cygnus.management.SpaceStationManager;
 
 import java.util.*;
@@ -71,7 +73,6 @@ public final class SpaceStation
 		EntityLandingBeam beam = new EntityLandingBeam(player.level(), false, originSpaceStation);
 		beam.setPos(player.position());
 		player.startRiding(beam, true);
-		//noinspection resource
 		player.level().addFreshEntity(beam);
 	}
 
@@ -192,6 +193,11 @@ public final class SpaceStation
 	{
 		telepads = value;
 		SpaceStationManager.get(server).setDirty();
+	}
+
+	public void sync(ServerLevel level)
+	{
+		PacketDistributor.sendToPlayer((ServerPlayer) level.getPlayerByUUID(this.player), new ClientboundSyncSpaceStation(this));
 	}
 
 	@Override

@@ -5,7 +5,7 @@
 		{
 			"layers": [{
 				"texture": "cygnus:textures/environment/star/16x16/g_class.png",
-				"size": 20.0
+				"size": 25.0
 			}],
 			"texture_rotation": [0.0, -20.0, 0.0],
 			"sunset_color": 14180147,
@@ -17,7 +17,7 @@
 		},
 		{
 			"layers": [{
-				"texture": "cygnus:textures/environment/solar_system/earth.png",
+				"texture": "cygnus:textures/environment/solar_system/venus.png",
 				"size": 20.0
 			}],
 			"scale": 2.0,
@@ -27,22 +27,14 @@
 			"backlight": {
 				"texture": "cygnus:textures/environment/backlights/32x32/circle.png",
 				"size": 80.0,
-				"color": [54,65,196,175]
-			}
-		},
-		{
-			"layers": [{
-				"texture": "cygnus:textures/environment/solar_system/moon.png",
-				"size": 10.0
-			}],
-			"scale": 2.0,
-			"sky_rotation": [180.0, 0.0, 0.0],
+				"color": [224,203,154,175]
+			},
 			"is_for_orbit": true
 		}
 	],
 
 	"stars": {
-		"visibility": "always",
+		"visibility": "night",
 		"brightness_curve": [
 			{"x": 0, "y": 1.00},
 			{"x": 0, "y": 0.50},

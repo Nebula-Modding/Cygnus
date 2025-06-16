@@ -32,7 +32,12 @@ public record PlanetRenderer(
 
 	public static final StreamCodec<ByteBuf, PlanetRenderer> STREAM_CODEC = ByteBufCodecs.fromCodec(CODEC);
 
-	public static final PlanetRenderer DEFAULT = new PlanetRenderer(true, PlanetRendererTextures.DEFAULT, new ArrayList<>(), Optional.of(StarInfo.DEFAULT));
+	public static final PlanetRenderer DEFAULT = new PlanetRenderer(
+		true,
+		PlanetRendererTextures.DEFAULT,
+		new ArrayList<>(),
+		Optional.of(StarInfo.DEFAULT)
+	);
 
 	public record PlanetRendererTextures(
 		Optional<ResourceLocation> clouds,

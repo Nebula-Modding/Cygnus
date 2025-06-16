@@ -67,7 +67,7 @@ public class ScreenChroniteBlastFurnace extends AbstractCygnusContainerScreen<Co
 		{
 			graphics.renderTooltip(
 				this.font,
-				Component.literal("Burn Ticks: " + this.menu.getLitTicksRemaining() + "/" + menu.getTotalLitTicksForFuel()),
+				Component.literal("Burn Ticks: " + this.menu.getLitTicksRemaining() + "/" + menu.getTotalLitTicksForFuel()), //TODO: translate
 				mouseX,
 				mouseY
 			);

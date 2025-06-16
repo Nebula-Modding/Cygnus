@@ -1,6 +1,5 @@
 {
 	"dimension": "cygnus:the_moon",
-	"map_texture": "cygnus:the_moon",
 	"gravity": 1.62,
 	"has_oxygen": false,
 	"day_length": 12000,

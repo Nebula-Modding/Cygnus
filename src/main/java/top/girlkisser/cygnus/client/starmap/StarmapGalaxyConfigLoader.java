@@ -18,7 +18,7 @@ import java.util.Map;
 
 public class StarmapGalaxyConfigLoader extends SimpleJsonResourceReloadListener
 {
-	public static final Map<ResourceLocation, StarmapGalaxyConfig> GALAXIES = new HashMap<>();
+	private static final Map<ResourceLocation, StarmapGalaxyConfig> GALAXIES = new HashMap<>();
 
 	public StarmapGalaxyConfigLoader()
 	{
@@ -39,5 +39,17 @@ public class StarmapGalaxyConfigLoader extends SimpleJsonResourceReloadListener
 			else
 				GALAXIES.put(id, config.getOrThrow());
 		});
+	}
+
+	public static StarmapGalaxyConfig getRenderConfigOrThrow(ResourceLocation id)
+	{
+		var it = GALAXIES.getOrDefault(id, null);
+		if (it == null)
+		{
+			String message = "No galaxy render config registered for " + id;
+			Cygnus.LOGGER.error(message);
+			throw new IllegalStateException(message);
+		}
+		return it;
 	}
 }

@@ -1,6 +1,5 @@
 {
 	"dimension": "minecraft:overworld",
-	"map_texture": "cygnus:earth",
 	"gravity": 9.807,
 	"has_oxygen": true,
 	"day_length": 12000,

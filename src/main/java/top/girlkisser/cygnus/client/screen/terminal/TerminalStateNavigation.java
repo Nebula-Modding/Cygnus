@@ -111,15 +111,15 @@ public class TerminalStateNavigation implements ITerminalState
 		if (!selectedPlanetStack.isEmpty())
 		{
 			starmapRenderer.highlighted = selectedPlanetIdStack.getLast();
-			starmapRenderer.renderStar(selectedStarId, selectedStar, StarmapStarConfigLoader.STARS.get(selectedStarId), true);
+			starmapRenderer.renderStar(selectedStarId, selectedStar, StarmapStarConfigLoader.getRenderConfigOrThrow(selectedStarId), true);
 		}
 		else if (selectedStar != null)
 		{
-			starmapRenderer.renderStar(selectedStarId, selectedStar, StarmapStarConfigLoader.STARS.get(selectedStarId), true);
+			starmapRenderer.renderStar(selectedStarId, selectedStar, StarmapStarConfigLoader.getRenderConfigOrThrow(selectedStarId), true);
 		}
 		else if (selectedGalaxy != null)
 		{
-			starmapRenderer.renderGalaxy(StarmapGalaxyConfigLoader.GALAXIES.get(selectedGalaxyId));
+			starmapRenderer.renderGalaxy(StarmapGalaxyConfigLoader.getRenderConfigOrThrow(selectedGalaxyId));
 		}
 		graphics.disableScissor();
 

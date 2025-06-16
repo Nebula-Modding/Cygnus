@@ -1,6 +1,5 @@
 {
 	"dimension": "cygnus:space",
-	"map_texture": "minecraft:missingno",
 	"gravity": 0,
 	"has_oxygen": false,
 	"day_length": 12000,

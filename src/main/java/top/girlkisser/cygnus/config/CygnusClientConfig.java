@@ -1,4 +1,4 @@
-package top.girlkisser.config;
+package top.girlkisser.cygnus.config;
 
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;

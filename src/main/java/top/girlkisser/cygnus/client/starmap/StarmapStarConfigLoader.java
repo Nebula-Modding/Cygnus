@@ -18,7 +18,7 @@ import java.util.Map;
 
 public class StarmapStarConfigLoader extends SimpleJsonResourceReloadListener
 {
-	public static final Map<ResourceLocation, StarmapStarConfig> STARS = new HashMap<>();
+	private static final Map<ResourceLocation, StarmapStarConfig> STARS = new HashMap<>();
 
 	public StarmapStarConfigLoader()
 	{
@@ -39,5 +39,17 @@ public class StarmapStarConfigLoader extends SimpleJsonResourceReloadListener
 			else
 				STARS.put(id, config.getOrThrow());
 		});
+	}
+
+	public static StarmapStarConfig getRenderConfigOrThrow(ResourceLocation id)
+	{
+		var it = STARS.getOrDefault(id, null);
+		if (it == null)
+		{
+			String message = "No star render config registered for " + id;
+			Cygnus.LOGGER.error(message);
+			throw new IllegalStateException(message);
+		}
+		return it;
 	}
 }

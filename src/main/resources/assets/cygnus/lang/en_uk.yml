@@ -12,9 +12,11 @@ block.cygnus:
   steel_pillar: Steel Pillar
   steel_bulb: Steel Bulb
   steel_bars: Steel Bars
+
   aluminium_block: Aluminium Block
   aluminium_tiles: Aluminium Tiles
   aluminium_sheet_metal: Aluminium Sheet Metal
+
   titanium_block: Titanium Block
   titanium_tiles: Titanium Tiles
   titanium_sheet_metal: Titanium Sheet Metal
@@ -37,10 +39,30 @@ block.cygnus:
   lunar_deepslate_bricks: Lunar Deepslate Bricks
   cracked_lunar_deepslate_bricks: Cracked Lunar Deepslate Bricks
   lunar_deepslate_pillar: Lunar Deepslate Pillar
-  aluminium_ore: Aluminium Ore
-  deepslate_aluminium_ore: Deepslate Aluminium Ore
+
+  lunar_coal_ore: Lunar Coal Ore
+  lunar_deepslate_coal_ore: Lunar Deepslate Coal Ore
+  lunar_iron_ore: Lunar Iron Ore
+  lunar_deepslate_iron_ore: Lunar Deepslate Iron Ore
+  lunar_gold_ore: Lunar Gold Ore
+  lunar_deepslate_gold_ore: Lunar Deepslate Gold Ore
+  lunar_redstone_ore: Lunar Redstone Ore
+  lunar_deepslate_redstone_ore: Lunar Deepslate Redstone Ore
+  lunar_emerald_ore: Lunar Emerald Ore
+  lunar_deepslate_emerald_ore: Lunar Deepslate Emerald Ore
+  lunar_lapis_ore: Lunar Lapis Ore
+  lunar_deepslate_lapis_ore: Lunar Deepslate Lapis Ore
+  lunar_diamond_ore: Lunar Diamond Ore
+  lunar_deepslate_diamond_ore: Lunar Deepslate Diamond Ore
+  aluminium_ore: Aluminum Ore
+  deepslate_aluminium_ore: Deepslate Aluminum Ore
+  lunar_aluminium_ore: Lunar Aluminum Ore
+  lunar_deepslate_aluminium_ore: Lunar Deepslate Aluminum Ore
   titanium_ore: Titanium Ore
   deepslate_titanium_ore: Deepslate Titanium Ore
+  lunar_titanium_ore: Lunar Titanium Ore
+  lunar_deepslate_titanium_ore: Lunar Deepslate Titanium Ore
+
   chronite_block: Chronite Block
   budding_chronite: Budding Chronite
   chronite_cluster: Chronite Cluster
@@ -58,28 +80,40 @@ block.cygnus:
   chronite_blast_furnace.tooltip: Utilizes the heat of a Chronite Crystal to alloy metals together
 
 item.cygnus:
-  # Ingredients
+  # Resources
   steel_ingot: Steel Ingot
   steel_sheet: Steel Sheet
   steel_rod: Steel Rod
   steel_nugget: Steel Nugget
+
+  raw_aluminium: Raw Aluminium
   aluminium_ingot: Aluminium Ingot
   aluminium_sheet: Aluminium Sheet
   aluminium_rod: Aluminium Rod
   aluminium_nugget: Aluminium Nugget
+
+  raw_titanium: Raw Titanium
   titanium_ingot: Titanium Ingot
   titanium_sheet: Titanium Sheet
   titanium_rod: Titanium Rod
   titanium_nugget: Titanium Nugget
-  chronite: Chronite Crystal
+
+  chronite: Chronite Crystal Shard
   chronite.tooltip: A mysterious crystal with intense luminosity and scorching heat
 
+  # Ingredients
   electronic_circuit: Electronic Circuit
   chronite_circuit: Chronite Circuit
+
+  # Foods
+  apollo_cheese: Apollo Cheese
 
   # Tools
   hammer: Hammer
   hammer.tooltip: Pounds ingots into plates and plates into rods
+  key: Key
+  key.tooltip.1: Crouch and use to lock or unlock lockable doors
+  key.tooltip.2: Locked doors must be opened with redstone whilst unlocked doors can be opened with your hand
   oxygen_drill: Oxygen Drill
   oxygen_drill.tooltip: Consumes oxygen to drill blocks efficiently
 
@@ -98,10 +132,11 @@ star.cygnus:
 planet.cygnus:
   space: Outer Space
 
+  mercury: Mercury
+  venus: Venus
   earth: Earth
-  nether: Nether
   the_moon: The Moon
-  the_moon_moon: The Moon Moon
+  mars: Mars
 
 screen.cygnus:
   terminal:

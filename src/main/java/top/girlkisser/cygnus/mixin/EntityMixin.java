@@ -7,7 +7,7 @@ import net.minecraft.world.level.Level;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
-import top.girlkisser.config.CygnusServerConfig;
+import top.girlkisser.cygnus.config.CygnusServerConfig;
 import top.girlkisser.cygnus.foundation.space.Planet;
 import top.girlkisser.cygnus.foundation.space.PlanetUtils;
 

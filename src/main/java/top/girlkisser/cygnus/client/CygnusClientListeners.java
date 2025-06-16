@@ -10,9 +10,6 @@ import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.packs.resources.PreparableReloadListener;
-import net.minecraft.server.packs.resources.ResourceManager;
-import net.minecraft.util.profiling.ProfilerFiller;
 import net.minecraft.world.entity.player.Inventory;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
@@ -25,8 +22,8 @@ import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
 import org.lwjgl.glfw.GLFW;
+import top.girlkisser.cygnus.config.CygnusClientConfig;
 import top.girlkisser.cygnus.Cygnus;
-import top.girlkisser.config.CygnusClientConfig;
 import top.girlkisser.cygnus.client.particle.ChroniteParticleProvider;
 import top.girlkisser.cygnus.client.particle2d.Particles2D;
 import top.girlkisser.cygnus.client.screen.ScreenChroniteBlastFurnace;
@@ -46,8 +43,6 @@ import top.girlkisser.cygnus.foundation.client.particle2d.ScreenParticleEngine2D
 import top.girlkisser.cygnus.foundation.fluid.BasicFluidType;
 
 import javax.annotation.ParametersAreNonnullByDefault;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
 
 @OnlyIn(Dist.CLIENT)
 @ApiStatus.Internal

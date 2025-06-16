@@ -95,7 +95,7 @@ public class StarmapRenderer
 
 			for (var moon : planet.moons())
 			{
-				var rc = StarmapPlanetConfigLoader.PLANETS.get(moon);
+				var rc = StarmapPlanetConfigLoader.getRenderConfigOrThrow(moon);
 				renderPlanet((float)planetX, (float)planetY, moon, Planet.getPlanetByIdOrThrow(ra, moon), rc, true);
 			}
 		}
@@ -113,7 +113,7 @@ public class StarmapRenderer
 			RegistryAccess ra = Minecraft.getInstance().level.registryAccess();
 			for (var planet : star.planets())
 			{
-				renderPlanet(origin.x, origin.y, planet, Planet.getPlanetByIdOrThrow(ra, planet), StarmapPlanetConfigLoader.PLANETS.get(planet), true);
+				renderPlanet(origin.x, origin.y, planet, Planet.getPlanetByIdOrThrow(ra, planet), StarmapPlanetConfigLoader.getRenderConfigOrThrow(planet), true);
 			}
 		}
 	}

@@ -7,7 +7,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
-import net.neoforged.neoforge.network.PacketDistributor;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 import org.jetbrains.annotations.NotNull;
 import top.girlkisser.cygnus.Cygnus;
@@ -81,7 +80,7 @@ public record ServerboundAttemptSpaceStationConstruction(ResourceLocation recipe
 					return;
 				}
 				// Send a clientbound packet to sync the terminal
-				PacketDistributor.sendToPlayer(player, new ClientboundSyncTerminal(spaceStation.get()));
+				spaceStation.get().sync(player.serverLevel());
 			}
 		});
 	}

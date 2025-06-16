@@ -12,6 +12,7 @@ import net.minecraft.server.packs.resources.SimpleJsonResourceReloadListener;
 import net.minecraft.util.GsonHelper;
 import net.minecraft.util.profiling.ProfilerFiller;
 import top.girlkisser.cygnus.Cygnus;
+import top.girlkisser.cygnus.client.starmap.StarmapGalaxyConfig;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.HashMap;

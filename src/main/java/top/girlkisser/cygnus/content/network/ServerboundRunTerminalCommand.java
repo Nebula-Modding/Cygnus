@@ -7,7 +7,6 @@ import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
-import net.neoforged.neoforge.network.PacketDistributor;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 import org.jetbrains.annotations.NotNull;
 import top.girlkisser.cygnus.Cygnus;
@@ -52,7 +51,7 @@ public record ServerboundRunTerminalCommand(UUID spaceStation, String command) i
 			ITerminalCommand.execute(packet.command, player, spaceStation.get());
 
 			// Send a clientbound packet to sync the terminal
-			PacketDistributor.sendToPlayer(player, new ClientboundSyncTerminal(spaceStation.get()));
+			spaceStation.get().sync(player.serverLevel());
 		});
 	}
 }

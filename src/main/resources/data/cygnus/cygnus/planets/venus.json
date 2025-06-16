@@ -1,6 +1,5 @@
 {
 	"dimension": "minecraft:the_nether",
-	"map_texture": "cygnus:nether",
 	"gravity": 9.807,
 	"has_oxygen": true,
 	"day_length": 12000,

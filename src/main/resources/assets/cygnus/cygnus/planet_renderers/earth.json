@@ -36,8 +36,7 @@
 				"size": 10.0
 			}],
 			"scale": 2.0,
-			"sky_rotation": [180.0, 0.0, 0.0],
-			"is_for_orbit": true
+			"sky_rotation": [90.0, 0.0, 0.0]
 		}
 	],
 

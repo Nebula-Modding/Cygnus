@@ -2,6 +2,7 @@ package top.girlkisser.cygnus;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -11,6 +12,7 @@ import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.event.OnDatapackSyncEvent;
 import net.neoforged.neoforge.event.entity.living.LivingFallEvent;
+import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import net.neoforged.neoforge.event.tick.ServerTickEvent;
@@ -18,7 +20,8 @@ import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 import net.neoforged.neoforge.registries.DataPackRegistryEvent;
 import net.neoforged.neoforge.registries.datamaps.RegisterDataMapTypesEvent;
-import top.girlkisser.cygnus.content.network.ClientboundSyncTerminal;
+import top.girlkisser.cygnus.content.CygnusResourceKeys;
+import top.girlkisser.cygnus.content.network.ClientboundSyncSpaceStation;
 import top.girlkisser.cygnus.content.network.ServerboundAttemptSpaceStationConstruction;
 import top.girlkisser.cygnus.content.network.ServerboundRunTerminalCommand;
 import top.girlkisser.cygnus.content.registry.CygnusBlocks;
@@ -59,7 +62,7 @@ final class CygnusListeners
 			registrar.playToServer(ServerboundRunTerminalCommand.TYPE, ServerboundRunTerminalCommand.STREAM_CODEC, ServerboundRunTerminalCommand::handle);
 			registrar.playToServer(ServerboundAttemptSpaceStationConstruction.TYPE, ServerboundAttemptSpaceStationConstruction.STREAM_CODEC, ServerboundAttemptSpaceStationConstruction::handle);
 
-			registrar.playToClient(ClientboundSyncTerminal.TYPE, ClientboundSyncTerminal.STREAM_CODEC, ClientboundSyncTerminal::handle);
+			registrar.playToClient(ClientboundSyncSpaceStation.TYPE, ClientboundSyncSpaceStation.STREAM_CODEC, ClientboundSyncSpaceStation::handle);
 		}
 
 		@SubscribeEvent
@@ -133,6 +136,30 @@ final class CygnusListeners
 					serverPlayer.sendSystemMessage(Component.translatable("message.cygnus.cannot_remove_last_telepad").withStyle(ChatFormatting.RED));
 					event.setCanceled(true);
 				}
+			}
+		}
+
+		@SubscribeEvent
+		static void onPlayerChangeDimension(PlayerEvent.PlayerChangedDimensionEvent event)
+		{
+			if (!event.getEntity().level().isClientSide && event.getTo().equals(CygnusResourceKeys.SPACE))
+			{
+				ServerPlayer serverPlayer = (ServerPlayer) event.getEntity();
+				SpaceStationManager manager = SpaceStationManager.get(serverPlayer.server);
+				manager.getSpaceStationForPlayer(serverPlayer)
+					.ifPresent(spaceStation -> spaceStation.sync((ServerLevel) serverPlayer.level()));
+			}
+		}
+
+		@SubscribeEvent
+		static void onPlayerJoin(PlayerEvent.PlayerLoggedInEvent event)
+		{
+			if (!event.getEntity().level().isClientSide)
+			{
+				ServerPlayer serverPlayer = (ServerPlayer) event.getEntity();
+				SpaceStationManager manager = SpaceStationManager.get(serverPlayer.server);
+				manager.getSpaceStationForPlayer(serverPlayer)
+					.ifPresent(spaceStation -> spaceStation.sync((ServerLevel) serverPlayer.level()));
 			}
 		}
 	}
