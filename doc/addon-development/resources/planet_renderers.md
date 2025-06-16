@@ -97,8 +97,13 @@ Any colour values can be provided in three different formats:
         // The colour of the backlight (required)
         "color" : 16379820
       },
-      
+
+      // If `true`, this skybox object will only be rendered when you're
+      // orbiting the planet this renderer is for.
+      "is_for_orbit": false,
+
       // Defines how this skybox object should move, if at all
+      //TODO: implement this
       "movement": {
         "type": "time"
       }
@@ -125,12 +130,21 @@ Any colour values can be provided in three different formats:
     // How many stars to try to render (optional, defaults to 1500)
     "count": 1500,
 
+    // How much to vary star sizes by (optional, default is 0.1)
+    "size_variance": 0.1,
+
     // A "palette" of different stars that may be rendered (optional, defaults
     // to [{"color":16777215,"weight":1}])
     "palette": [
       {
         // The colour of this star (required)
         "color": 16777215,
+
+        // The size of this star. Note that this is not the final size, for
+        // example, the actual size of this star would be `(0.15F + rand.nextFloat() * 0.1F) * 2`
+        // (optional, default: 0.15)
+        "size": 0.15,
+
         // The chance that this star is used (as a fraction: `weight/(sum of weights from palette)`)
         // This star would have a 2/3 chance of appearing, since the total
         // weight of this palette is 3 (required)

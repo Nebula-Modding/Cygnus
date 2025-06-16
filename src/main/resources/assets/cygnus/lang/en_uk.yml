@@ -112,7 +112,7 @@ item.cygnus:
   hammer: Hammer
   hammer.tooltip: Pounds ingots into plates and plates into rods
   key: Key
-  key.tooltip.1: Crouch and use to lock or unlock lockable doors
+  key.tooltip.1: Use to lock or unlock lockable doors
   key.tooltip.2: Locked doors must be opened with redstone whilst unlocked doors can be opened with your hand
   oxygen_drill: Oxygen Drill
   oxygen_drill.tooltip: Consumes oxygen to drill blocks efficiently

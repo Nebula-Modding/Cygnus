@@ -274,12 +274,13 @@ public abstract class AbstractSpaceSpecialEffects extends DimensionSpecialEffect
 			float x = rand.nextFloat() * 2.0F - 1.0F;
 			float y = rand.nextFloat() * 2.0F - 1.0F;
 			float z = rand.nextFloat() * 2.0F - 1.0F;
-			float size = 0.15F + rand.nextFloat() * 0.1F;
 			float f5 = Mth.lengthSquared(x, y, z);
 			if (!(f5 <= 0.010000001F) && !(f5 >= 1.0F))
 			{
 				PlanetRenderer.StarInfo.StarVariant variant = stars.pickVariant(rand);
 				UnpackedColour colour = variant.color();
+
+				float size = variant.size() + rand.nextFloat() * stars.sizeVariance();
 
 				Vector3f pos = new Vector3f(x, y, z).normalize(100.0F);
 				float rotation = (float) (rand.nextDouble() * Math.PI * 2d);

@@ -67,6 +67,7 @@ public record PlanetRenderer(
 		StarVisibility visibility,
 		Optional<CubicBezier> brightnessCurve,
 		int count,
+		float sizeVariance,
 		WeightedRandomList<StarVariant> palette
 	)
 	{
@@ -76,8 +77,9 @@ public record PlanetRenderer(
 				.forGetter(StarInfo::visibility),
 			CubicBezier.LIST_CODEC.optionalFieldOf("brightness_curve").forGetter(StarInfo::brightnessCurve),
 			Codec.INT.optionalFieldOf("count", 1500).forGetter(StarInfo::count),
+			Codec.FLOAT.optionalFieldOf("size_variance", 0.1f).forGetter(StarInfo::sizeVariance),
 			StarVariant.CODEC.listOf()
-				.optionalFieldOf("palette", List.of(new StarVariant(new UnpackedColour(16777215), 1)))
+				.optionalFieldOf("palette", List.of(new StarVariant(new UnpackedColour(16777215), 0.15f, 1)))
 				.xmap(
 					WeightedRandomList::new,
 					to -> to.getEntries().stream().map(WeightedRandomList.Entry::it).toList()
@@ -91,7 +93,8 @@ public record PlanetRenderer(
 			StarVisibility.NIGHT,
 			Optional.empty(),
 			1500,
-			new WeightedRandomList<>(List.of(new StarVariant(new UnpackedColour(16777215), 1)))
+			0.1f,
+			new WeightedRandomList<>(List.of(new StarVariant(new UnpackedColour(16777215), 0.15f, 1)))
 		);
 
 		public StarVariant pickVariant(RandomSource random)
@@ -107,10 +110,11 @@ public record PlanetRenderer(
 			NEVER,
 		}
 
-		public record StarVariant(UnpackedColour color, int weight) implements WeightedRandomList.IWeighted
+		public record StarVariant(UnpackedColour color, float size, int weight) implements WeightedRandomList.IWeighted
 		{
 			public static final Codec<StarVariant> CODEC = RecordCodecBuilder.create(it -> it.group(
 				UnpackedColour.FLEXIBLE_CODEC.fieldOf("color").forGetter(StarVariant::color),
+				Codec.FLOAT.optionalFieldOf("size", 0.15f).forGetter(StarVariant::size),
 				Codec.INT.fieldOf("weight").forGetter(StarVariant::weight)
 			).apply(it, StarVariant::new));
 
