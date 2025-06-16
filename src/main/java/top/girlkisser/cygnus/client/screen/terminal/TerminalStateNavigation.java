@@ -111,7 +111,7 @@ public class TerminalStateNavigation implements ITerminalState
 		if (!selectedPlanetStack.isEmpty())
 		{
 			starmapRenderer.highlighted = selectedPlanetIdStack.getLast();
-			starmapRenderer.renderStar(selectedStarId, selectedStar, StarmapStarConfigLoader.STARS.get(selectedStarId), true);O
+			starmapRenderer.renderStar(selectedStarId, selectedStar, StarmapStarConfigLoader.STARS.get(selectedStarId), true);
 		}
 		else if (selectedStar != null)
 		{
