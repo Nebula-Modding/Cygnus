@@ -1,7 +1,5 @@
 package top.girlkisser.cygnus.foundation.client.particle2d;
 
-import java.util.Objects;
-
 public class InstancedParticle2D
 {
 	public IParticle2D particle;

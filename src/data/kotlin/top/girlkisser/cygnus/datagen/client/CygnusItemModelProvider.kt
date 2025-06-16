@@ -11,19 +11,21 @@ class CygnusItemModelProvider(event: GatherDataEvent) : DapperItemModelProvider(
 	override fun registerModels()
 	{
 		CygnusItems.STEEL_INGOT.basicModel()
-//		CygnusItems.STEEL_SHEET.basicModel()
+		CygnusItems.STEEL_SHEET.basicModel()
 		CygnusItems.STEEL_ROD.basicHandheldModel()
-//		CygnusItems.STEEL_NUGGET.basicModel()
+		CygnusItems.STEEL_NUGGET.basicModel()
 
+		CygnusItems.RAW_ALUMINIUM.basicModel()
 		CygnusItems.ALUMINIUM_INGOT.basicModel()
-//		CygnusItems.ALUMINIUM_SHEET.basicModel()
-//		CygnusItems.ALUMINIUM_ROD.basicHandheldModel()
-//		CygnusItems.ALUMINIUM_NUGGET.basicModel()
+		CygnusItems.ALUMINIUM_SHEET.basicModel()
+		CygnusItems.ALUMINIUM_ROD.basicHandheldModel()
+		CygnusItems.ALUMINIUM_NUGGET.basicModel()
 
+		CygnusItems.RAW_TITANIUM.basicModel()
 		CygnusItems.TITANIUM_INGOT.basicModel()
-//		CygnusItems.TITANIUM_SHEET.basicModel()
-//		CygnusItems.TITANIUM_ROD.basicHandheldModel()
-//		CygnusItems.TITANIUM_NUGGET.basicModel()
+		CygnusItems.TITANIUM_SHEET.basicModel()
+		CygnusItems.TITANIUM_ROD.basicHandheldModel()
+		CygnusItems.TITANIUM_NUGGET.basicModel()
 
 		CygnusItems.CHRONITE.basicModel()
 

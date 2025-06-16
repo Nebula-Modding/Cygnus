@@ -20,6 +20,8 @@ public class ScreenParticleEngine2D implements IParticleEngine2D
 	@Override
 	public void addParticle(IParticle2D particle)
 	{
+		if (particles.size() + particleQueue.size() >= MAX_PARTICLES)
+			return;
 		particleQueue.add(particle);
 	}
 
