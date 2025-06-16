@@ -2,6 +2,7 @@ package top.girlkisser.cygnus.content.item;
 
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -21,7 +22,7 @@ public class ItemChronite extends Item implements CygnusItem
 	@ParametersAreNonnullByDefault
 	public void inventoryTick(ItemStack stack, Level level, Entity entity, int slotId, boolean isSelected)
 	{
-		if (isSelected && !entity.fireImmune())
+		if ((isSelected || (entity instanceof Player p && p.getOffhandItem().is(this))) && !entity.fireImmune())
 			entity.hurt(level.damageSources().hotFloor(), 1.0F);
 	}
 

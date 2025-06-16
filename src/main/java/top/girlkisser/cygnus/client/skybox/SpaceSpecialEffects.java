@@ -72,11 +72,9 @@ public class SpaceSpecialEffects extends DimensionSpecialEffects
 	{
 		if (cachedRenderer == null)
 		{
-			Optional<Pair<ResourceKey<Planet>, Planet>> planet = PlanetUtils.getPlanetAndIdForDimension(level());
-			if (planet.isEmpty())
-				return PlanetRenderer.DEFAULT;
-			if (PlanetRendererLoader.RENDERERS.containsKey(planet.get().getFirst().location()))
-				cachedRenderer = PlanetRendererLoader.RENDERERS.get(planet.get().getFirst().location());
+			Optional<ResourceKey<Planet>> planet = PlanetUtils.getPlanetIdForDimension(level());
+			if (planet.isPresent() && PlanetRendererLoader.RENDERERS.containsKey(planet.get().location()))
+				cachedRenderer = PlanetRendererLoader.RENDERERS.get(planet.get().location());
 			else
 				return PlanetRenderer.DEFAULT;
 		}
@@ -164,7 +162,7 @@ public class SpaceSpecialEffects extends DimensionSpecialEffects
 
 			// wow... that's a lot of getters...
 			if (getRenderer().stars().isPresent() && getRenderer().stars().get().brightnessCurve().isPresent())
-				starBrightness = getRenderer().stars().get().brightnessCurve().get().sample(level.getTimeOfDay(partialTick)).y * rainLevel;
+				starBrightness = getRenderer().stars().get().brightnessCurve().get().sample(level.getDayTime() / 24000f).y * rainLevel;
 			else
 				starBrightness = level.getStarBrightness(partialTick) * rainLevel;
 
@@ -284,6 +282,9 @@ public class SpaceSpecialEffects extends DimensionSpecialEffects
 			int colour = backlight.color().pack();
 
 			poses.pushPose();
+			poses.rotateAround(Axis.XP.rotationDegrees(object.textureRotation().x), 0, 0, 0);
+			poses.rotateAround(Axis.YP.rotationDegrees(object.textureRotation().y), 0, 0, 0);
+			poses.rotateAround(Axis.ZP.rotationDegrees(object.textureRotation().z), 0, 0, 0);
 			Matrix4f pose = poses.last().pose();
 			RenderSystem.setShader(GameRenderer::getPositionTexColorShader);
 			RenderSystem.setShaderTexture(0, backlight.texture());
@@ -304,8 +305,6 @@ public class SpaceSpecialEffects extends DimensionSpecialEffects
 			poses.mulPose(Axis.XP.rotationDegrees(layer.skyRotation().x));
 			poses.mulPose(Axis.YP.rotationDegrees(layer.skyRotation().y));
 			poses.mulPose(Axis.ZP.rotationDegrees(layer.skyRotation().z));
-
-			poses.pushPose();
 			poses.rotateAround(Axis.XP.rotationDegrees(object.textureRotation().x + layer.textureRotation().x), 0, 0, 0);
 			poses.rotateAround(Axis.YP.rotationDegrees(object.textureRotation().y + layer.textureRotation().y), 0, 0, 0);
 			poses.rotateAround(Axis.ZP.rotationDegrees(object.textureRotation().z + layer.textureRotation().z), 0, 0, 0);
@@ -320,7 +319,6 @@ public class SpaceSpecialEffects extends DimensionSpecialEffects
 			buffer.addVertex(pose, -size, 100.0F, size).setUv(0.0F, 1.0F);
 			BufferUploader.drawWithShader(buffer.buildOrThrow());
 
-			poses.popPose();
 			poses.popPose();
 		}
 

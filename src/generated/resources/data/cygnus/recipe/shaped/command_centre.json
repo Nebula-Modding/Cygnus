@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "item": "cygnus:chronite_circuit"
+    },
+    "S": {
+      "tag": "c:plates/steel"
+    },
+    "T": {
+      "item": "cygnus:steel_tiles"
+    }
+  },
+  "pattern": [
+    " S ",
+    "SCS",
+    "STS"
+  ],
+  "result": {
+    "count": 1,
+    "id": "cygnus:command_centre"
+  }
+}

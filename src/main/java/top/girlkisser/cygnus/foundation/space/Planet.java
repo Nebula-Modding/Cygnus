@@ -136,6 +136,17 @@ public record Planet(
 		teleportPlayerHereViaBeam(player, true, 0, 0, originSpaceStation);
 	}
 
+	public ResourceKey<Planet> getResourceKey(RegistryAccess registryAccess)
+	{
+		return registryAccess.lookupOrThrow(CygnusRegistries.PLANET)
+			.listElements()
+			.filter(it -> it.value().equals(this))
+			.limit(1)
+			.findFirst()
+			.orElseThrow()
+			.key();
+	}
+
 	public static Component getName(ResourceLocation id)
 	{
 		return Component.translatable(id.toLanguageKey("planet"));
@@ -143,8 +154,7 @@ public record Planet(
 
 	public static List<Planet> getPlanets(RegistryAccess registryAccess)
 	{
-		return registryAccess.lookup(CygnusRegistries.PLANET)
-			.orElseThrow()
+		return registryAccess.lookupOrThrow(CygnusRegistries.PLANET)
 			.listElements()
 			.map(Holder.Reference::value)
 			.toList();
@@ -152,8 +162,7 @@ public record Planet(
 
 	public static List<Pair<ResourceKey<Planet>, Planet>> getPlanetsWithIds(RegistryAccess registryAccess)
 	{
-		return registryAccess.lookup(CygnusRegistries.PLANET)
-			.orElseThrow()
+		return registryAccess.lookupOrThrow(CygnusRegistries.PLANET)
 			.listElements()
 			.map(it -> new Pair<>(it.key(), it.value()))
 			.toList();
@@ -161,7 +170,7 @@ public record Planet(
 
 	public static Optional<Holder.Reference<Planet>> getPlanetById(RegistryAccess registryAccess, ResourceKey<Planet> id)
 	{
-		return registryAccess.lookup(CygnusRegistries.PLANET).orElseThrow().get(id);
+		return registryAccess.lookupOrThrow(CygnusRegistries.PLANET).get(id);
 	}
 
 	public static Optional<Holder.Reference<Planet>> getPlanetById(RegistryAccess registryAccess, ResourceLocation id)

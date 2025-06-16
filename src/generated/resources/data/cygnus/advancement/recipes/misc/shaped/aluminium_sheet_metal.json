@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_cygnus_aluminium_sheet": {
+      "conditions": {
+        "items": [
+          {
+            "items": "cygnus:aluminium_sheet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "cygnus:shaped/aluminium_sheet_metal"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_cygnus_aluminium_sheet"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "cygnus:shaped/aluminium_sheet_metal"
+    ]
+  }
+}

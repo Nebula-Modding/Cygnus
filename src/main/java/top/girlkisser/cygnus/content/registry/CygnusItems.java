@@ -7,6 +7,7 @@ import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.jetbrains.annotations.ApiStatus;
 import top.girlkisser.cygnus.Cygnus;
+import top.girlkisser.cygnus.content.CygnusFoods;
 import top.girlkisser.cygnus.content.item.ItemChronite;
 import top.girlkisser.cygnus.content.item.ItemHammer;
 import top.girlkisser.cygnus.content.item.ItemKey;
@@ -58,6 +59,10 @@ public interface CygnusItems
 	DeferredItem<?>
 		ELECTRONIC_CIRCUIT = reg("electronic_circuit"),
 		CHRONITE_CIRCUIT = reg("chronite_circuit", p -> p.rarity(Rarity.UNCOMMON));
+
+	// Foods
+	DeferredItem<?>
+		APOLLO_CHEESE = reg("apollo_cheese", p -> p.food(CygnusFoods.APOLLO_CHEESE));
 
 	// Tools
 	DeferredItem<?>

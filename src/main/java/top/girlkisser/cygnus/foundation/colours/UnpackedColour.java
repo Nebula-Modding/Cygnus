@@ -2,6 +2,7 @@ package top.girlkisser.cygnus.foundation.colours;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.minecraft.util.ColorRGBA;
 import net.minecraft.util.FastColor;
 import net.minecraft.util.RandomSource;
 
@@ -73,6 +74,11 @@ public record UnpackedColour(int r, int g, int b, int a)
 	public int pack()
 	{
 		return FastColor.ARGB32.color(a, r, g, b);
+	}
+
+	public ColorRGBA toColorRGBA()
+	{
+		return new ColorRGBA(pack());
 	}
 
 	public UnpackedColour modulateRGB(int variance)

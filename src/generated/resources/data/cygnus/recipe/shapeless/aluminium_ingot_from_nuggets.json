@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "cygnus:aluminium_nugget"
+    },
+    {
+      "item": "cygnus:aluminium_nugget"
+    },
+    {
+      "item": "cygnus:aluminium_nugget"
+    },
+    {
+      "item": "cygnus:aluminium_nugget"
+    },
+    {
+      "item": "cygnus:aluminium_nugget"
+    },
+    {
+      "item": "cygnus:aluminium_nugget"
+    },
+    {
+      "item": "cygnus:aluminium_nugget"
+    },
+    {
+      "item": "cygnus:aluminium_nugget"
+    },
+    {
+      "item": "cygnus:aluminium_nugget"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "cygnus:aluminium_ingot"
+  }
+}

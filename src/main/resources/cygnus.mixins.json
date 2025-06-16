@@ -1,18 +1,18 @@
 {
-	"required": true,
-	"minVersion": "0.8",
-	"package": "top.girlkisser.cygnus.mixin",
-	"compatibilityLevel": "JAVA_8",
-	"refmap": "cygnus.refmap.json",
-	"mixins": [
-		"EntityMixin",
-		"LivingEntityAccessor",
-		"PlayerMixin"
-	],
-	"client": [
-		"client.LevelRendererAccessor"
-	],
-	"injectors": {
-		"defaultRequire": 1
+  "required": true,
+  "minVersion": "0.8",
+  "package": "top.girlkisser.cygnus.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "cygnus.refmap.json",
+  "mixins": [
+    "EntityMixin",
+    "LivingEntityAccessor",
+    "PlayerMixin"
+  ],
+  "client": [
+    "client.LevelRendererAccessor"
+  ],
+  "injectors": {
+    "defaultRequire": 1
 	}
 }

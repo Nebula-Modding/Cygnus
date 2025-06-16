@@ -13,7 +13,7 @@ public interface MiscCygnusCodecs
 {
 	Codec<Vector2f> VECTOR2F = RecordCodecBuilder.create(it -> it.group(
 		Codec.FLOAT.fieldOf("x").forGetter(Vector2f::x),
-		Codec.FLOAT.fieldOf("x").forGetter(Vector2f::y)
+		Codec.FLOAT.fieldOf("y").forGetter(Vector2f::y)
 	).apply(it, Vector2f::new));
 
 	StreamCodec<ByteBuf, Vector2f> VECTOR2F_STREAM_CODEC = ByteBufCodecs.fromCodec(VECTOR2F);

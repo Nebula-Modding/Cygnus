@@ -1,4 +1,4 @@
-package top.girlkisser.cygnus.foundation.space;
+package top.girlkisser.cygnus.client.starmap;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.gui.GuiGraphics;
@@ -7,15 +7,18 @@ import net.minecraft.resources.ResourceLocation;
 import org.joml.Vector2i;
 import top.girlkisser.cygnus.Cygnus;
 import top.girlkisser.cygnus.client.CygnusClient;
+import top.girlkisser.cygnus.foundation.space.Galaxy;
+import top.girlkisser.cygnus.foundation.space.Planet;
+import top.girlkisser.cygnus.foundation.space.Star;
 
-public final class SpaceMapUtils
+public final class StarmapRendererOld
 {
 	public static final int DEFAULT_PLANET_SIZE = 32;
 	public static final int DEFAULT_STAR_SIZE = 32;
 	public static final int DEFAULT_GALAXY_SIZE = 64;
 	public static final ResourceLocation PLANET_SELECTION = Cygnus.id("planet/planet_selection");
 
-	private SpaceMapUtils()
+	private StarmapRendererOld()
 	{
 	}
 

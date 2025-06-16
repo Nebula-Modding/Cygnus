@@ -3,15 +3,16 @@
   "category": "misc",
   "key": {
     "#": {
-      "item": "cygnus:steel_ingot"
+      "tag": "c:ingots/steel"
     }
   },
   "pattern": [
     "##",
+    "##",
     "##"
   ],
   "result": {
-    "count": 1,
-    "id": "cygnus:steel_block"
+    "count": 3,
+    "id": "cygnus:steel_door"
   }
 }

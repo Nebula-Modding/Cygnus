@@ -1,0 +1,6 @@
+{
+	"type": "neoforge:add_features",
+	"biomes": "#minecraft:is_overworld",
+	"features": ["cygnus:ore_titanium", "cygnus:ore_titanium_lower"],
+	"step": "underground_ores"
+}

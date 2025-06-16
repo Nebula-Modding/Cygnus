@@ -7,6 +7,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.neoforged.neoforge.network.PacketDistributor;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 import org.jetbrains.annotations.NotNull;
 import top.girlkisser.cygnus.Cygnus;
@@ -52,18 +53,35 @@ public record ServerboundAttemptSpaceStationConstruction(ResourceLocation recipe
 
 			var recipe = (RecipeSpaceStationCrafting) (maybeHolder.get().value());
 
+			boolean didMakeSpaceStation = false;
 			// We can ignore actually crafting the recipe when the crafter is in creative mode.
 			if (player.isCreative())
 			{
 				manager.createSpaceStationForPlayer(player, recipe.structure());
-				return;
+				didMakeSpaceStation = true;
+			}
+			else
+			{
+				var input = new InventoryRecipeInput(player.getInventory());
+				if (recipe.matches(input) && recipe.assemble(input))
+				{
+					player.inventoryMenu.broadcastChanges();
+					manager.createSpaceStationForPlayer(player, recipe.structure());
+					didMakeSpaceStation = true;
+				}
 			}
 
-			var input = new InventoryRecipeInput(player.getInventory());
-			if (recipe.matches(input) && recipe.assemble(input))
+			if (didMakeSpaceStation)
 			{
-				player.inventoryMenu.broadcastChanges();
-				manager.createSpaceStationForPlayer(player, recipe.structure());
+				var spaceStation = manager.getSpaceStationForPlayer(player);
+				if (spaceStation.isEmpty())
+				{
+					// Something is wrong
+					Cygnus.LOGGER.error("Created space station but failed to get it after creation. This error should never occur, please report it!");
+					return;
+				}
+				// Send a clientbound packet to sync the terminal
+				PacketDistributor.sendToPlayer(player, new ClientboundSyncTerminal(spaceStation.get()));
 			}
 		});
 	}

@@ -96,6 +96,11 @@ Any colour values can be provided in three different formats:
 
         // The colour of the backlight (required)
         "color" : 16379820
+      },
+      
+      // Defines how this skybox object should move, if at all
+      "movement": {
+        "type": "time"
       }
     }
   ],

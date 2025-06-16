@@ -34,6 +34,9 @@ import top.girlkisser.cygnus.client.screen.command_centre.CommandCentreStateMain
 import top.girlkisser.cygnus.client.screen.terminal.ScreenTerminal;
 import top.girlkisser.cygnus.client.skybox.PlanetRendererLoader;
 import top.girlkisser.cygnus.client.skybox.SpaceSpecialEffects;
+import top.girlkisser.cygnus.client.starmap.StarmapGalaxyConfigLoader;
+import top.girlkisser.cygnus.client.starmap.StarmapPlanetConfigLoader;
+import top.girlkisser.cygnus.client.starmap.StarmapStarConfigLoader;
 import top.girlkisser.cygnus.content.entity.EntityLandingBeam;
 import top.girlkisser.cygnus.content.menu.ContainerChroniteBlastFurnace;
 import top.girlkisser.cygnus.content.menu.ContainerCommandCentre;
@@ -114,6 +117,9 @@ public class CygnusClientListeners
 		static void onRegisterResourcePackRegistries(RegisterClientReloadListenersEvent event)
 		{
 			event.registerReloadListener(new PlanetRendererLoader());
+			event.registerReloadListener(new StarmapGalaxyConfigLoader());
+			event.registerReloadListener(new StarmapStarConfigLoader());
+			event.registerReloadListener(new StarmapPlanetConfigLoader());
 		}
 
 		@SubscribeEvent

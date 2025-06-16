@@ -45,6 +45,7 @@ public class Cygnus
 		CygnusParticleTypes.R.register(bus);
 		CygnusRecipeSerializers.R.register(bus);
 		CygnusRecipeTypes.R.register(bus);
+		CygnusSoundEvents.R.register(bus);
 		CygnusTabs.R.register(bus);
 
 		// Terminal commands

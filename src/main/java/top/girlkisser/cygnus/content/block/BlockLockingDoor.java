@@ -79,6 +79,6 @@ public class BlockLockingDoor extends DoorBlock
 	@ParametersAreNonnullByDefault
 	public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag)
 	{
-		tooltipComponents.add(Component.translatable("messages.cygnus.door_lockable"));
+		tooltipComponents.add(Component.translatable("message.cygnus.door_lockable"));
 	}
 }

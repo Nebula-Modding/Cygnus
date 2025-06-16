@@ -8,7 +8,7 @@ block.cygnus:
   steel_window: Steel Window
   steel_door: Steel Door
   steel_trapdoor: Steel Trapdoor
-  steel_vent: Steel Vent
+  steel_vent: Steel Grate
   steel_pillar: Steel Pillar
   steel_bulb: Steel Bulb
   steel_bars: Steel Bars
@@ -126,6 +126,8 @@ screen.cygnus:
     retrieve: Retrieve
 
 message.cygnus:
+  # Shared tooltips
+  door_lockable: Use a Key to toggle between needing redstone to open the door
   # Errors
   failed_to_place_space_station: Failed to place space station
   no_such_command: "No such command: %s"

@@ -3,6 +3,8 @@ package top.girlkisser.cygnus;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.tags.EntityTypeTags;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.capabilities.Capabilities;
@@ -91,10 +93,29 @@ final class CygnusListeners
 		static void onLivingEntityFall(LivingFallEvent event)
 		{
 			Optional<Planet> planet = PlanetUtils.getPlanetForDimension(event.getEntity().level());
-			// Prevent fall damage on planets with no gravity
-			if (planet.isPresent() && planet.get().getGravityInVanillaUnits() == 0)
+			if (planet.isPresent())
 			{
-				event.setCanceled(true);
+				double gravity = planet.get().getGravityInVanillaUnits();
+				// Prevent fall damage on planets with no gravity
+				if (gravity == 0)
+				{
+					event.setCanceled(true);
+					return;
+				}
+				// Otherwise, we multiply the fall damage by the gravity/2
+				event.setDamageMultiplier((float) gravity);
+				// The vanilla game will ceil the damage, meaning you'll take 1 damage even when the damage is something tiny like 0.001 (which you'd see on the moon)
+				// To fix this, I'll just cancel fall damage if it's low enough. Hacky? Sure, but it's probably fine :3
+				if (!event.getEntity().getType().is(EntityTypeTags.FALL_DAMAGE_IMMUNE))
+				{
+					float safeFallDistance = (float)event.getEntity().getAttributeValue(Attributes.SAFE_FALL_DISTANCE);
+					float distance = event.getDistance() - safeFallDistance;
+					double damage = (double)(distance * event.getDamageMultiplier()) * event.getEntity().getAttributeValue(Attributes.FALL_DAMAGE_MULTIPLIER);
+					if (damage < 1d)
+					{
+						event.setCanceled(true);
+					}
+				}
 			}
 		}
 

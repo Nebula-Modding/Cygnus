@@ -2,17 +2,19 @@ package top.girlkisser.cygnus.client.screen.terminal;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.renderer.Rect2i;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.joml.Vector2i;
 import top.girlkisser.cygnus.Cygnus;
 import top.girlkisser.cygnus.client.CygnusClient;
+import top.girlkisser.cygnus.client.starmap.StarmapGalaxyConfigLoader;
+import top.girlkisser.cygnus.client.starmap.StarmapRenderer;
+import top.girlkisser.cygnus.client.starmap.StarmapStarConfigLoader;
 import top.girlkisser.cygnus.foundation.space.Galaxy;
 import top.girlkisser.cygnus.foundation.space.Planet;
-import top.girlkisser.cygnus.foundation.space.SpaceMapUtils;
 import top.girlkisser.cygnus.foundation.space.Star;
 
 import java.util.ArrayList;
@@ -94,6 +96,12 @@ public class TerminalStateNavigation implements ITerminalState
 			}
 		}
 
+		StarmapRenderer starmapRenderer = new StarmapRenderer(
+			graphics,
+			new Rect2i(screen.getGuiLeft() + mapMinX + mapPanX, screen.getGuiTop() + mapMinY + mapPanY, mapMaxX, mapMaxY),
+			mapZoom
+		);
+
 		graphics.enableScissor(
 			screen.getGuiLeft() + mapMinX,
 			screen.getGuiTop() + mapMinY,
@@ -102,58 +110,16 @@ public class TerminalStateNavigation implements ITerminalState
 		);
 		if (!selectedPlanetStack.isEmpty())
 		{
-			Vector2i pos = SpaceMapUtils.getCentreForSprite(mapMinX, mapMinY, mapMaxX, mapMaxY, SpaceMapUtils.DEFAULT_PLANET_SIZE, SpaceMapUtils.DEFAULT_PLANET_SIZE);
-			SpaceMapUtils.renderSolarSystemOnMapWithHighlight(
-				graphics,
-				screen.getGuiLeft() + mapPanX + pos.x,
-				screen.getGuiTop() + mapPanY + pos.y,
-				SpaceMapUtils.DEFAULT_STAR_SIZE,
-				SpaceMapUtils.DEFAULT_STAR_SIZE,
-				mapZoom,
-				selectedStar,
-				registryAccess,
-				selectedPlanetIdStack.getLast()
-			);
+			starmapRenderer.highlighted = selectedPlanetIdStack.getLast();
+			starmapRenderer.renderStar(selectedStarId, selectedStar, StarmapStarConfigLoader.STARS.get(selectedStarId), true);O
 		}
 		else if (selectedStar != null)
 		{
-			Vector2i pos = SpaceMapUtils.getCentreForSprite(mapMinX, mapMinY, mapMaxX, mapMaxY, SpaceMapUtils.DEFAULT_STAR_SIZE, SpaceMapUtils.DEFAULT_STAR_SIZE);
-			if (selectedPlanetIdStack.isEmpty())
-				SpaceMapUtils.renderSolarSystemOnMap(
-					graphics,
-					screen.getGuiLeft() + mapPanX + pos.x,
-					screen.getGuiTop() + mapPanY + pos.y,
-					SpaceMapUtils.DEFAULT_STAR_SIZE,
-					SpaceMapUtils.DEFAULT_STAR_SIZE,
-					mapZoom,
-					selectedStar,
-					registryAccess
-				);
-			else
-				SpaceMapUtils.renderSolarSystemOnMapWithHighlight(
-					graphics,
-					screen.getGuiLeft() + mapPanX + pos.x,
-					screen.getGuiTop() + mapPanY + pos.y,
-					SpaceMapUtils.DEFAULT_STAR_SIZE,
-					SpaceMapUtils.DEFAULT_STAR_SIZE,
-					mapZoom,
-					selectedStar,
-					registryAccess,
-					selectedPlanetIdStack.getLast()
-				);
+			starmapRenderer.renderStar(selectedStarId, selectedStar, StarmapStarConfigLoader.STARS.get(selectedStarId), true);
 		}
 		else if (selectedGalaxy != null)
 		{
-			Vector2i pos = SpaceMapUtils.getCentreForSprite(mapMinX, mapMinY, mapMaxX, mapMaxY, SpaceMapUtils.DEFAULT_GALAXY_SIZE, SpaceMapUtils.DEFAULT_GALAXY_SIZE);
-			SpaceMapUtils.renderGalaxyOnMap(
-				graphics,
-				screen.getGuiLeft() + mapPanX + pos.x,
-				screen.getGuiTop() + mapPanY + pos.y,
-				SpaceMapUtils.DEFAULT_GALAXY_SIZE,
-				SpaceMapUtils.DEFAULT_GALAXY_SIZE,
-				mapZoom,
-				selectedGalaxy
-			);
+			starmapRenderer.renderGalaxy(StarmapGalaxyConfigLoader.GALAXIES.get(selectedGalaxyId));
 		}
 		graphics.disableScissor();
 

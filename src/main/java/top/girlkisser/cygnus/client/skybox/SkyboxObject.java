@@ -43,8 +43,8 @@ public record SkyboxObject(
 		public static final Codec<Layer> CODEC = RecordCodecBuilder.create(it -> it.group(
 			ResourceLocation.CODEC.fieldOf("texture").forGetter(Layer::texture),
 			Codec.FLOAT.fieldOf("size").forGetter(Layer::size),
-			ExtraCodecs.VECTOR3F.fieldOf("sky_rotation").forGetter(Layer::skyRotation),
-			ExtraCodecs.VECTOR3F.fieldOf("texture_rotation").forGetter(Layer::textureRotation)
+			ExtraCodecs.VECTOR3F.optionalFieldOf("sky_rotation", new Vector3f(0, 0, 0)).forGetter(Layer::skyRotation),
+			ExtraCodecs.VECTOR3F.optionalFieldOf("texture_rotation", new Vector3f(0, 0, 0)).forGetter(Layer::textureRotation)
 		).apply(it, Layer::new));
 
 		public static final StreamCodec<ByteBuf, Layer> STREAM_CODEC = ByteBufCodecs.fromCodec(CODEC);

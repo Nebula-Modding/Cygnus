@@ -19,6 +19,7 @@ object CygnusDataGen
         {
             it.add(CygnusBlockStateProvider(event))
             it.add(CygnusItemModelProvider(event))
+			it.add(CygnusSoundProvider(event))
         },
         server =
         {

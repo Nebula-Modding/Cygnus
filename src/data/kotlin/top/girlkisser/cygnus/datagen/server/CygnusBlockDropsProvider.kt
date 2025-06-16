@@ -5,8 +5,10 @@ import net.minecraft.advancements.critereon.ItemPredicate
 import net.minecraft.core.HolderLookup
 import net.minecraft.core.registries.Registries
 import net.minecraft.tags.ItemTags
+import net.minecraft.world.item.Items
 import net.minecraft.world.item.enchantment.Enchantments
 import net.minecraft.world.level.ItemLike
+import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.storage.loot.LootPool
 import net.minecraft.world.level.storage.loot.LootTable
 import net.minecraft.world.level.storage.loot.entries.AlternativesEntry
@@ -23,7 +25,7 @@ import net.minecraft.world.level.storage.loot.predicates.MatchTool
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue
 import net.minecraft.world.level.storage.loot.providers.number.NumberProvider
 import net.neoforged.neoforge.data.event.GatherDataEvent
-import top.girlkisser.cygnus.content.registry.CygnusBlocks
+import top.girlkisser.cygnus.content.registry.CygnusBlocks.*
 import top.girlkisser.cygnus.content.registry.CygnusItems
 
 class CygnusBlockDropsProvider(event: GatherDataEvent) : DapperLootTableProvider(
@@ -37,37 +39,117 @@ class CygnusBlockDropsProvider(event: GatherDataEvent) : DapperLootTableProvider
 	{
 		override fun generate()
 		{
+			// Drops self
 			setOf(
-				CygnusBlocks.STEEL_BLOCK,
-				CygnusBlocks.STEEL_TILES,
-				CygnusBlocks.STEEL_SHEET_METAL,
-				CygnusBlocks.CHRONITE_BLOCK,
-				CygnusBlocks.COMMAND_CENTRE,
-				CygnusBlocks.TELEPAD,
-				CygnusBlocks.CHRONITE_BLAST_FURNACE,
+				STEEL_BLOCK,
+				STEEL_TILES,
+				STEEL_SHEET_METAL,
+				STEEL_WINDOW,
+				STEEL_DOOR,
+				STEEL_TRAPDOOR,
+				STEEL_VENT,
+				STEEL_PILLAR,
+				STEEL_BULB,
+				STEEL_BARS,
+				ALUMINIUM_BLOCK,
+				ALUMINIUM_TILES,
+				ALUMINIUM_SHEET_METAL,
+				TITANIUM_BLOCK,
+				TITANIUM_TILES,
+				TITANIUM_SHEET_METAL,
+				TITANIUM_PLATING,
+				TITANIUM_WINDOW,
+				LUNAR_REGOLITH,
+				LUNAR_COBBLESTONE,
+				SMOOTH_LUNAR_STONE,
+				CHISELED_LUNAR_STONE,
+				LUNAR_STONE_BRICKS,
+				CRACKED_LUNAR_STONE_BRICKS,
+				LUNAR_STONE_PILLAR,
+				COBBLED_LUNAR_DEEPSLATE,
+				SMOOTH_LUNAR_DEEPSLATE,
+				CHISELED_LUNAR_DEEPSLATE,
+				LUNAR_DEEPSLATE_BRICKS,
+				CRACKED_LUNAR_DEEPSLATE_BRICKS,
+				LUNAR_DEEPSLATE_PILLAR,
+				CHRONITE_BLOCK,
+				COMMAND_CENTRE,
+				TELEPAD,
+				CHRONITE_BLAST_FURNACE,
 			).forEach {
 				dropSelf(it.get())
 			}
 
+			// Stones->Cobblestones
+			mapOf(
+				LUNAR_STONE to LUNAR_COBBLESTONE,
+				LUNAR_DEEPSLATE to COBBLED_LUNAR_DEEPSLATE,
+			).forEach {
+				createStoneDrops(it.key.get(), it.value.get())
+			}
+
+			// Simple ore drops
+			mapOf(
+				LUNAR_COAL_ORE to Items.COAL,
+				LUNAR_DEEPSLATE_COAL_ORE to Items.COAL,
+				LUNAR_IRON_ORE to Items.RAW_IRON,
+				LUNAR_DEEPSLATE_IRON_ORE to Items.RAW_IRON,
+				LUNAR_GOLD_ORE to Items.RAW_GOLD,
+				LUNAR_DEEPSLATE_GOLD_ORE to Items.RAW_GOLD,
+				LUNAR_EMERALD_ORE to Items.EMERALD,
+				LUNAR_DEEPSLATE_EMERALD_ORE to Items.EMERALD,
+				LUNAR_DIAMOND_ORE to Items.DIAMOND,
+				LUNAR_DEEPSLATE_DIAMOND_ORE to Items.DIAMOND,
+				ALUMINIUM_ORE to CygnusItems.RAW_ALUMINIUM,
+				DEEPSLATE_ALUMINIUM_ORE to CygnusItems.RAW_ALUMINIUM,
+				LUNAR_ALUMINIUM_ORE to CygnusItems.RAW_ALUMINIUM,
+				LUNAR_DEEPSLATE_ALUMINIUM_ORE to CygnusItems.RAW_ALUMINIUM,
+				TITANIUM_ORE to CygnusItems.RAW_TITANIUM,
+				DEEPSLATE_TITANIUM_ORE to CygnusItems.RAW_TITANIUM,
+				LUNAR_TITANIUM_ORE to CygnusItems.RAW_TITANIUM,
+				LUNAR_DEEPSLATE_TITANIUM_ORE to CygnusItems.RAW_TITANIUM,
+			).forEach {
+				this.add(it.key.get(), createOreDrop(it.key.get(), it.value.asItem()))
+			}
+
+			// Redstone ore drops
 			setOf(
-				CygnusBlocks.BUDDING_CHRONITE,
+				LUNAR_REDSTONE_ORE,
+				LUNAR_DEEPSLATE_REDSTONE_ORE,
+			).forEach {
+				add(it.get(), createRedstoneOreDrops(it.get()))
+			}
+
+			// Lapis ore drops
+			setOf(
+				LUNAR_LAPIS_ORE,
+				LUNAR_DEEPSLATE_LAPIS_ORE,
+			).forEach {
+				add(it.get(), createLapisOreDrops(it.get()))
+			}
+
+			// No drop
+			setOf(
+				BUDDING_CHRONITE,
 			).forEach {
 				add(it.get(), noDrop())
 			}
 
+			// Drops with silk touch
 			setOf(
-				CygnusBlocks.SMALL_CHRONITE_BUD,
-				CygnusBlocks.MEDIUM_CHRONITE_BUD,
-				CygnusBlocks.LARGE_CHRONITE_BUD,
+				SMALL_CHRONITE_BUD,
+				MEDIUM_CHRONITE_BUD,
+				LARGE_CHRONITE_BUD,
 			).forEach {
 				dropWhenSilkTouch(it.get())
 			}
 
-			add(CygnusBlocks.CHRONITE_CLUSTER.get(), DapperLootTableBuilder().apply {
+			// Similar handling as amethyst clusters
+			add(CHRONITE_CLUSTER.get(), DapperLootTableBuilder().apply {
 				addPool {
 					setRolls(1)
 					alternatives {
-						item(CygnusBlocks.CHRONITE_CLUSTER) {
+						item(CHRONITE_CLUSTER) {
 							condition(hasSilkTouch())
 						}
 						alternatives {
@@ -81,6 +163,21 @@ class CygnusBlockDropsProvider(event: GatherDataEvent) : DapperLootTableProvider
 								applyFunction(ApplyExplosionDecay.explosionDecay())
 							}
 						}
+					}
+				}
+			}.builder)
+		}
+
+		fun createStoneDrops(stone_block: Block, cobblestone_block: Block)
+		{
+			add(stone_block, DapperLootTableBuilder().apply {
+				addPool {
+					setRolls(1)
+					alternatives {
+						item(stone_block) {
+							condition(hasSilkTouch())
+						}
+						item(cobblestone_block) { }
 					}
 				}
 			}.builder)

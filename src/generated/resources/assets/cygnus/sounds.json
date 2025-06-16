@@ -1,0 +1,104 @@
+{
+  "block.metal_bulb.break": {
+    "sounds": [
+      "cygnus:block/metal_bulb/break1",
+      "cygnus:block/metal_bulb/break2",
+      "cygnus:block/metal_bulb/break3",
+      "cygnus:block/metal_bulb/break4"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.metal_bulb.fall": {
+    "sounds": [
+      "cygnus:block/metal_bulb/step1",
+      "cygnus:block/metal_bulb/step2",
+      "cygnus:block/metal_bulb/step3",
+      "cygnus:block/metal_bulb/step4",
+      "cygnus:block/metal_bulb/step5",
+      "cygnus:block/metal_bulb/step6"
+    ],
+    "subtitle": "subtitles.block.generic.fall"
+  },
+  "block.metal_bulb.hit": {
+    "sounds": [
+      "cygnus:block/metal_bulb/step1",
+      "cygnus:block/metal_bulb/step2",
+      "cygnus:block/metal_bulb/step3",
+      "cygnus:block/metal_bulb/step4",
+      "cygnus:block/metal_bulb/step5",
+      "cygnus:block/metal_bulb/step6"
+    ],
+    "subtitle": "subtitles.block.generic.hit"
+  },
+  "block.metal_bulb.place": {
+    "sounds": [
+      "cygnus:block/metal_bulb/place1",
+      "cygnus:block/metal_bulb/place2",
+      "cygnus:block/metal_bulb/place3",
+      "cygnus:block/metal_bulb/place4"
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.metal_bulb.step": {
+    "sounds": [
+      "cygnus:block/metal_bulb/step1",
+      "cygnus:block/metal_bulb/step2",
+      "cygnus:block/metal_bulb/step3",
+      "cygnus:block/metal_bulb/step4",
+      "cygnus:block/metal_bulb/step5",
+      "cygnus:block/metal_bulb/step6"
+    ],
+    "subtitle": "subtitles.block.generic.step"
+  },
+  "block.metal_grate.break": {
+    "sounds": [
+      "cygnus:block/metal_grate/break1",
+      "cygnus:block/metal_grate/break2",
+      "cygnus:block/metal_grate/break3",
+      "cygnus:block/metal_grate/break4"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.metal_grate.fall": {
+    "sounds": [
+      "cygnus:block/metal_grate/step1",
+      "cygnus:block/metal_grate/step2",
+      "cygnus:block/metal_grate/step3",
+      "cygnus:block/metal_grate/step4",
+      "cygnus:block/metal_grate/step5",
+      "cygnus:block/metal_grate/step6"
+    ],
+    "subtitle": "subtitles.block.generic.fall"
+  },
+  "block.metal_grate.hit": {
+    "sounds": [
+      "cygnus:block/metal_grate/step1",
+      "cygnus:block/metal_grate/step2",
+      "cygnus:block/metal_grate/step3",
+      "cygnus:block/metal_grate/step4",
+      "cygnus:block/metal_grate/step5",
+      "cygnus:block/metal_grate/step6"
+    ],
+    "subtitle": "subtitles.block.generic.hit"
+  },
+  "block.metal_grate.place": {
+    "sounds": [
+      "cygnus:block/metal_grate/break1",
+      "cygnus:block/metal_grate/break2",
+      "cygnus:block/metal_grate/break3",
+      "cygnus:block/metal_grate/break4"
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.metal_grate.step": {
+    "sounds": [
+      "cygnus:block/metal_grate/step1",
+      "cygnus:block/metal_grate/step2",
+      "cygnus:block/metal_grate/step3",
+      "cygnus:block/metal_grate/step4",
+      "cygnus:block/metal_grate/step5",
+      "cygnus:block/metal_grate/step6"
+    ],
+    "subtitle": "subtitles.block.generic.step"
+  }
+}

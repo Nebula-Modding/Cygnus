@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "cygnus:steel_ingot"
+    },
+    {
+      "item": "cygnus:steel_ingot"
+    },
+    {
+      "item": "cygnus:steel_ingot"
+    },
+    {
+      "item": "cygnus:steel_ingot"
+    },
+    {
+      "item": "cygnus:steel_ingot"
+    },
+    {
+      "item": "cygnus:steel_ingot"
+    },
+    {
+      "item": "cygnus:steel_ingot"
+    },
+    {
+      "item": "cygnus:steel_ingot"
+    },
+    {
+      "item": "cygnus:steel_ingot"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "cygnus:steel_block"
+  }
+}

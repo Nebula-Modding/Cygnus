@@ -16,8 +16,10 @@ import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.jetbrains.annotations.ApiStatus;
 import top.girlkisser.cygnus.Cygnus;
+import top.girlkisser.cygnus.content.CygnusSoundTypes;
 import top.girlkisser.cygnus.content.block.*;
 import top.girlkisser.cygnus.content.item.BlockItemTelepad;
+import top.girlkisser.cygnus.foundation.colours.UnpackedColour;
 
 import java.util.function.Function;
 import java.util.function.Supplier;
@@ -112,14 +114,15 @@ public interface CygnusBlocks
 		STEEL_BLOCK = reg("steel_block", Blocks.IRON_BLOCK),
 		STEEL_TILES = reg("steel_tiles", Blocks.IRON_BLOCK),
 		STEEL_SHEET_METAL = reg("steel_sheet_metal", Blocks.IRON_BLOCK),
-		STEEL_WINDOW = reg("steel_window", TransparentBlock::new, basicGlassProperties(copy(Blocks.IRON_BLOCK))),
+		STEEL_WINDOW = reg("steel_window", TransparentBlock::new, basicGlassProperties(copy(Blocks.IRON_BLOCK).sound(CygnusSoundTypes.METAL_WINDOW))),
 		STEEL_DOOR = reg("steel_door", () -> new BlockSteelDoor(BlockLockingDoor.IRON_UNLOCKED, copy(Blocks.IRON_DOOR))),
-		STEEL_TRAPDOOR = reg("steel_trapdoor", () -> new TrapDoorBlock(BlockLockingDoor.IRON_UNLOCKED, copy(Blocks.IRON_TRAPDOOR))),
-		STEEL_VENT = reg("steel_vent", TransparentBlock::new, basicGlassProperties(copy(Blocks.IRON_BLOCK))),
+		STEEL_TRAPDOOR = reg("steel_trapdoor", () -> new BlockLockingTrapdoor(BlockLockingDoor.IRON_UNLOCKED, copy(Blocks.IRON_TRAPDOOR))),
+		STEEL_VENT = reg("steel_vent", TransparentBlock::new, basicGlassProperties(copy(Blocks.COPPER_GRATE).sound(CygnusSoundTypes.METAL_GRATE))),
 		STEEL_PILLAR = reg("steel_pillar", RotatedPillarBlock::new, copy(Blocks.IRON_BLOCK)),
 		STEEL_BULB = reg("steel_bulb", () -> new CopperBulbBlock(copy(Blocks.IRON_BLOCK)
 			.isRedstoneConductor(CygnusBlocks::never)
-			.lightLevel(litBlockEmission(15)))),
+			.lightLevel(litBlockEmission(15))
+			.sound(CygnusSoundTypes.METAL_BULB))),
 		STEEL_BARS = reg("steel_bars", () -> new IronBarsBlock(copy(Blocks.IRON_BARS))),
 		// Aluminium
 		ALUMINIUM_BLOCK = reg("aluminium_block", Blocks.IRON_BLOCK),
@@ -130,9 +133,11 @@ public interface CygnusBlocks
 		TITANIUM_TILES = reg("titanium_tiles", Blocks.IRON_BLOCK),
 		TITANIUM_SHEET_METAL = reg("titanium_sheet_metal", Blocks.IRON_BLOCK),
 		TITANIUM_PLATING = reg("titanium_plating", Blocks.IRON_BLOCK),
-		TITANIUM_WINDOW = reg("titanium_window", TransparentBlock::new, basicGlassProperties(copy(Blocks.IRON_BLOCK))),
+		TITANIUM_WINDOW = reg("titanium_window", TransparentBlock::new, basicGlassProperties(copy(Blocks.IRON_BLOCK).sound(CygnusSoundTypes.METAL_WINDOW))),
+
+	// Lunar Blocks
 		// Lunar Regolith
-		LUNAR_REGOLITH = reg("lunar_regolith", Blocks.GRAVEL),
+		LUNAR_REGOLITH = reg("lunar_regolith", () -> new ColoredFallingBlock(new UnpackedColour(85, 88, 96).toColorRGBA(), copy(Blocks.SAND))),
 		// Lunar Stone
 		LUNAR_STONE = reg("lunar_stone", Blocks.STONE),
 		LUNAR_COBBLESTONE = reg("lunar_cobblestone", Blocks.COBBLESTONE),
@@ -148,13 +153,42 @@ public interface CygnusBlocks
 		CHISELED_LUNAR_DEEPSLATE = reg("chiseled_lunar_deepslate", Blocks.CHISELED_DEEPSLATE),
 		LUNAR_DEEPSLATE_BRICKS = reg("lunar_deepslate_bricks", Blocks.DEEPSLATE_BRICKS),
 		CRACKED_LUNAR_DEEPSLATE_BRICKS = reg("cracked_lunar_deepslate_bricks", Blocks.CRACKED_DEEPSLATE_BRICKS),
-		LUNAR_DEEPSLATE_PILLAR = reg("lunar_deepslate_pillar", RotatedPillarBlock::new, copy(Blocks.STONE_BRICKS)),
+		LUNAR_DEEPSLATE_PILLAR = reg("lunar_deepslate_pillar", RotatedPillarBlock::new, copy(Blocks.DEEPSLATE_BRICKS)),
 
 	// Environmental/nature blocks
+		// Ores
+			// Coal Ores
+		LUNAR_COAL_ORE = reg("lunar_coal_ore", Blocks.COAL_ORE),
+		LUNAR_DEEPSLATE_COAL_ORE = reg("lunar_deepslate_coal_ore", Blocks.DEEPSLATE_COAL_ORE),
+			// Iron Ores
+		LUNAR_IRON_ORE = reg("lunar_iron_ore", Blocks.IRON_ORE),
+		LUNAR_DEEPSLATE_IRON_ORE = reg("lunar_deepslate_iron_ore", Blocks.DEEPSLATE_IRON_ORE),
+			// Gold Ores
+		LUNAR_GOLD_ORE = reg("lunar_gold_ore", Blocks.GOLD_ORE),
+		LUNAR_DEEPSLATE_GOLD_ORE = reg("lunar_deepslate_gold_ore", Blocks.DEEPSLATE_GOLD_ORE),
+			// Redstone Ores
+		LUNAR_REDSTONE_ORE = reg("lunar_redstone_ore", RedStoneOreBlock::new, copy(Blocks.REDSTONE_ORE)),
+		LUNAR_DEEPSLATE_REDSTONE_ORE = reg("lunar_deepslate_redstone_ore", RedStoneOreBlock::new, copy(Blocks.DEEPSLATE_REDSTONE_ORE)),
+			// Emerald Ores
+		LUNAR_EMERALD_ORE = reg("lunar_emerald_ore", Blocks.EMERALD_ORE),
+		LUNAR_DEEPSLATE_EMERALD_ORE = reg("lunar_deepslate_emerald_ore", Blocks.DEEPSLATE_EMERALD_ORE),
+			// Lapis Ores
+		LUNAR_LAPIS_ORE = reg("lunar_lapis_ore", Blocks.LAPIS_ORE),
+		LUNAR_DEEPSLATE_LAPIS_ORE = reg("lunar_deepslate_lapis_ore", Blocks.DEEPSLATE_LAPIS_ORE),
+			// Diamond Ores
+		LUNAR_DIAMOND_ORE = reg("lunar_diamond_ore", Blocks.DIAMOND_ORE),
+		LUNAR_DEEPSLATE_DIAMOND_ORE = reg("lunar_deepslate_diamond_ore", Blocks.DEEPSLATE_DIAMOND_ORE),
+			// Aluminium Ores
 		ALUMINIUM_ORE = reg("aluminium_ore", Blocks.IRON_ORE),
 		DEEPSLATE_ALUMINIUM_ORE = reg("deepslate_aluminium_ore", Blocks.IRON_ORE),
+		LUNAR_ALUMINIUM_ORE = reg("lunar_aluminium_ore", Blocks.IRON_ORE),
+		LUNAR_DEEPSLATE_ALUMINIUM_ORE = reg("lunar_deepslate_aluminium_ore", Blocks.IRON_ORE),
+			// Titanium Ores
 		TITANIUM_ORE = reg("titanium_ore", Blocks.GOLD_ORE),
 		DEEPSLATE_TITANIUM_ORE = reg("deepslate_titanium_ore", Blocks.GOLD_ORE),
+		LUNAR_TITANIUM_ORE = reg("lunar_titanium_ore", Blocks.GOLD_ORE),
+		LUNAR_DEEPSLATE_TITANIUM_ORE = reg("lunar_deepslate_titanium_ore", Blocks.GOLD_ORE),
+		// Chronite
 		CHRONITE_BLOCK = reg("chronite_block", () -> new BlockChronite(of()
 			.mapColor(MapColor.COLOR_LIGHT_GREEN)
 			.strength(1.5F)

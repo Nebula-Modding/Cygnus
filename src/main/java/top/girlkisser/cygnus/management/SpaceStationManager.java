@@ -27,7 +27,8 @@ import java.util.*;
 
 public final class SpaceStationManager extends SavedData
 {
-	private static final String ID = Cygnus.MODID + ":space_station";
+	// Path is at `<world folder>/data/cygnus_space_stations.dat`
+	private static final String ID = Cygnus.MODID + "_space_stations";
 
 	private final Map<UUID, SpaceStation> spaceStations = new HashMap<>();
 	private BlockPos.MutableBlockPos nextOrigin = new BlockPos.MutableBlockPos(0, 100, 0);

@@ -15,12 +15,12 @@ public interface CygnusTags
 	@ApiStatus.NonExtendable
 	interface Items
 	{
-		private static TagKey<Item> c(String path)
+		static TagKey<Item> c(String path)
 		{
 			return TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", path));
 		}
 
-		private static TagKey<Item> mod(String path)
+		static TagKey<Item> mod(String path)
 		{
 			return TagKey.create(Registries.ITEM, Cygnus.id(path));
 		}

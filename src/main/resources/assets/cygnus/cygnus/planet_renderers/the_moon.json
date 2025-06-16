@@ -5,12 +5,9 @@
 		{
 			"layers": [{
 				"texture": "cygnus:textures/environment/star/16x16/g_class.png",
-				"size": 20.0,
-				"sky_rotation": [0.0, 0.0, 0.0],
-				"texture_rotation": [0.0, 0.0, 0.0]
+				"size": 20.0
 			}],
-			"sky_rotation": [0.0, 0.0, 0.0],
-			"texture_rotation": [0.0, 0.0, 0.0],
+			"texture_rotation": [0.0, -20.0, 0.0],
 			"sunset_color": 14180147,
 			"backlight": {
 				"texture": "cygnus:textures/environment/backlights/64x64/circle.png",
@@ -21,13 +18,11 @@
 		{
 			"layers": [{
 				"texture": "cygnus:textures/environment/solar_system/earth.png",
-				"size": 20.0,
-				"sky_rotation": [0.0, 0.0, 0.0],
-				"texture_rotation": [0.0, 0.0, 0.0]
+				"size": 20.0
 			}],
 			"scale": 2.0,
 			"sky_rotation": [180.0, 0.0, 0.0],
-			"texture_rotation": [0.0, 0.0, 0.0],
+			"texture_rotation": [0.0, 20.0, 0.0],
 			"sunset_color": 14180147,
 			"backlight": {
 				"texture": "cygnus:textures/environment/backlights/32x32/circle.png",
