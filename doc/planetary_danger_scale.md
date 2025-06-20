@@ -20,7 +20,7 @@ planets so that players can quickly tell just how dangerous your planet is.
 
 - Breathable atmosphere
 - Easily-accessible water (i.e, oceans)
-- Temperature+humidity is safe
+- Temperature and humidity are safe
 - Farmable soil
 - Safe amounts of radiation
 
@@ -28,9 +28,9 @@ planets so that players can quickly tell just how dangerous your planet is.
 
 - Breathable atmosphere
 - May or may not have water that is easily-accessible
-- Temperature+humidity is safe
+- Temperature and humidity are safe
 - Soil may or may not be farmable
-- Atmosphere is safe to space suits
+- Atmosphere is safe to equipment
 - Safe amounts of radiation
 - Any other condition that makes the planet otherwise unhabitable
 
@@ -38,7 +38,7 @@ planets so that players can quickly tell just how dangerous your planet is.
 
 - Atmosphere may or may not be breathable
 - Water is very difficult to access or there is no water
-- Temperature+humidity may be lethal without equipment
+- Temperature and/or humidity may be lethal without equipment
 - Soil may or may not be farmable
 - Atmosphere is safe to space suits
 - Safe or mildly-dangerous amounts of radiation
@@ -48,7 +48,7 @@ planets so that players can quickly tell just how dangerous your planet is.
 
 - Non-breathable atmosphere
 - No water
-- Temperature+humidity very often or always lethal without equipment or even with equipment
+- Temperature and/or humidity are very often or always lethal without equipment (or even with equipment)
 - Soil is not farmable
 - Atmosphere damages space suits
 - Lethal radiation
@@ -66,7 +66,7 @@ If a planet cannot be landed on, use this instead of safe/euclid/lethal.
 
 - Breathable atmosphere
 - Abundant water
-- Temperature+humidity generally safe
+- Temperature and humidity are generally safe
   - Exceptions are deserts, polar regions, and regions of high temperatures and high humidities
 - Plenty of farmable soil
 - Atmosphere is safe for equipment
@@ -137,7 +137,7 @@ If a planet cannot be landed on, use this instead of safe/euclid/lethal.
 - Atmosphere is safe for equipment
 - Radiation is safe (as far as we could tell)
 
-## Wolf's Planet
+## Edmund's Planet
 
 **Classification:** Habitable
 
