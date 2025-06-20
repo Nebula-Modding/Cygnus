@@ -53,8 +53,7 @@ Any colour values can be provided in three different formats:
           // Local transformations for this layer (optional, defaults to [])
           "transforms": []
 
-          // The texture rotation *relative* to the object's texture rotation
-          // (optional, defaults to [0,0,0])
+          // The texture's roll, pitch, and yaw in degrees (optional, defaults to [0, 0, 0])
           "texture_rotation": [0,0,0]
         }
       ],
@@ -81,11 +80,11 @@ Any colour values can be provided in three different formats:
         }
       ],
 
-      // A rotation for the texture in the sky (optional, defaults to [0,0,0])
+      // The texture's roll, pitch, and yaw in degrees (optional, defaults to [0, 0, 0])
       "texture_rotation": [
-        0.0, // X rotation
-        0.0, // Y rotation
-        0.0 // Z rotation
+        0.0, // Roll
+        0.0, // Pitch
+        0.0  // Yaw
       ],
 
       // The colour for the sunset of this object, if omitted there will be no
@@ -105,7 +104,13 @@ Any colour values can be provided in three different formats:
         "size": 30.0,
 
         // The colour of the backlight (required)
-        "color" : 16379820
+        "color" : 16379820,
+
+        // Local transformations for the backlight (optional, defaults to [])
+        "transforms": []
+
+        // The backlight texture's roll, pitch, and yaw in degrees (optional, defaults to [0, 0, 0])
+        "texture_rotation": [0,0,0]
       },
 
       // If `true`, this skybox object will only be rendered when you're

@@ -225,22 +225,31 @@ public abstract class AbstractSpaceSpecialEffects extends DimensionSpecialEffect
 			int colour = backlight.color().pack();
 
 			poses.pushPose();
-			var rotation = new Quaternionf()
-				.rotateTo(new Vector3f(0, 0, 0), new Vector3f(
-					(object.textureRotation().x + object.textureRotation().x),
-					(object.textureRotation().y + object.textureRotation().y),
-					(object.textureRotation().z + object.textureRotation().z)
-				));
+			for (SkyboxTransform transform : backlight.transforms())
+				transform.apply(object, poses, level, partialTick);
+
+			poses.pushTransformation(new Transformation(
+				new Vector3f(0, object.distance() + backlight.distance(), 0),
+				QuaternionHelpers.castDoublesToFloats(QuaternionHelpers.fromRollPitchYawDegrees(
+					object.textureRotation().x + backlight.textureRotation().x,
+					object.textureRotation().y + backlight.textureRotation().y,
+					object.textureRotation().z + backlight.textureRotation().z
+				)),
+				null,
+				null
+			));
 
 			PoseStack.Pose pose = poses.last();
 			RenderSystem.setShader(GameRenderer::getPositionTexColorShader);
 			RenderSystem.setShaderTexture(0, backlight.texture());
 			BufferBuilder buffer = tes.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX_COLOR);
-			buffer.addVertex(pose, new Vector3f(-size, object.distance() + backlight.distance(), -size).rotate(rotation)).setUv(0.0F, 0.0F).setColor(colour);
-			buffer.addVertex(pose, new Vector3f(size, object.distance() + backlight.distance(), -size).rotate(rotation)).setUv(1.0F, 0.0F).setColor(colour);
-			buffer.addVertex(pose, new Vector3f(size, object.distance() + backlight.distance(), size).rotate(rotation)).setUv(1.0F, 1.0F).setColor(colour);
-			buffer.addVertex(pose, new Vector3f(-size, object.distance() + backlight.distance(), size).rotate(rotation)).setUv(0.0F, 1.0F).setColor(colour);
+			buffer.addVertex(pose, new Vector3f(-size, 0, -size)).setUv(0.0F, 0.0F).setColor(colour);
+			buffer.addVertex(pose, new Vector3f(size, 0, -size)).setUv(1.0F, 0.0F).setColor(colour);
+			buffer.addVertex(pose, new Vector3f(size, 0, size)).setUv(1.0F, 1.0F).setColor(colour);
+			buffer.addVertex(pose, new Vector3f(-size, 0, size)).setUv(0.0F, 1.0F).setColor(colour);
 			BufferUploader.drawWithShader(buffer.buildOrThrow());
+
+			poses.popPose();
 			poses.popPose();
 		}
 

@@ -60,6 +60,8 @@ public record SkyboxObject(
 		ResourceLocation texture,
 		float size,
 		float distance,
+		List<SkyboxTransform> transforms,
+		Vector3f textureRotation,
 		UnpackedColour color
 	)
 	{
@@ -67,6 +69,8 @@ public record SkyboxObject(
 			ResourceLocation.CODEC.fieldOf("texture").forGetter(Backlight::texture),
 			Codec.FLOAT.fieldOf("size").forGetter(Backlight::size),
 			Codec.FLOAT.optionalFieldOf("distance", 0f).forGetter(Backlight::distance),
+			SkyboxTransform.CODEC.listOf().optionalFieldOf("transforms", List.of()).forGetter(Backlight::transforms),
+			ExtraCodecs.VECTOR3F.optionalFieldOf("texture_rotation", new Vector3f(0, 0, 0)).forGetter(Backlight::textureRotation),
 			UnpackedColour.FLEXIBLE_CODEC.fieldOf("color").forGetter(Backlight::color)
 		).apply(it, Backlight::new));
 
