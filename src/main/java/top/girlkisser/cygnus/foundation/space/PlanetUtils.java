@@ -16,7 +16,10 @@ public class PlanetUtils
 	{
 		var planet = Planet.getPlanetsWithIds(level.registryAccess())
 			.stream()
-			.filter(p -> p.getSecond().dimension().equals(level.dimension().location()))
+			.filter(p ->
+				p.getSecond().dimension().isPresent() &&
+				p.getSecond().dimension().get().equals(level.dimension().location())
+			)
 			.findFirst();
 		planetCache.put(level.dimension(), planet);
 	}

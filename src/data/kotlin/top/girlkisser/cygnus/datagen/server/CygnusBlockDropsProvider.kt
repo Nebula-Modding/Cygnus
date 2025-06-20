@@ -42,23 +42,26 @@ class CygnusBlockDropsProvider(event: GatherDataEvent) : DapperLootTableProvider
 			// Drops self
 			setOf(
 				STEEL_BLOCK,
-				STEEL_TILES,
 				STEEL_SHEET_METAL,
+				STEEL_TILES,
+				STEEL_VENT,
 				STEEL_WINDOW,
+				STEEL_PILLAR,
+				STEEL_BARS,
 				STEEL_DOOR,
 				STEEL_TRAPDOOR,
-				STEEL_VENT,
-				STEEL_PILLAR,
 				STEEL_BULB,
-				STEEL_BARS,
+
 				ALUMINIUM_BLOCK,
-				ALUMINIUM_TILES,
 				ALUMINIUM_SHEET_METAL,
+				ALUMINIUM_TILES,
+
 				TITANIUM_BLOCK,
-				TITANIUM_TILES,
 				TITANIUM_SHEET_METAL,
+				TITANIUM_TILES,
 				TITANIUM_PLATING,
 				TITANIUM_WINDOW,
+
 				LUNAR_REGOLITH,
 				LUNAR_COBBLESTONE,
 				SMOOTH_LUNAR_STONE,
@@ -73,6 +76,7 @@ class CygnusBlockDropsProvider(event: GatherDataEvent) : DapperLootTableProvider
 				CRACKED_LUNAR_DEEPSLATE_BRICKS,
 				LUNAR_DEEPSLATE_PILLAR,
 				CHRONITE_BLOCK,
+
 				COMMAND_CENTRE,
 				TELEPAD,
 				CHRONITE_BLAST_FURNACE,
@@ -168,16 +172,16 @@ class CygnusBlockDropsProvider(event: GatherDataEvent) : DapperLootTableProvider
 			}.builder)
 		}
 
-		fun createStoneDrops(stone_block: Block, cobblestone_block: Block)
+		fun createStoneDrops(stoneBlock: Block, cobblestoneBlock: Block)
 		{
-			add(stone_block, DapperLootTableBuilder().apply {
+			add(stoneBlock, DapperLootTableBuilder().apply {
 				addPool {
 					setRolls(1)
 					alternatives {
-						item(stone_block) {
+						item(stoneBlock) {
 							condition(hasSilkTouch())
 						}
-						item(cobblestone_block) { }
+						item(cobblestoneBlock) { }
 					}
 				}
 			}.builder)

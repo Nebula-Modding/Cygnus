@@ -107,31 +107,33 @@ public interface CygnusBlocks
 		return basicGlassProperties(of());
 	}
 
+	// Order: Block, Sheet Metal, Grate, Tiles, Stairs, Slabs, Pressure Plate, Button, Window, Pillar, Bars, Door, Trapdoor, Bulb
+
 	// @formatter:off
 	DeferredBlock<?>
 	// Decorational blocks
 		// Steel
 		STEEL_BLOCK = reg("steel_block", Blocks.IRON_BLOCK),
-		STEEL_TILES = reg("steel_tiles", Blocks.IRON_BLOCK),
 		STEEL_SHEET_METAL = reg("steel_sheet_metal", Blocks.IRON_BLOCK),
+		STEEL_TILES = reg("steel_tiles", Blocks.IRON_BLOCK),
+		STEEL_VENT = reg("steel_vent", WaterloggedTransparentBlock::new, basicGlassProperties(copy(Blocks.COPPER_GRATE).sound(CygnusSoundTypes.METAL_GRATE))),
 		STEEL_WINDOW = reg("steel_window", TransparentBlock::new, basicGlassProperties(copy(Blocks.IRON_BLOCK).sound(CygnusSoundTypes.METAL_WINDOW))),
+		STEEL_PILLAR = reg("steel_pillar", RotatedPillarBlock::new, copy(Blocks.IRON_BLOCK)),
+		STEEL_BARS = reg("steel_bars", () -> new IronBarsBlock(copy(Blocks.IRON_BARS))),
 		STEEL_DOOR = reg("steel_door", () -> new BlockSteelDoor(BlockLockingDoor.IRON_UNLOCKED, copy(Blocks.IRON_DOOR))),
 		STEEL_TRAPDOOR = reg("steel_trapdoor", () -> new BlockLockingTrapdoor(BlockLockingDoor.IRON_UNLOCKED, copy(Blocks.IRON_TRAPDOOR))),
-		STEEL_VENT = reg("steel_vent", WaterloggedTransparentBlock::new, basicGlassProperties(copy(Blocks.COPPER_GRATE).sound(CygnusSoundTypes.METAL_GRATE))),
-		STEEL_PILLAR = reg("steel_pillar", RotatedPillarBlock::new, copy(Blocks.IRON_BLOCK)),
 		STEEL_BULB = reg("steel_bulb", () -> new CopperBulbBlock(copy(Blocks.IRON_BLOCK)
 			.isRedstoneConductor(CygnusBlocks::never)
 			.lightLevel(litBlockEmission(15))
 			.sound(CygnusSoundTypes.METAL_BULB))),
-		STEEL_BARS = reg("steel_bars", () -> new IronBarsBlock(copy(Blocks.IRON_BARS))),
 		// Aluminium
 		ALUMINIUM_BLOCK = reg("aluminium_block", Blocks.IRON_BLOCK),
-		ALUMINIUM_TILES = reg("aluminium_tiles", Blocks.IRON_BLOCK),
 		ALUMINIUM_SHEET_METAL = reg("aluminium_sheet_metal", Blocks.IRON_BLOCK),
+		ALUMINIUM_TILES = reg("aluminium_tiles", Blocks.IRON_BLOCK),
 		// Titanium
 		TITANIUM_BLOCK = reg("titanium_block", Blocks.IRON_BLOCK),
-		TITANIUM_TILES = reg("titanium_tiles", Blocks.IRON_BLOCK),
 		TITANIUM_SHEET_METAL = reg("titanium_sheet_metal", Blocks.IRON_BLOCK),
+		TITANIUM_TILES = reg("titanium_tiles", Blocks.IRON_BLOCK),
 		TITANIUM_PLATING = reg("titanium_plating", Blocks.IRON_BLOCK),
 		TITANIUM_WINDOW = reg("titanium_window", TransparentBlock::new, basicGlassProperties(copy(Blocks.IRON_BLOCK).sound(CygnusSoundTypes.METAL_WINDOW))),
 

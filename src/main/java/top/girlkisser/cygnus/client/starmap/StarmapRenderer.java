@@ -82,14 +82,14 @@ public class StarmapRenderer
 
 	public void renderPlanet(float orbitX, float orbitY, ResourceLocation planetId, Planet planet, StarmapPlanetConfig renderConfig, boolean renderMoons)
 	{
-		renderBody(orbitX, orbitY, planet.yearLength(), renderConfig.orbitDistance(), renderConfig.size(), renderConfig.texture(), planetId);
+		renderBody(orbitX, orbitY, planet.yearLength(), renderConfig.orbitDistance() * scale, renderConfig.size(), renderConfig.texture(), planetId);
 		if (renderMoons)
 		{
 			assert Minecraft.getInstance().level != null;
 			RegistryAccess ra = Minecraft.getInstance().level.registryAccess();
 			double orbitProgress = CygnusClient.clientTicks / planet.yearLength();
-			double planetX = orbitX + (Math.sin(orbitProgress) * renderConfig.orbitDistance());
-			double planetY = orbitY + (Math.cos(orbitProgress) * renderConfig.orbitDistance());
+			double planetX = orbitX + (Math.sin(orbitProgress) * renderConfig.orbitDistance() * scale);
+			double planetY = orbitY + (Math.cos(orbitProgress) * renderConfig.orbitDistance() * scale);
 
 			for (var moon : planet.moons())
 			{

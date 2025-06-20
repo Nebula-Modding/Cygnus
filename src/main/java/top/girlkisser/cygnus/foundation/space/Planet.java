@@ -28,10 +28,10 @@ import java.util.Optional;
 import java.util.UUID;
 
 public record Planet(
-	ResourceLocation dimension,
-	ResourceLocation terminalIcon,
-	ResourceLocation terminalIconHover,
-	ResourceLocation mapTexture,
+	Optional<ResourceLocation> dimension,
+	ResourceLocation terminalIcon, // TODO: Move to planet render config
+	ResourceLocation terminalIconHover, // TODO: Move to planet render config
+	ResourceLocation mapTexture, // TODO: Move to planet render config
 	double gravity, // Meters per second^2. Earth is 9.807
 	boolean hasOxygen,
 	int dayLength, // Ticks
@@ -41,13 +41,13 @@ public record Planet(
 	float ambientRadiation, // Sieverts will probably be best for this
 	List<ResourceLocation> moons,
 //	List<Pair<ResourceLocation, Float>> gasses,
-	float atmosphericPressure //TODO: Pick a unit of measurement. I'll probably use either Bars or Atmospheres Relative to Earth
+	float atmosphericPressure // Bars
 )
 {
 	private static final double METERS_PER_SECOND_SQUARED_TO_MINECRAFT_GRAVITY_UNITS = (0.08d / 9.807d);
 
 	public static final Codec<Planet> CODEC = RecordCodecBuilder.create(it -> it.group(
-		ResourceLocation.CODEC.fieldOf("dimension").forGetter(Planet::dimension),
+		ResourceLocation.CODEC.optionalFieldOf("dimension").forGetter(Planet::dimension),
 		ResourceLocation.CODEC.optionalFieldOf("terminal_icon", Cygnus.id("terminal/planet")).forGetter(Planet::terminalIcon),
 		ResourceLocation.CODEC.optionalFieldOf("terminal_icon_hover", Cygnus.id("terminal/planet_selected")).forGetter(Planet::terminalIconHover),
 		ResourceLocation.CODEC.optionalFieldOf("map_texture", Cygnus.id("planet")).forGetter(Planet::mapTexture),
@@ -106,8 +106,13 @@ public record Planet(
 
 	public void teleportPlayerHereViaBeam(ServerPlayer player, boolean randomPos, int x, int z, @Nullable UUID originSpaceStation)
 	{
+		if (this.dimension.isEmpty())
+		{
+			return;
+		}
+
 		assert player.getServer() != null;
-		ServerLevel level = player.getServer().getLevel(ResourceKey.create(Registries.DIMENSION, this.dimension));
+		ServerLevel level = player.getServer().getLevel(ResourceKey.create(Registries.DIMENSION, this.dimension.orElseThrow()));
 		assert level != null;
 
 		var pos = new BlockPos(x, 300, z).mutable();

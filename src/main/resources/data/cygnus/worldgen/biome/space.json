@@ -1,6 +1,6 @@
 {
 	"carvers": {},
-	"downfall": 0,
+	"downfall": 0.5,
 	"effects": {
 		"fog_color": 0,
 		"sky_color": 0,
@@ -11,5 +11,5 @@
 	"has_precipitation": false,
 	"spawn_costs": {},
 	"spawners": {},
-	"temperature": 0
+	"temperature": 0.5
 }

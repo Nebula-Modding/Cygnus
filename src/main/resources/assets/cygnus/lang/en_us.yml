@@ -2,7 +2,7 @@ itemGroup.cygnus: Cygnus
 
 block.cygnus:
   # Decorational
-  steel_block: Steel Block
+  steel_block: Block of Steel
   steel_tiles: Steel Tiles
   steel_sheet_metal: Steel Sheet Metal
   steel_window: Steel Window
@@ -13,11 +13,11 @@ block.cygnus:
   steel_bulb: Steel Bulb
   steel_bars: Steel Bars
 
-  aluminium_block: Aluminum Block
+  aluminium_block: Block of Aluminum
   aluminium_tiles: Aluminum Tiles
   aluminium_sheet_metal: Aluminum Sheet Metal
 
-  titanium_block: Titanium Block
+  titanium_block: Block of Titanium
   titanium_tiles: Titanium Tiles
   titanium_sheet_metal: Titanium Sheet Metal
   titanium_plating: Titanium Plating

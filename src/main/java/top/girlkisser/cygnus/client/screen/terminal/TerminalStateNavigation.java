@@ -83,7 +83,7 @@ public class TerminalStateNavigation implements ITerminalState
 		{
 			if (CygnusClient.mouseScrollY != 0)
 			{
-				mapZoom = Math.clamp(mapZoom + (float) (CygnusClient.mouseScrollY * screen.getMinecraft().options.mouseWheelSensitivity().get() / 20f), 0.5f, 2.5f);
+				mapZoom = Math.clamp(mapZoom + (CygnusClient.mouseScrollY > 0 ? 0.05f : -0.05f), 0.1f, 3f);
 			}
 
 			if (CygnusClient.isLeftMouseButtonDown)
@@ -122,6 +122,14 @@ public class TerminalStateNavigation implements ITerminalState
 			starmapRenderer.renderGalaxy(StarmapGalaxyConfigLoader.getRenderConfigOrThrow(selectedGalaxyId));
 		}
 		graphics.disableScissor();
+
+		graphics.drawCenteredString(
+			Minecraft.getInstance().font,
+			String.format("%.2fx", mapZoom),
+			screen.getGuiLeft() + mapMinX + ((mapMaxX - mapMinY) / 2),
+			screen.getGuiTop() + mapMinY + 4,
+			0xFF00FF00
+		);
 
 		previousMouseX = mouseX;
 		previousMouseY = mouseY;
