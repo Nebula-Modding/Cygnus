@@ -21,7 +21,9 @@
 				"size": 20.0
 			}],
 			"scale": 2.0,
-			"sky_rotation": [180.0, 0.0, 0.0],
+			"transforms": [
+				{ "axis": "x", "value": 180.0 }
+			],
 			"texture_rotation": [0.0, 20.0, 0.0],
 			"sunset_color": 14180147,
 			"backlight": {
@@ -36,7 +38,9 @@
 				"size": 10.0
 			}],
 			"scale": 2.0,
-			"sky_rotation": [90.0, 0.0, 0.0]
+			"transforms": [
+				{ "axis": "x", "value": 90.0 }
+			]
 		}
 	],
 

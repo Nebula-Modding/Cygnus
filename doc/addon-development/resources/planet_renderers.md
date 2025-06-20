@@ -42,7 +42,7 @@ Any colour values can be provided in three different formats:
       "layers": [
         {
           // The object's texture (required)
-          // Cygnus provides a handful of pre-made 
+          // Cygnus provides a handful of pre-made ones in environment/star/
           "texture": "cygnus:environment/star/8x8/g_class",
 
           // The size of the object in the sky (optional, defaults to 30)
@@ -50,9 +50,8 @@ Any colour values can be provided in three different formats:
           // (including its backlight)
           "size": 30.0,
 
-          // The layer's sky rotation *relative* to the object's sky rotation
-          // (optional, defaults to [0,0,0])
-          "sky_rotation": [0,0,0],
+          // Local transformations for this layer (optional, defaults to [])
+          "transforms": []
 
           // The texture rotation *relative* to the object's texture rotation
           // (optional, defaults to [0,0,0])
@@ -64,11 +63,22 @@ Any colour values can be provided in three different formats:
       // size by (optional, defaults to 1)
       "scale": 1.0,
 
-      // Where to render the object in the sky (required)
-      "sky_rotation": [
-        0.0, // X position
-        0.0, // Y position
-        0.0 // Z position
+      // A sequence of quaternion rotations/transformations to apply to the
+      // object (optional, defaults to [])
+      // Note that there is an implicit transform on the Y axis of -90 degrees,
+      // this orients the axes so that rotating the X axis can be used for
+      // sunrise/sunset.
+      "transforms": [
+        { "axis": "y", "value": 45 }, // Rotate the object by 45 degrees on the **local** Y axis
+        { "axis": "x", "value": 45 }, // Rotate the object by 45 degrees on the local X axis
+        // Rotate the object based on the time
+        {
+          "axis": "x",
+          "value": "cygnus:time",
+          "args": {
+            "multiplier": 2.0 // Make this celestial body go at 2x speed, i.e: it'll orbit the planet twice per day
+          }
+        }
       ],
 
       // A rotation for the texture in the sky (optional, defaults to [0,0,0])
@@ -101,12 +111,6 @@ Any colour values can be provided in three different formats:
       // If `true`, this skybox object will only be rendered when you're
       // orbiting the planet this renderer is for.
       "is_for_orbit": false,
-
-      // Defines how this skybox object should move, if at all
-      //TODO: implement this
-      "movement": {
-        "type": "time"
-      }
     }
   ],
   

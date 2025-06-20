@@ -1,6 +1,6 @@
 {
 	"dimension": "cygnus:the_moon",
-	"gravity": 1.62,
+	"gravity": 1.625,
 	"has_oxygen": false,
 	"day_length": 12000,
 	"night_length": 12000,

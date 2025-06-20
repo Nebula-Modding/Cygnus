@@ -16,7 +16,8 @@ import java.util.Optional;
 public record SkyboxObject(
 	List<SkyboxObject.Layer> layers,
 	float scale,
-	Vector3f skyRotation,
+	float distance,
+	List<SkyboxTransform> transforms,
 	Vector3f textureRotation,
 	Optional<UnpackedColour> sunsetColor,
 	Optional<SkyboxObject.Backlight> backlight,
@@ -26,7 +27,8 @@ public record SkyboxObject(
 	public static final Codec<SkyboxObject> CODEC = RecordCodecBuilder.create(it -> it.group(
 		SkyboxObject.Layer.CODEC.listOf().fieldOf("layers").forGetter(SkyboxObject::layers),
 		Codec.FLOAT.optionalFieldOf("scale", 1f).forGetter(SkyboxObject::scale),
-		ExtraCodecs.VECTOR3F.optionalFieldOf("sky_rotation", new Vector3f(0, 0, 0)).forGetter(SkyboxObject::skyRotation),
+		Codec.FLOAT.optionalFieldOf("distance", 100f).forGetter(SkyboxObject::distance),
+		SkyboxTransform.CODEC.listOf().optionalFieldOf("transforms", List.of()).forGetter(SkyboxObject::transforms),
 		ExtraCodecs.VECTOR3F.optionalFieldOf("texture_rotation", new Vector3f(0, 0, 0)).forGetter(SkyboxObject::textureRotation),
 		UnpackedColour.FLEXIBLE_CODEC.optionalFieldOf("sunset_color").forGetter(SkyboxObject::sunsetColor),
 		SkyboxObject.Backlight.CODEC.optionalFieldOf("backlight").forGetter(SkyboxObject::backlight),
@@ -38,14 +40,16 @@ public record SkyboxObject(
 	public record Layer(
 		ResourceLocation texture,
 		float size,
-		Vector3f skyRotation,
+		float distance,
+		List<SkyboxTransform> transforms,
 		Vector3f textureRotation
 	)
 	{
 		public static final Codec<Layer> CODEC = RecordCodecBuilder.create(it -> it.group(
 			ResourceLocation.CODEC.fieldOf("texture").forGetter(Layer::texture),
 			Codec.FLOAT.fieldOf("size").forGetter(Layer::size),
-			ExtraCodecs.VECTOR3F.optionalFieldOf("sky_rotation", new Vector3f(0, 0, 0)).forGetter(Layer::skyRotation),
+			Codec.FLOAT.optionalFieldOf("distance", 0f).forGetter(Layer::distance),
+			SkyboxTransform.CODEC.listOf().optionalFieldOf("transforms", List.of()).forGetter(Layer::transforms),
 			ExtraCodecs.VECTOR3F.optionalFieldOf("texture_rotation", new Vector3f(0, 0, 0)).forGetter(Layer::textureRotation)
 		).apply(it, Layer::new));
 
@@ -55,12 +59,14 @@ public record SkyboxObject(
 	public record Backlight(
 		ResourceLocation texture,
 		float size,
+		float distance,
 		UnpackedColour color
 	)
 	{
 		public static final Codec<Backlight> CODEC = RecordCodecBuilder.create(it -> it.group(
 			ResourceLocation.CODEC.fieldOf("texture").forGetter(Backlight::texture),
 			Codec.FLOAT.fieldOf("size").forGetter(Backlight::size),
+			Codec.FLOAT.optionalFieldOf("distance", 0f).forGetter(Backlight::distance),
 			UnpackedColour.FLEXIBLE_CODEC.fieldOf("color").forGetter(Backlight::color)
 		).apply(it, Backlight::new));
 

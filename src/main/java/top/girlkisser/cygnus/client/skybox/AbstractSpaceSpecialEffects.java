@@ -3,6 +3,7 @@ package top.girlkisser.cygnus.client.skybox;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.*;
 import com.mojang.math.Axis;
+import com.mojang.math.Transformation;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;
@@ -16,14 +17,14 @@ import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.material.FogType;
 import net.minecraft.world.phys.Vec3;
-import org.joml.Matrix4f;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
+import org.joml.*;
 import top.girlkisser.cygnus.foundation.colours.UnpackedColour;
+import top.girlkisser.cygnus.foundation.mathematics.QuaternionHelpers;
 import top.girlkisser.cygnus.mixin.client.LevelRendererAccessor;
 
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
+import java.lang.Math;
 import java.util.List;
 
 @ParametersAreNonnullByDefault
@@ -212,9 +213,9 @@ public abstract class AbstractSpaceSpecialEffects extends DimensionSpecialEffect
 	{
 		poses.pushPose();
 
-		poses.mulPose(Axis.XP.rotationDegrees(level.getTimeOfDay(partialTick) * 360.0F + object.skyRotation().x));
-		poses.mulPose(Axis.YP.rotationDegrees(-90.0F + object.skyRotation().y));
-		poses.mulPose(Axis.ZP.rotationDegrees(object.skyRotation().z));
+		poses.mulPose(Axis.YP.rotationDegrees(-90.0F));
+		for (SkyboxTransform transform : object.transforms())
+			transform.apply(object, poses, level, partialTick);
 
 		// Render the backlight (if there is one)
 		if (object.backlight().isPresent())
@@ -224,17 +225,21 @@ public abstract class AbstractSpaceSpecialEffects extends DimensionSpecialEffect
 			int colour = backlight.color().pack();
 
 			poses.pushPose();
-			poses.rotateAround(Axis.XP.rotationDegrees(object.textureRotation().x), 0, 0, 0);
-			poses.rotateAround(Axis.YP.rotationDegrees(object.textureRotation().y), 0, 0, 0);
-			poses.rotateAround(Axis.ZP.rotationDegrees(object.textureRotation().z), 0, 0, 0);
-			Matrix4f pose = poses.last().pose();
+			var rotation = new Quaternionf()
+				.rotateTo(new Vector3f(0, 0, 0), new Vector3f(
+					(object.textureRotation().x + object.textureRotation().x),
+					(object.textureRotation().y + object.textureRotation().y),
+					(object.textureRotation().z + object.textureRotation().z)
+				));
+
+			PoseStack.Pose pose = poses.last();
 			RenderSystem.setShader(GameRenderer::getPositionTexColorShader);
 			RenderSystem.setShaderTexture(0, backlight.texture());
 			BufferBuilder buffer = tes.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX_COLOR);
-			buffer.addVertex(pose, -size, 100.0F, -size).setUv(0.0F, 0.0F).setColor(colour);
-			buffer.addVertex(pose, size, 100.0F, -size).setUv(1.0F, 0.0F).setColor(colour);
-			buffer.addVertex(pose, size, 100.0F, size).setUv(1.0F, 1.0F).setColor(colour);
-			buffer.addVertex(pose, -size, 100.0F, size).setUv(0.0F, 1.0F).setColor(colour);
+			buffer.addVertex(pose, new Vector3f(-size, object.distance() + backlight.distance(), -size).rotate(rotation)).setUv(0.0F, 0.0F).setColor(colour);
+			buffer.addVertex(pose, new Vector3f(size, object.distance() + backlight.distance(), -size).rotate(rotation)).setUv(1.0F, 0.0F).setColor(colour);
+			buffer.addVertex(pose, new Vector3f(size, object.distance() + backlight.distance(), size).rotate(rotation)).setUv(1.0F, 1.0F).setColor(colour);
+			buffer.addVertex(pose, new Vector3f(-size, object.distance() + backlight.distance(), size).rotate(rotation)).setUv(0.0F, 1.0F).setColor(colour);
 			BufferUploader.drawWithShader(buffer.buildOrThrow());
 			poses.popPose();
 		}
@@ -244,23 +249,31 @@ public abstract class AbstractSpaceSpecialEffects extends DimensionSpecialEffect
 			float size = layer.size() * object.scale();
 
 			poses.pushPose();
-			poses.mulPose(Axis.XP.rotationDegrees(layer.skyRotation().x));
-			poses.mulPose(Axis.YP.rotationDegrees(layer.skyRotation().y));
-			poses.mulPose(Axis.ZP.rotationDegrees(layer.skyRotation().z));
-			poses.rotateAround(Axis.XP.rotationDegrees(object.textureRotation().x + layer.textureRotation().x), 0, 0, 0);
-			poses.rotateAround(Axis.YP.rotationDegrees(object.textureRotation().y + layer.textureRotation().y), 0, 0, 0);
-			poses.rotateAround(Axis.ZP.rotationDegrees(object.textureRotation().z + layer.textureRotation().z), 0, 0, 0);
+			for (SkyboxTransform transform : layer.transforms())
+				transform.apply(object, poses, level, partialTick);
 
-			Matrix4f pose = poses.last().pose();
+			poses.pushTransformation(new Transformation(
+				new Vector3f(0, object.distance() + layer.distance(), 0),
+				QuaternionHelpers.castDoublesToFloats(QuaternionHelpers.fromRollPitchYawDegrees(
+					object.textureRotation().x + layer.textureRotation().x,
+					object.textureRotation().y + layer.textureRotation().y,
+					object.textureRotation().z + layer.textureRotation().z
+				)),
+				null,
+				null
+			));
+
+			PoseStack.Pose pose = poses.last();
 			RenderSystem.setShader(GameRenderer::getPositionTexShader);
 			RenderSystem.setShaderTexture(0, layer.texture());
 			BufferBuilder buffer = tes.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX);
-			buffer.addVertex(pose, -size, 100.0F, -size).setUv(0.0F, 0.0F);
-			buffer.addVertex(pose, size, 100.0F, -size).setUv(1.0F, 0.0F);
-			buffer.addVertex(pose, size, 100.0F, size).setUv(1.0F, 1.0F);
-			buffer.addVertex(pose, -size, 100.0F, size).setUv(0.0F, 1.0F);
+			buffer.addVertex(pose, new Vector3f(-size, 0, -size)).setUv(0.0F, 0.0F);
+			buffer.addVertex(pose, new Vector3f(size, 0, -size)).setUv(1.0F, 0.0F);
+			buffer.addVertex(pose, new Vector3f(size, 0, size)).setUv(1.0F, 1.0F);
+			buffer.addVertex(pose, new Vector3f(-size, 0, size)).setUv(0.0F, 1.0F);
 			BufferUploader.drawWithShader(buffer.buildOrThrow());
 
+			poses.popPose();
 			poses.popPose();
 		}
 
@@ -287,7 +300,7 @@ public abstract class AbstractSpaceSpecialEffects extends DimensionSpecialEffect
 
 				Vector3f pos = new Vector3f(x, y, z).normalize(100.0F);
 				float rotation = (float) (rand.nextDouble() * Math.PI * 2d);
-				Quaternionf quaternionf = (new Quaternionf()).rotateTo(new Vector3f(0.0F, 0.0F, -1.0F), pos).rotateZ(rotation);
+				Quaternionf quaternionf = new Quaternionf().rotateTo(new Vector3f(0.0F, 0.0F, -1.0F), pos).rotateZ(rotation);
 				buffer.addVertex(pos.add((new Vector3f(size, -size, 0.0F)).rotate(quaternionf))).setColor(colour.r(), colour.g(), colour.b(), colour.a());
 				buffer.addVertex(pos.add((new Vector3f(size, size, 0.0F)).rotate(quaternionf))).setColor(colour.r(), colour.g(), colour.b(), colour.a());
 				buffer.addVertex(pos.add((new Vector3f(-size, size, 0.0F)).rotate(quaternionf))).setColor(colour.r(), colour.g(), colour.b(), colour.a());
