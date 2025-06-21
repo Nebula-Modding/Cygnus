@@ -110,7 +110,12 @@ public class BlockTelepadBE extends BlockEntity implements ITickableBE
 	@OnlyIn(Dist.CLIENT)
 	public void clientTick(ClientLevel level)
 	{
-		if (CygnusClient.mySpaceStation == null || Planet.getPlanetByIdOrThrow(level.registryAccess(), CygnusClient.mySpaceStation.orbiting()).dimension().isPresent())
+		if (
+			CygnusClient.mySpaceStation == null ||
+			Planet.getPlanetById(level.registryAccess(), CygnusClient.mySpaceStation.orbiting())
+				.map(planet -> planet.value().dimension().isPresent())
+				.orElse(true)
+		)
 		{
 			float x = Mth.sin(CygnusClient.clientTicks / 2f) * 0.5f;
 			float z = Mth.cos(CygnusClient.clientTicks / 2f) * 0.5f;

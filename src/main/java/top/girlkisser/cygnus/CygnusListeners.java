@@ -105,20 +105,21 @@ final class CygnusListeners
 					event.setCanceled(true);
 					return;
 				}
-				// Otherwise, we multiply the fall damage by the gravity/2
-				event.setDamageMultiplier((float) gravity);
+				// Otherwise, we multiply the fall damage by the gravity
+				// The base gravity is 0.08, so to scale it properly we need to add 0.92 (that way gravity of 0.08 does not affect fall damage)
+				event.setDamageMultiplier((float) gravity + 0.92f);
 				// The vanilla game will ceil the damage, meaning you'll take 1 damage even when the damage is something tiny like 0.001 (which you'd see on the moon)
 				// To fix this, I'll just cancel fall damage if it's low enough. Hacky? Sure, but it's probably fine :3
-				if (!event.getEntity().getType().is(EntityTypeTags.FALL_DAMAGE_IMMUNE))
-				{
-					float safeFallDistance = (float)event.getEntity().getAttributeValue(Attributes.SAFE_FALL_DISTANCE);
-					float distance = event.getDistance() - safeFallDistance;
-					double damage = (double)(distance * event.getDamageMultiplier()) * event.getEntity().getAttributeValue(Attributes.FALL_DAMAGE_MULTIPLIER);
-					if (damage < 1d)
-					{
-						event.setCanceled(true);
-					}
-				}
+//				if (!event.getEntity().getType().is(EntityTypeTags.FALL_DAMAGE_IMMUNE))
+//				{
+//					float safeFallDistance = (float)event.getEntity().getAttributeValue(Attributes.SAFE_FALL_DISTANCE);
+//					float distance = event.getDistance() - safeFallDistance;
+//					double damage = (double)(distance * event.getDamageMultiplier()) * event.getEntity().getAttributeValue(Attributes.FALL_DAMAGE_MULTIPLIER);
+//					if (damage < 1d)
+//					{
+//						event.setCanceled(true);
+//					}
+//				}
 			}
 		}
 
