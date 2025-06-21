@@ -1,9 +1,11 @@
 package top.girlkisser.cygnus.content.block;
 
+import net.minecraft.ChatFormatting;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.Mth;
@@ -75,7 +77,10 @@ public class BlockTelepadBE extends BlockEntity implements ITickableBE
 				return;
 			Planet planet = maybePlanet.get().value();
 
-			planet.teleportPlayerHereViaBeam(player, spaceStation.player());
+			planet.dimension().ifPresentOrElse(
+				it -> planet.teleportPlayerHereViaBeam(player, spaceStation.player()),
+				() -> player.sendSystemMessage(Component.translatable("message.cygnus.cannot_land_on_planet").withStyle(ChatFormatting.RED))
+			);
 		}
 		// Teleporting to a space station
 		else
@@ -88,11 +93,8 @@ public class BlockTelepadBE extends BlockEntity implements ITickableBE
 	@Override
 	public void serverTick(ServerLevel level)
 	{
-		AABB aabb = getAABB(worldPosition);
-		List<ServerPlayer> players = level.getEntitiesOfClass(ServerPlayer.class, aabb, Entity::isCrouching);
 		Map<ServerPlayer, AtomicInteger> ticks = new HashMap<>();
-		for (ServerPlayer player : players)
-		{
+		level.getEntitiesOfClass(ServerPlayer.class, getAABB(worldPosition), Entity::isCrouching).forEach(player -> {
 			ticks.put(player, teleportingPlayers.containsKey(player) ? teleportingPlayers.get(player) : new AtomicInteger(0));
 
 			if (ticks.get(player).incrementAndGet() >= TICKS_FOR_TELEPORT)
@@ -100,7 +102,7 @@ public class BlockTelepadBE extends BlockEntity implements ITickableBE
 				teleportPlayer(level, player);
 				ticks.remove(player);
 			}
-		}
+		});
 		teleportingPlayers = ticks;
 	}
 
@@ -108,9 +110,12 @@ public class BlockTelepadBE extends BlockEntity implements ITickableBE
 	@OnlyIn(Dist.CLIENT)
 	public void clientTick(ClientLevel level)
 	{
-		float x = Mth.sin(CygnusClient.clientTicks / 2f) * 0.5f;
-		float z = Mth.cos(CygnusClient.clientTicks / 2f) * 0.5f;
-		ParticleHelper.addDust(DustParticlePresets.TELEPAD, level, worldPosition.getCenter().add(x, 0.3d, z), new Vec3(0, 0.7D, 0));
+		if (CygnusClient.mySpaceStation == null || Planet.getPlanetByIdOrThrow(level.registryAccess(), CygnusClient.mySpaceStation.orbiting()).dimension().isPresent())
+		{
+			float x = Mth.sin(CygnusClient.clientTicks / 2f) * 0.5f;
+			float z = Mth.cos(CygnusClient.clientTicks / 2f) * 0.5f;
+			ParticleHelper.addDust(DustParticlePresets.TELEPAD, level, worldPosition.getCenter().add(x, 0.3d, z), new Vec3(0, 0.7D, 0));
+		}
 	}
 
 	@Override

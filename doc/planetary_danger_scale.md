@@ -67,8 +67,19 @@ If a planet cannot be landed on, use this instead of safe/euclid/lethal.
 - Breathable atmosphere
 - Abundant water
 - Temperature and humidity are generally safe
-  - Exceptions are deserts, polar regions, and regions of high temperatures and high humidities
+  - Exceptions are deserts, polar regions, and regions of high temperatures and high humidity
 - Plenty of farmable soil
+- Atmosphere is safe for equipment
+- Radiation is safe
+
+### Stargate's Planet (*Stargate*, the original one)
+
+**Classification:** Habitable
+
+- Breathable atmosphere
+- Water seems to be mildly scarce but the population is large enough to assume they have access to water
+- Temperature is high but generally safe
+- Soil may or may not be farmable, if not there is plenty of wildlife to hunt for food
 - Atmosphere is safe for equipment
 - Radiation is safe
 

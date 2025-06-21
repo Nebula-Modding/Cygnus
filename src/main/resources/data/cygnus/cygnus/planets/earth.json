@@ -15,5 +15,6 @@
 	"moons": [
 		"cygnus:the_moon"
 	],
-	"atmospheric_pressure": -1
+	"atmospheric_pressure": -1,
+	"danger_index": "habitable"
 }

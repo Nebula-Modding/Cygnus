@@ -13,5 +13,6 @@
 	],
 	"ambient_radiation": 0, //todo
 	"moons": [],
-	"atmospheric_pressure": 0
+	"atmospheric_pressure": 0,
+	"danger_index": "safe" // I'd say that space is reasonably safe :3
 }

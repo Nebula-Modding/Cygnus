@@ -21,6 +21,7 @@ import org.jetbrains.annotations.Nullable;
 import top.girlkisser.cygnus.Cygnus;
 import top.girlkisser.cygnus.content.entity.EntityLandingBeam;
 import top.girlkisser.cygnus.foundation.CygnusRegistries;
+import top.girlkisser.cygnus.foundation.codec.LimitedStringCodec;
 import top.girlkisser.cygnus.foundation.mathematics.CubicBezier;
 
 import java.util.List;
@@ -41,7 +42,8 @@ public record Planet(
 	float ambientRadiation, // Sieverts will probably be best for this
 	List<ResourceLocation> moons,
 //	List<Pair<ResourceLocation, Float>> gasses,
-	float atmosphericPressure // Bars
+	float atmosphericPressure, // Bars
+	PlanetaryDangerIndex dangerIndex
 )
 {
 	private static final double METERS_PER_SECOND_SQUARED_TO_MINECRAFT_GRAVITY_UNITS = (0.08d / 9.807d);
@@ -60,10 +62,16 @@ public record Planet(
 		Codec.FLOAT.fieldOf("ambient_radiation").forGetter(Planet::ambientRadiation),
 		ResourceLocation.CODEC.listOf().fieldOf("moons").forGetter(Planet::moons),
 //		Codec.simpleMap(ResourceLocation.CODEC, Codec.FLOAT, Keyable.forStrings()).fieldOf("gasses").forGetter()
-		Codec.FLOAT.fieldOf("atmospheric_pressure").forGetter(Planet::atmosphericPressure)
+		Codec.FLOAT.fieldOf("atmospheric_pressure").forGetter(Planet::atmosphericPressure),
+		LimitedStringCodec.enumStringCodec(PlanetaryDangerIndex.values(), PlanetaryDangerIndex::valueOf).fieldOf("danger_index").forGetter(Planet::dangerIndex)
 	).apply(it, Planet::new));
 
 	public static final StreamCodec<RegistryFriendlyByteBuf, Planet> STREAM_CODEC = ByteBufCodecs.fromCodecWithRegistries(CODEC);
+
+	public int getTotalDayLength()
+	{
+		return dayLength + nightLength;
+	}
 
 	public boolean isDayAtTick(long tick)
 	{
@@ -97,6 +105,16 @@ public record Planet(
 	public float getTemperatureForTick(long tick)
 	{
 		return ambientTemperatureCurve.sample(getTimeProgress(tick)).y;
+	}
+
+	public float getTemperatureAtMidday()
+	{
+		return ambientTemperatureCurve.sample(0.5f).y;
+	}
+
+	public float getTemperatureAtMidnight()
+	{
+		return ambientTemperatureCurve.sample(0.75f).y;
 	}
 
 	public double getGravityInVanillaUnits()

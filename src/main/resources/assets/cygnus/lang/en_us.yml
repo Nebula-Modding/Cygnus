@@ -148,12 +148,36 @@ screen.cygnus:
     stats: Stats
     execute: Execute
     launch_to: "Launch to %s"
+    info: Info & Warnings
     # Text boxes
     execute_terminal_command: Execute terminal command
     # Status messages
     space_station_stats: "== Space Station Stats =="
     orbiting: "Orbiting: %s"
     telepads: "Telepads: %s"
+    # Planet summary messages
+    danger_index: "Danger Index: %s"
+    habitable: Habitable
+    safe: Safe
+    euclid: Euclid
+    lethal: Lethal
+    non_landable: Non-Landable
+    atmosphere:
+      breathable: "Atmosphere: Breathable"
+      nonbreathable: "Atmosphere: Not breathable"
+      toxic: "Atmosphere: Toxic"
+      damaging: "Atmosphere: Damaging to equipment and life"
+    temperature: "Temperature: %f°C to %f°C"
+    gravity: "Gravity: %fm/s^2"
+    water:
+      accessible: "Water: Accessible"
+      not_easily_accessible: "Water: Not easily accessible"
+      none: "Water: None"
+    radiation:
+      safe: "Radiation: Safe"
+      dangerous: "Radiation: Dangerous amounts"
+      lethal: "Radiation: Lethal amounts"
+
   command_centre:
     # Buttons
     construct: Construct
@@ -163,11 +187,13 @@ screen.cygnus:
 message.cygnus:
   # Shared tooltips
   door_lockable: Use a Key to toggle between needing redstone to open the door
+
   # Errors
   failed_to_place_space_station: Failed to place space station
   no_such_command: "No such command: %s"
   no_such_planet: "No such planet: %s"
-  cannot_remove_last_telepad: "Your space station must have at least one telepad."
+  cannot_remove_last_telepad: Your space station must have at least one telepad
+  cannot_land_on_planet: You cannot land on this planet
 
 space_station.cygnus:
   space_station: Space Station

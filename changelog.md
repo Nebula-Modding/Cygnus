@@ -53,7 +53,8 @@ Yippie the first release :3
 - All celestial bodies (galaxies, stars, planets, and moons) are data-driven. See `src/main/resources/data/cygnus/cygnus/{galaxies,planets,stars}/`.
   - Moons are planets with a different name, just add the planet as a moon to the planet it orbits.
   - Moons can have moons.
-  - All planets need a dimension that they associate with.
+  - Landable planets need a dimension that they associate with.
+    - For non-landable planets (i.e, gas giants), skip the `dimension` field.
   - I recommend not using dimensions with exposed void.
     - If the landing beam ends up over void, then the player will be left with a telepad at Y=(dimension's minimum build limit), which will be annoying to get out of.
 - Custom space stations can be made by adding a `cygnus:space_station_crafting` recipe:
@@ -96,6 +97,7 @@ Yippie the first release :3
   - You run a terminal command. A clientbound packet will be sent to sync the packet. It's handler will update the current open screen if it's a `ScreenTerminal` and set the screen's space station to the packet's.
   - If you need the space station on the client for another reason, you will need to manually send a clientbound packet. You can get a space station using a `SpaceStationManager`.
   - In the future the client will also be sent a space station packet to render skyboxes while orbiting a planet.
+  - You can access the space station from the client with `CygnusClient.mySpaceStation`. Make sure to check if it's null!
 - Chronite has a 2D particle that gets emitted when held in a screen. You can utilize this engine too by adding particles to `top.girlkisser.cygnus.foundation.client.particl2d.ScreenParticleEngine2D.INSTANCE`.
   - I create the particles in a `ScreenEvent.Render.Post` event. See `src/main/java/top/girlkisser/cygnus/CygnusClientListeners$GameEventListeners#postScreenRender`,
   - The visual effect can be disabled using the `enable2dParticles` config option in the client config file.

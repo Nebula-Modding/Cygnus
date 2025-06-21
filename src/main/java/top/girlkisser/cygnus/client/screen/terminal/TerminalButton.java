@@ -13,8 +13,7 @@ import top.girlkisser.cygnus.Cygnus;
 public class TerminalButton extends Button
 {
 	public static final ResourceLocation
-		BACK = Cygnus.id("terminal/back"),
-		BACK_SELECTED = Cygnus.id("terminal/back_selected"),
+		// Terminal
 		NAVIGATION = Cygnus.id("terminal/navigation"),
 		NAVIGATION_SELECTED = Cygnus.id("terminal/navigation_selected"),
 		LAND = Cygnus.id("terminal/land"),
@@ -35,8 +34,20 @@ public class TerminalButton extends Button
 		PLANET_SELECTED = Cygnus.id("terminal/planet_selected"),
 		LAUNCH = Cygnus.id("terminal/launch"),
 		LAUNCH_SELECTED = Cygnus.id("terminal/launch_selected"),
+		EXCLAIM_GREEN = Cygnus.id("terminal/exclaim_green"),
+		EXCLAIM_RED = Cygnus.id("terminal/exclaim_red"),
+		EXCLAIM_SELECTED = Cygnus.id("terminal/exclaim_selected"),
+		INFO = Cygnus.id("terminal/info"),
+		INFO_GREY = Cygnus.id("terminal/info_grey"),
+		INFO_YELLOW = Cygnus.id("terminal/info_yellow"),
+		INFO_RED = Cygnus.id("terminal/info_red"),
+		INFO_SELECTED = Cygnus.id("terminal/info_selected"),
+		// Command Centre
 		CONSTRUCT = Cygnus.id("terminal/construct"),
 		CONSTRUCT_SELECTED = Cygnus.id("terminal/construct_selected"),
+		// Generic
+		BACK = Cygnus.id("terminal/back"),
+		BACK_SELECTED = Cygnus.id("terminal/back_selected"),
 		BUTTON = Cygnus.id("terminal/button"),
 		BUTTON_SELECTED = Cygnus.id("terminal/button_selected"),
 		BUTTON_WIDE = Cygnus.id("terminal/button_wide"),

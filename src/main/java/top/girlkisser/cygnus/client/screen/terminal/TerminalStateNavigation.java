@@ -15,6 +15,7 @@ import top.girlkisser.cygnus.client.starmap.StarmapRenderer;
 import top.girlkisser.cygnus.client.starmap.StarmapStarConfigLoader;
 import top.girlkisser.cygnus.foundation.space.Galaxy;
 import top.girlkisser.cygnus.foundation.space.Planet;
+import top.girlkisser.cygnus.foundation.space.PlanetaryDangerIndex;
 import top.girlkisser.cygnus.foundation.space.Star;
 
 import java.util.ArrayList;
@@ -211,6 +212,28 @@ public class TerminalStateNavigation implements ITerminalState
 
 		if (!selectedPlanetStack.isEmpty())
 		{
+			PlanetaryDangerIndex dangerIndex = selectedPlanetStack.getLast().dangerIndex();
+			ResourceLocation icon = switch (dangerIndex) {
+				case HABITABLE, SAFE -> TerminalButton.INFO;
+				case EUCLID -> TerminalButton.INFO_YELLOW;
+				case LETHAL -> TerminalButton.EXCLAIM_RED;
+				case NON_LANDABLE -> TerminalButton.INFO_GREY;
+			};
+			ResourceLocation selected = switch (dangerIndex) {
+				case HABITABLE, SAFE, EUCLID, NON_LANDABLE -> TerminalButton.INFO_SELECTED;
+				case LETHAL -> TerminalButton.EXCLAIM_SELECTED;
+			};
+			screen.addRenderableWidget(new TerminalIconButton(
+				screen.getGuiLeft() + 190,
+				screen.getGuiTop() + 154,
+				Component.translatable("screen.cygnus.terminal.info"),
+				Supplier::get,
+				button -> screen.setState(new TerminalSubStatePlanetSummary(screen, this)),
+				icon,
+				selected,
+				false
+			));
+
 			screen.addRenderableWidget(new TerminalIconButton(
 				screen.getGuiLeft() + 190,
 				screen.getGuiTop() + 181,
