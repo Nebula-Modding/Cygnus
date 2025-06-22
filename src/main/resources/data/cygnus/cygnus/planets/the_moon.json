@@ -2,17 +2,17 @@
 	"dimension": "cygnus:the_moon",
 	"gravity": 1.625,
 	"has_oxygen": false,
-	"day_length": 12000,
-	"night_length": 12000,
-	"year_length": 31,
+	"day_length": 354000,
+	"night_length": 354000,
+	"year_length": 27.3,
 	"ambient_temperature_curve": [
-		{ "x": 0.00, "y": 10 }, // dawn
-		{ "x": 0.25, "y": 10 }, // midday
-		{ "x": 0.50, "y": 10 }, // midnight
-		{ "x": 1.00, "y": 10 } // dawn
+		{ "x": 0.00, "y": -10 }, // dawn
+		{ "x": 0.25, "y": 120 }, // midday
+		{ "x": 0.50, "y": -130 }, // midnight
+		{ "x": 1.00, "y": -10 } // dawn
 	],
-	"ambient_radiation": 0,
+	"ambient_radiation": 0, // todo
 	"moons": [],
-	"atmospheric_pressure": -1,
+	"atmospheric_pressure": 0,
 	"danger_index": "safe"
 }

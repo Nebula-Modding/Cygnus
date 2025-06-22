@@ -1,5 +1,5 @@
 {
 	"texture": "cygnus:textures/environment/solar_system/moon.png",
-	"size": 10.0,
-	"orbit_distance": 15.0
+	"size": 8.0,
+	"orbit_distance": 25.0
 }
