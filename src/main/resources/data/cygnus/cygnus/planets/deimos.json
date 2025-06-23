@@ -1,0 +1,17 @@
+{
+	"gravity": 0.003,
+	"has_oxygen": false,
+	"day_length": 15090,
+	"night_length": 15090,
+	"year_length": 12.6,
+	"ambient_temperature_curve": [
+		{ "x": 0.00, "y": 40.2 }, // dawn
+		{ "x": 0.25, "y": 40.2 }, // midday
+		{ "x": 0.50, "y": 40.2 }, // midnight
+		{ "x": 1.00, "y": 40.2 } // dawn
+	],
+	"ambient_radiation": 0,
+	"moons": [],
+	"atmospheric_pressure": 0,
+	"danger_index": "non_landable"
+}

@@ -1,6 +1,8 @@
 {
 	"planets": [
+		"cygnus:mercury",
+		"cygnus:venus",
 		"cygnus:earth",
-		"cygnus:venus"
+		"cygnus:mars"
 	]
 }

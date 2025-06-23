@@ -137,6 +137,12 @@ planet.cygnus:
   earth: Earth
   the_moon: The Moon
   mars: Mars
+  deimos: Deimos
+  phobos: Phobos
+  jupiter: Jupiter
+  saturn: Saturn
+  uranus: Uranus
+  neptune: Neptune
 
 screen.cygnus:
   terminal:

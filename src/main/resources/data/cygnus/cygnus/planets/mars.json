@@ -1,0 +1,20 @@
+{
+	"gravity": 3.728,
+	"has_oxygen": false,
+	"day_length": 12335,
+	"night_length": 12335,
+	"year_length": 687.0,
+	"ambient_temperature_curve": [
+		{ "x": 0.00, "y": 79.6 }, // dawn
+		{ "x": 0.25, "y": 17.3 }, // midday
+		{ "x": 0.50, "y": -93.1 }, // midnight
+		{ "x": 1.00, "y": -79.6 } // dawn
+	],
+	"ambient_radiation": 0,
+	"moons": [
+		"cygnus:deimos",
+		"cygnus:phobos"
+	],
+	"atmospheric_pressure": 0,
+	"danger_index": "safe"
+}
