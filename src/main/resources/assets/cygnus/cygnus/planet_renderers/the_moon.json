@@ -61,12 +61,12 @@
 		"count": 5000,
 		"palette": [
 			{ "color": [242, 83, 42], "weight": 1 },
-			{ "color": [249, 222, 165], "weight": 4 },
-			{ "color": [249, 239, 172], "weight": 4 },
-			{ "color": [249, 248, 200], "weight": 4 },
-			{ "color": [209, 236, 245], "weight": 4 },
-			{ "color": [196, 225, 247], "weight": 4 },
-			{ "color": [177, 208, 249], "weight": 3 }
+			{ "color": [249, 222, 165], "weight": 3 },
+			{ "color": [249, 239, 172], "weight": 3 },
+			{ "color": [249, 248, 200], "weight": 3 },
+			{ "color": [209, 236, 245], "weight": 2 },
+			{ "color": [196, 225, 247], "weight": 2 },
+			{ "color": [177, 208, 249], "weight": 1 }
 		]
 	}
 }

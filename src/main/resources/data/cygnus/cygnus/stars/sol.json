@@ -3,9 +3,6 @@
 		"cygnus:mercury",
 		"cygnus:venus",
 		"cygnus:earth",
-		"cygnus:mars",
-		"cygnus:jupiter",
-		"cygnus:saturn",
-		"cygnus:uranus"
+		"cygnus:mars"
 	]
 }
