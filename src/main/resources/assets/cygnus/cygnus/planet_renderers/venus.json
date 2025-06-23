@@ -3,40 +3,43 @@
 
 	"skybox_objects": [
 		{
+			"sunset_color": [145, 101, 74],
 			"layers": [{
 				"texture": "cygnus:textures/environment/star/16x16/g_class.png",
-				"size": 25.0
+				"size": 10.5
 			}],
-			"texture_rotation": [0.0, -20.0, 0.0],
-			"sunset_color": 14180147,
-			"backlight": {
-				"texture": "cygnus:textures/environment/backlights/64x64/circle.png",
-				"size": 80.0,
-				"color": [242,205,92,150]
-			}
-		},
-		{
-			"layers": [{
-				"texture": "cygnus:textures/environment/solar_system/venus.png",
-				"size": 20.0
-			}],
-			"scale": 2.0,
 			"transforms": [
-				{ "axis": "x", "value": 180.0 }
+				{ "axis": "y", "value": 180 },
+				{ "axis": "x", "value": "cygnus:time", "args": { "multiplier": 1.0 } }
 			],
-			"texture_rotation": [0.0, 20.0, 0.0],
-			"sunset_color": 14180147,
+			"texture_rotation": [0, 180, 0],
 			"backlight": {
 				"texture": "cygnus:textures/environment/backlights/32x32/circle.png",
-				"size": 80.0,
-				"color": [224,203,154,175]
-			},
-			"is_for_orbit": true
+				"size": 42.0,
+				"color": [249, 239, 172, 175]
+			}
+		},
+
+		{
+			"is_for_orbit": true,
+			"layers": [{
+				"texture": "cygnus:textures/environment/solar_system/venus.png",
+				"size": 60.0
+			}],
+			"transforms": [ 
+				{ "axis": "x", "value": 180.0 }
+			],
+			"texture_rotation": [0, 90, 0],
+			"backlight": {
+				"texture": "cygnus:textures/environment/backlights/32x32/circle.png",
+				"size": 240.0,
+				"color": [224, 203, 154, 175]
+			}
 		}
 	],
 
 	"stars": {
-		"visibility": "night",
+		"visibility": "always",
 		"brightness_curve": [
 			{"x": 0, "y": 1.00},
 			{"x": 0, "y": 0.50},
