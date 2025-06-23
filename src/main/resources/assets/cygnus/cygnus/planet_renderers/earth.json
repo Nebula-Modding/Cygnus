@@ -3,7 +3,8 @@
 
 	"skybox_objects": [
 		{
-			"sunset_color": 14180147,
+			"is_for_planet": true,
+			"sunset_color": [216, 95, 51],
 			"layers": [{
 				"texture": "cygnus:textures/environment/star/8x8/g_class.png",
 				"size": 7.5
@@ -16,6 +17,23 @@
 				"texture": "cygnus:textures/environment/backlights/32x32/circle.png",
 				"size": 30.0,
 				"color": [249, 239, 172, 175]
+			}
+		},
+		
+		{
+			"is_for_orbit": true,
+			"layers": [{
+				"texture": "cygnus:textures/environment/star/8x8/f_class.png",
+				"size": 7.5
+			}],
+			"transforms": [
+				{ "axis": "x", "value": "cygnus:time", "args": { "multiplier": 1.0 } }
+			],
+			"texture_rotation": [0, 0, 0],
+			"backlight": {
+				"texture": "cygnus:textures/environment/backlights/32x32/circle.png",
+				"size": 30.0,
+				"color": [249, 248, 200, 175]
 			}
 		},
 
@@ -33,7 +51,7 @@
 			"backlight": {
 				"texture": "cygnus:textures/environment/backlights/32x32/circle.png",
 				"size": 20.0,
-				"color": [174, 177, 192, 150]
+				"color": [174, 177, 192, 125]
 			}
 		},
 
