@@ -9,7 +9,7 @@ import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import org.jetbrains.annotations.ApiStatus;
 import org.joml.Vector3f;
 import top.girlkisser.cygnus.Cygnus;
-import top.girlkisser.cygnus.foundation.fluid.BasicFluidType;
+import top.girlkisser.lazuli.api.fluid.BasicFluidType;
 
 @SuppressWarnings("unused")
 @ApiStatus.NonExtendable

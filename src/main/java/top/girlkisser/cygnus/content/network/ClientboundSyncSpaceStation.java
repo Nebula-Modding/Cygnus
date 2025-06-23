@@ -6,11 +6,11 @@ import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 import org.jetbrains.annotations.NotNull;
 import top.girlkisser.cygnus.Cygnus;
+import top.girlkisser.cygnus.api.space.SpaceStation;
 import top.girlkisser.cygnus.client.CygnusClient;
 import top.girlkisser.cygnus.client.skybox.SpaceSpecialEffects;
 import top.girlkisser.cygnus.content.CygnusResourceKeys;
 import top.girlkisser.cygnus.content.menu.ContainerTerminal;
-import top.girlkisser.cygnus.foundation.space.SpaceStation;
 
 public record ClientboundSyncSpaceStation(SpaceStation spaceStation) implements CustomPacketPayload
 {

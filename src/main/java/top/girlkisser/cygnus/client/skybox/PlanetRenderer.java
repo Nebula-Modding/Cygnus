@@ -7,10 +7,10 @@ import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.RandomSource;
-import top.girlkisser.cygnus.foundation.codec.LimitedStringCodec;
-import top.girlkisser.cygnus.foundation.collections.WeightedRandomList;
-import top.girlkisser.cygnus.foundation.colours.UnpackedColour;
-import top.girlkisser.cygnus.foundation.mathematics.CubicBezier;
+import top.girlkisser.lazuli.api.codec.LimitedStringCodec;
+import top.girlkisser.lazuli.api.collections.WeightedRandomList;
+import top.girlkisser.lazuli.api.colour.UnpackedColour;
+import top.girlkisser.lazuli.api.mathematics.CubicBezier;
 
 import java.util.ArrayList;
 import java.util.List;

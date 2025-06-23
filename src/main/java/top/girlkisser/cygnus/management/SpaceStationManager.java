@@ -18,9 +18,9 @@ import net.minecraft.world.level.saveddata.SavedData;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
 import top.girlkisser.cygnus.Cygnus;
+import top.girlkisser.cygnus.api.space.SpaceStation;
 import top.girlkisser.cygnus.content.CygnusResourceKeys;
 import top.girlkisser.cygnus.content.registry.CygnusBlocks;
-import top.girlkisser.cygnus.foundation.space.SpaceStation;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.*;

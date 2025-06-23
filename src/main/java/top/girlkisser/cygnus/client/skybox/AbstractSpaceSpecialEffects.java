@@ -17,14 +17,15 @@ import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.material.FogType;
 import net.minecraft.world.phys.Vec3;
-import org.joml.*;
-import top.girlkisser.cygnus.foundation.colours.UnpackedColour;
-import top.girlkisser.cygnus.foundation.mathematics.QuaternionHelpers;
+import org.joml.Matrix4f;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
+import top.girlkisser.cygnus.api.mathematics.QuaternionHelpers;
 import top.girlkisser.cygnus.mixin.client.LevelRendererAccessor;
+import top.girlkisser.lazuli.api.colour.UnpackedColour;
 
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
-import java.lang.Math;
 import java.util.List;
 
 @ParametersAreNonnullByDefault

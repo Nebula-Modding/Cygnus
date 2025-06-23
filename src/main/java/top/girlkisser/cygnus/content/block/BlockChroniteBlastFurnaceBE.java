@@ -21,10 +21,10 @@ import top.girlkisser.cygnus.content.crafting.RecipeChroniteBlasting;
 import top.girlkisser.cygnus.content.registry.CygnusBlockEntityTypes;
 import top.girlkisser.cygnus.content.registry.CygnusDataMaps;
 import top.girlkisser.cygnus.content.registry.CygnusRecipeTypes;
-import top.girlkisser.cygnus.foundation.block.AbstractInventoryBE;
-import top.girlkisser.cygnus.foundation.block.ITickableBE;
-import top.girlkisser.cygnus.foundation.collections.ArrayHelpers;
-import top.girlkisser.cygnus.foundation.container.ContainerUtils;
+import top.girlkisser.lazuli.api.block.AbstractInventoryBE;
+import top.girlkisser.lazuli.api.block.ITickableBE;
+import top.girlkisser.lazuli.api.collections.ArrayHelpers;
+import top.girlkisser.lazuli.api.inventory.ContainerUtils;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;

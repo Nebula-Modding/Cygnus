@@ -9,11 +9,11 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
+import top.girlkisser.cygnus.api.space.SpaceStation;
 import top.girlkisser.cygnus.content.CygnusResourceKeys;
 import top.girlkisser.cygnus.content.registry.CygnusBlocks;
-import top.girlkisser.cygnus.foundation.block.AbstractBlockWithEntity;
-import top.girlkisser.cygnus.foundation.space.SpaceStation;
 import top.girlkisser.cygnus.management.SpaceStationManager;
+import top.girlkisser.lazuli.api.block.AbstractBlockWithEntity;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.Optional;

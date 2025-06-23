@@ -12,10 +12,10 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import org.apache.commons.lang3.function.TriFunction;
 import org.jetbrains.annotations.ApiStatus;
 import top.girlkisser.cygnus.Cygnus;
+import top.girlkisser.cygnus.api.space.SpaceStation;
 import top.girlkisser.cygnus.content.menu.ContainerChroniteBlastFurnace;
 import top.girlkisser.cygnus.content.menu.ContainerCommandCentre;
 import top.girlkisser.cygnus.content.menu.ContainerTerminal;
-import top.girlkisser.cygnus.foundation.space.SpaceStation;
 
 @SuppressWarnings("unused")
 @ApiStatus.NonExtendable

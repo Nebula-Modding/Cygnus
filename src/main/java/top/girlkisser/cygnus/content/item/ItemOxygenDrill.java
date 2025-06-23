@@ -22,22 +22,31 @@ import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.fluids.capability.IFluidHandler;
 import net.neoforged.neoforge.fluids.capability.IFluidHandlerItem;
 import net.neoforged.neoforge.fluids.capability.templates.FluidHandlerItemStack;
+import org.jetbrains.annotations.NotNull;
 import top.girlkisser.cygnus.content.CygnusTags;
 import top.girlkisser.cygnus.content.registry.CygnusDataComponents;
-import top.girlkisser.cygnus.foundation.item.CygnusItem;
-import top.girlkisser.cygnus.foundation.item.TooltipUtil;
+import top.girlkisser.lazuli.api.item.LazuliItem;
+import top.girlkisser.lazuli.api.item.TooltipUtil;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
+import java.util.Objects;
 
 @ParametersAreNonnullByDefault
-public class ItemOxygenDrill extends PickaxeItem implements CygnusItem
+public class ItemOxygenDrill extends PickaxeItem implements LazuliItem
 {
 	public static final Tier TIER = new SimpleTier(CygnusTags.Blocks.INCORRECT_FOR_OXYGEN_DRILl, 2048, 10f, 2f, 20, () -> Ingredient.of(Tags.Items.INGOTS_IRON));
 
 	public ItemOxygenDrill(Properties properties)
 	{
 		super(TIER, properties);
+	}
+
+	// Un-nullable LazuliItem.getFluid
+	@Override
+	public @NotNull FluidStack getFluid(ItemStack stack)
+	{
+		return Objects.requireNonNull(LazuliItem.super.getFluid(stack));
 	}
 
 	@Override
@@ -47,7 +56,7 @@ public class ItemOxygenDrill extends PickaxeItem implements CygnusItem
 	}
 
 	@Override
-	public IFluidHandlerItem makeFluidHandler(ItemStack stack)
+	public @NotNull IFluidHandlerItem makeFluidHandler(ItemStack stack)
 	{
 		return new FluidHandlerItemStack(CygnusDataComponents.GENERIC_FLUID, stack, getDefaultFluidHandlerCapacity())
 		{

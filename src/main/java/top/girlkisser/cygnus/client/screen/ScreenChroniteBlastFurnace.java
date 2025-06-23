@@ -7,12 +7,12 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Inventory;
 import org.jetbrains.annotations.NotNull;
 import top.girlkisser.cygnus.content.menu.ContainerChroniteBlastFurnace;
-import top.girlkisser.cygnus.foundation.client.screen.AbstractCygnusContainerScreen;
-import top.girlkisser.cygnus.foundation.mathematics.Mathematics;
+import top.girlkisser.lazuli.api.client.screen.AbstractLazuliContainerScreen;
+import top.girlkisser.lazuli.api.mathematics.Mathematics;
 
 import static top.girlkisser.cygnus.Cygnus.id;
 
-public class ScreenChroniteBlastFurnace extends AbstractCygnusContainerScreen<ContainerChroniteBlastFurnace>
+public class ScreenChroniteBlastFurnace extends AbstractLazuliContainerScreen<ContainerChroniteBlastFurnace>
 {
 	public static final ResourceLocation UI = id("textures/gui/chronite_blast_furnace.png");
 	public static final ResourceLocation LIT_PROGRESS_SPRITE = id("minecraft", "container/furnace/lit_progress");
@@ -28,7 +28,7 @@ public class ScreenChroniteBlastFurnace extends AbstractCygnusContainerScreen<Co
 	}
 
 	@Override
-	protected ResourceLocation getUI()
+	protected @NotNull ResourceLocation getUI()
 	{
 		return UI;
 	}

@@ -6,7 +6,6 @@ import net.neoforged.neoforge.common.data.SoundDefinitionsProvider
 import net.neoforged.neoforge.data.event.GatherDataEvent
 import top.girlkisser.cygnus.Cygnus
 import top.girlkisser.cygnus.content.registry.CygnusSoundEvents
-import java.util.Arrays
 
 class CygnusSoundProvider(event: GatherDataEvent) :
 	SoundDefinitionsProvider(event.generator.packOutput, Cygnus.MODID, event.existingFileHelper)

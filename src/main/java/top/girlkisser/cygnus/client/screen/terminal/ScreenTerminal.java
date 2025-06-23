@@ -9,12 +9,12 @@ import net.minecraft.client.gui.narration.NarratableEntry;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.NotNull;
-import top.girlkisser.cygnus.foundation.client.screen.AbstractCygnusMenuScreen;
-import top.girlkisser.cygnus.foundation.menu.AbstractTerminalContainer;
+import top.girlkisser.cygnus.api.menu.AbstractTerminalContainer;
+import top.girlkisser.lazuli.api.client.screen.AbstractLazuliMenuScreen;
 
 import java.util.function.Function;
 
-public class ScreenTerminal<T extends AbstractTerminalContainer<?>> extends AbstractCygnusMenuScreen<T>
+public class ScreenTerminal<T extends AbstractTerminalContainer<?>> extends AbstractLazuliMenuScreen<T>
 {
 	private ITerminalState state;
 

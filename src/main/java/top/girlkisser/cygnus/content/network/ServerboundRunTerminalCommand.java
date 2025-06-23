@@ -10,8 +10,8 @@ import net.minecraft.server.level.ServerPlayer;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 import org.jetbrains.annotations.NotNull;
 import top.girlkisser.cygnus.Cygnus;
+import top.girlkisser.cygnus.api.space.SpaceStation;
 import top.girlkisser.cygnus.content.terminal.ITerminalCommand;
-import top.girlkisser.cygnus.foundation.space.SpaceStation;
 import top.girlkisser.cygnus.management.SpaceStationManager;
 
 import java.util.Optional;

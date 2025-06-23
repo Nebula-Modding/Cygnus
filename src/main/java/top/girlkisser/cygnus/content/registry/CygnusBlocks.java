@@ -19,7 +19,7 @@ import top.girlkisser.cygnus.Cygnus;
 import top.girlkisser.cygnus.content.CygnusSoundTypes;
 import top.girlkisser.cygnus.content.block.*;
 import top.girlkisser.cygnus.content.item.BlockItemTelepad;
-import top.girlkisser.cygnus.foundation.colours.UnpackedColour;
+import top.girlkisser.lazuli.api.colour.UnpackedColour;
 
 import java.util.function.Function;
 import java.util.function.Supplier;

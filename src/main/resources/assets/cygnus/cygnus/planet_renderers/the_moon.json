@@ -26,7 +26,7 @@
 			"scale": 1.5,
 			"transforms": [
 				{ "axis": "x", "value": 180 },
-				{ "axis": "x", "value": "cygnus:time", "args": { "multiplier": 20.0 } }
+				{ "axis": "x", "value": "cygnus:time", "args": { "multiplier": 4.0 } }
 			],
 			"sunset_color": 14180147,
 			"backlight": {

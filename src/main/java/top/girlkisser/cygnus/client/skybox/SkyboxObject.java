@@ -8,7 +8,7 @@ import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.ExtraCodecs;
 import org.joml.Vector3f;
-import top.girlkisser.cygnus.foundation.colours.UnpackedColour;
+import top.girlkisser.lazuli.api.colour.UnpackedColour;
 
 import java.util.List;
 import java.util.Optional;

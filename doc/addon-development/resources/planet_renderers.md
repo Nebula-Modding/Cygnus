@@ -51,7 +51,7 @@ Any colour values can be provided in three different formats:
           "size": 30.0,
 
           // Local transformations for this layer (optional, defaults to [])
-          "transforms": []
+          "transforms": [],
 
           // The texture's roll, pitch, and yaw in degrees (optional, defaults to [0, 0, 0])
           "texture_rotation": [0,0,0]
@@ -107,7 +107,7 @@ Any colour values can be provided in three different formats:
         "color" : 16379820,
 
         // Local transformations for the backlight (optional, defaults to [])
-        "transforms": []
+        "transforms": [],
 
         // The backlight texture's roll, pitch, and yaw in degrees (optional, defaults to [0, 0, 0])
         "texture_rotation": [0,0,0]
@@ -115,7 +115,7 @@ Any colour values can be provided in three different formats:
 
       // If `true`, this skybox object will only be rendered when you're
       // orbiting the planet this renderer is for.
-      "is_for_orbit": false,
+      "is_for_orbit": false
     }
   ],
   

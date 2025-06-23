@@ -7,10 +7,9 @@ import net.neoforged.neoforge.items.SlotItemHandler;
 import top.girlkisser.cygnus.content.block.BlockChroniteBlastFurnaceBE;
 import top.girlkisser.cygnus.content.registry.CygnusBlocks;
 import top.girlkisser.cygnus.content.registry.CygnusMenuTypes;
-import top.girlkisser.cygnus.foundation.menu.AbstractBlockEntityContainer;
-import top.girlkisser.cygnus.foundation.menu.SlotOutputOnly;
+import top.girlkisser.lazuli.api.menu.SlotOutputOnly;
 
-public class ContainerChroniteBlastFurnace extends AbstractBlockEntityContainer<BlockChroniteBlastFurnaceBE>
+public class ContainerChroniteBlastFurnace extends top.girlkisser.lazuli.api.menu.AbstractBlockEntityContainer<BlockChroniteBlastFurnaceBE>
 {
 	protected int litTicksRemaining, totalLitTicksForFuel, craftProgress, craftDuration;
 

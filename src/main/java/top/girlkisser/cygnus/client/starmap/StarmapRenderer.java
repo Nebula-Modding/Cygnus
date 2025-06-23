@@ -11,9 +11,9 @@ import net.minecraft.resources.ResourceLocation;
 import org.joml.Matrix4f;
 import org.joml.Vector2i;
 import top.girlkisser.cygnus.Cygnus;
-import top.girlkisser.cygnus.client.CygnusClient;
-import top.girlkisser.cygnus.foundation.space.Planet;
-import top.girlkisser.cygnus.foundation.space.Star;
+import top.girlkisser.cygnus.api.space.Planet;
+import top.girlkisser.cygnus.api.space.Star;
+import top.girlkisser.lazuli.api.client.LazuliClientHelpers;
 
 import javax.annotation.Nullable;
 
@@ -35,7 +35,7 @@ public class StarmapRenderer
 
 	public void renderBody(float orbitX, float orbitY, double yearLength, float orbitDistance, float size, ResourceLocation texture, @Nullable ResourceLocation bodyId)
 	{
-		double orbitProgress = CygnusClient.clientTicks / yearLength;
+		double orbitProgress = LazuliClientHelpers.clientTicks / yearLength;
 		double x = orbitX + (Math.sin(orbitProgress) * orbitDistance);
 		double y = orbitY + (Math.cos(orbitProgress) * orbitDistance);
 
@@ -67,7 +67,7 @@ public class StarmapRenderer
 		{
 			RenderSystem.setShaderTexture(0, PLANET_SELECTION);
 			buffer = Tesselator.getInstance().begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX);
-			float s = (float)Math.sin((CygnusClient.clientTicks % 60) / 2f) + 5;
+			float s = (float)Math.sin((LazuliClientHelpers.clientTicks % 60) / 2f) + 5;
 			buffer.addVertex(pose, x1-s, y1-s, 0).setUv(0, 0);
 			buffer.addVertex(pose, x1-s, y2+s, 0).setUv(0, 1);
 			buffer.addVertex(pose, x2+s, y2+s, 0).setUv(1, 1);
@@ -87,7 +87,7 @@ public class StarmapRenderer
 		{
 			assert Minecraft.getInstance().level != null;
 			RegistryAccess ra = Minecraft.getInstance().level.registryAccess();
-			double orbitProgress = CygnusClient.clientTicks / planet.yearLength();
+			double orbitProgress = LazuliClientHelpers.clientTicks / planet.yearLength();
 			double planetX = orbitX + (Math.sin(orbitProgress) * renderConfig.orbitDistance() * scale);
 			double planetY = orbitY + (Math.cos(orbitProgress) * renderConfig.orbitDistance() * scale);
 
