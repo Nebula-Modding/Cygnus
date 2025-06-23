@@ -4,6 +4,8 @@
 		"cygnus:venus",
 		"cygnus:earth",
 		"cygnus:mars",
-		"cygnus:jupiter"
+		"cygnus:jupiter",
+		"cygnus:saturn",
+		"cygnus:uranus"
 	]
 }

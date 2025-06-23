@@ -5,12 +5,12 @@
 	"night_length": 4950,
 	"year_length": 4328.9,
 	"ambient_temperature_curve": [
-		{ "x": 0.00, "y": -110.0 }, // dawn
-		{ "x": 0.25, "y": -110.0 }, // midday
-		{ "x": 0.50, "y": -110.0 }, // midnight
-		{ "x": 1.00, "y": -110.0 } // dawn
+		{ "x": 0.00, "y": -110.5 }, // dawn
+		{ "x": 0.25, "y": -110.6 }, // midday
+		{ "x": 0.50, "y": -110.4 }, // midnight
+		{ "x": 1.00, "y": -110.5 } // dawn
 	],
-	"ambient_radiation": 0,
+	"ambient_radiation": 0, // todo
 	"moons": [],
 	"atmospheric_pressure": 156227319,
 	"danger_index": "non_landable"
