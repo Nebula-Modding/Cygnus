@@ -13,7 +13,7 @@ public class TerminalIconButton extends Button
 	public static final CubicBezier TOOLTIP_ANIMATION_CURVE = new CubicBezier(.4f, 0f, .6f, 1f); // ease-in-out
 	public static final int SIZE = 23;
 	public static final int TOOLTIP_WIDTH = 119;
-	private final ResourceLocation icon, hoverIcon;
+	protected final ResourceLocation icon, hoverIcon;
 
 	public boolean renderMessageOnRight = true;
 	protected float animationProgress = 0f;

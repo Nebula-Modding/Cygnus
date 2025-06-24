@@ -1,6 +1,7 @@
 package top.girlkisser.cygnus.client.screen.terminal;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.MouseHandler;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.renderer.Rect2i;
 import net.minecraft.core.RegistryAccess;
@@ -25,7 +26,8 @@ import java.util.function.Supplier;
 
 public class TerminalStateNavigation implements ITerminalState
 {
-	protected static final int mapMinX = 45, mapMinY = 40, mapMaxX = 216, mapMaxY = 207;
+	public static final int MAP_MIN_X = 45, MAP_MIN_Y = 40, MAP_MAX_X = 216, MAP_MAX_Y = 207;
+	public static final int BUTTONS_MIN_X = 13, BUTTONS_MIN_Y = 40, BUTTONS_MAX_X = 43, BUTTONS_MAX_Y = 207;
 
 	public ScreenTerminal<?> screen;
 	protected RegistryAccess registryAccess;
@@ -43,6 +45,7 @@ public class TerminalStateNavigation implements ITerminalState
 	private int previousMouseX, previousMouseY;
 	protected int mapPanX = 0, mapPanY = 0;
 	protected float mapZoom = 1f;
+	protected float buttonScrollY = 0;
 
 	public TerminalStateNavigation(ScreenTerminal<?> screen)
 	{
@@ -75,6 +78,7 @@ public class TerminalStateNavigation implements ITerminalState
 		mapPanX = 0;
 		mapPanY = 0;
 		mapZoom = 1f;
+		buttonScrollY = 0;
 	}
 
 	@Override
@@ -84,7 +88,7 @@ public class TerminalStateNavigation implements ITerminalState
 		{
 			if (CygnusClient.mouseScrollY != 0)
 			{
-				mapZoom = Math.clamp(mapZoom + (CygnusClient.mouseScrollY > 0 ? 0.05f : -0.05f), 0.1f, 3f);
+				mapZoom = Math.clamp(mapZoom + CygnusClient.mouseScrollY > 0 ? 0.05f : -0.05f, 0.1f, 3f);
 			}
 
 			if (CygnusClient.isLeftMouseButtonDown)
@@ -96,18 +100,38 @@ public class TerminalStateNavigation implements ITerminalState
 					mapPanY -= previousMouseY - mouseY;
 			}
 		}
+		else if (isMouseInButtonList(mouseX, mouseY) && CygnusClient.mouseScrollY != 0)
+		{
+			buttonScrollY += (float) ((CygnusClient.mouseScrollY > 0 ? 5 : -5) * screen.getMinecraft().options.mouseWheelSensitivity().get());
+			// We can fit 6 buttons on the screen before scrolling, so we can subtract that from the buttons.size()*27
+			buttonScrollY = Math.clamp(buttonScrollY, -((this.buttons.size() - 6) * 27) + 3, 0);
+			int y = (int)(screen.getGuiTop() + 44 + buttonScrollY);
+			for (var renderable : this.screen.renderables)
+			{
+				if (renderable instanceof TerminalNavigationButton button)
+				{
+					button.setY(y);
+					y += 27;
+				}
+			}
+		}
 
 		StarmapRenderer starmapRenderer = new StarmapRenderer(
 			graphics,
-			new Rect2i(screen.getGuiLeft() + mapMinX + mapPanX, screen.getGuiTop() + mapMinY + mapPanY, mapMaxX, mapMaxY),
+			new Rect2i(
+				screen.getGuiLeft() + MAP_MIN_X + mapPanX,
+				screen.getGuiTop() + MAP_MIN_Y + mapPanY,
+				MAP_MAX_X,
+				MAP_MAX_Y
+			),
 			mapZoom
 		);
 
 		graphics.enableScissor(
-			screen.getGuiLeft() + mapMinX,
-			screen.getGuiTop() + mapMinY,
-			screen.getGuiLeft() + mapMaxX,
-			screen.getGuiTop() + mapMaxY
+			screen.getGuiLeft() + MAP_MIN_X,
+			screen.getGuiTop() + MAP_MIN_Y,
+			screen.getGuiLeft() + MAP_MAX_X,
+			screen.getGuiTop() + MAP_MAX_Y
 		);
 		if (!selectedPlanetStack.isEmpty())
 		{
@@ -127,8 +151,8 @@ public class TerminalStateNavigation implements ITerminalState
 		graphics.drawCenteredString(
 			Minecraft.getInstance().font,
 			String.format("%.2fx", mapZoom),
-			screen.getGuiLeft() + mapMinX + ((mapMaxX - mapMinY) / 2),
-			screen.getGuiTop() + mapMinY + 4,
+			screen.getGuiLeft() + MAP_MIN_X + ((MAP_MAX_X - MAP_MIN_Y) / 2),
+			screen.getGuiTop() + MAP_MIN_Y + 4,
 			0xFF00FF00
 		);
 
@@ -187,10 +211,20 @@ public class TerminalStateNavigation implements ITerminalState
 	protected boolean isMouseInMap(int mouseX, int mouseY)
 	{
 		return (
-			mouseX >= screen.getGuiLeft() + mapMinX &&
-				mouseX <= screen.getGuiLeft() + mapMaxX &&
-				mouseY >= screen.getGuiTop() + mapMinY &&
-				mouseY <= screen.getGuiTop() + mapMaxY
+			mouseX >= screen.getGuiLeft() + MAP_MIN_X &&
+				mouseX <= screen.getGuiLeft() + MAP_MAX_X &&
+				mouseY >= screen.getGuiTop() + MAP_MIN_Y &&
+				mouseY <= screen.getGuiTop() + MAP_MAX_Y
+		);
+	}
+
+	protected boolean isMouseInButtonList(int mouseX, int mouseY)
+	{
+		return (
+			mouseX >= screen.getGuiLeft() + BUTTONS_MIN_X &&
+				mouseX <= screen.getGuiLeft() + BUTTONS_MAX_X &&
+				mouseY >= screen.getGuiTop() + BUTTONS_MIN_Y &&
+				mouseY <= screen.getGuiTop() + BUTTONS_MAX_Y
 		);
 	}
 
@@ -284,7 +318,8 @@ public class TerminalStateNavigation implements ITerminalState
 						}
 					},
 					galaxy.terminalIcon(),
-					galaxy.terminalIconHover()
+					galaxy.terminalIconHover(),
+					this
 				);
 			});
 	}
@@ -310,7 +345,8 @@ public class TerminalStateNavigation implements ITerminalState
 						this.setList(this::listPlanets);
 					},
 					star.terminalIcon(),
-					star.terminalIconHover()
+					star.terminalIconHover(),
+					this
 				);
 			});
 	}
@@ -335,7 +371,8 @@ public class TerminalStateNavigation implements ITerminalState
 						this.setList(this::listMoons);
 					},
 					planet.terminalIcon(),
-					planet.terminalIconHover()
+					planet.terminalIconHover(),
+					this
 				);
 			});
 	}
@@ -359,7 +396,8 @@ public class TerminalStateNavigation implements ITerminalState
 						this.setList(this::listMoons);
 					},
 					moon.terminalIcon(),
-					moon.terminalIconHover()
+					moon.terminalIconHover(),
+					this
 				);
 			});
 	}

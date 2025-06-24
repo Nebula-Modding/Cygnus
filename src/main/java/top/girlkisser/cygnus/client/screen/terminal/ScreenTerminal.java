@@ -61,7 +61,7 @@ public class ScreenTerminal<T extends AbstractTerminalContainer<?>> extends Abst
 	}
 
 	@Override
-	protected ResourceLocation getUI()
+	protected @NotNull ResourceLocation getUI()
 	{
 		return state.getUI();
 	}
