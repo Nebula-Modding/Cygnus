@@ -1,0 +1,88 @@
+{
+	"render_sunset": true,
+
+	"skybox_objects": [
+		{
+			"layers": [{
+				"texture": "cygnus:textures/environment/star/8x8/f_class.png",
+				"size": 4.7
+			}],
+			"transforms": [
+				{ "axis": "x", "value": "cygnus:time", "args": { "multiplier": 1.0 } }
+			],
+			"texture_rotation": [0, 90, 0],
+			"backlight": {
+				"texture": "cygnus:textures/environment/backlights/32x32/circle.png",
+				"size": 18.8,
+				"color": [249, 248, 200, 175]
+			}
+		},
+
+		{
+			"layers": [{
+				"texture": "cygnus:textures/environment/solar_system/phobos.png",
+				"size": 1.7
+			}],
+			"transforms": [
+				{ "axis": "x", "value": 180.0 },
+				{ "axis": "x", "value": "cygnus:time", "args": { "multiplier": 2.44 } }
+			],
+			"texture_rotation": [0, 90, 0],
+			"backlight": {
+				"texture": "cygnus:textures/environment/backlights/32x32/circle.png",
+				"size": 6.8,
+				"color": [177, 166, 159, 125]
+			}
+		},
+
+		{
+			"layers": [{
+				"texture": "cygnus:textures/environment/solar_system/mars.png",
+				"size": 24.0
+			}],
+			"texture_rotation": [0, 90, 0],
+			"backlight": {
+				"texture": "cygnus:textures/environment/backlights/32x32/circle.png",
+				"size": 96.0,
+				"color": [166, 78, 33, 150]
+			}
+		},
+
+		{
+			"is_for_orbit": true,
+			"layers": [{
+				"texture": "cygnus:textures/environment/solar_system/deimos.png",
+				"size": 60.0
+			}],
+			"transforms": [ 
+				{ "axis": "x", "value": 180.0 }
+			],
+			"texture_rotation": [0, 90, 0],
+			"backlight": {
+				"texture": "cygnus:textures/environment/backlights/32x32/circle.png",
+				"size": 180.0,
+				"color": [184, 180, 166, 125]
+			}
+		}
+	],
+
+	"stars": {
+		"visibility": "always",
+		"brightness_curve": [
+			{"x": 0, "y": 1.00},
+			{"x": 0, "y": 0.50},
+			{"x": 1, "y": 0.50},
+			{"x": 1, "y": 1.00}
+		],
+		"count": 5000,
+		"palette": [
+			{ "color": [242, 83, 42], "weight": 1 },
+			{ "color": [249, 222, 165], "weight": 3 },
+			{ "color": [249, 239, 172], "weight": 3 },
+			{ "color": [249, 248, 200], "weight": 3 },
+			{ "color": [209, 236, 245], "weight": 2 },
+			{ "color": [196, 225, 247], "weight": 2 },
+			{ "color": [177, 208, 249], "weight": 1 }
+		]
+	}
+}

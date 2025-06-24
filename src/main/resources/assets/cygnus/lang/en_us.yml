@@ -139,10 +139,6 @@ planet.cygnus:
   mars: Mars
   deimos: Deimos
   phobos: Phobos
-  jupiter: Jupiter
-  saturn: Saturn
-  uranus: Uranus
-  neptune: Neptune
 
 screen.cygnus:
   terminal:

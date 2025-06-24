@@ -1,5 +1,5 @@
 {
 	"texture": "cygnus:textures/environment/solar_system/phobos.png",
-	"size": 2.0,
-	"orbit_distance": 12.0
+	"size": 4.0,
+	"orbit_distance": 15.0
 }
