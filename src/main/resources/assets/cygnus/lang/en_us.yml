@@ -3,7 +3,7 @@ itemGroup.cygnus: Cygnus
 block.cygnus:
   # Decorational
   steel_block: Block of Steel
-  steel_tiles: Steel Tiles
+  steel_plating: Steel Plating
   steel_sheet_metal: Steel Sheet Metal
   steel_window: Steel Window
   steel_door: Steel Door
@@ -118,7 +118,7 @@ item.cygnus:
   oxygen_drill.tooltip: Consumes oxygen to drill blocks efficiently
 
   # Misc
-  oxygen_gas_bucket: Oxygen Gas Bucket
+  oxygen_gas_bucket: Bucket of Oxygen Gas
 
 fluid_type.cygnus:
   oxygen_gas: Oxygen Gas
@@ -188,7 +188,7 @@ screen.cygnus:
 
 message.cygnus:
   # Shared tooltips
-  door_lockable: Use a key to require redstone to open
+  door_lockable: Use a key to lock to redstone
 
   # Errors
   failed_to_place_space_station: Failed to place space station
