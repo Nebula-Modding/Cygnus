@@ -3,23 +3,6 @@
 
 	"skybox_objects": [
 		{
-			"layers": [{
-				"texture": "cygnus:textures/environment/solar_system/jupiter.png",
-				"size": 0.04
-			}],
-			"transforms": [
-				{ "axis": "y", "value": 180.0 },
-				{ "axis": "x", "value": "cygnus:time", "args": { "multiplier": 0.00027 } }
-			],
-			"texture_rotation": [0, 90, 0],
-			"backlight": {
-				"texture": "cygnus:textures/environment/backlights/32x32/circle.png",
-				"size": 0.16,
-				"color": [209, 191, 166, 150]
-			}
-		},
-
-		{
 			"is_for_planet": true,
 			"sunset_color": [196, 225, 247],
 			"layers": [{
