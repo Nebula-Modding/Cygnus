@@ -9,14 +9,14 @@ import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import top.girlkisser.cygnus.Cygnus;
+import top.girlkisser.cygnus.api.space.Galaxy;
+import top.girlkisser.cygnus.api.space.Planet;
+import top.girlkisser.cygnus.api.space.PlanetaryDangerIndex;
+import top.girlkisser.cygnus.api.space.Star;
 import top.girlkisser.cygnus.client.CygnusClient;
 import top.girlkisser.cygnus.client.starmap.StarmapGalaxyConfigLoader;
 import top.girlkisser.cygnus.client.starmap.StarmapRenderer;
 import top.girlkisser.cygnus.client.starmap.StarmapStarConfigLoader;
-import top.girlkisser.cygnus.foundation.space.Galaxy;
-import top.girlkisser.cygnus.foundation.space.Planet;
-import top.girlkisser.cygnus.foundation.space.PlanetaryDangerIndex;
-import top.girlkisser.cygnus.foundation.space.Star;
 
 import java.util.ArrayList;
 import java.util.List;

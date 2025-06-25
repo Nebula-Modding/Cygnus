@@ -6,7 +6,7 @@ import net.minecraft.client.gui.components.Button;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.NotNull;
-import top.girlkisser.cygnus.foundation.mathematics.CubicBezier;
+import top.girlkisser.lazuli.api.mathematics.CubicBezier;
 
 public class TerminalIconButton extends Button
 {

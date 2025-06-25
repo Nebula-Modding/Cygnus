@@ -7,10 +7,10 @@ import com.mojang.blaze3d.vertex.VertexFormat;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceKey;
+import top.girlkisser.cygnus.api.space.Planet;
+import top.girlkisser.cygnus.api.space.PlanetUtils;
 import top.girlkisser.cygnus.client.CygnusClient;
 import top.girlkisser.cygnus.content.CygnusResourceKeys;
-import top.girlkisser.cygnus.foundation.space.Planet;
-import top.girlkisser.cygnus.foundation.space.PlanetUtils;
 
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;

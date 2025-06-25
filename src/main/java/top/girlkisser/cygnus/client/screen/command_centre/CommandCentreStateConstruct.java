@@ -15,8 +15,8 @@ import top.girlkisser.cygnus.client.screen.terminal.*;
 import top.girlkisser.cygnus.content.crafting.RecipeSpaceStationCrafting;
 import top.girlkisser.cygnus.content.network.ServerboundAttemptSpaceStationConstruction;
 import top.girlkisser.cygnus.content.registry.CygnusRecipeTypes;
-import top.girlkisser.cygnus.foundation.container.ContainerUtils;
-import top.girlkisser.cygnus.foundation.crafting.CountedIngredient;
+import top.girlkisser.lazuli.api.crafting.CountedIngredient;
+import top.girlkisser.lazuli.api.inventory.ContainerUtils;
 
 import java.util.ArrayList;
 import java.util.List;

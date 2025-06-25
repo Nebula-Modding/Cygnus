@@ -1,15 +1,16 @@
 package top.girlkisser.cygnus.client;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.util.RandomSource;
 import org.jetbrains.annotations.Nullable;
-import top.girlkisser.cygnus.foundation.space.SpaceStation;
+import top.girlkisser.cygnus.api.space.SpaceStation;
 
-public class CygnusClient
+public final class CygnusClient
 {
-	public static final RandomSource RANDOM = RandomSource.create();
+	private CygnusClient()
+	{
+	}
 
-	public static int clientTicks = 0;
+	public static final RandomSource RANDOM = RandomSource.create();
 
 	public static boolean isLeftMouseButtonDown = false;
 	public static double mouseScrollX = 0, mouseScrollY = 0;
@@ -20,9 +21,4 @@ public class CygnusClient
 	// - The player enters cygnus:space
 	// - The player joins the world
 	public static @Nullable SpaceStation mySpaceStation;
-
-	public static boolean isGameActive()
-	{
-		return !(Minecraft.getInstance().level == null || Minecraft.getInstance().player == null) && !Minecraft.getInstance().isPaused();
-	}
 }

@@ -4,8 +4,8 @@ import net.minecraft.resources.ResourceLocation;
 import org.joml.Vector2f;
 import org.joml.Vector2i;
 import top.girlkisser.cygnus.Cygnus;
-import top.girlkisser.cygnus.foundation.client.particle2d.IParticle2D;
-import top.girlkisser.cygnus.foundation.client.particle2d.SimpleParticle2D;
+import top.girlkisser.lazuli.api.client.particle2d.IParticle2D;
+import top.girlkisser.lazuli.api.client.particle2d.SimpleParticle2D;
 
 public final class Particles2D
 {

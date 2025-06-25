@@ -14,33 +14,23 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.EntityBlock;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import top.girlkisser.cygnus.api.space.SpaceStation;
 import top.girlkisser.cygnus.content.CygnusResourceKeys;
 import top.girlkisser.cygnus.content.menu.ContainerCommandCentre;
-import top.girlkisser.cygnus.foundation.space.SpaceStation;
 import top.girlkisser.cygnus.management.SpaceStationManager;
+import top.girlkisser.lazuli.api.block.AbstractBlockWithEntity;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
-public class BlockCommandCentre extends Block implements EntityBlock
+public class BlockCommandCentre extends AbstractBlockWithEntity<BlockCommandCentreBE>
 {
 	public BlockCommandCentre(Properties properties)
 	{
-		super(properties);
-	}
-
-	@Override
-	@ParametersAreNonnullByDefault
-	public @Nullable BlockEntity newBlockEntity(BlockPos pos, BlockState state)
-	{
-		return new BlockCommandCentreBE(pos, state);
+		super(BlockCommandCentreBE::new, properties);
 	}
 
 	@Override

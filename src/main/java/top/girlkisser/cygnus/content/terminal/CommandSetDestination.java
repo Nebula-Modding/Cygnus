@@ -3,8 +3,8 @@ package top.girlkisser.cygnus.content.terminal;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
-import top.girlkisser.cygnus.foundation.space.Planet;
-import top.girlkisser.cygnus.foundation.space.SpaceStation;
+import top.girlkisser.cygnus.api.space.Planet;
+import top.girlkisser.cygnus.api.space.SpaceStation;
 
 public class CommandSetDestination implements ITerminalCommand
 {

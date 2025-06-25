@@ -3,7 +3,7 @@ package top.girlkisser.cygnus.content.terminal;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import org.jetbrains.annotations.Nullable;
-import top.girlkisser.cygnus.foundation.space.SpaceStation;
+import top.girlkisser.cygnus.api.space.SpaceStation;
 
 import java.util.HashMap;
 import java.util.Map;

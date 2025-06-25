@@ -14,14 +14,14 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
-import top.girlkisser.cygnus.client.CygnusClient;
+import top.girlkisser.cygnus.api.client.DustParticlePresets;
+import top.girlkisser.cygnus.api.space.SpaceStation;
 import top.girlkisser.cygnus.content.block.BlockTelepad;
 import top.girlkisser.cygnus.content.registry.CygnusBlocks;
 import top.girlkisser.cygnus.content.registry.CygnusEntityTypes;
-import top.girlkisser.cygnus.foundation.client.particle.DustParticlePresets;
-import top.girlkisser.cygnus.foundation.client.particle.ParticleHelper;
-import top.girlkisser.cygnus.foundation.space.SpaceStation;
 import top.girlkisser.cygnus.management.SpaceStationManager;
+import top.girlkisser.lazuli.api.client.LazuliClientHelpers;
+import top.girlkisser.lazuli.api.client.particle.ParticleHelper;
 
 import java.util.UUID;
 
@@ -54,11 +54,11 @@ public class EntityLandingBeam extends VehicleEntity
 
 		if (level.isClientSide)
 		{
-			float x = Mth.sin(CygnusClient.clientTicks / 2f) * 0.25f;
-			float z = Mth.cos(CygnusClient.clientTicks / 2f) * 0.25f;
+			float x = Mth.sin(LazuliClientHelpers.clientTicks / 2f) * 0.25f;
+			float z = Mth.cos(LazuliClientHelpers.clientTicks / 2f) * 0.25f;
 
 			if (isTheDestinationAPlanet)
-				ParticleHelper.addDust(DustParticlePresets.TELEPAD, level, position().add(x, 0, z), new Vec3(0, 0.7D, 0));
+				ParticleHelper.addDust(DustParticlePresets.TELEPAD, level, position().add(x, -1, z), new Vec3(0, 0.7D, 0));
 			else
 				ParticleHelper.addDust(DustParticlePresets.TELEPAD, level, position().add(x, 2, z), new Vec3(0, -0.7D, 0));
 		}

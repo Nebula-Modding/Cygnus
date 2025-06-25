@@ -14,7 +14,7 @@ import net.minecraft.util.ExtraCodecs;
 import top.girlkisser.cygnus.Cygnus;
 import top.girlkisser.cygnus.client.skybox.transforms.TransformConstant;
 import top.girlkisser.cygnus.client.skybox.transforms.TransformTime;
-import top.girlkisser.cygnus.foundation.codec.LimitedStringCodec;
+import top.girlkisser.lazuli.api.codec.LimitedStringCodec;
 
 import java.util.HashMap;
 import java.util.Map;

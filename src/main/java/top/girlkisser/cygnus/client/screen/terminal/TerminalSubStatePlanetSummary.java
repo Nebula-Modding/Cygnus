@@ -2,10 +2,8 @@ package top.girlkisser.cygnus.client.screen.terminal;
 
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.NotNull;
-import top.girlkisser.cygnus.Cygnus;
-import top.girlkisser.cygnus.foundation.space.Planet;
+import top.girlkisser.cygnus.api.space.Planet;
 
 import java.util.ArrayList;
 import java.util.List;

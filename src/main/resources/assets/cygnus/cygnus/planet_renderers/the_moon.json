@@ -38,7 +38,7 @@
 				"texture": "cygnus:textures/environment/solar_system/moon.png",
 				"size": 60.0
 			}],
-			"transforms": [ 
+			"transforms": [
 				{ "axis": "x", "value": 180.0 }
 			],
 			"texture_rotation": [0, 90, 0],

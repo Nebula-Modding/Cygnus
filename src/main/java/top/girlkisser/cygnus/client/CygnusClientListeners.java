@@ -39,8 +39,9 @@ import top.girlkisser.cygnus.content.menu.ContainerChroniteBlastFurnace;
 import top.girlkisser.cygnus.content.menu.ContainerCommandCentre;
 import top.girlkisser.cygnus.content.menu.ContainerTerminal;
 import top.girlkisser.cygnus.content.registry.*;
-import top.girlkisser.cygnus.foundation.client.particle2d.ScreenParticleEngine2D;
-import top.girlkisser.cygnus.foundation.fluid.BasicFluidType;
+import top.girlkisser.lazuli.api.client.LazuliClientHelpers;
+import top.girlkisser.lazuli.api.client.particle2d.ScreenParticleEngine2D;
+import top.girlkisser.lazuli.api.fluid.BasicFluidType;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 
@@ -149,10 +150,8 @@ public class CygnusClientListeners
 		@SubscribeEvent
 		static void onTick(ClientTickEvent.Post event)
 		{
-			if (!CygnusClient.isGameActive())
+			if (!LazuliClientHelpers.isGameActive())
 				return;
-
-			CygnusClient.clientTicks++;
 
 			// Reset scroll
 			CygnusClient.mouseScrollX = 0;

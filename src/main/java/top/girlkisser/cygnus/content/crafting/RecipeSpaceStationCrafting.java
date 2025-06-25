@@ -15,8 +15,8 @@ import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.ApiStatus;
 import top.girlkisser.cygnus.Cygnus;
-import top.girlkisser.cygnus.foundation.container.ContainerUtils;
-import top.girlkisser.cygnus.foundation.crafting.CountedIngredient;
+import top.girlkisser.lazuli.api.crafting.CountedIngredient;
+import top.girlkisser.lazuli.api.inventory.ContainerUtils;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;

@@ -28,7 +28,7 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import top.girlkisser.cygnus.content.menu.ContainerChroniteBlastFurnace;
-import top.girlkisser.cygnus.foundation.block.AbstractBlockWithEntity;
+import top.girlkisser.lazuli.api.block.AbstractBlockWithEntity;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;

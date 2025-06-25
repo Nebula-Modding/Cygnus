@@ -4,7 +4,7 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import org.apache.commons.lang3.function.TriFunction;
 import org.jetbrains.annotations.NotNull;
-import top.girlkisser.cygnus.foundation.space.Planet;
+import top.girlkisser.cygnus.api.space.Planet;
 
 import java.util.ArrayList;
 import java.util.List;

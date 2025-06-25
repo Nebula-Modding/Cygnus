@@ -32,14 +32,15 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import top.girlkisser.cygnus.api.space.SpaceStation;
 import top.girlkisser.cygnus.content.menu.ContainerTerminal;
-import top.girlkisser.cygnus.foundation.space.SpaceStation;
 import top.girlkisser.cygnus.management.SpaceStationManager;
+import top.girlkisser.lazuli.api.block.AbstractBlockWithEntity;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.Optional;
 
-public class BlockTerminal extends Block implements EntityBlock
+public class BlockTerminal extends AbstractBlockWithEntity<BlockTerminalBE>
 {
 	public static final EnumProperty<DoubleBlockHalf> HALF = BlockStateProperties.DOUBLE_BLOCK_HALF;
 	public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
@@ -54,17 +55,10 @@ public class BlockTerminal extends Block implements EntityBlock
 
 	public BlockTerminal(Properties properties)
 	{
-		super(properties);
+		super(BlockTerminalBE::new, properties);
 		this.registerDefaultState(this.stateDefinition.any()
 			.setValue(HALF, DoubleBlockHalf.LOWER)
 			.setValue(FACING, Direction.NORTH));
-	}
-
-	@Override
-	@ParametersAreNonnullByDefault
-	public @Nullable BlockEntity newBlockEntity(BlockPos pos, BlockState state)
-	{
-		return new BlockTerminalBE(pos, state);
 	}
 
 	@Override

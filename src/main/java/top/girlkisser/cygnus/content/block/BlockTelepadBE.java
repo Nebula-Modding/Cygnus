@@ -16,20 +16,21 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import top.girlkisser.cygnus.api.client.DustParticlePresets;
+import top.girlkisser.cygnus.api.space.Planet;
+import top.girlkisser.cygnus.api.space.SpaceStation;
 import top.girlkisser.cygnus.client.CygnusClient;
 import top.girlkisser.cygnus.content.registry.CygnusBlockEntityTypes;
-import top.girlkisser.cygnus.foundation.block.ITickableBE;
-import top.girlkisser.cygnus.foundation.client.particle.DustParticlePresets;
-import top.girlkisser.cygnus.foundation.client.particle.ParticleHelper;
-import top.girlkisser.cygnus.foundation.space.Planet;
-import top.girlkisser.cygnus.foundation.space.SpaceStation;
-import top.girlkisser.cygnus.foundation.world.AABBHelpers;
 import top.girlkisser.cygnus.management.SpaceStationManager;
+import top.girlkisser.lazuli.api.block.ITickableBE;
+import top.girlkisser.lazuli.api.client.LazuliClientHelpers;
+import top.girlkisser.lazuli.api.client.particle.ParticleHelper;
+import top.girlkisser.lazuli.api.world.AABBHelpers;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -91,7 +92,7 @@ public class BlockTelepadBE extends BlockEntity implements ITickableBE
 	}
 
 	@Override
-	public void serverTick(ServerLevel level)
+	public void serverTick(@NotNull ServerLevel level)
 	{
 		Map<ServerPlayer, AtomicInteger> ticks = new HashMap<>();
 		level.getEntitiesOfClass(ServerPlayer.class, getAABB(worldPosition), Entity::isCrouching).forEach(player -> {
@@ -108,7 +109,7 @@ public class BlockTelepadBE extends BlockEntity implements ITickableBE
 
 	@Override
 	@OnlyIn(Dist.CLIENT)
-	public void clientTick(ClientLevel level)
+	public void clientTick(@NotNull ClientLevel level)
 	{
 		if (
 			CygnusClient.mySpaceStation == null ||
@@ -117,8 +118,8 @@ public class BlockTelepadBE extends BlockEntity implements ITickableBE
 				.orElse(true)
 		)
 		{
-			float x = Mth.sin(CygnusClient.clientTicks / 2f) * 0.5f;
-			float z = Mth.cos(CygnusClient.clientTicks / 2f) * 0.5f;
+			float x = Mth.sin(LazuliClientHelpers.clientTicks / 2f) * 0.5f;
+			float z = Mth.cos(LazuliClientHelpers.clientTicks / 2f) * 0.5f;
 			ParticleHelper.addDust(DustParticlePresets.TELEPAD, level, worldPosition.getCenter().add(x, 0.3d, z), new Vec3(0, 0.7D, 0));
 		}
 	}

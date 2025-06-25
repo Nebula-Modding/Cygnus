@@ -7,12 +7,11 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
-import top.girlkisser.cygnus.foundation.item.CygnusItem;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
-public class ItemChronite extends Item implements CygnusItem
+public class ItemChronite extends Item
 {
 	public ItemChronite(Properties properties)
 	{
