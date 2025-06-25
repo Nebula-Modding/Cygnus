@@ -1,0 +1,13 @@
+{
+  "parent": "minecraft:block/cube",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "down": "cygnus:block/steel_grate",
+    "east": "cygnus:block/steel_grate",
+    "north": "cygnus:block/steel_grate",
+    "particle": "cygnus:block/steel_grate",
+    "south": "cygnus:block/steel_grate",
+    "up": "cygnus:block/steel_grate",
+    "west": "cygnus:block/steel_grate"
+  }
+}

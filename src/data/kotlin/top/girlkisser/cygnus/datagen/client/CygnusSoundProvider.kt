@@ -14,13 +14,13 @@ class CygnusSoundProvider(event: GatherDataEvent) :
 	override fun registerSounds()
 	{
 		addWithVariants(CygnusSoundEvents.METAL_GRATE_BREAK.get(), "block.generic.break", "block/metal_grate/break", 4)
-		addWithVariants(CygnusSoundEvents.METAL_GRATE_STEP.get(), "block.generic.step", "block/metal_grate/step", 6)
+		addWithVariants(CygnusSoundEvents.METAL_GRATE_STEP.get(), "block.generic.footsteps", "block/metal_grate/step", 6)
 		addWithVariants(CygnusSoundEvents.METAL_GRATE_PLACE.get(), "block.generic.place", "block/metal_grate/break", 4)
 		addWithVariants(CygnusSoundEvents.METAL_GRATE_HIT.get(), "block.generic.hit", "block/metal_grate/step", 6)
 		addWithVariants(CygnusSoundEvents.METAL_GRATE_FALL.get(), "block.generic.fall", "block/metal_grate/step", 6)
 
 		addWithVariants(CygnusSoundEvents.METAL_BULB_BREAK.get(), "block.generic.break", "block/metal_bulb/break", 4)
-		addWithVariants(CygnusSoundEvents.METAL_BULB_STEP.get(), "block.generic.step", "block/metal_bulb/step", 6)
+		addWithVariants(CygnusSoundEvents.METAL_BULB_STEP.get(), "block.generic.footsteps", "block/metal_bulb/step", 6)
 		addWithVariants(CygnusSoundEvents.METAL_BULB_PLACE.get(), "block.generic.place", "block/metal_bulb/place", 4)
 		addWithVariants(CygnusSoundEvents.METAL_BULB_HIT.get(), "block.generic.hit", "block/metal_bulb/step", 6)
 		addWithVariants(CygnusSoundEvents.METAL_BULB_FALL.get(), "block.generic.fall", "block/metal_bulb/step", 6)

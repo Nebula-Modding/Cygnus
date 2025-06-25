@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "cygnus:steel_vent"
+          "name": "cygnus:steel_plating"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "cygnus:blocks/steel_vent"
+  "random_sequence": "cygnus:blocks/steel_plating"
 }

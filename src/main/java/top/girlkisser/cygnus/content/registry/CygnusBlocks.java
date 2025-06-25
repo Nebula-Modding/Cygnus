@@ -115,8 +115,8 @@ public interface CygnusBlocks
 		// Steel
 		STEEL_BLOCK = reg("steel_block", Blocks.IRON_BLOCK),
 		STEEL_SHEET_METAL = reg("steel_sheet_metal", Blocks.IRON_BLOCK),
-		STEEL_TILES = reg("steel_tiles", Blocks.IRON_BLOCK),
-		STEEL_VENT = reg("steel_vent", WaterloggedTransparentBlock::new, basicGlassProperties(copy(Blocks.COPPER_GRATE).sound(CygnusSoundTypes.METAL_GRATE))),
+		STEEL_PLATING = reg("steel_plating", Blocks.IRON_BLOCK),
+		STEEL_GRATE = reg("steel_grate", WaterloggedTransparentBlock::new, basicGlassProperties(copy(Blocks.COPPER_GRATE).sound(CygnusSoundTypes.METAL_GRATE))),
 		STEEL_WINDOW = reg("steel_window", TransparentBlock::new, basicGlassProperties(copy(Blocks.IRON_BLOCK).sound(CygnusSoundTypes.METAL_WINDOW))),
 		STEEL_PILLAR = reg("steel_pillar", RotatedPillarBlock::new, copy(Blocks.IRON_BLOCK)),
 		STEEL_BARS = reg("steel_bars", () -> new IronBarsBlock(copy(Blocks.IRON_BARS))),

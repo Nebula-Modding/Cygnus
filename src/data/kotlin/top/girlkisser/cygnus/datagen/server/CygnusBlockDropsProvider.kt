@@ -43,8 +43,8 @@ class CygnusBlockDropsProvider(event: GatherDataEvent) : DapperLootTableProvider
 			setOf(
 				STEEL_BLOCK,
 				STEEL_SHEET_METAL,
-				STEEL_TILES,
-				STEEL_VENT,
+				STEEL_PLATING,
+				STEEL_GRATE,
 				STEEL_WINDOW,
 				STEEL_PILLAR,
 				STEEL_BARS,
