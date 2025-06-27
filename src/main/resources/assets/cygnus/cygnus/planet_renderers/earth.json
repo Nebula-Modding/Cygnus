@@ -12,11 +12,11 @@
 			"transforms": [
 				{ "axis": "x", "value": "cygnus:time", "args": { "multiplier": 1.0 } }
 			],
-			"texture_rotation": [0, 15, 0],
+			"texture_rotation": [0, 0, 0],
 			"backlight": {
-				"texture": "cygnus:textures/environment/backlights/64x64/circle.png",
-				"size": 80.0,
-				"color": [242,205,92,150]
+				"texture": "cygnus:textures/environment/backlights/32x32/circle.png",
+				"size": 30.0,
+				"color": [249, 239, 172, 175]
 			}
 		},
 

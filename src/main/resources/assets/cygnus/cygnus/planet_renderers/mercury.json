@@ -12,7 +12,7 @@
 			],
 			"texture_rotation": [0, 270, 0],
 			"backlight": {
-				"texture": "cygnus:textures/environment/backlights/32x32/circle.png",
+				"texture": "cygnus:textures/environment/backlights/64x64/circle.png",
 				"size": 75.0,
 				"color": [249, 248, 200, 200]
 			}
