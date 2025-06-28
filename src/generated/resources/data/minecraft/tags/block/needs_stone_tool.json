@@ -1,8 +1,8 @@
 {
   "values": [
     "cygnus:aluminium_block",
-    "cygnus:aluminium_tiles",
     "cygnus:aluminium_sheet_metal",
+    "cygnus:aluminium_tiles",
     "cygnus:lunar_iron_ore",
     "cygnus:lunar_deepslate_iron_ore",
     "cygnus:lunar_lapis_ore",

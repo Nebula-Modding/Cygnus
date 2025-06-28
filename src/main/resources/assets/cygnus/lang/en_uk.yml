@@ -3,12 +3,12 @@ itemGroup.cygnus: Cygnus
 block.cygnus:
   # Decorational
   steel_block: Block of Steel
-  steel_tiles: Steel Tiles
+  steel_plating: Steel Plating
   steel_sheet_metal: Steel Sheet Metal
   steel_window: Steel Window
   steel_door: Steel Door
   steel_trapdoor: Steel Trapdoor
-  steel_vent: Steel Grate
+  steel_grate: Steel Grate
   steel_pillar: Steel Pillar
   steel_bulb: Steel Bulb
   steel_bars: Steel Bars
@@ -118,7 +118,7 @@ item.cygnus:
   oxygen_drill.tooltip: Consumes oxygen to drill blocks efficiently
 
   # Misc
-  oxygen_gas_bucket: Oxygen Gas Bucket
+  oxygen_gas_bucket: Bucket of Oxygen Gas
 
 fluid_type.cygnus:
   oxygen_gas: Oxygen Gas
@@ -127,7 +127,7 @@ galaxy.cygnus:
   milky_way: The Milky Way
 
 star.cygnus:
-  sun: The Sun
+  sol: The Sun
 
 planet.cygnus:
   space: Outer Space
@@ -137,6 +137,8 @@ planet.cygnus:
   earth: Earth
   the_moon: The Moon
   mars: Mars
+  deimos: Deimos
+  phobos: Phobos
 
 screen.cygnus:
   terminal:
@@ -168,7 +170,7 @@ screen.cygnus:
       toxic: "Atmosphere: Toxic"
       damaging: "Atmosphere: Damaging to equipment and life"
     temperature: "Temperature: %f°C to %f°C"
-    gravity: "Gravity: %fm/s^2"
+    gravity: "Gravity: %f m/s²"
     water:
       accessible: "Water: Accessible"
       not_easily_accessible: "Water: Not easily accessible"
@@ -186,14 +188,14 @@ screen.cygnus:
 
 message.cygnus:
   # Shared tooltips
-  door_lockable: Use a Key to toggle between needing redstone to open the door
+  door_lockable: Use a key to lock to redstone
 
   # Errors
   failed_to_place_space_station: Failed to place space station
   no_such_command: "No such command: %s"
-  no_such_planet: "No such planet: %s"
+  no_such_planet: "No such body: %s"
   cannot_remove_last_telepad: Your space station must have at least one telepad
-  cannot_land_on_planet: You cannot land on this planet
+  cannot_land_on_planet: You cannot land on this body
 
 space_station.cygnus:
   space_station: Space Station

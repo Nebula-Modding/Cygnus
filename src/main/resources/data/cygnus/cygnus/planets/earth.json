@@ -6,15 +6,15 @@
 	"night_length": 12000,
 	"year_length": 365.2422,
 	"ambient_temperature_curve": [
-		{ "x": 0.00, "y": 17.5 }, // dawn
-		{ "x": 0.25, "y": 20.0 }, // midday
-		{ "x": 0.50, "y": 15.0 }, // midnight
-		{ "x": 1.00, "y": 17.5 } // dawn
+		{ "x": 0.00, "y": 15.0 }, // dawn
+		{ "x": 0.25, "y": 15.4 }, // midday
+		{ "x": 0.50, "y": 14.6 }, // midnight
+		{ "x": 1.00, "y": 15.0 } // dawn
 	],
 	"ambient_radiation": 0,
 	"moons": [
 		"cygnus:the_moon"
 	],
-	"atmospheric_pressure": -1,
+	"atmospheric_pressure": 1,
 	"danger_index": "habitable"
 }

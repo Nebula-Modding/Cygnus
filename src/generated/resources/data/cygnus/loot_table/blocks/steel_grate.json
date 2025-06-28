@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "cygnus:steel_tiles"
+          "name": "cygnus:steel_grate"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "cygnus:blocks/steel_tiles"
+  "random_sequence": "cygnus:blocks/steel_grate"
 }

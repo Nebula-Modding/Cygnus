@@ -155,11 +155,11 @@ class CygnusRecipeProvider(event: GatherDataEvent) : DapperRecipeProvider(event)
 			CygnusTags.Items.INGOTS_STEEL,
 			CygnusTags.Items.PLATES_STEEL,
 			CygnusBlocks.STEEL_SHEET_METAL,
-			CygnusBlocks.STEEL_TILES,
+			CygnusBlocks.STEEL_PLATING,
 			CygnusBlocks.STEEL_WINDOW,
 			CygnusBlocks.STEEL_DOOR,
 			CygnusBlocks.STEEL_TRAPDOOR,
-			CygnusBlocks.STEEL_VENT,
+			CygnusBlocks.STEEL_GRATE,
 			CygnusBlocks.STEEL_PILLAR,
 			CygnusBlocks.STEEL_BULB,
 			CygnusBlocks.STEEL_BARS,
@@ -208,7 +208,7 @@ class CygnusRecipeProvider(event: GatherDataEvent) : DapperRecipeProvider(event)
 			pattern("STS")
 			define('S', CygnusTags.Items.PLATES_STEEL)
 			define('C', CygnusItems.CHRONITE_CIRCUIT)
-			define('T', CygnusBlocks.STEEL_TILES)
+			define('T', CygnusBlocks.STEEL_PLATING)
 			unlockWith(CygnusItems.CHRONITE_CIRCUIT)
 			save(id("shaped/command_centre"))
 		}
@@ -220,7 +220,7 @@ class CygnusRecipeProvider(event: GatherDataEvent) : DapperRecipeProvider(event)
             define('S', CygnusTags.Items.PLATES_STEEL)
             define('G', cTag("glass_blocks/colorless"))
             define('C', CygnusItems.CHRONITE_CIRCUIT)
-            define('T', CygnusBlocks.STEEL_TILES)
+            define('T', CygnusBlocks.STEEL_PLATING)
             unlockWith(CygnusItems.CHRONITE_CIRCUIT)
             save(id("shaped/telepad"))
         }

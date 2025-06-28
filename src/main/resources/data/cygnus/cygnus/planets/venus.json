@@ -1,18 +1,18 @@
 {
 	"dimension": "minecraft:the_nether",
-	"gravity": 9.807,
+	"gravity": 8.87,
 	"has_oxygen": true,
 	"day_length": 12000,
 	"night_length": 12000,
 	"year_length": 687,
 	"ambient_temperature_curve": [
-		{ "x": 0.00, "y": 25 }, // dawn
-		{ "x": 0.25, "y": 25 }, // midday
-		{ "x": 0.50, "y": 25 }, // midnight
-		{ "x": 1.00, "y": 25 } // dawn
+		{ "x": 0.00, "y": 464.7 }, // dawn
+		{ "x": 0.25, "y": 464.3 }, // midday
+		{ "x": 0.50, "y": 463.9 }, // midnight
+		{ "x": 1.00, "y": 464.2 } // dawn
 	],
 	"ambient_radiation": 0,
 	"moons": [],
-	"atmospheric_pressure": -1,
-	"danger_index": "euclid"
+	"atmospheric_pressure": 93,
+	"danger_index": "lethal"
 }

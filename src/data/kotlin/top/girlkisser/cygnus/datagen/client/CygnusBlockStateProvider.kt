@@ -26,7 +26,7 @@ class CygnusBlockStateProvider(event: GatherDataEvent) : DapperBlockStateProvide
 		setOf(
 			STEEL_BLOCK,
 			STEEL_SHEET_METAL,
-			STEEL_TILES,
+			STEEL_PLATING,
 //			ALUMINIUM_BLOCK,
 //			ALUMINIUM_SHEET_METAL,
 //			ALUMINIUM_TILES,
@@ -63,7 +63,7 @@ class CygnusBlockStateProvider(event: GatherDataEvent) : DapperBlockStateProvide
 		}
 
 		setOf(
-			STEEL_VENT,
+			STEEL_GRATE,
 		).forEach {
 			it.addModel(CubeModel().all(it.id.withPrefix("block/")).renderType(mcLoc("cutout")))
 		}

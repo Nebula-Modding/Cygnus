@@ -6,12 +6,12 @@
 	"night_length": 12000,
 	"year_length": 0,
 	"ambient_temperature_curve": [
-		{ "x": 0.00, "y": 10 }, // dawn
-		{ "x": 0.25, "y": 10 }, // midday
-		{ "x": 0.50, "y": 10 }, // midnight
-		{ "x": 1.00, "y": 10 } // dawn
+		{ "x": 0.00, "y": -270.5 }, // dawn
+		{ "x": 0.25, "y": -269.1 }, // midday
+		{ "x": 0.50, "y": -271.2 }, // midnight
+		{ "x": 1.00, "y": -270.5 } // dawn
 	],
-	"ambient_radiation": 0, //todo
+	"ambient_radiation": 0, // todo
 	"moons": [],
 	"atmospheric_pressure": 0,
 	"danger_index": "safe" // I'd say that space is reasonably safe :3
