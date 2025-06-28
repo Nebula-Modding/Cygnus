@@ -88,7 +88,7 @@ public class TerminalStateNavigation implements ITerminalState
 		{
 			if (CygnusClient.mouseScrollY != 0)
 			{
-				mapZoom = Math.clamp(mapZoom + CygnusClient.mouseScrollY > 0 ? 0.05f : -0.05f, 0.1f, 3f);
+				mapZoom = Math.clamp(mapZoom + (CygnusClient.mouseScrollY > 0 ? 0.05f : -0.05f), 0.1f, 3f);
 			}
 
 			if (CygnusClient.isLeftMouseButtonDown)

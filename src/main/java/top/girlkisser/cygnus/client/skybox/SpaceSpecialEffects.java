@@ -79,6 +79,12 @@ public class SpaceSpecialEffects extends AbstractSpaceSpecialEffects
 	}
 
 	@Override
+	protected boolean usePlanetSkyboxObjects()
+	{
+		return !level().dimension().equals(CygnusResourceKeys.SPACE);
+	}
+
+	@Override
 	protected float getStarBrightness(float partialTick)
 	{
 		var level = level();

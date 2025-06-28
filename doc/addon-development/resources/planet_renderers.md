@@ -115,7 +115,11 @@ Any colour values can be provided in three different formats:
 
       // If `true`, this skybox object will only be rendered when you're
       // orbiting the planet this renderer is for.
-      "is_for_orbit": false
+      "is_for_orbit": false,
+
+      // If `true`, this skybox object will only be rendered when you're
+      // not orbiting the planet this renderer is for.
+      "is_for_planet": false
     }
   ],
   

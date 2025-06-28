@@ -44,6 +44,7 @@ public abstract class AbstractSpaceSpecialEffects extends DimensionSpecialEffect
 	protected abstract List<SkyboxObject> getSkyboxObjects();
 	protected abstract @Nullable VertexBuffer getStarBuffer();
 	protected abstract boolean useOrbitSkyboxObjects();
+	protected abstract boolean usePlanetSkyboxObjects();
 
 	protected float getStarBrightness(float partialTick)
 	{
@@ -127,9 +128,12 @@ public abstract class AbstractSpaceSpecialEffects extends DimensionSpecialEffect
 		RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
 
 		boolean useOrbitObjects = useOrbitSkyboxObjects();
+		boolean usePlanetObjects = usePlanetSkyboxObjects();
 		for (SkyboxObject obj : getSkyboxObjects())
 		{
 			if (obj.isForOrbit() && !useOrbitObjects)
+				continue;
+			if (obj.isForPlanet() && !usePlanetObjects)
 				continue;
 			renderSkyboxObject(obj, poses, level, partialTick, tes);
 		}

@@ -21,7 +21,8 @@ public record SkyboxObject(
 	Vector3f textureRotation,
 	Optional<UnpackedColour> sunsetColor,
 	Optional<SkyboxObject.Backlight> backlight,
-	boolean isForOrbit
+	boolean isForOrbit,
+	boolean isForPlanet
 )
 {
 	public static final Codec<SkyboxObject> CODEC = RecordCodecBuilder.create(it -> it.group(
@@ -32,7 +33,8 @@ public record SkyboxObject(
 		ExtraCodecs.VECTOR3F.optionalFieldOf("texture_rotation", new Vector3f(0, 0, 0)).forGetter(SkyboxObject::textureRotation),
 		UnpackedColour.FLEXIBLE_CODEC.optionalFieldOf("sunset_color").forGetter(SkyboxObject::sunsetColor),
 		SkyboxObject.Backlight.CODEC.optionalFieldOf("backlight").forGetter(SkyboxObject::backlight),
-		Codec.BOOL.optionalFieldOf("is_for_orbit", false).forGetter(SkyboxObject::isForOrbit)
+		Codec.BOOL.optionalFieldOf("is_for_orbit", false).forGetter(SkyboxObject::isForOrbit),
+		Codec.BOOL.optionalFieldOf("is_for_planet", false).forGetter(SkyboxObject::isForPlanet)
 	).apply(it, SkyboxObject::new));
 
 	public static final StreamCodec<ByteBuf, SkyboxObject> STREAM_CODEC = ByteBufCodecs.fromCodec(CODEC);
