@@ -144,6 +144,7 @@ val replaceProperties = mapOf(
 	"neo_version"             to prop("neo_version"),
 	"neo_version_range"       to prop("neo_version_range"),
 	"loader_version_range"    to prop("loader_version_range"),
+	"lazuli_version_range"    to prop("lazuli_version_range"),
 	"mod_id"                  to prop("mod_id"),
 	"mod_name"                to prop("mod_name"),
 	"mod_license"             to prop("mod_license"),
