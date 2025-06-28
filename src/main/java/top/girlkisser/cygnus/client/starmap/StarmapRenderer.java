@@ -9,6 +9,7 @@ import net.minecraft.client.renderer.Rect2i;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.resources.ResourceLocation;
 import org.joml.Matrix4f;
+import org.joml.Vector2f;
 import org.joml.Vector2i;
 import top.girlkisser.cygnus.Cygnus;
 import top.girlkisser.cygnus.api.space.Planet;
@@ -128,5 +129,13 @@ public class StarmapRenderer
 			minX + (maxX - minX) / 2 - spriteWidth / 2,
 			minY + (maxY - minY) / 2 - spriteHeight / 2
 		);
+	}
+
+	public static Vector2f getOrbitPositionOfPlanet(Planet planet, StarmapPlanetConfig renderConfig, int orbitX, int orbitY)
+	{
+		double orbitProgress = LazuliClientHelpers.clientTicks / planet.yearLength();
+		double x = orbitX + (Math.sin(orbitProgress) * renderConfig.orbitDistance());
+		double y = orbitY + (Math.cos(orbitProgress) * renderConfig.orbitDistance());
+		return new Vector2f((float) x, (float) y);
 	}
 }

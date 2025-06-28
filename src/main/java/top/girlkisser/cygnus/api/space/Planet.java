@@ -18,7 +18,6 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.level.portal.DimensionTransition;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
-import top.girlkisser.cygnus.Cygnus;
 import top.girlkisser.cygnus.api.CygnusRegistries;
 import top.girlkisser.cygnus.content.entity.EntityLandingBeam;
 import top.girlkisser.lazuli.api.codec.LimitedStringCodec;
@@ -30,9 +29,6 @@ import java.util.UUID;
 
 public record Planet(
 	Optional<ResourceLocation> dimension,
-	ResourceLocation terminalIcon, // TODO: Move to planet render config
-	ResourceLocation terminalIconHover, // TODO: Move to planet render config
-	ResourceLocation mapTexture, // TODO: Move to planet render config
 	double gravity, // Meters per second^2. Earth is 9.807
 	boolean hasOxygen,
 	int dayLength, // Ticks
@@ -50,9 +46,6 @@ public record Planet(
 
 	public static final Codec<Planet> CODEC = RecordCodecBuilder.create(it -> it.group(
 		ResourceLocation.CODEC.optionalFieldOf("dimension").forGetter(Planet::dimension),
-		ResourceLocation.CODEC.optionalFieldOf("terminal_icon", Cygnus.id("terminal/planet")).forGetter(Planet::terminalIcon),
-		ResourceLocation.CODEC.optionalFieldOf("terminal_icon_hover", Cygnus.id("terminal/planet_selected")).forGetter(Planet::terminalIconHover),
-		ResourceLocation.CODEC.optionalFieldOf("map_texture", Cygnus.id("planet")).forGetter(Planet::mapTexture),
 		Codec.DOUBLE.fieldOf("gravity").forGetter(Planet::gravity),
 		Codec.BOOL.fieldOf("has_oxygen").forGetter(Planet::hasOxygen),
 		Codec.INT.fieldOf("day_length").forGetter(Planet::dayLength),

@@ -1,7 +1,6 @@
 package top.girlkisser.cygnus.client.screen.terminal;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.MouseHandler;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.renderer.Rect2i;
 import net.minecraft.core.RegistryAccess;
@@ -9,15 +8,15 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.joml.Vector2f;
+import org.joml.Vector2i;
 import top.girlkisser.cygnus.Cygnus;
 import top.girlkisser.cygnus.api.space.Galaxy;
 import top.girlkisser.cygnus.api.space.Planet;
 import top.girlkisser.cygnus.api.space.PlanetaryDangerIndex;
 import top.girlkisser.cygnus.api.space.Star;
 import top.girlkisser.cygnus.client.CygnusClient;
-import top.girlkisser.cygnus.client.starmap.StarmapGalaxyConfigLoader;
-import top.girlkisser.cygnus.client.starmap.StarmapRenderer;
-import top.girlkisser.cygnus.client.starmap.StarmapStarConfigLoader;
+import top.girlkisser.cygnus.client.starmap.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,8 +25,8 @@ import java.util.function.Supplier;
 
 public class TerminalStateNavigation implements ITerminalState
 {
-	public static final int MAP_MIN_X = 45, MAP_MIN_Y = 40, MAP_MAX_X = 216, MAP_MAX_Y = 207;
-	public static final int BUTTONS_MIN_X = 13, BUTTONS_MIN_Y = 40, BUTTONS_MAX_X = 43, BUTTONS_MAX_Y = 207;
+	public static final int MAP_MIN_X = 45, MAP_MIN_Y = 40, MAP_MAX_X = 217, MAP_MAX_Y = 208;
+	public static final int BUTTONS_MIN_X = 13, BUTTONS_MIN_Y = 40, BUTTONS_MAX_X = 43, BUTTONS_MAX_Y = 208;
 
 	public ScreenTerminal<?> screen;
 	protected RegistryAccess registryAccess;
@@ -46,6 +45,8 @@ public class TerminalStateNavigation implements ITerminalState
 	protected int mapPanX = 0, mapPanY = 0;
 	protected float mapZoom = 1f;
 	protected float buttonScrollY = 0;
+	// When not null, the map pan will follow the orbit of the selected planet/moon.
+	protected boolean followingPlanet = false;
 
 	public TerminalStateNavigation(ScreenTerminal<?> screen)
 	{
@@ -79,6 +80,7 @@ public class TerminalStateNavigation implements ITerminalState
 		mapPanY = 0;
 		mapZoom = 1f;
 		buttonScrollY = 0;
+		followingPlanet = false;
 	}
 
 	@Override
@@ -93,6 +95,8 @@ public class TerminalStateNavigation implements ITerminalState
 
 			if (CygnusClient.isLeftMouseButtonDown)
 			{
+				followingPlanet = false;
+
 				if (previousMouseX != mouseX)
 					mapPanX -= previousMouseX - mouseX;
 
@@ -115,6 +119,24 @@ public class TerminalStateNavigation implements ITerminalState
 				}
 			}
 		}
+
+		//TODO: Make this follow moons properly. I'll need to calculate the orbit of them by first calculating the orbit
+		//      of the body that the moon orbits, then factor that into the position.
+//		if (followingPlanet && Minecraft.getInstance().level != null)
+//		{
+//			StarmapStarConfig starRenderConfig = StarmapStarConfigLoader.getRenderConfigOrThrow(selectedStarId);
+//			StarmapPlanetConfig planetRenderConfig = StarmapPlanetConfigLoader.getRenderConfigOrThrow(selectedPlanetIdStack.getLast());
+//			Rect2i region = new Rect2i(screen.getGuiLeft() + MAP_MIN_X, screen.getGuiTop() + MAP_MIN_Y, MAP_MAX_X, MAP_MAX_Y);
+//			Vector2i origin = StarmapRenderer.getCentreForSprite(region.getX(), region.getY(), region.getX() + region.getWidth(), region.getY() + region.getHeight(), (int)(starRenderConfig.size() * mapZoom), (int)(starRenderConfig.size() * mapZoom));
+//			Vector2f pos = StarmapRenderer.getOrbitPositionOfPlanet(
+//				Planet.getPlanetByIdOrThrow(Minecraft.getInstance().level.registryAccess(), selectedPlanetIdStack.getLast()),
+//				planetRenderConfig,
+//				origin.x,
+//				origin.y
+//			);
+//			mapPanX = -(int)(pos.x - region.getX() - planetRenderConfig.size() / 2f + starRenderConfig.size() / 2f - region.getWidth() / 2f);
+//			mapPanY = -(int)(pos.y - region.getY() - planetRenderConfig.size() / 2f + starRenderConfig.size() / 2f - region.getHeight() / 2f);
+//		}
 
 		StarmapRenderer starmapRenderer = new StarmapRenderer(
 			graphics,
@@ -293,6 +315,7 @@ public class TerminalStateNavigation implements ITerminalState
 		for (ResourceLocation id : Galaxy.getGalaxyIds(registryAccess))
 			buttons.add((x, y) ->
 			{
+				var rc = StarmapGalaxyConfigLoader.getRenderConfigOrThrow(id);
 				Galaxy galaxy = Galaxy.getGalaxyById(registryAccess, id);
 				return new TerminalNavigationButton(
 					id,
@@ -317,8 +340,8 @@ public class TerminalStateNavigation implements ITerminalState
 							this.setList(this::listStars);
 						}
 					},
-					galaxy.terminalIcon(),
-					galaxy.terminalIconHover(),
+					rc.terminalIconTexture(),
+					rc.terminalIconHoverTexture(),
 					this
 				);
 			});
@@ -330,6 +353,7 @@ public class TerminalStateNavigation implements ITerminalState
 		for (ResourceLocation id : selectedGalaxy.stars())
 			buttons.add((x, y) ->
 			{
+				var rc = StarmapStarConfigLoader.getRenderConfigOrThrow(id);
 				Star star = Star.getStarById(registryAccess, id);
 				return new TerminalNavigationButton(
 					id,
@@ -344,8 +368,8 @@ public class TerminalStateNavigation implements ITerminalState
 						resetPanAndZoom();
 						this.setList(this::listPlanets);
 					},
-					star.terminalIcon(),
-					star.terminalIconHover(),
+					rc.terminalIconHoverTexture(),
+					rc.terminalIconHoverTexture(),
 					this
 				);
 			});
@@ -357,6 +381,7 @@ public class TerminalStateNavigation implements ITerminalState
 		for (ResourceLocation id : selectedStar.planets())
 			buttons.add((x, y) ->
 			{
+				var rc = StarmapPlanetConfigLoader.getRenderConfigOrThrow(id);
 				Planet planet = Planet.getPlanetByIdOrThrow(registryAccess, id);
 				return new TerminalNavigationButton(
 					id,
@@ -368,10 +393,11 @@ public class TerminalStateNavigation implements ITerminalState
 					{
 						selectedPlanetStack.add(planet);
 						selectedPlanetIdStack.add(id);
+						followingPlanet = true;
 						this.setList(this::listMoons);
 					},
-					planet.terminalIcon(),
-					planet.terminalIconHover(),
+					rc.terminalIconTexture(),
+					rc.terminalIconHoverTexture(),
 					this
 				);
 			});
@@ -382,6 +408,7 @@ public class TerminalStateNavigation implements ITerminalState
 		for (ResourceLocation id : selectedPlanetStack.getLast().moons())
 			buttons.add((x, y) ->
 			{
+				var rc = StarmapPlanetConfigLoader.getRenderConfigOrThrow(id);
 				Planet moon = Planet.getPlanetByIdOrThrow(registryAccess, id);
 				return new TerminalNavigationButton(
 					id,
@@ -393,10 +420,11 @@ public class TerminalStateNavigation implements ITerminalState
 					{
 						selectedPlanetStack.add(moon);
 						selectedPlanetIdStack.add(id);
+						followingPlanet = true;
 						this.setList(this::listMoons);
 					},
-					moon.terminalIcon(),
-					moon.terminalIconHover(),
+					rc.terminalIconTexture(),
+					rc.terminalIconHoverTexture(),
 					this
 				);
 			});
