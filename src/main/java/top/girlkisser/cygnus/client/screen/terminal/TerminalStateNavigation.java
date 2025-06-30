@@ -80,7 +80,7 @@ public class TerminalStateNavigation implements ITerminalState
 		mapPanY = 0;
 		mapZoom = 1f;
 		buttonScrollY = 0;
-		followingPlanet = false;
+//		followingPlanet = false;
 	}
 
 	@Override
@@ -122,21 +122,25 @@ public class TerminalStateNavigation implements ITerminalState
 
 		//TODO: Make this follow moons properly. I'll need to calculate the orbit of them by first calculating the orbit
 		//      of the body that the moon orbits, then factor that into the position.
-//		if (followingPlanet && Minecraft.getInstance().level != null)
-//		{
-//			StarmapStarConfig starRenderConfig = StarmapStarConfigLoader.getRenderConfigOrThrow(selectedStarId);
-//			StarmapPlanetConfig planetRenderConfig = StarmapPlanetConfigLoader.getRenderConfigOrThrow(selectedPlanetIdStack.getLast());
-//			Rect2i region = new Rect2i(screen.getGuiLeft() + MAP_MIN_X, screen.getGuiTop() + MAP_MIN_Y, MAP_MAX_X, MAP_MAX_Y);
-//			Vector2i origin = StarmapRenderer.getCentreForSprite(region.getX(), region.getY(), region.getX() + region.getWidth(), region.getY() + region.getHeight(), (int)(starRenderConfig.size() * mapZoom), (int)(starRenderConfig.size() * mapZoom));
-//			Vector2f pos = StarmapRenderer.getOrbitPositionOfPlanet(
-//				Planet.getPlanetByIdOrThrow(Minecraft.getInstance().level.registryAccess(), selectedPlanetIdStack.getLast()),
-//				planetRenderConfig,
-//				origin.x,
-//				origin.y
-//			);
-//			mapPanX = -(int)(pos.x - region.getX() - planetRenderConfig.size() / 2f + starRenderConfig.size() / 2f - region.getWidth() / 2f);
-//			mapPanY = -(int)(pos.y - region.getY() - planetRenderConfig.size() / 2f + starRenderConfig.size() / 2f - region.getHeight() / 2f);
-//		}
+		if (followingPlanet && selectedStarId != null && Minecraft.getInstance().level != null)
+		{
+			StarmapStarConfig starRenderConfig = StarmapStarConfigLoader.getRenderConfigOrThrow(selectedStarId);
+			Rect2i region = new Rect2i(screen.getGuiLeft() + MAP_MIN_X, screen.getGuiTop() + MAP_MIN_Y, MAP_MAX_X, MAP_MAX_Y);
+			Vector2i origin = StarmapRenderer.getCentreForSprite(region.getX(), region.getY(), region.getX() + region.getWidth(), region.getY() + region.getHeight(), (int)(starRenderConfig.size() * mapZoom), (int)(starRenderConfig.size() * mapZoom));
+			Vector2f pos = new Vector2f(origin.x, origin.y);
+			for (var planet : selectedPlanetIdStack)
+			{
+				StarmapPlanetConfig planetRenderConfig = StarmapPlanetConfigLoader.getRenderConfigOrThrow(planet);
+				pos = StarmapRenderer.getOrbitPositionOfPlanet(
+					Planet.getPlanetByIdOrThrow(Minecraft.getInstance().level.registryAccess(), planet),
+					planetRenderConfig,
+					(int)pos.x,
+					(int)pos.y
+				);
+			}
+			mapPanX = -(int)(pos.x - region.getX() /*- planetRenderConfig.size() / 2f*/ + starRenderConfig.size() / 2f - region.getWidth() / 2f);
+			mapPanY = -(int)(pos.y - region.getY() /*- planetRenderConfig.size() / 2f*/ + starRenderConfig.size() / 2f - region.getHeight() / 2f);
+		}
 
 		StarmapRenderer starmapRenderer = new StarmapRenderer(
 			graphics,

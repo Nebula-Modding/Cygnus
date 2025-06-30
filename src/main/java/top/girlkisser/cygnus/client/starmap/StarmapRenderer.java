@@ -2,6 +2,7 @@ package top.girlkisser.cygnus.client.starmap;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.*;
+import com.mojang.math.Axis;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.renderer.GameRenderer;
@@ -47,10 +48,6 @@ public class StarmapRenderer
 
 		PoseStack poses = graphics.pose();
 
-//		poses.pushPose();
-
-//		poses.mulPose(Axis.YP.rotation((float)(orbitProgress * 100f)));
-
 		RenderSystem.enableBlend();
 //		RenderSystem.setShaderColor(1, 1, 1, 1);
 
@@ -77,8 +74,6 @@ public class StarmapRenderer
 		}
 
 		RenderSystem.disableBlend();
-
-//		poses.popPose();
 	}
 
 	public void renderPlanet(float orbitX, float orbitY, ResourceLocation planetId, Planet planet, StarmapPlanetConfig renderConfig, boolean renderMoons)
