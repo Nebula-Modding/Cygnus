@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/cross",
-  "render_type": "minecraft:cutout",
-  "textures": {
-    "cross": "cygnus:block/chronite_cluster",
-    "particle": "cygnus:block/chronite_cluster"
-  }
-}

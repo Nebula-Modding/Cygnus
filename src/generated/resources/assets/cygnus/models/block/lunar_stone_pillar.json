@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/cube_column",
-  "textures": {
-    "end": "cygnus:block/lunar_stone_pillar_end",
-    "side": "cygnus:block/lunar_stone_pillar_side"
-  }
-}
