@@ -3,7 +3,6 @@
 	"minVersion": "0.8",
 	"package": "top.girlkisser.cygnus.mixin",
 	"compatibilityLevel": "JAVA_8",
-	"refmap": "cygnus.refmap.json",
 	"mixins": [
 		"EntityMixin",
 		"LivingEntityAccessor",

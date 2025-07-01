@@ -4,9 +4,9 @@ plugins {
     id("java-library")
     id("maven-publish")
 	id("idea")
-	id("org.jetbrains.kotlin.jvm") version "2.0.0"
-	id("dev.architectury.loom") version "1.7-SNAPSHOT"
-	id("me.fallenbreath.yamlang") version "1.4.0"
+	id("org.jetbrains.kotlin.jvm") version "2.1.0"
+	id("earth.terrarium.cloche") version "0.10.18"
+	id("me.fallenbreath.yamlang") version "1.4.1"
 }
 
 fun prop(key: String) = property(key) as String
@@ -17,8 +17,13 @@ group = prop("mod_group_id")
 repositories {
     mavenLocal()
 
-	maven("https://maven.neoforged.net")
-	maven("https://maven.parchmentmc.org")
+	cloche {
+		main()
+		mavenNeoforged()
+		mavenNeoforgedMeta()
+		mavenParchment()
+		librariesMinecraft()
+	}
 
 	// Lazuli
 	exclusiveContent {
@@ -38,14 +43,7 @@ repositories {
 	maven("https://maven.terraformersmc.com/")
 
 	// Mekanism
-	exclusiveContent {
-		forRepository {
-			maven("https://api.modrinth.com/maven")
-		}
-		filter {
-			includeGroup("maven.modrinth")
-		}
-	}
+	maven("https://modmaven.dev/")
 }
 
 base {
@@ -58,43 +56,80 @@ java {
 	withJavadocJar()
 }
 
+// this is currently required due to a bug in cloche
+// https://github.com/terrarium-earth/cloche/issues/85
+tasks.named("sourcesJar") {
+	dependsOn("generateNeoforgeModsToml")
+}
+
 kotlin.compilerOptions.jvmTarget = JvmTarget.JVM_21
 
-sourceSets {
-	main {
-		resources {
-			srcDir("src/generated/resources")
-			exclude("*.cache/")
-		}
+cloche {
+	minecraftVersion = prop("minecraft_version")
+
+	metadata {
+		modId = prop("mod_id")
+		name = prop("mod_name")
+		description = prop("mod_description")
+		license = prop("mod_license")
+		author(prop("mod_authors"))
 	}
 
-	create("data") {
-		kotlin {
-			srcDirs("src/data/kotlin")
-		}
-		compileClasspath += main.get().compileClasspath + main.get().output
-		runtimeClasspath += main.get().runtimeClasspath + main.get().output
+	mappings {
+		official()
+		parchment(prop("parchment_mappings_version"))
 	}
-}
 
-tasks.compileKotlin {
-	source(sourceSets["data"].kotlin)
-}
+	singleTarget {
+		neoforge {
+			loaderVersion = prop("neo_version")
 
-loom {
-	runs {
-		all {
-			vmArg("-XX:+AllowEnhancedClassRedefinition")
-		}
-
-		register("data") {
 			data()
 
-			source(sourceSets["data"])
+			metadata {
+				dependency {
+					modId = "lazuli"
+					required = true
+					version {
+						start = "0.1.0"
+					}
+				}
+			}
 
-			programArgs("--all", "--mod", prop("mod_id"),
-				"--output", file("src/generated/resources/").absolutePath,
-				"--existing", file("src/main/resources/").absolutePath)
+			mixins.from("cygnus.mixins.json")
+
+			dependencies {
+				fun enabled(id: String) = prop("enable_$id") == "true"
+
+				modImplementation("com.github.emmathemartian:lazuli:${prop("lazuli_version")}")
+
+				// KotlinForForge (for datagen)
+				modImplementation("thedarkcolour:kotlinforforge-neoforge:${prop("kff_version")}") {
+					// https://github.com/thedarkcolour/KotlinForForge/issues/103 (also applies to cloche basically)
+					exclude(group = "net.neoforged.fancymodloader", module = "loader")
+				}
+
+				// this needs to be modImplementation, or it won't have access to MC's classes
+				modImplementation("martian:dapper:${prop("dapper_version")}")
+
+				modCompileOnly("dev.emi:emi-neoforge:${prop("emi_version")}:api")
+				// this is local runtime instead of runtime only to not force
+				// dependents to have emi in their dev env
+				modLocalRuntime("dev.emi:emi-neoforge:${prop("emi_version")}")
+
+				if (enabled("mekanism"))
+					modLocalRuntime("mekanism:Mekanism:${prop("mekanism_version")}")
+			}
+
+			runs {
+				server {
+					jvmArgs("-XX:+AllowEnhancedClassRedefinition")
+				}
+				client {
+					jvmArgs("-XX:+AllowEnhancedClassRedefinition")
+				}
+				data()
+			}
 		}
 	}
 }
@@ -102,70 +137,6 @@ loom {
 yamlang {
 	targetSourceSets = listOf(sourceSets.main.get())
 	inputDir = "assets/${prop("mod_id")}/lang"
-}
-
-dependencies {
-	// Shorthands for Modrinth maven dependencies
-	fun modrinth(id: String) = "maven.modrinth:$id:${prop("${id.replace('-', '_')}_version")}"
-	fun enabled(id: String) = prop("enable_$id") == "true"
-
-	minecraft("com.mojang:minecraft:${prop("minecraft_version")}")
-
-	@Suppress("UnstableApiUsage")
-	mappings(loom.layered {
-		officialMojangMappings()
-		parchment("org.parchmentmc.data:parchment-${prop("parchment_minecraft_version")}:${prop("parchment_mappings_version")}@zip")
-	})
-
-	neoForge("net.neoforged:neoforge:${prop("neo_version")}")
-
-	modImplementation("com.github.emmathemartian:lazuli:${prop("lazuli_version")}")
-
-	// KotlinForForge (for datagen)
-	implementation("thedarkcolour:kotlinforforge-neoforge:${prop("kff_version")}") {
-		// https://github.com/thedarkcolour/KotlinForForge/issues/103
-		exclude(group = "net.neoforged.fancymodloader", module = "loader")
-	}
-
-	implementation("martian:dapper:${prop("dapper_version")}")
-
-	compileOnly("dev.emi:emi-neoforge:${prop("emi_version")}:api")
-	runtimeOnly("dev.emi:emi-neoforge:${prop("emi_version")}")
-
-	if (enabled("mekanism"))
-		modLocalRuntime(modrinth("mekanism"))
-}
-
-// This block of code expands all declared replace properties in the specified resource targets.
-// A missing property will result in an error. Properties are expanded using ${} Groovy notation.
-val replaceProperties = mapOf(
-	"minecraft_version"       to prop("minecraft_version"),
-	"minecraft_version_range" to prop("minecraft_version_range"),
-	"neo_version"             to prop("neo_version"),
-	"neo_version_range"       to prop("neo_version_range"),
-	"loader_version_range"    to prop("loader_version_range"),
-	"lazuli_version_range"    to prop("lazuli_version_range"),
-	"mod_id"                  to prop("mod_id"),
-	"mod_name"                to prop("mod_name"),
-	"mod_license"             to prop("mod_license"),
-	"mod_version"             to prop("mod_version"),
-	"mod_authors"             to prop("mod_authors"),
-	"mod_description"         to prop("mod_description"),
-)
-
-val generateModMetadata = tasks.register<ProcessResources>("generateModMetadata") {
-	inputs.properties(replaceProperties)
-	expand(replaceProperties)
-	from("src/main/templates")
-	into("build/generated/sources/modMetadata")
-}
-
-// Include the output of "generateModMetadata" as an input directory for the build
-// this works with both building through Gradle and the IDE.
-sourceSets.main.get().resources.srcDir(generateModMetadata)
-// To avoid having to run "generateModMetadata" manually, make it run on every project reload
-tasks.ideaSyncTask.configure {
-	dependsOn(generateModMetadata)
 }
 
 // Exclude the `data` source set from any jars build
