@@ -20,7 +20,7 @@ repositories {
 	cloche {
 		main()
 		mavenNeoforged()
-		mavenNeoforged("mojang-meta")
+		mavenNeoforgedMeta()
 		mavenParchment()
 		librariesMinecraft()
 	}
@@ -56,6 +56,8 @@ java {
 	withJavadocJar()
 }
 
+// this is currently required due to a bug in cloche
+// https://github.com/terrarium-earth/cloche/issues/85
 tasks.named("sourcesJar") {
 	dependsOn("generateNeoforgeModsToml")
 }
@@ -63,8 +65,8 @@ tasks.named("sourcesJar") {
 kotlin.compilerOptions.jvmTarget = JvmTarget.JVM_21
 
 cloche {
+	minecraftVersion = prop("minecraft_version")
 
-	minecraftVersion = "1.21.1" //prop("minecraft_version")
 	metadata {
 		modId = prop("mod_id")
 		name = prop("mod_name")
@@ -80,7 +82,6 @@ cloche {
 
 	singleTarget {
 		neoforge {
-			minecraftVersion = "1.21.1" //prop("minecraft_version")
 			loaderVersion = prop("neo_version")
 
 			data()
@@ -98,21 +99,22 @@ cloche {
 			mixins.from("cygnus.mixins.json")
 
 			dependencies {
-				// Shorthands for Modrinth maven dependencies
-				fun modrinth(id: String) = "maven.modrinth:$id:${prop("${id.replace('-', '_')}_version")}"
 				fun enabled(id: String) = prop("enable_$id") == "true"
 
 				modImplementation("com.github.emmathemartian:lazuli:${prop("lazuli_version")}")
 
 				// KotlinForForge (for datagen)
 				modImplementation("thedarkcolour:kotlinforforge-neoforge:${prop("kff_version")}") {
-					// https://github.com/thedarkcolour/KotlinForForge/issues/103
+					// https://github.com/thedarkcolour/KotlinForForge/issues/103 (also applies to cloche basically)
 					exclude(group = "net.neoforged.fancymodloader", module = "loader")
 				}
 
+				// this needs to be modImplementation, or it won't have access to MC's classes
 				modImplementation("martian:dapper:${prop("dapper_version")}")
 
 				modCompileOnly("dev.emi:emi-neoforge:${prop("emi_version")}:api")
+				// this is local runtime instead of runtime only to not force
+				// dependents to have emi in their dev env
 				modLocalRuntime("dev.emi:emi-neoforge:${prop("emi_version")}")
 
 				if (enabled("mekanism"))
@@ -124,9 +126,6 @@ cloche {
 					jvmArgs("-XX:+AllowEnhancedClassRedefinition")
 				}
 				client {
-					environment("TEST", "Test")
-
-					env("TEST", "Test")
 					jvmArgs("-XX:+AllowEnhancedClassRedefinition")
 				}
 				data()
