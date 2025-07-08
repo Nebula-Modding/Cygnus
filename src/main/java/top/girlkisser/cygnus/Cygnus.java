@@ -34,6 +34,7 @@ public class Cygnus
 		}
 
 		// Registration
+		CygnusAttachments.R.register(bus);
 		CygnusBlocks.R.register(bus);
 		CygnusBlockEntityTypes.R.register(bus);
 		CygnusDataComponents.R.register(bus);

@@ -20,16 +20,6 @@ repositories {
 	maven("https://maven.neoforged.net")
 	maven("https://maven.parchmentmc.org")
 
-	// Lazuli
-	exclusiveContent {
-		forRepository {
-			maven("https://jitpack.io/")
-		}
-		filter {
-			includeModule("com.github.emmathemartian", "lazuli")
-		}
-	}
-
 	// KFF+Dapper
 	maven("https://thedarkcolour.github.io/KotlinForForge/")
 	maven("https://codeberg.org/EmmaTheMartian/dapper/raw/branch/main/repo/")
@@ -37,7 +27,7 @@ repositories {
 	// EMI
 	maven("https://maven.terraformersmc.com/")
 
-	// Mekanism
+	// Mekanism, Lazuli
 	exclusiveContent {
 		forRepository {
 			maven("https://api.modrinth.com/maven")
@@ -119,7 +109,7 @@ dependencies {
 
 	neoForge("net.neoforged:neoforge:${prop("neo_version")}")
 
-	modImplementation("com.github.emmathemartian:lazuli:${prop("lazuli_version")}")
+	modImplementation(modrinth("lazuli"))
 
 	// KotlinForForge (for datagen)
 	implementation("thedarkcolour:kotlinforforge-neoforge:${prop("kff_version")}") {

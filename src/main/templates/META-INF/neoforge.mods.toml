@@ -1,7 +1,7 @@
 modLoader = "javafml"
 loaderVersion = "${loader_version_range}"
 license = "${mod_license}"
-issueTrackerURL="https://github.com/emmathemartian/cygnus/issues"
+issueTrackerURL="https://github.com/nebula-modding/cygnus/issues"
 
 [[mods]]
 modId = "${mod_id}"
@@ -9,7 +9,7 @@ version = "${mod_version}"
 displayName = "${mod_name}"
 # A URL to query for updates for this mod. See the JSON update specification https://docs.neoforge.net/docs/misc/updatechecker/
 #updateJSONURL="https://change.me.example.invalid/updates.json"
-displayURL="https://github.com/emmathemartian/cygnus"
+displayURL="https://github.com/nebula-modding/cygnus"
 #logoFile="cygnus.png"
 authors = "${mod_authors}"
 description = '''${mod_description}'''

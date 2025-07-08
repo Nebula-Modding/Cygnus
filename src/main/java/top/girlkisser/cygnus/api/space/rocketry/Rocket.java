@@ -1,4 +1,4 @@
-package top.girlkisser.cygnus.api.rocketry;
+package top.girlkisser.cygnus.api.space.rocketry;
 
 public record Rocket(
 	boolean isManned,

@@ -120,7 +120,7 @@ public interface CygnusBlocks
 		STEEL_WINDOW = reg("steel_window", TransparentBlock::new, basicGlassProperties(copy(Blocks.IRON_BLOCK).sound(CygnusSoundTypes.METAL_WINDOW))),
 		STEEL_PILLAR = reg("steel_pillar", RotatedPillarBlock::new, copy(Blocks.IRON_BLOCK)),
 		STEEL_BARS = reg("steel_bars", () -> new IronBarsBlock(copy(Blocks.IRON_BARS))),
-		STEEL_DOOR = reg("steel_door", () -> new BlockSteelDoor(BlockLockingDoor.IRON_UNLOCKED, copy(Blocks.IRON_DOOR))),
+		STEEL_DOOR = reg("steel_door", () -> new BlockLockingDoor(BlockLockingDoor.IRON_UNLOCKED, copy(Blocks.IRON_DOOR))),
 		STEEL_TRAPDOOR = reg("steel_trapdoor", () -> new BlockLockingTrapdoor(BlockLockingDoor.IRON_UNLOCKED, copy(Blocks.IRON_TRAPDOOR))),
 		STEEL_BULB = reg("steel_bulb", () -> new CopperBulbBlock(copy(Blocks.IRON_BLOCK)
 			.isRedstoneConductor(CygnusBlocks::never)

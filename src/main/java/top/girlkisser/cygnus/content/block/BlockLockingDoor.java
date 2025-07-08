@@ -10,6 +10,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.DoorBlock;
@@ -18,6 +19,9 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
+import net.minecraft.world.phys.shapes.VoxelShape;
 import top.girlkisser.cygnus.content.registry.CygnusItems;
 
 import javax.annotation.ParametersAreNonnullByDefault;
@@ -78,5 +82,23 @@ public class BlockLockingDoor extends DoorBlock
 	public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag)
 	{
 		tooltipComponents.add(Component.translatable("message.cygnus.door_lockable"));
+	}
+
+	@Override
+	protected VoxelShape getVisualShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context)
+	{
+		return Shapes.empty();
+	}
+
+	@Override
+	protected float getShadeBrightness(BlockState state, BlockGetter level, BlockPos pos)
+	{
+		return 1.0F;
+	}
+
+	@Override
+	protected boolean propagatesSkylightDown(BlockState state, BlockGetter level, BlockPos pos)
+	{
+		return true;
 	}
 }
