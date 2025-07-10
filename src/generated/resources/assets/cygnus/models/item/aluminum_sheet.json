@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "cygnus:item/chronite"
+    "layer0": "cygnus:item/aluminum_sheet"
   }
 }

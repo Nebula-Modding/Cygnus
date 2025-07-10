@@ -21,7 +21,7 @@ public class CommandCentreStateStats extends TerminalStateStats
 	public String getMenuName()
 	{
 		return screen().getMenu().getSpaceStation() == null ?
-			Component.translatable("block.cygnus.command_centre").getString() :
+			Component.translatable("block.cygnus.command_center").getString() :
 			screen().getMenu().getSpaceStation().name();
 	}
 }

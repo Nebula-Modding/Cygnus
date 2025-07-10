@@ -78,7 +78,7 @@ public class CommandCentreStateConstruct extends AbstractButtonTerminalState
 			screen.addRenderableWidget(new TerminalIconButton(
 				screen.getGuiLeft() + 190,
 				screen.getGuiTop() + 181,
-				Component.translatable("screen.cygnus.command_centre.construct"),
+				Component.translatable("screen.cygnus.command_center.construct"),
 				Supplier::get,
 				button ->
 				{
@@ -135,7 +135,7 @@ public class CommandCentreStateConstruct extends AbstractButtonTerminalState
 	public String getMenuName()
 	{
 		return screen().getMenu().getSpaceStation() == null ?
-			Component.translatable("block.cygnus.command_centre").getString() :
+			Component.translatable("block.cygnus.command_center").getString() :
 			screen().getMenu().getSpaceStation().name();
 	}
 

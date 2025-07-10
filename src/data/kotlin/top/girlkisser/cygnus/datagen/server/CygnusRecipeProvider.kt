@@ -114,7 +114,7 @@ class CygnusRecipeProvider(event: GatherDataEvent) : DapperRecipeProvider(event)
             pattern("THT")
             pattern(" C ")
             define('T', CygnusTags.Items.PLATES_TITANIUM)
-            define('H', CygnusItems.CHRONITE)
+            define('H', CygnusItems.CHRONITE_SHARD)
             define('C', CygnusItems.ELECTRONIC_CIRCUIT)
             unlockWith(Items.QUARTZ)
             save(id("shaped/chronite_circuit"))
@@ -171,7 +171,7 @@ class CygnusRecipeProvider(event: GatherDataEvent) : DapperRecipeProvider(event)
 			CygnusTags.Items.INGOTS_ALUMINIUM,
 			CygnusTags.Items.PLATES_ALUMINIUM,
 			CygnusBlocks.ALUMINIUM_SHEET_METAL,
-			CygnusBlocks.ALUMINIUM_TILES,
+			CygnusBlocks.ALUMINIUM_PLATING,
 			null, // CygnusBlocks.ALUMINIUM_WINDOW,
 			null, // CygnusBlocks.ALUMINIUM_DOOR,
 			null, // CygnusBlocks.ALUMINIUM_TRAPDOOR,
@@ -187,7 +187,7 @@ class CygnusRecipeProvider(event: GatherDataEvent) : DapperRecipeProvider(event)
 			CygnusTags.Items.INGOTS_TITANIUM,
 			CygnusTags.Items.PLATES_TITANIUM,
 			CygnusBlocks.TITANIUM_SHEET_METAL,
-			CygnusBlocks.TITANIUM_TILES,
+			CygnusBlocks.TITANIUM_PLATING,
 			CygnusBlocks.TITANIUM_WINDOW,
 			null, // CygnusBlocks.TITANIUM_DOOR,
 			null, // CygnusBlocks.TITANIUM_TRAPDOOR,
@@ -231,8 +231,8 @@ class CygnusRecipeProvider(event: GatherDataEvent) : DapperRecipeProvider(event)
             pattern("ACA")
             define('A', CygnusTags.Items.INGOTS_ALUMINIUM)
             define('F', Items.BLAST_FURNACE)
-            define('C', CygnusItems.CHRONITE)
-            unlockWith(CygnusItems.CHRONITE)
+            define('C', CygnusItems.CHRONITE_SHARD)
+            unlockWith(CygnusItems.CHRONITE_SHARD)
             save(id("shaped/chronite_blast_furnace"))
         }
         // endregion Blocks/Functional

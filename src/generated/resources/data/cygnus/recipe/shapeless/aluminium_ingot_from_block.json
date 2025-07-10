@@ -3,11 +3,11 @@
   "category": "misc",
   "ingredients": [
     {
-      "item": "cygnus:aluminium_block"
+      "item": "cygnus:aluminum_block"
     }
   ],
   "result": {
     "count": 9,
-    "id": "cygnus:aluminium_ingot"
+    "id": "cygnus:aluminum_ingot"
   }
 }

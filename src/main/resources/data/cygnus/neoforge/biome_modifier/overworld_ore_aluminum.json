@@ -1,6 +1,6 @@
 {
 	"type": "neoforge:add_features",
 	"biomes": "#minecraft:is_overworld",
-	"features": ["cygnus:ore_aluminium", "cygnus:ore_aluminium_small"],
+	"features": ["cygnus:ore_aluminum", "cygnus:ore_aluminum_small"],
 	"step": "underground_ores"
 }

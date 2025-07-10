@@ -113,10 +113,10 @@ public interface CygnusBlocks
 	DeferredBlock<?>
 	// Decorational blocks
 		// Steel
-		STEEL_BLOCK = reg("steel_block", Blocks.IRON_BLOCK),
 		STEEL_SHEET_METAL = reg("steel_sheet_metal", Blocks.IRON_BLOCK),
-		STEEL_PLATING = reg("steel_plating", Blocks.IRON_BLOCK),
+		STEEL_BLOCK = reg("steel_block", Blocks.IRON_BLOCK),
 		STEEL_GRATE = reg("steel_grate", WaterloggedTransparentBlock::new, basicGlassProperties(copy(Blocks.COPPER_GRATE).sound(CygnusSoundTypes.METAL_GRATE))),
+		STEEL_PLATING = reg("steel_plating", Blocks.IRON_BLOCK),
 		STEEL_WINDOW = reg("steel_window", TransparentBlock::new, basicGlassProperties(copy(Blocks.IRON_BLOCK).sound(CygnusSoundTypes.METAL_WINDOW))),
 		STEEL_PILLAR = reg("steel_pillar", RotatedPillarBlock::new, copy(Blocks.IRON_BLOCK)),
 		STEEL_BARS = reg("steel_bars", () -> new IronBarsBlock(copy(Blocks.IRON_BARS))),
@@ -127,13 +127,12 @@ public interface CygnusBlocks
 			.lightLevel(litBlockEmission(15))
 			.sound(CygnusSoundTypes.METAL_BULB))),
 		// Aluminium
-		ALUMINIUM_BLOCK = reg("aluminium_block", Blocks.IRON_BLOCK),
-		ALUMINIUM_SHEET_METAL = reg("aluminium_sheet_metal", Blocks.IRON_BLOCK),
-		ALUMINIUM_TILES = reg("aluminium_tiles", Blocks.IRON_BLOCK),
+		ALUMINIUM_SHEET_METAL = reg("aluminum_sheet_metal", Blocks.IRON_BLOCK),
+		ALUMINIUM_BLOCK = reg("aluminum_block", Blocks.IRON_BLOCK),
+		ALUMINIUM_PLATING = reg("aluminum_plating", Blocks.IRON_BLOCK),
 		// Titanium
-		TITANIUM_BLOCK = reg("titanium_block", Blocks.IRON_BLOCK),
 		TITANIUM_SHEET_METAL = reg("titanium_sheet_metal", Blocks.IRON_BLOCK),
-		TITANIUM_TILES = reg("titanium_tiles", Blocks.IRON_BLOCK),
+		TITANIUM_BLOCK = reg("titanium_block", Blocks.IRON_BLOCK),
 		TITANIUM_PLATING = reg("titanium_plating", Blocks.IRON_BLOCK),
 		TITANIUM_WINDOW = reg("titanium_window", TransparentBlock::new, basicGlassProperties(copy(Blocks.IRON_BLOCK).sound(CygnusSoundTypes.METAL_WINDOW))),
 
@@ -181,10 +180,10 @@ public interface CygnusBlocks
 		LUNAR_DIAMOND_ORE = reg("lunar_diamond_ore", Blocks.DIAMOND_ORE),
 		LUNAR_DEEPSLATE_DIAMOND_ORE = reg("lunar_deepslate_diamond_ore", Blocks.DEEPSLATE_DIAMOND_ORE),
 			// Aluminium Ores
-		ALUMINIUM_ORE = reg("aluminium_ore", Blocks.IRON_ORE),
-		DEEPSLATE_ALUMINIUM_ORE = reg("deepslate_aluminium_ore", Blocks.IRON_ORE),
-		LUNAR_ALUMINIUM_ORE = reg("lunar_aluminium_ore", Blocks.IRON_ORE),
-		LUNAR_DEEPSLATE_ALUMINIUM_ORE = reg("lunar_deepslate_aluminium_ore", Blocks.IRON_ORE),
+		ALUMINIUM_ORE = reg("aluminum_ore", Blocks.IRON_ORE),
+		DEEPSLATE_ALUMINIUM_ORE = reg("deepslate_aluminum_ore", Blocks.IRON_ORE),
+		LUNAR_ALUMINIUM_ORE = reg("lunar_aluminum_ore", Blocks.IRON_ORE),
+		LUNAR_DEEPSLATE_ALUMINIUM_ORE = reg("lunar_deepslate_aluminum_ore", Blocks.IRON_ORE),
 			// Titanium Ores
 		TITANIUM_ORE = reg("titanium_ore", Blocks.GOLD_ORE),
 		DEEPSLATE_TITANIUM_ORE = reg("deepslate_titanium_ore", Blocks.GOLD_ORE),
@@ -224,7 +223,7 @@ public interface CygnusBlocks
 			.lightLevel(s -> 4))),
 
 	// Functional blocks
-		COMMAND_CENTRE = reg("command_centre", () -> new BlockCommandCentre(copy(Blocks.IRON_BLOCK))),
+		COMMAND_CENTRE = reg("command_center", () -> new BlockCommandCentre(copy(Blocks.IRON_BLOCK))),
 		TERMINAL = reg("terminal", () -> new BlockTerminal(copy(Blocks.IRON_BLOCK).strength(-1.0F, 3600000.0F).noLootTable())),
 		TELEPAD = reg("telepad",
 			() -> new BlockTelepad(copy(Blocks.IRON_BLOCK)),

@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "cygnus:item/aluminium_nugget"
+    "layer0": "cygnus:item/chronite_shard"
   }
 }

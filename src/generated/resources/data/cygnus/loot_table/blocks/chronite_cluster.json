@@ -53,7 +53,7 @@
                       "function": "minecraft:apply_bonus"
                     }
                   ],
-                  "name": "cygnus:chronite"
+                  "name": "cygnus:chronite_shard"
                 },
                 {
                   "type": "minecraft:item",
@@ -67,7 +67,7 @@
                       "function": "minecraft:explosion_decay"
                     }
                   ],
-                  "name": "cygnus:chronite"
+                  "name": "cygnus:chronite_shard"
                 }
               ]
             }

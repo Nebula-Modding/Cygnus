@@ -27,7 +27,7 @@ class CygnusItemModelProvider(event: GatherDataEvent) : DapperItemModelProvider(
 		CygnusItems.TITANIUM_ROD.basicHandheldModel()
 		CygnusItems.TITANIUM_NUGGET.basicModel()
 
-		CygnusItems.CHRONITE.basicModel()
+		CygnusItems.CHRONITE_SHARD.basicModel()
 
 		CygnusItems.ELECTRONIC_CIRCUIT.basicModel()
 		CygnusItems.CHRONITE_CIRCUIT.basicModel()

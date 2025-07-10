@@ -6,7 +6,7 @@
 		"targets": [
 			{
 				"state": {
-					"Name": "cygnus:aluminium_ore"
+					"Name": "cygnus:aluminum_ore"
 				},
 				"target": {
 					"predicate_type": "minecraft:tag_match",
@@ -15,7 +15,7 @@
 			},
 			{
 				"state": {
-					"Name": "cygnus:deepslate_aluminium_ore"
+					"Name": "cygnus:deepslate_aluminum_ore"
 				},
 				"target": {
 					"predicate_type": "minecraft:tag_match",
@@ -24,7 +24,7 @@
 			},
 			{
 				"state": {
-					"Name": "cygnus:lunar_aluminium_ore"
+					"Name": "cygnus:lunar_aluminum_ore"
 				},
 				"target": {
 					"predicate_type": "minecraft:tag_match",
@@ -33,7 +33,7 @@
 			},
 			{
 				"state": {
-					"Name": "cygnus:lunar_deepslate_aluminium_ore"
+					"Name": "cygnus:lunar_deepslate_aluminum_ore"
 				},
 				"target": {
 					"predicate_type": "minecraft:tag_match",

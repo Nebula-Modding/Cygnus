@@ -24,15 +24,15 @@ class CygnusBlockStateProvider(event: GatherDataEvent) : DapperBlockStateProvide
 	override fun registerStatesAndModels()
 	{
 		setOf(
-			STEEL_BLOCK,
 			STEEL_SHEET_METAL,
+			STEEL_BLOCK,
 			STEEL_PLATING,
-//			ALUMINIUM_BLOCK,
 //			ALUMINIUM_SHEET_METAL,
-//			ALUMINIUM_TILES,
-			TITANIUM_BLOCK,
+//			ALUMINIUM_BLOCK,
+//			ALUMINIUM_PLATING,
 //			TITANIUM_SHEET_METAL,
-//			TITANIUM_TILES,
+			TITANIUM_BLOCK,
+//			TITANIUM_PLATING,
 			TITANIUM_PLATING,
 			LUNAR_REGOLITH,
 			LUNAR_STONE,
@@ -83,7 +83,7 @@ class CygnusBlockStateProvider(event: GatherDataEvent) : DapperBlockStateProvide
 		setOf(
 			STEEL_TRAPDOOR,
 		).forEach {
-			trapdoorBlockWithRenderType(it.get() as TrapDoorBlock, it.id.withPrefix("block/"), true, "translucent")
+			trapdoorBlockWithRenderType(it.get() as TrapDoorBlock, it.id.withPrefix("block/"), false, "translucent")
 			simpleBlockItem(it.get(), ModelFile.UncheckedModelFile(it.id.withPrefix("block/").withSuffix("_bottom")))
 		}
 

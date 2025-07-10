@@ -83,6 +83,6 @@ public class BlockCommandCentre extends AbstractBlockWithEntity<BlockCommandCent
 	@ParametersAreNonnullByDefault
 	public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag)
 	{
-		tooltipComponents.add(Component.translatable("block.cygnus.command_centre.tooltip"));
+		tooltipComponents.add(Component.translatable("block.cygnus.command_center.tooltip"));
 	}
 }

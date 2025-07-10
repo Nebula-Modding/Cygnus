@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "cygnus:aluminium_block"
+          "name": "cygnus:aluminum_block"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "cygnus:blocks/aluminium_block"
+  "random_sequence": "cygnus:blocks/aluminum_block"
 }

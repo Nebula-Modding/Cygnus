@@ -2,26 +2,55 @@ itemGroup.cygnus: Cygnus
 
 block.cygnus:
   # Decorational
-  steel_block: Block of Steel
-  steel_plating: Steel Plating
   steel_sheet_metal: Steel Sheet Metal
+  steel_block: Block of Steel
+  chiseled_steel: Chiseled Steel
+  steel_grate: Steel Grate
+  steel_plating: Steel Plating
+  steel_plating_slab: Steel Plating Slab
+  steel_plating_pressure_plate: Steel Plating Pressure Plate
+  steel_plating_button: Steel Plating Button
   steel_window: Steel Window
+  steel_pillar: Steel Pillar
+  steel_bars: Steel Bars
   steel_door: Steel Door
   steel_trapdoor: Steel Trapdoor
-  steel_grate: Steel Grate
-  steel_pillar: Steel Pillar
   steel_bulb: Steel Bulb
-  steel_bars: Steel Bars
+  steel_airlock: Steel Airlock
 
-  aluminium_block: Block of Aluminum
-  aluminium_tiles: Aluminum Tiles
-  aluminium_sheet_metal: Aluminum Sheet Metal
+  raw_aluminum_block: Block of Raw Aluminum
+  aluminum_sheet_metal: Aluminum Sheet Metal
+  aluminum_block: Block of Aluminum
+  chiseled_aluminum: Chiseled Aluminum
+  aluminum_grate: Aluminum Grate
+  aluminum_plating: Aluminum Plating
+  aluminum_plating_slab: Aluminum Plating Slab
+  aluminum_plating_pressure_plate: Aluminum Plating Pressure Plate
+  aluminum_plating_button: Aluminum Plating Button
+  aluminum_window: Aluminum Window
+  aluminum_pillar: Aluminum Pillar
+  aluminum_bars: Aluminum Bars
+  aluminum_door: Aluminum Door
+  aluminum_trapdoor: Aluminum Trapdoor
+  aluminum_bulb: Aluminum Bulb
+  aluminum_airlock: Aluminum Airlock
 
-  titanium_block: Block of Titanium
-  titanium_tiles: Titanium Tiles
+  raw_titanium_block: Block of Raw Titanium
   titanium_sheet_metal: Titanium Sheet Metal
+  titanium_block: Block of Titanium
+  chiseled_titanium: Chiseled Titanium
+  titanium_grate: Titanium Grate
   titanium_plating: Titanium Plating
+  titanium_plating_slab: Titanium Plating Slab
+  titanium_plating_pressure_plate: Titanium Plating Pressure Plate
+  titanium_plating_button: Titanium Plating Button
   titanium_window: Titanium Window
+  titanium_pillar: Titanium Pillar
+  titanium_bars: Titanium Bars
+  titanium_door: Titanium Door
+  titanium_trapdoor: Titanium Trapdoor
+  titanium_bulb: Titanium Bulb
+  titanium_airlock: Titanium Airlock
 
   # Environmental
   lunar_regolith: Lunar Regolith
@@ -54,10 +83,10 @@ block.cygnus:
   lunar_deepslate_lapis_ore: Lunar Deepslate Lapis Ore
   lunar_diamond_ore: Lunar Diamond Ore
   lunar_deepslate_diamond_ore: Lunar Deepslate Diamond Ore
-  aluminium_ore: Aluminum Ore
-  deepslate_aluminium_ore: Deepslate Aluminum Ore
-  lunar_aluminium_ore: Lunar Aluminum Ore
-  lunar_deepslate_aluminium_ore: Lunar Deepslate Aluminum Ore
+  aluminum_ore: Aluminum Ore
+  deepslate_aluminum_ore: Deepslate Aluminum Ore
+  lunar_aluminum_ore: Lunar Aluminum Ore
+  lunar_deepslate_aluminum_ore: Lunar Deepslate Aluminum Ore
   titanium_ore: Titanium Ore
   deepslate_titanium_ore: Deepslate Titanium Ore
   lunar_titanium_ore: Lunar Titanium Ore
@@ -74,31 +103,31 @@ block.cygnus:
   terminal: Terminal
   telepad: Telepad
   telepad.tooltip: Teleports you between your space station and the planet your space station is orbiting
-  command_centre: Command Center
-  command_centre.tooltip: The Space Station Creation Station
+  command_center: Command Center
+  command_center.tooltip: The Space Station Creation Station
   chronite_blast_furnace: Chronite Blast Furnace
   chronite_blast_furnace.tooltip: Utilizes the heat of a Chronite Crystal to alloy metals together
 
 item.cygnus:
   # Resources
+  steel_nugget: Steel Nugget
   steel_ingot: Steel Ingot
   steel_sheet: Steel Sheet
   steel_rod: Steel Rod
-  steel_nugget: Steel Nugget
 
-  raw_aluminium: Raw Aluminum
-  aluminium_ingot: Aluminum Ingot
-  aluminium_sheet: Aluminum Sheet
-  aluminium_rod: Aluminum Rod
-  aluminium_nugget: Aluminum Nugget
+  aluminum_nugget: Aluminum Nugget
+  raw_aluminum: Raw Aluminum
+  aluminum_ingot: Aluminum Ingot
+  aluminum_sheet: Aluminum Sheet
+  aluminum_rod: Aluminum Rod
 
+  titanium_nugget: Titanium Nugget
   raw_titanium: Raw Titanium
   titanium_ingot: Titanium Ingot
   titanium_sheet: Titanium Sheet
   titanium_rod: Titanium Rod
-  titanium_nugget: Titanium Nugget
 
-  chronite: Chronite Crystal Shard
+  chronite_shard: Chronite Shard
   chronite.tooltip: A mysterious crystal with intense luminosity and scorching heat
 
   # Ingredients
@@ -180,7 +209,7 @@ screen.cygnus:
       dangerous: "Radiation: Dangerous amounts"
       lethal: "Radiation: Lethal amounts"
 
-  command_centre:
+  command_center:
     # Buttons
     construct: Construct
     stats: Stats

@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/handheld",
   "textures": {
-    "layer0": "cygnus:item/aluminium_rod"
+    "layer0": "cygnus:item/aluminum_rod"
   }
 }

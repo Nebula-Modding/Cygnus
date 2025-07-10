@@ -26,7 +26,7 @@
                   }
                 }
               ],
-              "name": "cygnus:aluminium_ore"
+              "name": "cygnus:lunar_aluminum_ore"
             },
             {
               "type": "minecraft:item",
@@ -40,7 +40,7 @@
                   "function": "minecraft:explosion_decay"
                 }
               ],
-              "name": "cygnus:raw_aluminium"
+              "name": "cygnus:raw_aluminum"
             }
           ]
         }
@@ -48,5 +48,5 @@
       "rolls": 1.0
     }
   ],
-  "random_sequence": "cygnus:blocks/aluminium_ore"
+  "random_sequence": "cygnus:blocks/lunar_aluminum_ore"
 }

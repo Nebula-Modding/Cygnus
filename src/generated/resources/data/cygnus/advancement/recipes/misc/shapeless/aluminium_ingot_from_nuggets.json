@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_cygnus_aluminium_nugget": {
+    "has_cygnus_aluminum_nugget": {
       "conditions": {
         "items": [
           {
-            "items": "cygnus:aluminium_nugget"
+            "items": "cygnus:aluminum_nugget"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_cygnus_aluminium_nugget"
+      "has_cygnus_aluminum_nugget"
     ]
   ],
   "rewards": {

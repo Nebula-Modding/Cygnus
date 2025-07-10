@@ -41,10 +41,10 @@ class CygnusBlockDropsProvider(event: GatherDataEvent) : DapperLootTableProvider
 		{
 			// Drops self
 			setOf(
-				STEEL_BLOCK,
 				STEEL_SHEET_METAL,
-				STEEL_PLATING,
+				STEEL_BLOCK,
 				STEEL_GRATE,
+				STEEL_PLATING,
 				STEEL_WINDOW,
 				STEEL_PILLAR,
 				STEEL_BARS,
@@ -52,13 +52,12 @@ class CygnusBlockDropsProvider(event: GatherDataEvent) : DapperLootTableProvider
 				STEEL_TRAPDOOR,
 				STEEL_BULB,
 
-				ALUMINIUM_BLOCK,
 				ALUMINIUM_SHEET_METAL,
-				ALUMINIUM_TILES,
+				ALUMINIUM_BLOCK,
+				ALUMINIUM_PLATING,
 
-				TITANIUM_BLOCK,
 				TITANIUM_SHEET_METAL,
-				TITANIUM_TILES,
+				TITANIUM_BLOCK,
 				TITANIUM_PLATING,
 				TITANIUM_WINDOW,
 
@@ -157,12 +156,12 @@ class CygnusBlockDropsProvider(event: GatherDataEvent) : DapperLootTableProvider
 							condition(hasSilkTouch())
 						}
 						alternatives {
-							item(CygnusItems.CHRONITE) {
+							item(CygnusItems.CHRONITE_SHARD) {
 								condition(MatchTool.toolMatches(ItemPredicate.Builder.item().of(ItemTags.CLUSTER_MAX_HARVESTABLES)))
 								applyFunction(SetItemCountFunction.setCount(ConstantValue.exactly(1f), false))
 								applyFunction(ApplyBonusCount.addOreBonusCount(registries.lookupOrThrow(Registries.ENCHANTMENT).get(Enchantments.FORTUNE).get()))
 							}
-							item(CygnusItems.CHRONITE) {
+							item(CygnusItems.CHRONITE_SHARD) {
 								applyFunction(SetItemCountFunction.setCount(ConstantValue.exactly(1f), false))
 								applyFunction(ApplyExplosionDecay.explosionDecay())
 							}

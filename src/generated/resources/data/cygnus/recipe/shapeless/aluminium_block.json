@@ -3,35 +3,35 @@
   "category": "misc",
   "ingredients": [
     {
-      "item": "cygnus:aluminium_ingot"
+      "item": "cygnus:aluminum_ingot"
     },
     {
-      "item": "cygnus:aluminium_ingot"
+      "item": "cygnus:aluminum_ingot"
     },
     {
-      "item": "cygnus:aluminium_ingot"
+      "item": "cygnus:aluminum_ingot"
     },
     {
-      "item": "cygnus:aluminium_ingot"
+      "item": "cygnus:aluminum_ingot"
     },
     {
-      "item": "cygnus:aluminium_ingot"
+      "item": "cygnus:aluminum_ingot"
     },
     {
-      "item": "cygnus:aluminium_ingot"
+      "item": "cygnus:aluminum_ingot"
     },
     {
-      "item": "cygnus:aluminium_ingot"
+      "item": "cygnus:aluminum_ingot"
     },
     {
-      "item": "cygnus:aluminium_ingot"
+      "item": "cygnus:aluminum_ingot"
     },
     {
-      "item": "cygnus:aluminium_ingot"
+      "item": "cygnus:aluminum_ingot"
     }
   ],
   "result": {
     "count": 1,
-    "id": "cygnus:aluminium_block"
+    "id": "cygnus:aluminum_block"
   }
 }

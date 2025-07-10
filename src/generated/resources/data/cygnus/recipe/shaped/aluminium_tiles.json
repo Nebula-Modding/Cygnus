@@ -3,7 +3,7 @@
   "category": "misc",
   "key": {
     "#": {
-      "item": "cygnus:aluminium_sheet_metal"
+      "item": "cygnus:aluminum_sheet_metal"
     }
   },
   "pattern": [
@@ -12,6 +12,6 @@
   ],
   "result": {
     "count": 4,
-    "id": "cygnus:aluminium_tiles"
+    "id": "cygnus:aluminum_plating"
   }
 }

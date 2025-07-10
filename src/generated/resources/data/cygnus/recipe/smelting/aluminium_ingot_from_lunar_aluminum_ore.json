@@ -4,10 +4,10 @@
   "cookingtime": 200,
   "experience": 0.1,
   "ingredient": {
-    "item": "cygnus:lunar_aluminium_ore"
+    "item": "cygnus:lunar_aluminum_ore"
   },
   "result": {
     "count": 1,
-    "id": "cygnus:aluminium_ingot"
+    "id": "cygnus:aluminum_ingot"
   }
 }

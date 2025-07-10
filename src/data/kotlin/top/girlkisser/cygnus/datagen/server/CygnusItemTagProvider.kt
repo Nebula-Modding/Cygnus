@@ -15,24 +15,24 @@ class CygnusItemTagProvider(event: GatherDataEvent) : DapperTagProvider.Companio
     override fun addTags()
     {
         "steel".apply {
+			STEEL_NUGGET addNugget this
             STEEL_INGOT addIngot this
             STEEL_SHEET addPlate this
             STEEL_ROD addRod this
-            STEEL_NUGGET addNugget this
         }
         "aluminum".apply {
 			RAW_ALUMINIUM addRaw this
+			ALUMINIUM_NUGGET addNugget this
             ALUMINIUM_INGOT addIngot this
             ALUMINIUM_SHEET addPlate this
             ALUMINIUM_ROD addRod this
-            ALUMINIUM_NUGGET addNugget this
         }
         "titanium".apply {
 			RAW_TITANIUM addRaw this
+			TITANIUM_NUGGET addNugget this
 			TITANIUM_INGOT addIngot this
             TITANIUM_SHEET addPlate this
             TITANIUM_ROD addRod this
-            TITANIUM_NUGGET addNugget this
         }
 
 		HAMMER addTo "c:tools/hammers"
