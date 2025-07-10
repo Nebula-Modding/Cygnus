@@ -44,7 +44,7 @@ class CygnusBlockDropsProvider(event: GatherDataEvent) : DapperLootTableProvider
 				STEEL_SHEET_METAL,
 				STEEL_BLOCK,
 				STEEL_GRATE,
-				STEEL_PLATING,
+				STEEL_CUT,
 				STEEL_WINDOW,
 				STEEL_PILLAR,
 				STEEL_BARS,
@@ -54,11 +54,11 @@ class CygnusBlockDropsProvider(event: GatherDataEvent) : DapperLootTableProvider
 
 				ALUMINIUM_SHEET_METAL,
 				ALUMINIUM_BLOCK,
-				ALUMINIUM_PLATING,
+				ALUMINIUM_CUT,
 
 				TITANIUM_SHEET_METAL,
 				TITANIUM_BLOCK,
-				TITANIUM_PLATING,
+				TITANIUM_CUT,
 				TITANIUM_WINDOW,
 
 				LUNAR_REGOLITH,

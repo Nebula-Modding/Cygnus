@@ -6,11 +6,10 @@ block.cygnus:
   steel_block: Block of Steel
   chiseled_steel: Chiseled Steel
   steel_grate: Steel Grate
-  steel_plating: Steel Plating
-  steel_plating_stairs: Steel Plating Stairs
-  steel_plating_slab: Steel Plating Slab
-  steel_plating_pressure_plate: Steel Plating Pressure Plate
-  steel_plating_button: Steel Plating Button
+  cut_steel: Cut Steel
+  cut_steel_slab: Cut Steel Slab
+  cut_steel_pressure_plate: Cut Steel Pressure Plate
+  cut_steel_button: Cut Steel Button
   steel_window: Steel Window
   steel_pillar: Steel Pillar
   steel_bars: Steel Bars
@@ -24,10 +23,10 @@ block.cygnus:
   aluminum_block: Block of Aluminium
   chiseled_aluminum: Chiseled Aluminium
   aluminum_grate: Aluminium Grate
-  aluminum_plating: Aluminium Plating
-  aluminum_plating_slab: Aluminium Plating Slab
-  aluminum_plating_pressure_plate: Aluminium Plating Pressure Plate
-  aluminum_plating_button: Aluminium Plating Button
+  cut_aluminum: Cut Aluminium
+  cut_aluminum_slab: Cut Aluminium Slab
+  cut_aluminum_pressure_plate: Cut Aluminium Pressure Plate
+  cut_aluminum_button: Cut Aluminium Button
   aluminum_window: Aluminium Window
   aluminum_pillar: Aluminium Pillar
   aluminum_bars: Aluminium Bars
@@ -41,10 +40,10 @@ block.cygnus:
   titanium_block: Block of Titanium
   chiseled_titanium: Chiseled Titanium
   titanium_grate: Titanium Grate
-  titanium_plating: Titanium Plating
-  titanium_plating_slab: Titanium Plating Slab
-  titanium_plating_pressure_plate: Titanium Plating Pressure Plate
-  titanium_plating_button: Titanium Plating Button
+  cut_titanium: Cut Titanium
+  cut_titanium_slab: Cut Titanium Slab
+  cut_titanium_pressure_plate: Cut Titanium Pressure Plate
+  cut_titanium_button: Cut Titanium Button
   titanium_window: Titanium Window
   titanium_pillar: Titanium Pillar
   titanium_bars: Titanium Bars
@@ -84,10 +83,10 @@ block.cygnus:
   lunar_deepslate_lapis_ore: Lunar Deepslate Lapis Ore
   lunar_diamond_ore: Lunar Diamond Ore
   lunar_deepslate_diamond_ore: Lunar Deepslate Diamond Ore
-  aluminum_ore: Aluminum Ore
-  deepslate_aluminum_ore: Deepslate Aluminum Ore
-  lunar_aluminum_ore: Lunar Aluminum Ore
-  lunar_deepslate_aluminum_ore: Lunar Deepslate Aluminum Ore
+  aluminum_ore: Aluminium Ore
+  deepslate_aluminum_ore: Deepslate Aluminium Ore
+  lunar_aluminum_ore: Lunar Aluminium Ore
+  lunar_deepslate_aluminum_ore: Lunar Deepslate Aluminium Ore
   titanium_ore: Titanium Ore
   deepslate_titanium_ore: Deepslate Titanium Ore
   lunar_titanium_ore: Lunar Titanium Ore

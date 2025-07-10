@@ -44,7 +44,7 @@ class CygnusBlockTagProvider(event: GatherDataEvent) : DapperTagProvider.Compani
 			setOf(pickaxeMineable, mcTag("needs_stone_tool")),
 			ALUMINIUM_SHEET_METAL,
 			ALUMINIUM_BLOCK,
-			ALUMINIUM_PLATING,
+			ALUMINIUM_CUT,
 			LUNAR_IRON_ORE,
 			LUNAR_DEEPSLATE_IRON_ORE,
 			LUNAR_LAPIS_ORE,
@@ -61,7 +61,7 @@ class CygnusBlockTagProvider(event: GatherDataEvent) : DapperTagProvider.Compani
 			STEEL_SHEET_METAL,
 			STEEL_BLOCK,
 			STEEL_GRATE,
-			STEEL_PLATING,
+			STEEL_CUT,
 			STEEL_WINDOW,
 			STEEL_PILLAR,
 			STEEL_BARS,
@@ -71,7 +71,7 @@ class CygnusBlockTagProvider(event: GatherDataEvent) : DapperTagProvider.Compani
 
 			TITANIUM_SHEET_METAL,
 			TITANIUM_BLOCK,
-			TITANIUM_PLATING,
+			TITANIUM_CUT,
 			TITANIUM_WINDOW,
 
 			LUNAR_GOLD_ORE,

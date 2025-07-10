@@ -116,7 +116,7 @@ public interface CygnusBlocks
 		STEEL_SHEET_METAL = reg("steel_sheet_metal", Blocks.IRON_BLOCK),
 		STEEL_BLOCK = reg("steel_block", Blocks.IRON_BLOCK),
 		STEEL_GRATE = reg("steel_grate", WaterloggedTransparentBlock::new, basicGlassProperties(copy(Blocks.COPPER_GRATE).sound(CygnusSoundTypes.METAL_GRATE))),
-		STEEL_PLATING = reg("steel_plating", Blocks.IRON_BLOCK),
+		STEEL_CUT = reg("cut_steel", Blocks.IRON_BLOCK),
 		STEEL_WINDOW = reg("steel_window", TransparentBlock::new, basicGlassProperties(copy(Blocks.IRON_BLOCK).sound(CygnusSoundTypes.METAL_WINDOW))),
 		STEEL_PILLAR = reg("steel_pillar", RotatedPillarBlock::new, copy(Blocks.IRON_BLOCK)),
 		STEEL_BARS = reg("steel_bars", () -> new IronBarsBlock(copy(Blocks.IRON_BARS))),
@@ -129,11 +129,11 @@ public interface CygnusBlocks
 		// Aluminium
 		ALUMINIUM_SHEET_METAL = reg("aluminum_sheet_metal", Blocks.IRON_BLOCK),
 		ALUMINIUM_BLOCK = reg("aluminum_block", Blocks.IRON_BLOCK),
-		ALUMINIUM_PLATING = reg("aluminum_plating", Blocks.IRON_BLOCK),
+		ALUMINIUM_CUT = reg("cut_aluminum", Blocks.IRON_BLOCK),
 		// Titanium
 		TITANIUM_SHEET_METAL = reg("titanium_sheet_metal", Blocks.IRON_BLOCK),
 		TITANIUM_BLOCK = reg("titanium_block", Blocks.IRON_BLOCK),
-		TITANIUM_PLATING = reg("titanium_plating", Blocks.IRON_BLOCK),
+		TITANIUM_CUT = reg("cut_titanium", Blocks.IRON_BLOCK),
 		TITANIUM_WINDOW = reg("titanium_window", TransparentBlock::new, basicGlassProperties(copy(Blocks.IRON_BLOCK).sound(CygnusSoundTypes.METAL_WINDOW))),
 
 	// Lunar Blocks

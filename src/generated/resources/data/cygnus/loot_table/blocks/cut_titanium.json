@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "cygnus:aluminum_plating"
+          "name": "cygnus:cut_titanium"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "cygnus:blocks/aluminum_plating"
+  "random_sequence": "cygnus:blocks/cut_titanium"
 }

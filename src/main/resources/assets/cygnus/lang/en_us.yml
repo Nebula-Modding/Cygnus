@@ -6,10 +6,10 @@ block.cygnus:
   steel_block: Block of Steel
   chiseled_steel: Chiseled Steel
   steel_grate: Steel Grate
-  steel_plating: Steel Plating
-  steel_plating_slab: Steel Plating Slab
-  steel_plating_pressure_plate: Steel Plating Pressure Plate
-  steel_plating_button: Steel Plating Button
+  cut_steel: Cut Steel
+  cut_steel_slab: Cut Steel Slab
+  cut_steel_pressure_plate: Cut Steel Pressure Plate
+  cut_steel_button: Cut Steel Button
   steel_window: Steel Window
   steel_pillar: Steel Pillar
   steel_bars: Steel Bars
@@ -23,10 +23,10 @@ block.cygnus:
   aluminum_block: Block of Aluminum
   chiseled_aluminum: Chiseled Aluminum
   aluminum_grate: Aluminum Grate
-  aluminum_plating: Aluminum Plating
-  aluminum_plating_slab: Aluminum Plating Slab
-  aluminum_plating_pressure_plate: Aluminum Plating Pressure Plate
-  aluminum_plating_button: Aluminum Plating Button
+  cut_aluminum: Cut Aluminum
+  cut_aluminum_slab: Cut Aluminum Slab
+  cut_aluminum_pressure_plate: Cut Aluminum Pressure Plate
+  cut_aluminum_button: Cut Aluminum Button
   aluminum_window: Aluminum Window
   aluminum_pillar: Aluminum Pillar
   aluminum_bars: Aluminum Bars
@@ -40,10 +40,10 @@ block.cygnus:
   titanium_block: Block of Titanium
   chiseled_titanium: Chiseled Titanium
   titanium_grate: Titanium Grate
-  titanium_plating: Titanium Plating
-  titanium_plating_slab: Titanium Plating Slab
-  titanium_plating_pressure_plate: Titanium Plating Pressure Plate
-  titanium_plating_button: Titanium Plating Button
+  cut_titanium: Cut Titanium
+  cut_titanium_slab: Cut Titanium Slab
+  cut_titanium_pressure_plate: Cut Titanium Pressure Plate
+  cut_titanium_button: Cut Titanium Button
   titanium_window: Titanium Window
   titanium_pillar: Titanium Pillar
   titanium_bars: Titanium Bars
