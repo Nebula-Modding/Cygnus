@@ -25,8 +25,12 @@ public class ItemHammer extends Item
 	@Override
 	public @NotNull ItemStack getCraftingRemainingItem(ItemStack stack)
 	{
-		ItemStack s = stack.copy();
-		s.setDamageValue(s.getDamageValue() - 1);
+		var s = stack.copy();
+		if (s.getDamageValue() >= s.getMaxDamage())
+		{
+			return ItemStack.EMPTY;
+		}
+		s.setDamageValue(s.getDamageValue() + 1);
 		return s;
 	}
 
