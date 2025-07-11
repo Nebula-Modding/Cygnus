@@ -113,9 +113,27 @@ public interface CygnusBlocks
 	// @formatter:off
 	DeferredBlock<?>
 	// Decorational blocks
+		// Iron
+		IRON_SHEET_METAL = reg("iron_sheet_metal", Blocks.IRON_BLOCK),
+		IRON_CHISELED = reg("chiseled_iron", Blocks.IRON_BLOCK),
+		IRON_GRATE = reg("iron_grate", WaterloggedTransparentBlock::new, basicGlassProperties(copy(Blocks.COPPER_GRATE).sound(CygnusSoundTypes.METAL_GRATE))),
+		IRON_CUT = reg("cut_iron", Blocks.IRON_BLOCK),
+		IRON_CUT_STAIRS = reg("cut_iron_stairs", () -> new StairBlock(CygnusBlocks.IRON_CUT.get().defaultBlockState(), copy(Blocks.IRON_BLOCK))),
+		IRON_CUT_SLAB = reg("cut_iron_slab", () -> new SlabBlock(copy(Blocks.IRON_BLOCK))),
+		IRON_CUT_PRESSURE_PLATE = reg("cut_iron_pressure_plate", () -> new PressurePlateBlock(BlockSetType.IRON, copy(Blocks.IRON_BLOCK).noCollission().strength(0.5F).pushReaction(PushReaction.DESTROY))),
+		IRON_CUT_BUTTON = reg("cut_iron_button", () -> new ButtonBlock(BlockSetType.IRON, 20, copy(Blocks.IRON_BLOCK).noCollission().strength(0.5F).pushReaction(PushReaction.DESTROY))),
+		IRON_WINDOW = reg("iron_window", TransparentBlock::new, basicGlassProperties(copy(Blocks.IRON_BLOCK).sound(CygnusSoundTypes.METAL_WINDOW))),
+		IRON_PILLAR = reg("iron_pillar", RotatedPillarBlock::new, copy(Blocks.IRON_BLOCK)),
+		IRON_AIRTIGHT_DOOR = reg("airtight_iron_door", () -> new BlockLockingDoor(BlockLockingDoor.IRON_UNLOCKED, copy(Blocks.IRON_DOOR))),
+		IRON_AIRTIGHT_TRAPDOOR = reg("airtight_iron_trapdoor", () -> new BlockLockingTrapdoor(BlockLockingDoor.IRON_UNLOCKED, copy(Blocks.IRON_TRAPDOOR))),
+		IRON_BULB = reg("iron_bulb", () -> new CopperBulbBlock(copy(Blocks.IRON_BLOCK)
+			.isRedstoneConductor(CygnusBlocks::never)
+			.lightLevel(litBlockEmission(15))
+			.sound(CygnusSoundTypes.METAL_BULB))),
 		// Steel
 		STEEL_SHEET_METAL = reg("steel_sheet_metal", Blocks.IRON_BLOCK),
 		STEEL_BLOCK = reg("steel_block", Blocks.IRON_BLOCK),
+		STEEL_CHISELED = reg("chiseled_steel", Blocks.IRON_BLOCK),
 		STEEL_GRATE = reg("steel_grate", WaterloggedTransparentBlock::new, basicGlassProperties(copy(Blocks.COPPER_GRATE).sound(CygnusSoundTypes.METAL_GRATE))),
 		STEEL_CUT = reg("cut_steel", Blocks.IRON_BLOCK),
 		STEEL_CUT_STAIRS = reg("cut_steel_stairs", () -> new StairBlock(CygnusBlocks.STEEL_CUT.get().defaultBlockState(), copy(Blocks.IRON_BLOCK))),
@@ -134,20 +152,41 @@ public interface CygnusBlocks
 		// Aluminium
 		ALUMINIUM_SHEET_METAL = reg("aluminum_sheet_metal", Blocks.IRON_BLOCK),
 		ALUMINIUM_BLOCK = reg("aluminum_block", Blocks.IRON_BLOCK),
+		ALUMINIUM_CHISELED = reg("chiseled_aluminum", Blocks.IRON_BLOCK),
+		ALUMINIUM_GRATE = reg("aluminum_grate", WaterloggedTransparentBlock::new, basicGlassProperties(copy(Blocks.COPPER_GRATE).sound(CygnusSoundTypes.METAL_GRATE))),
 		ALUMINIUM_CUT = reg("cut_aluminum", Blocks.IRON_BLOCK),
 		ALUMINIUM_CUT_STAIRS = reg("cut_aluminum_stairs", () -> new StairBlock(CygnusBlocks.ALUMINIUM_CUT.get().defaultBlockState(), copy(Blocks.IRON_BLOCK))),
-		ALUMINIUM_CUT_SLAB = reg("cut_aluminum_slab", () -> new SlabBlock(copy(Blocks.IRON_BLOCK).noCollission().strength(0.5F).pushReaction(PushReaction.DESTROY))),
+		ALUMINIUM_CUT_SLAB = reg("cut_aluminum_slab", () -> new SlabBlock(copy(Blocks.IRON_BLOCK))),
 		ALUMINIUM_CUT_PRESSURE_PLATE = reg("cut_aluminum_pressure_plate", () -> new PressurePlateBlock(BlockSetType.IRON, copy(Blocks.IRON_BLOCK).noCollission().strength(0.5F).pushReaction(PushReaction.DESTROY))),
-		ALUMINIUM_CUT_BUTTON = reg("cut_aluminum_button", () -> new ButtonBlock(BlockSetType.IRON, 20, copy(Blocks.IRON_BLOCK))),
+		ALUMINIUM_CUT_BUTTON = reg("cut_aluminum_button", () -> new ButtonBlock(BlockSetType.IRON, 20, copy(Blocks.IRON_BLOCK).noCollission().strength(0.5F).pushReaction(PushReaction.DESTROY))),
+		ALUMINIUM_WINDOW = reg("aluminum_window", TransparentBlock::new, basicGlassProperties(copy(Blocks.IRON_BLOCK).sound(CygnusSoundTypes.METAL_WINDOW))),
+		ALUMINIUM_PILLAR = reg("aluminum_pillar", RotatedPillarBlock::new, copy(Blocks.IRON_BLOCK)),
+		ALUMINIUM_BARS = reg("aluminum_bars", () -> new IronBarsBlock(copy(Blocks.IRON_BARS))),
+		ALUMINIUM_DOOR = reg("aluminum_door", () -> new BlockLockingDoor(BlockLockingDoor.IRON_UNLOCKED, copy(Blocks.IRON_DOOR))),
+		ALUMINIUM_TRAPDOOR = reg("aluminum_trapdoor", () -> new BlockLockingTrapdoor(BlockLockingDoor.IRON_UNLOCKED, copy(Blocks.IRON_TRAPDOOR))),
+		ALUMINIUM_BULB = reg("aluminum_bulb", () -> new CopperBulbBlock(copy(Blocks.IRON_BLOCK)
+			.isRedstoneConductor(CygnusBlocks::never)
+			.lightLevel(litBlockEmission(15))
+			.sound(CygnusSoundTypes.METAL_BULB))),
 		// Titanium
 		TITANIUM_SHEET_METAL = reg("titanium_sheet_metal", Blocks.IRON_BLOCK),
 		TITANIUM_BLOCK = reg("titanium_block", Blocks.IRON_BLOCK),
+		TITANIUM_CHISELED = reg("chiseled_titanium", Blocks.IRON_BLOCK),
+		TITANIUM_GRATE = reg("titanium_grate", WaterloggedTransparentBlock::new, basicGlassProperties(copy(Blocks.COPPER_GRATE).sound(CygnusSoundTypes.METAL_GRATE))),
 		TITANIUM_CUT = reg("cut_titanium", Blocks.IRON_BLOCK),
 		TITANIUM_CUT_STAIRS = reg("cut_titanium_stairs", () -> new StairBlock(CygnusBlocks.TITANIUM_CUT.get().defaultBlockState(), copy(Blocks.IRON_BLOCK))),
 		TITANIUM_CUT_SLAB = reg("cut_titanium_slab", () -> new SlabBlock(copy(Blocks.IRON_BLOCK))),
 		TITANIUM_CUT_PRESSURE_PLATE = reg("cut_titanium_pressure_plate", () -> new PressurePlateBlock(BlockSetType.IRON, copy(Blocks.IRON_BLOCK).noCollission().strength(0.5F).pushReaction(PushReaction.DESTROY))),
 		TITANIUM_CUT_BUTTON = reg("cut_titanium_button", () -> new ButtonBlock(BlockSetType.IRON, 20, copy(Blocks.IRON_BLOCK).noCollission().strength(0.5F).pushReaction(PushReaction.DESTROY))),
 		TITANIUM_WINDOW = reg("titanium_window", TransparentBlock::new, basicGlassProperties(copy(Blocks.IRON_BLOCK).sound(CygnusSoundTypes.METAL_WINDOW))),
+		TITANIUM_PILLAR = reg("titanium_pillar", RotatedPillarBlock::new, copy(Blocks.IRON_BLOCK)),
+		TITANIUM_BARS = reg("titanium_bars", () -> new IronBarsBlock(copy(Blocks.IRON_BARS))),
+		TITANIUM_DOOR = reg("titanium_door", () -> new BlockLockingDoor(BlockLockingDoor.IRON_UNLOCKED, copy(Blocks.IRON_DOOR))),
+		TITANIUM_TRAPDOOR = reg("titanium_trapdoor", () -> new BlockLockingTrapdoor(BlockLockingDoor.IRON_UNLOCKED, copy(Blocks.IRON_TRAPDOOR))),
+		TITANIUM_BULB = reg("titanium_bulb", () -> new CopperBulbBlock(copy(Blocks.IRON_BLOCK)
+			.isRedstoneConductor(CygnusBlocks::never)
+			.lightLevel(litBlockEmission(15))
+			.sound(CygnusSoundTypes.METAL_BULB))),
 
 	// Lunar Blocks
 		// Lunar Regolith

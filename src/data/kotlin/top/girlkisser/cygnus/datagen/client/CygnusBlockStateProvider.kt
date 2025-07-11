@@ -24,6 +24,8 @@ class CygnusBlockStateProvider(event: GatherDataEvent) : DapperBlockStateProvide
 	override fun registerStatesAndModels()
 	{
 		setOf(
+//			IRON_SHEET_METAL,
+//			IRON_CUT,
 			STEEL_SHEET_METAL,
 			STEEL_BLOCK,
 			STEEL_CUT,
@@ -56,7 +58,9 @@ class CygnusBlockStateProvider(event: GatherDataEvent) : DapperBlockStateProvide
 		).forEach { it.addModel(CubeModel() all it.id.withPrefix("block/")) }
 
 		setOf(
+//			IRON_CUT_STAIRS,
 			STEEL_CUT_STAIRS,
+//			ALUMINIUM_CUT_STAIRS,
 			TITANIUM_CUT_STAIRS,
 		).forEach {
 			stairsBlock(it.get() as StairBlock, it.id.withPath(it.id.withPrefix("block/").path.replace("_stairs", "")))
@@ -64,7 +68,9 @@ class CygnusBlockStateProvider(event: GatherDataEvent) : DapperBlockStateProvide
 		}
 
 		setOf(
+//			IRON_CUT_SLAB,
 			STEEL_CUT_SLAB,
+//			ALUMINIUM_CUT_SLAB,
 			TITANIUM_CUT_SLAB,
 		).forEach {
 			val slabTexture = it.id.withPath(it.id.withPrefix("block/").path.replace("_slab", ""))
@@ -73,7 +79,9 @@ class CygnusBlockStateProvider(event: GatherDataEvent) : DapperBlockStateProvide
 		}
 
 		setOf(
+//			IRON_CUT_PRESSURE_PLATE,
 			STEEL_CUT_PRESSURE_PLATE,
+//			ALUMINIUM_CUT_PRESSURE_PLATE,
 			TITANIUM_CUT_PRESSURE_PLATE,
 		).forEach {
 			pressurePlateBlock(it.get() as PressurePlateBlock, it.id.withPath(it.id.withPrefix("block/").path.replace("_pressure_plate", "")))
@@ -81,7 +89,9 @@ class CygnusBlockStateProvider(event: GatherDataEvent) : DapperBlockStateProvide
 		}
 
 		setOf(
+//			IRON_CUT_BUTTON,
 			STEEL_CUT_BUTTON,
+//			ALUMINIUM_CUT_BUTTON,
 			TITANIUM_CUT_BUTTON,
 		).forEach {
 			val buttonTexture = it.id.withPath(it.id.withPrefix("block/").path.replace("_button", ""))
@@ -91,39 +101,73 @@ class CygnusBlockStateProvider(event: GatherDataEvent) : DapperBlockStateProvide
 		}
 
 		setOf(
+//			IRON_WINDOW,
 			STEEL_WINDOW,
+//			ALUMINIUM_WINDOW,
 			TITANIUM_WINDOW,
 		).forEach {
 			it.addModel(CubeModel().all(it.id.withPrefix("block/")).renderType(mcLoc("translucent")))
 		}
 
 		setOf(
+//			IRON_GRATE,
 			STEEL_GRATE,
+//			ALUMINIUM_GRATE,
+//			TITANIUM_GRATE,
 		).forEach {
 			it.addModel(CubeModel().all(it.id.withPrefix("block/")).renderType(mcLoc("cutout")))
 		}
 
 		setOf(
+//			IRON_PILLAR
 			STEEL_PILLAR,
+//			ALUMINIUM_PILLAR,
+//			TITANIUM_PILLAR,
 			LUNAR_STONE_PILLAR,
 			LUNAR_DEEPSLATE_PILLAR,
 		).forEach { it.addAxisModel(it.id.withPrefix("block/")) }
 
 		setOf(
+			STEEL_BARS,
+//			ALUMINIUM_BARS,
+//			TITANIUM_BARS,
+		).forEach {
+			paneBlockWithRenderType(it.get() as IronBarsBlock, it.id.withPrefix("block/"), it.id.withPrefix("block/"), "translucent")
+		}
+
+		setOf(
+			CHRONITE_CLUSTER,
+			LARGE_CHRONITE_BUD,
+			MEDIUM_CHRONITE_BUD,
+			SMALL_CHRONITE_BUD,
+		).forEach {
+			it.addDirectionalModel(CubeModel.crossModel(it.id.withPrefix("block/")), makeItem = false)
+		}
+
+		setOf(
+//			IRON_AIRTIGHT_DOOR,
 			STEEL_DOOR,
+//			ALUMINIUM_DOOR,
+//			TITANIUM_DOOR,
 		).forEach {
 			doorBlockWithRenderType(it.get() as DoorBlock, it.id.withPrefix("block/").withSuffix("_bottom"), it.id.withPrefix("block/").withSuffix("_top"), "translucent")
 		}
 
 		setOf(
+//			IRON_AIRTIGHT_TRAPDOOR,
 			STEEL_TRAPDOOR,
+//			ALUMINIUM_TRAPDOOR,
+//			TITANIUM_TRAPDOOR,
 		).forEach {
 			trapdoorBlockWithRenderType(it.get() as TrapDoorBlock, it.id.withPrefix("block/"), false, "translucent")
 			simpleBlockItem(it.get(), ModelFile.UncheckedModelFile(it.id.withPrefix("block/").withSuffix("_bottom")))
 		}
 
 		setOf(
+//			IRON_BULB,
 			STEEL_BULB,
+//			ALUMINIUM_BULB,
+//			TITANIUM_BULB,
 		).forEach {
 			val idLitPowered = it.id.withPrefix("block/").withSuffix("_lit_powered")
 			val idLit = it.id.withPrefix("block/").withSuffix("_lit")
@@ -155,24 +199,9 @@ class CygnusBlockStateProvider(event: GatherDataEvent) : DapperBlockStateProvide
 			simpleBlockItem(it.get(), ModelFile.UncheckedModelFile(it.id.withPrefix("block/")))
 		}
 
-		setOf(
-			STEEL_BARS,
-		).forEach {
-			paneBlockWithRenderType(it.get() as IronBarsBlock, it.id.withPrefix("block/"), it.id.withPrefix("block/"), "translucent")
-		}
-
-		setOf(
-			CHRONITE_CLUSTER,
-			LARGE_CHRONITE_BUD,
-			MEDIUM_CHRONITE_BUD,
-			SMALL_CHRONITE_BUD,
-		).forEach {
-			it.addDirectionalModel(CubeModel.crossModel(it.id.withPrefix("block/")), makeItem = false)
-		}
-
 		COMMAND_CENTRE.addModel(CubeModel()
-			all id("block/command_centre_side")
-			up id("block/command_centre_top")
+			all id("block/command_center_side")
+			up id("block/command_center_top")
 			down id("block/steel_block"))
 
 		TELEPAD.addModel(ModelFile.UncheckedModelFile(id("block/telepad")))

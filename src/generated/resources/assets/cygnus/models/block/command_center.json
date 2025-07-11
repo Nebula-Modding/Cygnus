@@ -2,11 +2,11 @@
   "parent": "minecraft:block/cube",
   "textures": {
     "down": "cygnus:block/steel_block",
-    "east": "cygnus:block/command_centre_side",
-    "north": "cygnus:block/command_centre_side",
-    "particle": "cygnus:block/command_centre_top",
-    "south": "cygnus:block/command_centre_side",
-    "up": "cygnus:block/command_centre_top",
-    "west": "cygnus:block/command_centre_side"
+    "east": "cygnus:block/command_center_side",
+    "north": "cygnus:block/command_center_side",
+    "particle": "cygnus:block/command_center_top",
+    "south": "cygnus:block/command_center_side",
+    "up": "cygnus:block/command_center_top",
+    "west": "cygnus:block/command_center_side"
   }
 }

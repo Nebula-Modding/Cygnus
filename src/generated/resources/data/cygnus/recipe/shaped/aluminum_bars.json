@@ -3,19 +3,18 @@
   "category": "misc",
   "key": {
     "I": {
-      "item": "cygnus:steel_ingot"
+      "item": "cygnus:aluminum_ingot"
     },
     "T": {
-      "tag": "c:ingots/steel"
+      "tag": "c:ingots/aluminum"
     }
   },
   "pattern": [
-    "TT",
-    "TI",
-    "TT"
+    "TTT",
+    "TIT"
   ],
   "result": {
-    "count": 3,
-    "id": "cygnus:steel_door"
+    "count": 16,
+    "id": "cygnus:aluminum_bars"
   }
 }

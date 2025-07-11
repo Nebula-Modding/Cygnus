@@ -153,10 +153,10 @@ class CygnusRecipeProvider(event: GatherDataEvent) : DapperRecipeProvider(event)
         // region Blocks/Decorational
 		metalDecorationSet(
 			"steel",
-			CygnusItems.STEEL_INGOT.get(),
-			CygnusItems.STEEL_SHEET.get(),
+			CygnusItems.STEEL_INGOT,
+			CygnusItems.STEEL_SHEET,
 			CygnusBlocks.STEEL_SHEET_METAL,
-			null, // CygnusBlocks.STEEL_CHISELED
+			CygnusBlocks.STEEL_CHISELED,
 			CygnusBlocks.STEEL_GRATE,
 			CygnusBlocks.STEEL_CUT,
 			CygnusBlocks.STEEL_CUT_STAIRS,
@@ -172,41 +172,41 @@ class CygnusRecipeProvider(event: GatherDataEvent) : DapperRecipeProvider(event)
 		)
 		metalDecorationSet(
 			"aluminum",
-			CygnusItems.ALUMINIUM_INGOT.get(),
-			CygnusItems.ALUMINIUM_SHEET.get(),
+			CygnusItems.ALUMINIUM_INGOT,
+			CygnusItems.ALUMINIUM_SHEET,
 			CygnusBlocks.ALUMINIUM_SHEET_METAL,
-			null, // CygnusBlocks.ALUMINIUM_CHISELED
-			null, // CygnusBlocks.ALUMINIUM_GRATE, 
+			CygnusBlocks.ALUMINIUM_CHISELED,
+			CygnusBlocks.ALUMINIUM_GRATE,
 			CygnusBlocks.ALUMINIUM_CUT,
 			CygnusBlocks.ALUMINIUM_CUT_STAIRS,
 			CygnusBlocks.ALUMINIUM_CUT_SLAB,
 			CygnusBlocks.ALUMINIUM_CUT_PRESSURE_PLATE,
 			CygnusBlocks.ALUMINIUM_CUT_BUTTON,
-			null, // CygnusBlocks.ALUMINIUM_WINDOW,
-			null, // CygnusBlocks.ALUMINIUM_PILLAR,
-			null, // CygnusBlocks.ALUMINIUM_BARS,
-			null, // CygnusBlocks.ALUMINIUM_DOOR,
-			null, // CygnusBlocks.ALUMINIUM_TRAPDOOR,
-			null, // CygnusBlocks.ALUMINIUM_BULB,
+			CygnusBlocks.ALUMINIUM_WINDOW,
+			CygnusBlocks.ALUMINIUM_PILLAR,
+			CygnusBlocks.ALUMINIUM_BARS,
+			CygnusBlocks.ALUMINIUM_DOOR,
+			CygnusBlocks.ALUMINIUM_TRAPDOOR,
+			CygnusBlocks.ALUMINIUM_BULB,
 		)
 		metalDecorationSet(
 			"titanium",
-			CygnusItems.TITANIUM_INGOT.get(),
-			CygnusItems.TITANIUM_SHEET.get(),
+			CygnusItems.TITANIUM_INGOT,
+			CygnusItems.TITANIUM_SHEET,
 			CygnusBlocks.TITANIUM_SHEET_METAL,
-			null, // CygnusBlocks.TITANIUM_CHISELED
-			null, // CygnusBlocks.TITANIUM_GRATE, 
+			CygnusBlocks.TITANIUM_CHISELED,
+			CygnusBlocks.TITANIUM_GRATE,
 			CygnusBlocks.TITANIUM_CUT,
 			CygnusBlocks.TITANIUM_CUT_STAIRS,
 			CygnusBlocks.TITANIUM_CUT_SLAB,
 			CygnusBlocks.TITANIUM_CUT_PRESSURE_PLATE,
 			CygnusBlocks.TITANIUM_CUT_BUTTON,
 			CygnusBlocks.TITANIUM_WINDOW,
-			null, // CygnusBlocks.TITANIUM_PILLAR,
-			null, // CygnusBlocks.TITANIUM_BARS,
-			null, // CygnusBlocks.TITANIUM_DOOR,
-			null, // CygnusBlocks.TITANIUM_TRAPDOOR,
-			null, // CygnusBlocks.TITANIUM_BULB,
+			CygnusBlocks.TITANIUM_PILLAR,
+			CygnusBlocks.TITANIUM_BARS,
+			CygnusBlocks.TITANIUM_DOOR,
+			CygnusBlocks.TITANIUM_TRAPDOOR,
+			CygnusBlocks.TITANIUM_BULB,
 		)
         // endregion Blocks/Decorational
 
@@ -292,18 +292,16 @@ class CygnusRecipeProvider(event: GatherDataEvent) : DapperRecipeProvider(event)
 				unlockWith(rawBlock)
 				save(id("shapeless/raw_${id}"))
 			}
-		}
 
-		rawBlock?.shapedRecipeBuilder()?.apply {
-			if (raw == null)
-				throw IllegalStateException("raw_${id}_block needs raw ores to be generated using CygnusRecipeProvider#basicResource")
-			pattern("TTT")
-			pattern("TRT")
-			pattern("TTT")
-			define('T', rawTag)
-			define('R', raw)
-			unlockWith(raw)
-			save(id("shaped/raw_${id}_block"))
+			rawBlock.shapedRecipeBuilder().apply {
+				pattern("TTT")
+				pattern("TRT")
+				pattern("TTT")
+				define('T', rawTag)
+				define('R', raw)
+				unlockWith(raw)
+				save(id("shaped/raw_${id}_block"))
+			}
 		}
 
 		nugget.shapelessRecipeBuilder(9).apply {
@@ -385,10 +383,9 @@ class CygnusRecipeProvider(event: GatherDataEvent) : DapperRecipeProvider(event)
 		val ingotTag = CygnusTags.Items.c("ingots/${id}")
 		val sheetTag = CygnusTags.Items.c("plates/${id}")
 
-
-		sheet?.shapelessRecipeBuilder(3)?.apply {
+		sheet.shapelessRecipeBuilder(3).apply {
 			if (sheetMetal == null)
-				throw IllegalStateException("sheets_from_sheet_metal needs sheet metal blocks to be generated using CygnusRecipeProvider#metalDecorationSet")
+				throw IllegalStateException("${id}_sheets_from_sheet_metal needs sheet metal blocks to be generated using CygnusRecipeProvider#metalDecorationSet")
 			requires(sheetMetal)
 			unlockWith(sheetMetal)
 			save(id("shapeless/${id}_sheets_from_sheet_metal"))
@@ -423,15 +420,15 @@ class CygnusRecipeProvider(event: GatherDataEvent) : DapperRecipeProvider(event)
 			save(id("shaped/${id}_grate"))
 		}
 
-		cut?.shapedRecipeBuilder(2)?.apply {
-			pattern("SS")
-			pattern("SS")
-			define('S', sheetTag)
-			unlockWith(sheet)
-			save(id("shaped/cut_${id}"))
-		}
-
 		if(cut != null) {
+			cut.shapedRecipeBuilder(2).apply {
+				pattern("SS")
+				pattern("SS")
+				define('S', sheetTag)
+				unlockWith(sheet)
+				save(id("shaped/cut_${id}"))
+			}
+
 			cutStairs?.shapedRecipeBuilder(4)?.apply {
 				pattern("C  ")
 				pattern("CC ")
@@ -492,8 +489,8 @@ class CygnusRecipeProvider(event: GatherDataEvent) : DapperRecipeProvider(event)
 
 		door?.shapedRecipeBuilder(3)?.apply {
 			pattern("TT")
-			pattern("TT")
 			pattern("TI")
+			pattern("TT")
 			define('T', ingotTag)
 			define('I', ingot)
 			unlockWith(ingot)

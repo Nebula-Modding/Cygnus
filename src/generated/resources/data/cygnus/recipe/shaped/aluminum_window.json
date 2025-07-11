@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "G": {
+      "tag": "c:glass_blocks/colorless"
+    },
+    "S": {
+      "tag": "c:plates/aluminum"
+    }
+  },
+  "pattern": [
+    "SG",
+    "GS"
+  ],
+  "result": {
+    "count": 2,
+    "id": "cygnus:aluminum_window"
+  }
+}
