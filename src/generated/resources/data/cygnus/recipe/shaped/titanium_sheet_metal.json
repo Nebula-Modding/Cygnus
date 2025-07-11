@@ -2,16 +2,20 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": {
+    "S": {
+      "item": "cygnus:titanium_sheet"
+    },
+    "T": {
       "tag": "c:plates/titanium"
     }
   },
   "pattern": [
-    "##",
-    "##"
+    "TTT",
+    "TST",
+    "TTT"
   ],
   "result": {
-    "count": 2,
+    "count": 3,
     "id": "cygnus:titanium_sheet_metal"
   }
 }

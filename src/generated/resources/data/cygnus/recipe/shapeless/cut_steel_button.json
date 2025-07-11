@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "cygnus:cut_steel"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "id": "cygnus:cut_steel_button"
+  }
+}

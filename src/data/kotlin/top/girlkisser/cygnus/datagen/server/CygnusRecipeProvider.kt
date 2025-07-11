@@ -1,6 +1,8 @@
 package top.girlkisser.cygnus.datagen.server
 
 import martian.dapper.api.server.recipe.DapperRecipeProvider
+import martian.dapper.api.server.recipe.DapperShapedRecipeUtil.define
+import martian.dapper.api.server.recipe.DapperShapedRecipeUtil.pattern
 import martian.dapper.api.server.recipe.DapperShapedRecipeUtil.pattern2x2
 import martian.dapper.api.server.recipe.DapperShapedRecipeUtil.shapedRecipeBuilder
 import martian.dapper.api.server.recipe.DapperShapedRecipeUtil.unlockWith
@@ -11,7 +13,6 @@ import martian.dapper.api.server.recipe.DapperSmeltingRecipeUtil.unlockWith
 import net.minecraft.core.registries.Registries
 import net.minecraft.resources.ResourceLocation
 import net.minecraft.tags.TagKey
-import net.minecraft.world.item.Item
 import net.minecraft.world.item.Items
 import net.minecraft.world.item.crafting.Ingredient
 import net.minecraft.world.level.ItemLike
@@ -56,38 +57,40 @@ class CygnusRecipeProvider(event: GatherDataEvent) : DapperRecipeProvider(event)
         // region Items/Resources
 		basicResource(
 			"steel",
-			CygnusItems.STEEL_INGOT,
-			CygnusBlocks.STEEL_BLOCK,
+			null, // Steel does not have a raw variant... yet >:3
 			CygnusItems.STEEL_NUGGET,
+			CygnusItems.STEEL_INGOT,
 			CygnusItems.STEEL_SHEET,
 			CygnusItems.STEEL_ROD,
-			null, // Steel does not have a raw variant... yet >:3
+			CygnusBlocks.STEEL_BLOCK,
+			null, // CygnusBlocks.STEEL_RAW
 			setOf(),
 		)
 		basicResource(
 			"aluminium",
-			CygnusItems.ALUMINIUM_INGOT,
-			CygnusBlocks.ALUMINIUM_BLOCK,
+			CygnusItems.RAW_ALUMINIUM,
 			CygnusItems.ALUMINIUM_NUGGET,
+			CygnusItems.ALUMINIUM_INGOT,
 			CygnusItems.ALUMINIUM_SHEET,
 			CygnusItems.ALUMINIUM_ROD,
-			CygnusItems.RAW_ALUMINIUM,
+			CygnusBlocks.ALUMINIUM_BLOCK,
+			null, // CygnusBlocks.ALUMINIUM_RAW
 			setOf(
 				CygnusBlocks.ALUMINIUM_ORE,
 				CygnusBlocks.DEEPSLATE_ALUMINIUM_ORE,
 				CygnusBlocks.LUNAR_ALUMINIUM_ORE,
 				CygnusBlocks.LUNAR_DEEPSLATE_ALUMINIUM_ORE,
 			),
-			tagId = "aluminum", // I use `aluminium` (british) in IDs but the tag by convention is `aluminum` (american)
 		)
 		basicResource(
 			"titanium",
-			CygnusItems.TITANIUM_INGOT,
-			CygnusBlocks.TITANIUM_BLOCK,
+			CygnusItems.RAW_TITANIUM,
 			CygnusItems.TITANIUM_NUGGET,
+			CygnusItems.TITANIUM_INGOT,
 			CygnusItems.TITANIUM_SHEET,
 			CygnusItems.TITANIUM_ROD,
-			CygnusItems.RAW_TITANIUM,
+			CygnusBlocks.TITANIUM_BLOCK,
+			null, // CygnusBlocks.TITANIUM_RAW
 			setOf(
 				CygnusBlocks.TITANIUM_ORE,
 				CygnusBlocks.DEEPSLATE_TITANIUM_ORE,
@@ -110,12 +113,12 @@ class CygnusRecipeProvider(event: GatherDataEvent) : DapperRecipeProvider(event)
         }
 
         CygnusItems.CHRONITE_CIRCUIT.shapedRecipeBuilder().apply {
-            pattern(" T ")
-            pattern("THT")
             pattern(" C ")
+            pattern("TTT")
+            pattern(" E ")
             define('T', CygnusTags.Items.PLATES_TITANIUM)
-            define('H', CygnusItems.CHRONITE_SHARD)
-            define('C', CygnusItems.ELECTRONIC_CIRCUIT)
+            define('C', CygnusItems.CHRONITE_SHARD)
+            define('E', CygnusItems.ELECTRONIC_CIRCUIT)
             unlockWith(Items.QUARTZ)
             save(id("shaped/chronite_circuit"))
         }
@@ -152,49 +155,58 @@ class CygnusRecipeProvider(event: GatherDataEvent) : DapperRecipeProvider(event)
 			"steel",
 			CygnusItems.STEEL_INGOT.get(),
 			CygnusItems.STEEL_SHEET.get(),
-			CygnusTags.Items.INGOTS_STEEL,
-			CygnusTags.Items.PLATES_STEEL,
 			CygnusBlocks.STEEL_SHEET_METAL,
+			null, // CygnusBlocks.STEEL_CHISELED
+			CygnusBlocks.STEEL_GRATE,
 			CygnusBlocks.STEEL_CUT,
+			CygnusBlocks.STEEL_CUT_STAIRS,
+			CygnusBlocks.STEEL_CUT_SLAB,
+			CygnusBlocks.STEEL_CUT_PRESSURE_PLATE,
+			CygnusBlocks.STEEL_CUT_BUTTON,
 			CygnusBlocks.STEEL_WINDOW,
+			CygnusBlocks.STEEL_PILLAR,
+			CygnusBlocks.STEEL_BARS,
 			CygnusBlocks.STEEL_DOOR,
 			CygnusBlocks.STEEL_TRAPDOOR,
-			CygnusBlocks.STEEL_GRATE,
-			CygnusBlocks.STEEL_PILLAR,
 			CygnusBlocks.STEEL_BULB,
-			CygnusBlocks.STEEL_BARS,
 		)
 		metalDecorationSet(
-			"aluminium",
+			"aluminum",
 			CygnusItems.ALUMINIUM_INGOT.get(),
 			CygnusItems.ALUMINIUM_SHEET.get(),
-			CygnusTags.Items.INGOTS_ALUMINIUM,
-			CygnusTags.Items.PLATES_ALUMINIUM,
 			CygnusBlocks.ALUMINIUM_SHEET_METAL,
+			null, // CygnusBlocks.ALUMINIUM_CHISELED
+			null, // CygnusBlocks.ALUMINIUM_GRATE, 
 			CygnusBlocks.ALUMINIUM_CUT,
+			CygnusBlocks.ALUMINIUM_CUT_STAIRS,
+			CygnusBlocks.ALUMINIUM_CUT_SLAB,
+			CygnusBlocks.ALUMINIUM_CUT_PRESSURE_PLATE,
+			CygnusBlocks.ALUMINIUM_CUT_BUTTON,
 			null, // CygnusBlocks.ALUMINIUM_WINDOW,
+			null, // CygnusBlocks.ALUMINIUM_PILLAR,
+			null, // CygnusBlocks.ALUMINIUM_BARS,
 			null, // CygnusBlocks.ALUMINIUM_DOOR,
 			null, // CygnusBlocks.ALUMINIUM_TRAPDOOR,
-			null, // CygnusBlocks.ALUMINIUM_VENT,
-			null, // CygnusBlocks.ALUMINIUM_PILLAR,
 			null, // CygnusBlocks.ALUMINIUM_BULB,
-			null, // CygnusBlocks.ALUMINIUM_BARS,
 		)
 		metalDecorationSet(
 			"titanium",
 			CygnusItems.TITANIUM_INGOT.get(),
 			CygnusItems.TITANIUM_SHEET.get(),
-			CygnusTags.Items.INGOTS_TITANIUM,
-			CygnusTags.Items.PLATES_TITANIUM,
 			CygnusBlocks.TITANIUM_SHEET_METAL,
+			null, // CygnusBlocks.TITANIUM_CHISELED
+			null, // CygnusBlocks.TITANIUM_GRATE, 
 			CygnusBlocks.TITANIUM_CUT,
+			CygnusBlocks.TITANIUM_CUT_STAIRS,
+			CygnusBlocks.TITANIUM_CUT_SLAB,
+			CygnusBlocks.TITANIUM_CUT_PRESSURE_PLATE,
+			CygnusBlocks.TITANIUM_CUT_BUTTON,
 			CygnusBlocks.TITANIUM_WINDOW,
+			null, // CygnusBlocks.TITANIUM_PILLAR,
+			null, // CygnusBlocks.TITANIUM_BARS,
 			null, // CygnusBlocks.TITANIUM_DOOR,
 			null, // CygnusBlocks.TITANIUM_TRAPDOOR,
-			null, // CygnusBlocks.TITANIUM_VENT,
-			null, // CygnusBlocks.TITANIUM_PILLAR,
 			null, // CygnusBlocks.TITANIUM_BULB,
-			null, // CygnusBlocks.TITANIUM_BARS,
 		)
         // endregion Blocks/Decorational
 
@@ -210,27 +222,40 @@ class CygnusRecipeProvider(event: GatherDataEvent) : DapperRecipeProvider(event)
 			define('C', CygnusItems.CHRONITE_CIRCUIT)
 			define('T', CygnusBlocks.STEEL_CUT)
 			unlockWith(CygnusItems.CHRONITE_CIRCUIT)
-			save(id("shaped/command_centre"))
+			save(id("shaped/command_center"))
+		}
+
+		CygnusBlocks.TERMINAL.shapedRecipeBuilder().apply {
+			pattern(" G ")
+			pattern("SCS")
+			pattern("TST")
+			define('G', cTag("glass_panes/colorless"))
+			define('S', CygnusTags.Items.PLATES_STEEL)
+			define('C', CygnusItems.CHRONITE_CIRCUIT)
+			define('T', CygnusBlocks.STEEL_CUT)
+			unlockWith(CygnusItems.CHRONITE_CIRCUIT)
+			save(id("shaped/terminal"))
 		}
 
         CygnusBlocks.TELEPAD.shapedRecipeBuilder().apply {
             pattern(" G ")
             pattern("SCS")
             pattern("STS")
+			define('G', cTag("glass_panes/colorless"))
             define('S', CygnusTags.Items.PLATES_STEEL)
-            define('G', cTag("glass_blocks/colorless"))
             define('C', CygnusItems.CHRONITE_CIRCUIT)
-            define('T', CygnusBlocks.STEEL_CUT)
+            define('T', CygnusBlocks.STEEL_CUT_SLAB)
             unlockWith(CygnusItems.CHRONITE_CIRCUIT)
             save(id("shaped/telepad"))
         }
 
         CygnusBlocks.CHRONITE_BLAST_FURNACE.shapedRecipeBuilder().apply {
-            pattern(" A ")
-            pattern("AFA")
-            pattern("ACA")
-            define('A', CygnusTags.Items.INGOTS_ALUMINIUM)
-            define('F', Items.BLAST_FURNACE)
+            pattern("TTT")
+            pattern("TBT")
+            pattern("DCD")
+			define('T', CygnusTags.Items.INGOTS_TITANIUM)
+			define('B', Items.BLAST_FURNACE)
+            define('D', Items.POLISHED_DEEPSLATE)
             define('C', CygnusItems.CHRONITE_SHARD)
             unlockWith(CygnusItems.CHRONITE_SHARD)
             save(id("shaped/chronite_blast_furnace"))
@@ -241,34 +266,68 @@ class CygnusRecipeProvider(event: GatherDataEvent) : DapperRecipeProvider(event)
 
 	fun basicResource(
 		id: String,
-		ingot: ItemLike,
-		block: ItemLike,
+		raw: ItemLike?,
 		nugget: ItemLike,
+		ingot: ItemLike,
 		sheet: ItemLike?,
 		rod: ItemLike?,
-		raw: ItemLike?,
+		block: ItemLike?,
+		rawBlock: ItemLike?,
 		ores: Set<DeferredBlock<*>>,
-		tagId: String? = null
 	)
 	{
-		val ingotTag = CygnusTags.Items.c("ingots/${tagId ?: id}")
-		val plateTag = CygnusTags.Items.c("plates/${tagId ?: id}")
+		val rawTag = CygnusTags.Items.c("raw_materials/${id}")
+		val nuggetTag = CygnusTags.Items.c("nuggets/${id}")
+		val ingotTag = CygnusTags.Items.c("ingots/${id}")
+		val sheetTag = CygnusTags.Items.c("plates/${id}")
 
 		raw?.smeltsTo(ingot)?.apply {
 			unlockWith(raw)
 			save(id("smelting/${id}_ingot"))
 		}
 
-		ingot.shapelessRecipeBuilder(1).apply {
-			requires(nugget, 9)
-			unlockWith(nugget)
-			save(id("shapeless/${id}_ingot_from_nuggets"))
+		if (raw != null && rawBlock != null) {
+			raw.shapelessRecipeBuilder(9).apply {
+				requires(rawBlock)
+				unlockWith(rawBlock)
+				save(id("shapeless/raw_${id}"))
+			}
+		}
+
+		rawBlock?.shapedRecipeBuilder()?.apply {
+			if (raw == null)
+				throw IllegalStateException("raw_${id}_block needs raw ores to be generated using CygnusRecipeProvider#basicResource")
+			pattern("TTT")
+			pattern("TRT")
+			pattern("TTT")
+			define('T', rawTag)
+			define('R', raw)
+			unlockWith(raw)
+			save(id("shaped/raw_${id}_block"))
 		}
 
 		nugget.shapelessRecipeBuilder(9).apply {
 			requires(ingot)
 			unlockWith(ingot)
 			save(id("shapeless/${id}_nuggets_from_ingot"))
+		}
+
+		ingot.shapedRecipeBuilder().apply {
+			pattern("TTT")
+			pattern("TNT")
+			pattern("TTT")
+			define('T', nuggetTag)
+			define('N', nugget)
+			unlockWith(nugget)
+			save(id("shaped/${id}_ingot_from_nuggets"))
+		}
+
+		if (block != null) {
+			ingot.shapelessRecipeBuilder(9).apply {
+				requires(block)
+				unlockWith(block)
+				save(id("shapeless/${id}_ingot_from_block"))
+			}
 		}
 
 		sheet?.shapelessRecipeBuilder(2)?.apply {
@@ -280,21 +339,19 @@ class CygnusRecipeProvider(event: GatherDataEvent) : DapperRecipeProvider(event)
 
 		rod?.shapelessRecipeBuilder(2)?.apply {
 			requires(CygnusItems.HAMMER)
-			requires(Ingredient.of(plateTag), 2)
+			requires(Ingredient.of(sheetTag), 2)
 			unlockWith(CygnusItems.HAMMER)
 			save(id("shapeless/${id}_rod"))
 		}
 
-		block.shapelessRecipeBuilder().apply {
-			requires(ingot, 9)
+		block?.shapedRecipeBuilder()?.apply {
+			pattern("TTT")
+			pattern("TIT")
+			pattern("TTT")
+			define('T', ingotTag)
+			define('I', ingot)
 			unlockWith(ingot)
-			save(id("shapeless/${id}_block"))
-		}
-
-		ingot.shapelessRecipeBuilder(9).apply {
-			requires(block)
-			unlockWith(block)
-			save(id("shapeless/${id}_ingot_from_block"))
+			save(id("shaped/${id}_block"))
 		}
 
 		ores.forEach {
@@ -309,92 +366,158 @@ class CygnusRecipeProvider(event: GatherDataEvent) : DapperRecipeProvider(event)
 		id: String,
 		ingot: ItemLike,
 		sheet: ItemLike,
-		ingotTag: TagKey<Item>,
-		sheetTag: TagKey<Item>,
 		sheetMetal: ItemLike?,
-		tiles: ItemLike?,
+		chiseled: ItemLike?,
+		grate: ItemLike?,
+		cut: ItemLike?,
+		cutStairs: ItemLike?,
+		cutSlab: ItemLike?,
+		cutPressurePlate: ItemLike?,
+		cutButton: ItemLike?,
 		window: ItemLike?,
+		pillar: ItemLike?,
+		bars: ItemLike?,
 		door: ItemLike?,
 		trapDoor: ItemLike?,
-		grate: ItemLike?,
-		pillar: ItemLike?,
 		bulb: ItemLike?,
-		bars: ItemLike?,
 	)
 	{
-		sheetMetal?.shapedRecipeBuilder(2)?.apply {
-			pattern2x2(sheetTag)
-			unlockWith(sheet)
+		val ingotTag = CygnusTags.Items.c("ingots/${id}")
+		val sheetTag = CygnusTags.Items.c("plates/${id}")
+
+
+		sheet?.shapelessRecipeBuilder(3)?.apply {
+			if (sheetMetal == null)
+				throw IllegalStateException("sheets_from_sheet_metal needs sheet metal blocks to be generated using CygnusRecipeProvider#metalDecorationSet")
+			requires(sheetMetal)
+			unlockWith(sheetMetal)
+			save(id("shapeless/${id}_sheets_from_sheet_metal"))
+		}
+
+		sheetMetal?.shapedRecipeBuilder(3)?.apply {
+			pattern("TTT")
+			pattern("TST")
+			pattern("TTT")
+			define('T', sheetTag)
+			define('S', sheet)
+			unlockWith(ingot)
 			save(id("shaped/${id}_sheet_metal"))
 		}
 
-		tiles?.shapedRecipeBuilder(4)?.apply {
-			pattern2x2(sheetMetal ?: sheet)
-			unlockWith(sheetMetal ?: sheet)
-			save(id("shaped/${id}_tiles"))
-		}
-
-		pillar?.shapedRecipeBuilder(2)?.apply {
-			if (sheetMetal == null)
-				throw IllegalStateException("Pillars need sheet metal blocks to be generated using CygnusRecipeProvider#metalDecorationSet")
+		chiseled?.shapedRecipeBuilder()?.apply {
+			if (cutSlab == null)
+				throw IllegalStateException("chiseled_${id} needs a cut slab to be generated using CygnusRecipeProvider#metalDecorationSet")
 			pattern("#")
 			pattern("#")
-			define('#', sheetMetal)
-			unlockWith(sheetMetal)
-			save(id("shaped/${id}_pillar"))
+			define('#', cutSlab)
+			unlockWith(cutSlab)
+			save(id("shaped/chiseled_${id}"))
 		}
 
 		grate?.shapedRecipeBuilder(4)?.apply {
-			pattern(" # ")
-			pattern("# #")
-			pattern(" # ")
-			define('#', sheetTag)
+			pattern("SSS")
+			pattern("S S")
+			pattern("SSS")
+			define('S', sheetTag)
 			unlockWith(sheet)
 			save(id("shaped/${id}_grate"))
 		}
 
-		bulb?.shapedRecipeBuilder(4)?.apply {
-			pattern(" # ")
-			pattern("#B#")
-			pattern(" R ")
-			define('#', sheetTag)
-			define('B', Items.BLAZE_ROD)
-			define('R', cTag("dusts/redstone"))
+		cut?.shapedRecipeBuilder(2)?.apply {
+			pattern("SS")
+			pattern("SS")
+			define('S', sheetTag)
 			unlockWith(sheet)
-			save(id("shaped/${id}_bulb"))
+			save(id("shaped/cut_${id}"))
 		}
 
-		window?.shapedRecipeBuilder(4)?.apply {
-			pattern(" G ")
-			pattern("G#G")
-			pattern(" G ")
-			define('#', sheetTag)
+		if(cut != null) {
+			cutStairs?.shapedRecipeBuilder(4)?.apply {
+				pattern("C  ")
+				pattern("CC ")
+				pattern("CCC")
+				define('C', cut)
+				unlockWith(cut)
+				save(id("shaped/cut_${id}_stairs"))
+			}
+
+			cutSlab?.shapedRecipeBuilder(6)?.apply {
+				pattern("CCC")
+				define('C', cut)
+				unlockWith(cut)
+				save(id("shaped/cut_${id}_slab"))
+			}
+
+			cutPressurePlate?.shapedRecipeBuilder(4)?.apply {
+				pattern("CC")
+				define('C', cut)
+				unlockWith(cut)
+				save(id("shaped/cut_${id}_pressure_plate"))
+			}
+
+			cutButton?.shapelessRecipeBuilder(4)?.apply {
+				requires(cut)
+				unlockWith(cut)
+				save(id("shapeless/cut_${id}_button"))
+			}
+		}
+
+		window?.shapedRecipeBuilder(2)?.apply {
+			pattern("SG")
+			pattern("GS")
 			define('G', cTag("glass_blocks/colorless"))
+			define('S', sheetTag)
 			unlockWith(sheet)
 			save(id("shaped/${id}_window"))
 		}
 
+		pillar?.shapedRecipeBuilder(2)?.apply {
+			if (cut == null)
+				throw IllegalStateException("${id}_pillar needs a cut block to be generated using CygnusRecipeProvider#metalDecorationSet")
+			pattern("#")
+			pattern("#")
+			define('#', cut)
+			unlockWith(cut)
+			save(id("shaped/${id}_pillar"))
+		}
+
+		bars?.shapedRecipeBuilder(16)?.apply {
+			pattern("TTT")
+			pattern("TIT")
+			define('T', ingotTag)
+			define('I', ingot)
+			unlockWith(ingot)
+			save(id("shaped/${id}_bars"))
+		}
+
 		door?.shapedRecipeBuilder(3)?.apply {
-			pattern("##")
-			pattern("##")
-			pattern("##")
-			define('#', ingotTag)
+			pattern("TT")
+			pattern("TT")
+			pattern("TI")
+			define('T', ingotTag)
+			define('I', ingot)
 			unlockWith(ingot)
 			save(id("shaped/${id}_door"))
 		}
 
-		trapDoor?.shapedRecipeBuilder(2)?.apply {
-			pattern2x2(ingotTag)
+		trapDoor?.shapedRecipeBuilder()?.apply {
+			pattern("TT")
+			pattern("TI")
+			define('T', ingotTag)
+			define('I', ingot)
 			unlockWith(ingot)
-			save(id("shaped/${id}_trap_door"))
+			save(id("shaped/${id}_trapdoor"))
 		}
 
-		bars?.shapedRecipeBuilder(16)?.apply {
-			pattern("###")
-			pattern("###")
-			define('#', ingotTag)
-			unlockWith(ingot)
-			save(id("shaped/${id}_bars"))
+		bulb?.shapedRecipeBuilder(4)?.apply {
+			pattern("SSS")
+			pattern("SBS")
+			pattern("SRS")
+			define('S', sheetTag)
+			define('B', Items.BLAZE_ROD)
+			define('R', cTag("dusts/redstone"))
+			unlockWith(sheet)
+			save(id("shaped/${id}_bulb"))
 		}
 	}
 

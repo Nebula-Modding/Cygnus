@@ -29,7 +29,7 @@ class CygnusBlockStateProvider(event: GatherDataEvent) : DapperBlockStateProvide
 			STEEL_CUT,
 //			ALUMINIUM_SHEET_METAL,
 //			ALUMINIUM_BLOCK,
-//			ALUMINIUM_PLATING,
+//			ALUMINIUM_CUT,
 //			TITANIUM_SHEET_METAL,
 			TITANIUM_BLOCK,
 //			TITANIUM_PLATING,
@@ -54,6 +54,41 @@ class CygnusBlockStateProvider(event: GatherDataEvent) : DapperBlockStateProvide
 			CHRONITE_BLOCK,
 			BUDDING_CHRONITE,
 		).forEach { it.addModel(CubeModel() all it.id.withPrefix("block/")) }
+
+		setOf(
+			STEEL_CUT_STAIRS,
+			TITANIUM_CUT_STAIRS,
+		).forEach {
+			stairsBlock(it.get() as StairBlock, it.id.withPath(it.id.withPrefix("block/").path.replace("_stairs", "")))
+			simpleBlockItem(it.get(), ModelFile.UncheckedModelFile(it.id.withPrefix("block/")))
+		}
+
+		setOf(
+			STEEL_CUT_SLAB,
+			TITANIUM_CUT_SLAB,
+		).forEach {
+			val slabTexture = it.id.withPath(it.id.withPrefix("block/").path.replace("_slab", ""))
+			slabBlock(it.get() as SlabBlock, slabTexture, slabTexture)
+			simpleBlockItem(it.get(), ModelFile.UncheckedModelFile(it.id.withPrefix("block/")))
+		}
+
+		setOf(
+			STEEL_CUT_PRESSURE_PLATE,
+			TITANIUM_CUT_PRESSURE_PLATE,
+		).forEach {
+			pressurePlateBlock(it.get() as PressurePlateBlock, it.id.withPath(it.id.withPrefix("block/").path.replace("_pressure_plate", "")))
+			simpleBlockItem(it.get(), ModelFile.UncheckedModelFile(it.id.withPrefix("block/")))
+		}
+
+		setOf(
+			STEEL_CUT_BUTTON,
+			TITANIUM_CUT_BUTTON,
+		).forEach {
+			val buttonTexture = it.id.withPath(it.id.withPrefix("block/").path.replace("_button", ""))
+			buttonBlock(it.get() as ButtonBlock, buttonTexture)
+			models().buttonInventory(it.id.path + "_inventory", buttonTexture)
+			simpleBlockItem(it.get(), ModelFile.UncheckedModelFile(it.id.withPrefix("block/").withSuffix("_inventory")))
+		}
 
 		setOf(
 			STEEL_WINDOW,

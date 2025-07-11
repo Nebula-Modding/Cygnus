@@ -9,6 +9,7 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
@@ -107,7 +108,7 @@ public interface CygnusBlocks
 		return basicGlassProperties(of());
 	}
 
-	// Order: Block, Sheet Metal, Grate, Tiles, Stairs, Slabs, Pressure Plate, Button, Window, Pillar, Bars, Door, Trapdoor, Bulb
+	// Order: Sheet Metal, Block, Chiseled, Grate, Cut, Stairs, Slabs, Pressure Plate, Button, Window, Pillar, Bars, Door, Trapdoor, Bulb
 
 	// @formatter:off
 	DeferredBlock<?>
@@ -117,6 +118,10 @@ public interface CygnusBlocks
 		STEEL_BLOCK = reg("steel_block", Blocks.IRON_BLOCK),
 		STEEL_GRATE = reg("steel_grate", WaterloggedTransparentBlock::new, basicGlassProperties(copy(Blocks.COPPER_GRATE).sound(CygnusSoundTypes.METAL_GRATE))),
 		STEEL_CUT = reg("cut_steel", Blocks.IRON_BLOCK),
+		STEEL_CUT_STAIRS = reg("cut_steel_stairs", () -> new StairBlock(CygnusBlocks.STEEL_CUT.get().defaultBlockState(), copy(Blocks.IRON_BLOCK))),
+		STEEL_CUT_SLAB = reg("cut_steel_slab", () -> new SlabBlock(copy(Blocks.IRON_BLOCK))),
+		STEEL_CUT_PRESSURE_PLATE = reg("cut_steel_pressure_plate", () -> new PressurePlateBlock(BlockSetType.IRON, copy(Blocks.IRON_BLOCK).noCollission().strength(0.5F).pushReaction(PushReaction.DESTROY))),
+		STEEL_CUT_BUTTON = reg("cut_steel_button", () -> new ButtonBlock(BlockSetType.IRON, 20, copy(Blocks.IRON_BLOCK).noCollission().strength(0.5F).pushReaction(PushReaction.DESTROY))),
 		STEEL_WINDOW = reg("steel_window", TransparentBlock::new, basicGlassProperties(copy(Blocks.IRON_BLOCK).sound(CygnusSoundTypes.METAL_WINDOW))),
 		STEEL_PILLAR = reg("steel_pillar", RotatedPillarBlock::new, copy(Blocks.IRON_BLOCK)),
 		STEEL_BARS = reg("steel_bars", () -> new IronBarsBlock(copy(Blocks.IRON_BARS))),
@@ -130,10 +135,18 @@ public interface CygnusBlocks
 		ALUMINIUM_SHEET_METAL = reg("aluminum_sheet_metal", Blocks.IRON_BLOCK),
 		ALUMINIUM_BLOCK = reg("aluminum_block", Blocks.IRON_BLOCK),
 		ALUMINIUM_CUT = reg("cut_aluminum", Blocks.IRON_BLOCK),
+		ALUMINIUM_CUT_STAIRS = reg("cut_aluminum_stairs", () -> new StairBlock(CygnusBlocks.ALUMINIUM_CUT.get().defaultBlockState(), copy(Blocks.IRON_BLOCK))),
+		ALUMINIUM_CUT_SLAB = reg("cut_aluminum_slab", () -> new SlabBlock(copy(Blocks.IRON_BLOCK).noCollission().strength(0.5F).pushReaction(PushReaction.DESTROY))),
+		ALUMINIUM_CUT_PRESSURE_PLATE = reg("cut_aluminum_pressure_plate", () -> new PressurePlateBlock(BlockSetType.IRON, copy(Blocks.IRON_BLOCK).noCollission().strength(0.5F).pushReaction(PushReaction.DESTROY))),
+		ALUMINIUM_CUT_BUTTON = reg("cut_aluminum_button", () -> new ButtonBlock(BlockSetType.IRON, 20, copy(Blocks.IRON_BLOCK))),
 		// Titanium
 		TITANIUM_SHEET_METAL = reg("titanium_sheet_metal", Blocks.IRON_BLOCK),
 		TITANIUM_BLOCK = reg("titanium_block", Blocks.IRON_BLOCK),
 		TITANIUM_CUT = reg("cut_titanium", Blocks.IRON_BLOCK),
+		TITANIUM_CUT_STAIRS = reg("cut_titanium_stairs", () -> new StairBlock(CygnusBlocks.TITANIUM_CUT.get().defaultBlockState(), copy(Blocks.IRON_BLOCK))),
+		TITANIUM_CUT_SLAB = reg("cut_titanium_slab", () -> new SlabBlock(copy(Blocks.IRON_BLOCK))),
+		TITANIUM_CUT_PRESSURE_PLATE = reg("cut_titanium_pressure_plate", () -> new PressurePlateBlock(BlockSetType.IRON, copy(Blocks.IRON_BLOCK).noCollission().strength(0.5F).pushReaction(PushReaction.DESTROY))),
+		TITANIUM_CUT_BUTTON = reg("cut_titanium_button", () -> new ButtonBlock(BlockSetType.IRON, 20, copy(Blocks.IRON_BLOCK).noCollission().strength(0.5F).pushReaction(PushReaction.DESTROY))),
 		TITANIUM_WINDOW = reg("titanium_window", TransparentBlock::new, basicGlassProperties(copy(Blocks.IRON_BLOCK).sound(CygnusSoundTypes.METAL_WINDOW))),
 
 	// Lunar Blocks

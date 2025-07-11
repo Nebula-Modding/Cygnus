@@ -2,13 +2,16 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": {
+    "I": {
+      "item": "cygnus:steel_ingot"
+    },
+    "T": {
       "tag": "c:ingots/steel"
     }
   },
   "pattern": [
-    "###",
-    "###"
+    "TTT",
+    "TIT"
   ],
   "result": {
     "count": 16,

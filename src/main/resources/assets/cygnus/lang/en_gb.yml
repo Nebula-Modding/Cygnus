@@ -4,9 +4,10 @@ block.cygnus:
   # Decorational
   steel_sheet_metal: Steel Sheet Metal
   steel_block: Block of Steel
-  chiseled_steel: Chiseled Steel
+  chiseled_steel: Chiselled Steel
   steel_grate: Steel Grate
   cut_steel: Cut Steel
+  cut_steel_stairs: Cut Steel Stairs
   cut_steel_slab: Cut Steel Slab
   cut_steel_pressure_plate: Cut Steel Pressure Plate
   cut_steel_button: Cut Steel Button
@@ -21,9 +22,10 @@ block.cygnus:
   raw_aluminum_block: Block of Raw Aluminium
   aluminum_sheet_metal: Aluminium Sheet Metal
   aluminum_block: Block of Aluminium
-  chiseled_aluminum: Chiseled Aluminium
+  chiseled_aluminum: Chiselled Aluminium
   aluminum_grate: Aluminium Grate
   cut_aluminum: Cut Aluminium
+  cut_aluminum_stairs: Cut Aluminium Stairs
   cut_aluminum_slab: Cut Aluminium Slab
   cut_aluminum_pressure_plate: Cut Aluminium Pressure Plate
   cut_aluminum_button: Cut Aluminium Button
@@ -38,9 +40,10 @@ block.cygnus:
   raw_titanium_block: Block of Raw Titanium
   titanium_sheet_metal: Titanium Sheet Metal
   titanium_block: Block of Titanium
-  chiseled_titanium: Chiseled Titanium
+  chiseled_titanium: Chiselled Titanium
   titanium_grate: Titanium Grate
   cut_titanium: Cut Titanium
+  cut_titanium_stairs: Cut Titanium Stairs
   cut_titanium_slab: Cut Titanium Slab
   cut_titanium_pressure_plate: Cut Titanium Pressure Plate
   cut_titanium_button: Cut Titanium Button
@@ -57,14 +60,14 @@ block.cygnus:
   lunar_stone: Lunar Stone
   lunar_cobblestone: Lunar Cobblestone
   smooth_lunar_stone: Smooth Lunar Stone
-  chiseled_lunar_stone: Chiseled Lunar Stone
+  chiseled_lunar_stone: Chiselled Lunar Stone
   lunar_stone_bricks: Lunar Stone Bricks
   cracked_lunar_stone_bricks: Cracked Lunar Stone Bricks
   lunar_stone_pillar: Lunar Stone Pillar
   lunar_deepslate: Lunar Deepslate
   cobbled_lunar_deepslate: Cobbled Lunar Deepslate
   smooth_lunar_deepslate: Smooth Lunar Deepslate
-  chiseled_lunar_deepslate: Chiseled Lunar Deepslate
+  chiseled_lunar_deepslate: Chiselled Lunar Deepslate
   lunar_deepslate_bricks: Lunar Deepslate Bricks
   cracked_lunar_deepslate_bricks: Cracked Lunar Deepslate Bricks
   lunar_deepslate_pillar: Lunar Deepslate Pillar

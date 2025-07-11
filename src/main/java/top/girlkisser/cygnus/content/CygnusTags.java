@@ -49,6 +49,11 @@ public interface CygnusTags
 	@ApiStatus.NonExtendable
 	interface Blocks
 	{
+		static TagKey<Block> c(String path)
+		{
+			return TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath("c", path));
+		}
+
 		TagKey<Block> INCORRECT_FOR_OXYGEN_DRILl = TagKey.create(Registries.BLOCK, Cygnus.id("incorrect_for_oxygen_drill"));
 	}
 

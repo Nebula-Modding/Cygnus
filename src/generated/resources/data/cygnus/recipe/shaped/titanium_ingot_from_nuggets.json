@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "N": {
+      "item": "cygnus:titanium_nugget"
+    },
+    "T": {
+      "tag": "c:nuggets/titanium"
+    }
+  },
+  "pattern": [
+    "TTT",
+    "TNT",
+    "TTT"
+  ],
+  "result": {
+    "count": 1,
+    "id": "cygnus:titanium_ingot"
+  }
+}

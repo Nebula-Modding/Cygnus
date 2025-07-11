@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "cygnus:block/cut_titanium",
+    "side": "cygnus:block/cut_titanium",
+    "top": "cygnus:block/cut_titanium"
+  }
+}
