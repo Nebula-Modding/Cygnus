@@ -3,6 +3,21 @@ itemGroup.cygnus: Cygnus
 
 block.cygnus:
   # Decorational
+  iron_sheet_metal: Iron Sheet Metal
+  chiseled_iron: Chiselled Iron
+  iron_grate: Iron Grate
+  cut_iron: Cut Iron
+  cut_iron_stairs: Cut Iron Stairs
+  cut_iron_slab: Cut Iron Slab
+  cut_iron_pressure_plate: Cut Iron Pressure Plate
+  cut_iron_button: Cut Iron Button
+  iron_window: Iron Window
+  iron_pillar: Iron Pillar
+  airtight_iron_door: Airtight Iron Door
+  airtight_iron_trapdoor: Airtight Iron Trapdoor
+  iron_bulb: Iron Bulb
+  iron_airlock: Iron Airlock
+
   steel_sheet_metal: Steel Sheet Metal
   steel_block: Block of Steel
   chiseled_steel: Chiselled Steel

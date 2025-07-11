@@ -41,6 +41,14 @@ class CygnusBlockDropsProvider(event: GatherDataEvent) : DapperLootTableProvider
 		{
 			// Drops self
 			setOf(
+				IRON_SHEET_METAL,
+				IRON_GRATE,
+				IRON_CUT,
+				IRON_WINDOW,
+				IRON_PILLAR,
+				IRON_AIRTIGHT_TRAPDOOR,
+				IRON_BULB,
+
 				STEEL_SHEET_METAL,
 				STEEL_BLOCK,
 				STEEL_GRATE,
@@ -48,18 +56,28 @@ class CygnusBlockDropsProvider(event: GatherDataEvent) : DapperLootTableProvider
 				STEEL_WINDOW,
 				STEEL_PILLAR,
 				STEEL_BARS,
-				STEEL_DOOR,
 				STEEL_TRAPDOOR,
 				STEEL_BULB,
 
 				ALUMINIUM_SHEET_METAL,
 				ALUMINIUM_BLOCK,
+				ALUMINIUM_GRATE,
 				ALUMINIUM_CUT,
+				ALUMINIUM_WINDOW,
+				ALUMINIUM_PILLAR,
+				ALUMINIUM_BARS,
+				ALUMINIUM_TRAPDOOR,
+				ALUMINIUM_BULB,
 
 				TITANIUM_SHEET_METAL,
 				TITANIUM_BLOCK,
+				TITANIUM_GRATE,
 				TITANIUM_CUT,
 				TITANIUM_WINDOW,
+				TITANIUM_PILLAR,
+				TITANIUM_BARS,
+				TITANIUM_TRAPDOOR,
+				TITANIUM_BULB,
 
 				LUNAR_REGOLITH,
 				LUNAR_COBBLESTONE,
@@ -81,6 +99,16 @@ class CygnusBlockDropsProvider(event: GatherDataEvent) : DapperLootTableProvider
 				CHRONITE_BLAST_FURNACE,
 			).forEach {
 				dropSelf(it.get())
+			}
+
+			// Door drops
+			setOf(
+				IRON_AIRTIGHT_DOOR,
+				STEEL_DOOR,
+				ALUMINIUM_DOOR,
+				TITANIUM_DOOR,
+			).forEach {
+				add(it.get(), createDoorTable(it.get()))
 			}
 
 			// Stones->Cobblestones
@@ -113,6 +141,14 @@ class CygnusBlockDropsProvider(event: GatherDataEvent) : DapperLootTableProvider
 				LUNAR_DEEPSLATE_TITANIUM_ORE to CygnusItems.RAW_TITANIUM,
 			).forEach {
 				this.add(it.key.get(), createOreDrop(it.key.get(), it.value.asItem()))
+			}
+
+			// Copper ore drops
+			setOf(
+				LUNAR_COPPER_ORE,
+				LUNAR_DEEPSLATE_COPPER_ORE,
+			).forEach {
+				add(it.get(), createCopperOreDrops(it.get()))
 			}
 
 			// Redstone ore drops

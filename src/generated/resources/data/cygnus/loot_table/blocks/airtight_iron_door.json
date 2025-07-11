@@ -13,18 +13,18 @@
           "type": "minecraft:item",
           "conditions": [
             {
-              "block": "cygnus:steel_door",
+              "block": "cygnus:airtight_iron_door",
               "condition": "minecraft:block_state_property",
               "properties": {
                 "half": "lower"
               }
             }
           ],
-          "name": "cygnus:steel_door"
+          "name": "cygnus:airtight_iron_door"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "cygnus:blocks/steel_door"
+  "random_sequence": "cygnus:blocks/airtight_iron_door"
 }

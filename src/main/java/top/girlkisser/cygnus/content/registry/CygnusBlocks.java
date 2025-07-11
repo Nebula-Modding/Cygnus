@@ -216,6 +216,9 @@ public interface CygnusBlocks
 			// Iron Ores
 		LUNAR_IRON_ORE = reg("lunar_iron_ore", Blocks.IRON_ORE),
 		LUNAR_DEEPSLATE_IRON_ORE = reg("lunar_deepslate_iron_ore", Blocks.DEEPSLATE_IRON_ORE),
+			// Copper Ores
+		LUNAR_COPPER_ORE = reg("lunar_copper_ore", Blocks.COPPER_ORE),
+		LUNAR_DEEPSLATE_COPPER_ORE = reg("lunar_deepslate_copper_ore", Blocks.DEEPSLATE_COPPER_ORE),
 			// Gold Ores
 		LUNAR_GOLD_ORE = reg("lunar_gold_ore", Blocks.GOLD_ORE),
 		LUNAR_DEEPSLATE_GOLD_ORE = reg("lunar_deepslate_gold_ore", Blocks.DEEPSLATE_GOLD_ORE),
