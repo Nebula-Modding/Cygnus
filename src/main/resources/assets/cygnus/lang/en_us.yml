@@ -235,7 +235,7 @@ screen.cygnus:
 
 message.cygnus:
   # Shared tooltips
-  door_lockable: Use a key to lock to redstone
+  door_lockable: Use a key to lock
 
   # Errors
   failed_to_place_space_station: Failed to place space station
@@ -246,3 +246,50 @@ message.cygnus:
 
 space_station.cygnus:
   space_station: Space Station
+
+tag:
+  item:
+    c:
+      raw_material:
+        aluminum: Aluminum Raw Materials
+        titanium: Titanium Raw Materials
+      nuggets:
+        steel: Steel Nuggets
+        aluminum: Aluminum Nuggets
+        titanium: Titanium Nuggets
+      ingots:
+        steel: Steel Ingots
+        aluminum: Aluminum Ingots
+        titanium: Titanium Ingots
+      plates:
+        .: Plates
+        steel: Steel Plates
+        aluminum: Aluminum Plates
+        titanium: Titanium Plates
+      rods:
+        steel: Steel Rods
+        aluminum: Aluminum Rods
+        titanium: Titanium Rods
+      storage_blocks:
+        steel: Steel Storage Blocks
+        raw_aluminum: Raw Aluminum Storage Blocks
+        aluminum: Aluminum Storage Blocks
+        raw_titanium: Raw Titanium Storage Blocks
+        titanium: Titanium Storage Blocks
+  cygnus:
+    can_walk_on_chronite: Can Walk on Chronite
+
+  block:
+    c:
+      storage_blocks:
+        steel: Steel Storage Blocks
+        raw_aluminum: Raw Aluminum Storage Blocks
+        aluminum: Aluminum Storage Blocks
+        raw_titanium: Raw Titanium Storage Blocks
+        titanium: Titanium Storage Blocks
+    cygnus:
+      incorrect_for_oxygen_drill: Incorrect for Oxygen Drill
+
+  fluid:
+    c:
+      oxygen: Oxygen

@@ -135,6 +135,15 @@ class CygnusRecipeProvider(event: GatherDataEvent) : DapperRecipeProvider(event)
 			save(id("shaped/hammer"))
 		}
 
+		CygnusItems.KEY.shapedRecipeBuilder().apply {
+			pattern("I")
+			pattern("N")
+			define('I', cTag("ingots/gold"))
+			define('N', cTag("nuggets/gold"))
+			unlockWith(Items.GOLD_INGOT)
+			save(id("shaped/key"))
+		}
+
 		CygnusItems.OXYGEN_DRILL.shapedRecipeBuilder().apply {
 			pattern(" S ")
 			pattern("SBS")

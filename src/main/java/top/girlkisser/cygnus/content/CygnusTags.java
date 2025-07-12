@@ -62,6 +62,6 @@ public interface CygnusTags
 	@ApiStatus.NonExtendable
 	interface Fluids
 	{
-		TagKey<Fluid> OXYGEN = TagKey.create(Registries.FLUID, ResourceLocation.fromNamespaceAndPath("c", "oxygen"));
+		TagKey<Fluid> OXYGEN = TagKey.create(Registries.FLUID, ResourceLocation.fromNamespaceAndPath("c", "gasses/oxygen"));
 	}
 }

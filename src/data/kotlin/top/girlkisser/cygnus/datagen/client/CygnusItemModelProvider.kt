@@ -33,7 +33,7 @@ class CygnusItemModelProvider(event: GatherDataEvent) : DapperItemModelProvider(
 		CygnusItems.CHRONITE_CIRCUIT.basicModel()
 
 		CygnusItems.HAMMER.basicHandheldModel()
-		CygnusItems.KEY.basicHandheldModel()
+		CygnusItems.KEY.basicModel()
         CygnusItems.OXYGEN_DRILL.basicHandheldModel()
 
 		setOf(
