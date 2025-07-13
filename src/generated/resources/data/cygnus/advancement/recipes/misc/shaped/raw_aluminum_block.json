@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_cygnus_chronite_circuit": {
+    "has_cygnus_raw_aluminum": {
       "conditions": {
         "items": [
           {
-            "items": "cygnus:chronite_circuit"
+            "items": "cygnus:raw_aluminum"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "cygnus:shaped/terminal"
+        "recipe": "cygnus:shaped/raw_aluminum_block"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_cygnus_chronite_circuit"
+      "has_cygnus_raw_aluminum"
     ]
   ],
   "rewards": {
     "recipes": [
-      "cygnus:shaped/terminal"
+      "cygnus:shaped/raw_aluminum_block"
     ]
   }
 }

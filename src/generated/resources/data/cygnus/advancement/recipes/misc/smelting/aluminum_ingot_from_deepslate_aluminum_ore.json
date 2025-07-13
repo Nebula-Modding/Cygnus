@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_cygnus_aluminum_nugget": {
+    "has_cygnus_deepslate_aluminum_ore": {
       "conditions": {
         "items": [
           {
-            "items": "cygnus:aluminum_nugget"
+            "items": "cygnus:deepslate_aluminum_ore"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "cygnus:shaped/aluminium_ingot_from_nuggets"
+        "recipe": "cygnus:smelting/aluminum_ingot_from_deepslate_aluminum_ore"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_cygnus_aluminum_nugget"
+      "has_cygnus_deepslate_aluminum_ore"
     ]
   ],
   "rewards": {
     "recipes": [
-      "cygnus:shaped/aluminium_ingot_from_nuggets"
+      "cygnus:smelting/aluminum_ingot_from_deepslate_aluminum_ore"
     ]
   }
 }

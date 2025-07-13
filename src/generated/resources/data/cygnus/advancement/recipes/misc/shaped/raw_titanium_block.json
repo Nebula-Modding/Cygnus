@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_minecraft_gold_ingot": {
+    "has_cygnus_raw_titanium": {
       "conditions": {
         "items": [
           {
-            "items": "minecraft:gold_ingot"
+            "items": "cygnus:raw_titanium"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "cygnus:shaped/key"
+        "recipe": "cygnus:shaped/raw_titanium_block"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_minecraft_gold_ingot"
+      "has_cygnus_raw_titanium"
     ]
   ],
   "rewards": {
     "recipes": [
-      "cygnus:shaped/key"
+      "cygnus:shaped/raw_titanium_block"
     ]
   }
 }

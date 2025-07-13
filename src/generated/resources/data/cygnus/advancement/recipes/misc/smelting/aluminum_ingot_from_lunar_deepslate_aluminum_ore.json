@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_cygnus_lunar_aluminum_ore": {
+    "has_cygnus_lunar_deepslate_aluminum_ore": {
       "conditions": {
         "items": [
           {
-            "items": "cygnus:lunar_aluminum_ore"
+            "items": "cygnus:lunar_deepslate_aluminum_ore"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "cygnus:smelting/aluminium_ingot_from_lunar_aluminum_ore"
+        "recipe": "cygnus:smelting/aluminum_ingot_from_lunar_deepslate_aluminum_ore"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_cygnus_lunar_aluminum_ore"
+      "has_cygnus_lunar_deepslate_aluminum_ore"
     ]
   ],
   "rewards": {
     "recipes": [
-      "cygnus:smelting/aluminium_ingot_from_lunar_aluminum_ore"
+      "cygnus:smelting/aluminum_ingot_from_lunar_deepslate_aluminum_ore"
     ]
   }
 }

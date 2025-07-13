@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_cygnus_aluminum_block": {
+    "has_cygnus_raw_aluminum_block": {
       "conditions": {
         "items": [
           {
-            "items": "cygnus:aluminum_block"
+            "items": "cygnus:raw_aluminum_block"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "cygnus:shapeless/aluminium_ingot_from_block"
+        "recipe": "cygnus:shapeless/raw_aluminum"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_cygnus_aluminum_block"
+      "has_cygnus_raw_aluminum_block"
     ]
   ],
   "rewards": {
     "recipes": [
-      "cygnus:shapeless/aluminium_ingot_from_block"
+      "cygnus:shapeless/raw_aluminum"
     ]
   }
 }

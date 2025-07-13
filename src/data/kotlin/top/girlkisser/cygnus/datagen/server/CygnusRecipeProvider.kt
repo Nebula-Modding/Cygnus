@@ -63,23 +63,29 @@ class CygnusRecipeProvider(event: GatherDataEvent) : DapperRecipeProvider(event)
 			CygnusItems.STEEL_SHEET,
 			CygnusItems.STEEL_ROD,
 			CygnusBlocks.STEEL_BLOCK,
-			null, // CygnusBlocks.STEEL_RAW
+			null,
 			setOf(),
 		)
 		basicResource(
-			"aluminium",
+			"aluminum",
 			CygnusItems.RAW_ALUMINIUM,
 			CygnusItems.ALUMINIUM_NUGGET,
 			CygnusItems.ALUMINIUM_INGOT,
 			CygnusItems.ALUMINIUM_SHEET,
 			CygnusItems.ALUMINIUM_ROD,
 			CygnusBlocks.ALUMINIUM_BLOCK,
-			null, // CygnusBlocks.ALUMINIUM_RAW
+			CygnusBlocks.ALUMINIUM_RAW_BLOCK,
 			setOf(
 				CygnusBlocks.ALUMINIUM_ORE,
 				CygnusBlocks.DEEPSLATE_ALUMINIUM_ORE,
 				CygnusBlocks.LUNAR_ALUMINIUM_ORE,
 				CygnusBlocks.LUNAR_DEEPSLATE_ALUMINIUM_ORE,
+//				CygnusBlocks.MARTIAN_ALUMINIUM_ORE,
+//				CygnusBlocks.MARTIAN_DEEPSLATE_ALUMINIUM_ORE,
+//				CygnusBlocks.MERCURIAL_ALUMINIUM_ORE,
+//				CygnusBlocks.MERCURIAL_DEEPSLATE_ALUMINIUM_ORE,
+//				CygnusBlocks.VENUSIAN_ALUMINIUM_ORE,
+//				CygnusBlocks.VENUSIAN_DEEPSLATE_ALUMINIUM_ORE,
 			),
 		)
 		basicResource(
@@ -90,12 +96,18 @@ class CygnusRecipeProvider(event: GatherDataEvent) : DapperRecipeProvider(event)
 			CygnusItems.TITANIUM_SHEET,
 			CygnusItems.TITANIUM_ROD,
 			CygnusBlocks.TITANIUM_BLOCK,
-			null, // CygnusBlocks.TITANIUM_RAW
+			CygnusBlocks.TITANIUM_RAW_BLOCK,
 			setOf(
 				CygnusBlocks.TITANIUM_ORE,
 				CygnusBlocks.DEEPSLATE_TITANIUM_ORE,
 				CygnusBlocks.LUNAR_TITANIUM_ORE,
 				CygnusBlocks.LUNAR_DEEPSLATE_TITANIUM_ORE,
+//				CygnusBlocks.MARTIAN_TITANIUM_ORE,
+//				CygnusBlocks.MARTIAN_DEEPSLATE_TITANIUM_ORE,
+//				CygnusBlocks.MERCURIAL_TITANIUM_ORE,
+//				CygnusBlocks.MERCURIAL_DEEPSLATE_TITANIUM_ORE,
+//				CygnusBlocks.VENUSIAN_TITANIUM_ORE,
+//				CygnusBlocks.VENUSIAN_DEEPSLATE_TITANIUM_ORE,
 			),
 		)
         // endregion Items/Resources
@@ -232,18 +244,6 @@ class CygnusRecipeProvider(event: GatherDataEvent) : DapperRecipeProvider(event)
 			define('T', CygnusBlocks.STEEL_CUT)
 			unlockWith(CygnusItems.CHRONITE_CIRCUIT)
 			save(id("shaped/command_center"))
-		}
-
-		CygnusBlocks.TERMINAL.shapedRecipeBuilder().apply {
-			pattern(" G ")
-			pattern("SCS")
-			pattern("TST")
-			define('G', cTag("glass_panes/colorless"))
-			define('S', CygnusTags.Items.PLATES_STEEL)
-			define('C', CygnusItems.CHRONITE_CIRCUIT)
-			define('T', CygnusBlocks.STEEL_CUT)
-			unlockWith(CygnusItems.CHRONITE_CIRCUIT)
-			save(id("shaped/terminal"))
 		}
 
         CygnusBlocks.TELEPAD.shapedRecipeBuilder().apply {

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "R": {
+      "item": "cygnus:raw_aluminum"
+    },
+    "T": {
+      "tag": "c:raw_materials/aluminum"
+    }
+  },
+  "pattern": [
+    "TTT",
+    "TRT",
+    "TTT"
+  ],
+  "result": {
+    "count": 1,
+    "id": "cygnus:raw_aluminum_block"
+  }
+}

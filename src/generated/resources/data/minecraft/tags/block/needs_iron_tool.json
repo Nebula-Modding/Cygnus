@@ -1,5 +1,6 @@
 {
   "values": [
+    "cygnus:raw_titanium_block",
     "cygnus:steel_sheet_metal",
     "cygnus:steel_block",
     "cygnus:steel_grate",
@@ -12,8 +13,14 @@
     "cygnus:steel_bulb",
     "cygnus:titanium_sheet_metal",
     "cygnus:titanium_block",
+    "cygnus:titanium_grate",
     "cygnus:cut_titanium",
     "cygnus:titanium_window",
+    "cygnus:titanium_pillar",
+    "cygnus:titanium_bars",
+    "cygnus:titanium_door",
+    "cygnus:titanium_trapdoor",
+    "cygnus:titanium_bulb",
     "cygnus:lunar_gold_ore",
     "cygnus:lunar_deepslate_gold_ore",
     "cygnus:lunar_redstone_ore",
@@ -24,8 +31,6 @@
     "cygnus:lunar_deepslate_diamond_ore",
     "cygnus:titanium_ore",
     "cygnus:deepslate_titanium_ore",
-    "cygnus:lunar_titanium_ore",
-    "cygnus:lunar_deepslate_titanium_ore",
     "cygnus:command_center",
     "cygnus:telepad",
     "cygnus:chronite_blast_furnace"

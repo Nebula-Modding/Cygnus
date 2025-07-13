@@ -6,14 +6,14 @@
       "item": "cygnus:hammer"
     },
     {
-      "tag": "c:ingots/aluminium"
+      "tag": "c:plates/aluminum"
     },
     {
-      "tag": "c:ingots/aluminium"
+      "tag": "c:plates/aluminum"
     }
   ],
   "result": {
     "count": 2,
-    "id": "cygnus:aluminum_sheet"
+    "id": "cygnus:aluminum_rod"
   }
 }

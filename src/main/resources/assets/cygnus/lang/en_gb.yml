@@ -74,41 +74,18 @@ block.cygnus:
   lunar_regolith: Lunar Regolith
   lunar_stone: Lunar Stone
   lunar_cobblestone: Lunar Cobblestone
-  smooth_lunar_stone: Smooth Lunar Stone
-  chiseled_lunar_stone: Chiselled Lunar Stone
+  polished_lunar_stone: Polished Lunar Stone
+  chiseled_lunar_stone: Chiseled Lunar Stone
   lunar_stone_bricks: Lunar Stone Bricks
   cracked_lunar_stone_bricks: Cracked Lunar Stone Bricks
   lunar_stone_pillar: Lunar Stone Pillar
   lunar_deepslate: Lunar Deepslate
   cobbled_lunar_deepslate: Cobbled Lunar Deepslate
-  smooth_lunar_deepslate: Smooth Lunar Deepslate
-  chiseled_lunar_deepslate: Chiselled Lunar Deepslate
+  polished_lunar_deepslate: Polished Lunar Deepslate
+  chiseled_lunar_deepslate: Chiseled Lunar Deepslate
   lunar_deepslate_bricks: Lunar Deepslate Bricks
   cracked_lunar_deepslate_bricks: Cracked Lunar Deepslate Bricks
   lunar_deepslate_pillar: Lunar Deepslate Pillar
-
-  lunar_coal_ore: Lunar Coal Ore
-  lunar_deepslate_coal_ore: Lunar Deepslate Coal Ore
-  lunar_iron_ore: Lunar Iron Ore
-  lunar_deepslate_iron_ore: Lunar Deepslate Iron Ore
-  lunar_gold_ore: Lunar Gold Ore
-  lunar_deepslate_gold_ore: Lunar Deepslate Gold Ore
-  lunar_redstone_ore: Lunar Redstone Ore
-  lunar_deepslate_redstone_ore: Lunar Deepslate Redstone Ore
-  lunar_emerald_ore: Lunar Emerald Ore
-  lunar_deepslate_emerald_ore: Lunar Deepslate Emerald Ore
-  lunar_lapis_ore: Lunar Lapis Ore
-  lunar_deepslate_lapis_ore: Lunar Deepslate Lapis Ore
-  lunar_diamond_ore: Lunar Diamond Ore
-  lunar_deepslate_diamond_ore: Lunar Deepslate Diamond Ore
-  aluminum_ore: Aluminium Ore
-  deepslate_aluminum_ore: Deepslate Aluminium Ore
-  lunar_aluminum_ore: Lunar Aluminium Ore
-  lunar_deepslate_aluminum_ore: Lunar Deepslate Aluminium Ore
-  titanium_ore: Titanium Ore
-  deepslate_titanium_ore: Deepslate Titanium Ore
-  lunar_titanium_ore: Lunar Titanium Ore
-  lunar_deepslate_titanium_ore: Lunar Deepslate Titanium Ore
 
   chronite_block: Chronite Block
   budding_chronite: Budding Chronite
@@ -116,6 +93,92 @@ block.cygnus:
   large_chronite_bud: Large Chronite Bud
   medium_chronite_bud: Medium Chronite Bud
   small_chronite_bud: Small Chronite Bud
+
+  # Ores
+  lunar_coal_ore: Lunar Coal Ore
+  lunar_deepslate_coal_ore: Lunar Deepslate Coal Ore
+  martian_coal_ore: Martian Coal Ore
+  martian_deepslate_coal_ore: Martian Deepslate Coal Ore
+  mercurial_coal_ore: Mercurial Coal Ore
+  mercurial_deepslate_coal_ore: Mercurial Deepslate Coal Ore
+  venusian_coal_ore: Venusian Coal Ore
+  venusian_deepslate_coal_ore: Venusian Deepslate Coal Ore
+  lunar_iron_ore: Lunar Iron Ore
+  lunar_deepslate_iron_ore: Lunar Deepslate Iron Ore
+  martian_iron_ore: Martian Iron Ore
+  martian_deepslate_iron_ore: Martian Deepslate Iron Ore
+  mercurial_iron_ore: Mercurial Iron Ore
+  mercurial_deepslate_iron_ore: Mercurial Deepslate Iron Ore
+  venusian_iron_ore: Venusian Iron Ore
+  venusian_deepslate_iron_ore: Venusian Deepslate Iron Ore
+  lunar_copper_ore: Lunar Copper Ore
+  lunar_deepslate_copper_ore: Lunar Deepslate Copper Ore
+  martian_copper_ore: Martian Copper Ore
+  martian_deepslate_copper_ore: Martian Deepslate Copper Ore
+  mercurial_copper_ore: Mercurial Copper Ore
+  mercurial_deepslate_copper_ore: Mercurial Deepslate Copper Ore
+  venusian_copper_ore: Venusian Copper Ore
+  venusian_deepslate_copper_ore: Venusian Deepslate Copper Ore
+  lunar_gold_ore: Lunar Gold Ore
+  lunar_deepslate_gold_ore: Lunar Deepslate Gold Ore
+  martian_gold_ore: Martian Gold Ore
+  martian_deepslate_gold_ore: Martian Deepslate Gold Ore
+  mercurial_gold_ore: Mercurial Gold Ore
+  mercurial_deepslate_gold_ore: Mercurial Deepslate Gold Ore
+  venusian_gold_ore: Venusian Gold Ore
+  venusian_deepslate_gold_ore: Venusian Deepslate Gold Ore
+  lunar_redstone_ore: Lunar Redstone Ore
+  lunar_deepslate_redstone_ore: Lunar Deepslate Redstone Ore
+  martian_redstone_ore: Martian Redstone Ore
+  martian_deepslate_redstone_ore: Martian Deepslate Redstone Ore
+  mercurial_redstone_ore: Mercurial Redstone Ore
+  mercurial_deepslate_redstone_ore: Mercurial Deepslate Redstone Ore
+  venusian_redstone_ore: Venusian Redstone Ore
+  venusian_deepslate_redstone_ore: Venusian Deepslate Redstone Ore
+  lunar_emerald_ore: Lunar Emerald Ore
+  lunar_deepslate_emerald_ore: Lunar Deepslate Emerald Ore
+  martian_emerald_ore: Martian Emerald Ore
+  martian_deepslate_emerald_ore: Martian Deepslate Emerald Ore
+  mercurial_emerald_ore: Mercurial Emerald Ore
+  mercurial_deepslate_emerald_ore: Mercurial Deepslate Emerald Ore
+  venusian_emerald_ore: Venusian Emerald Ore
+  venusian_deepslate_emerald_ore: Venusian Deepslate Emerald Ore
+  lunar_lapis_ore: Lunar Lapis Lazuli Ore
+  lunar_deepslate_lapis_ore: Lunar Deepslate Lapis Lazuli Ore
+  martian_lapis_ore: Martian Lapis Lazuli Ore
+  martian_deepslate_lapis_ore: Martian Deepslate Lapis Lazuli Ore
+  mercurial_lapis_ore: Mercurial Lapis Lazuli Ore
+  mercurial_deepslate_lapis_ore: Mercurial Deepslate Lapis Lazuli Ore
+  venusian_lapis_ore: Venusian Lapis Lazuli Ore
+  venusian_deepslate_lapis_ore: Venusian Deepslate Lapis Lazuli Ore
+  lunar_diamond_ore: Lunar Diamond Ore
+  lunar_deepslate_diamond_ore: Lunar Deepslate Diamond Ore
+  martian_diamond_ore: Martian Diamond Ore
+  martian_deepslate_diamond_ore: Martian Deepslate Diamond Ore
+  mercurial_diamond_ore: Mercurial Diamond Ore
+  mercurial_deepslate_diamond_ore: Mercurial Deepslate Diamond Ore
+  venusian_diamond_ore: Venusian Diamond Ore
+  venusian_deepslate_diamond_ore: Venusian Deepslate Diamond Ore
+  aluminum_ore: Aluminium Ore
+  deepslate_aluminum_ore: Deepslate Aluminium Ore
+  lunar_aluminum_ore: Lunar Aluminium Ore
+  lunar_deepslate_aluminum_ore: Lunar Deepslate Aluminium Ore
+  martian_aluminum_ore: Martian Aluminium Ore
+  martian_deepslate_aluminum_ore: Martian Deepslate Aluminium Ore
+  mercurial_aluminum_ore: Mercurial Aluminium Ore
+  mercurial_deepslate_aluminum_ore: Mercurial Deepslate Aluminium Ore
+  venusian_aluminum_ore: Venusian Aluminium Ore
+  venusian_deepslate_aluminum_ore: Venusian Deepslate Aluminium Ore
+  titanium_ore: Titanium Ore
+  deepslate_titanium_ore: Deepslate Titanium Ore
+  lunar_titanium_ore: Lunar Titanium Ore
+  lunar_deepslate_titanium_ore: Lunar Deepslate Titanium Ore
+  martian_titanium_ore: Martian Titanium Ore
+  martian_deepslate_titanium_ore: Martian Deepslate Titanium Ore
+  mercurial_titanium_ore: Mercurial Titanium Ore
+  mercurial_deepslate_titanium_ore: Mercurial Deepslate Titanium Ore
+  venusian_titanium_ore: Venusian Titanium Ore
+  venusian_deepslate_titanium_ore: Venusian Deepslate Titanium Ore
 
   # Functional
   terminal: Terminal

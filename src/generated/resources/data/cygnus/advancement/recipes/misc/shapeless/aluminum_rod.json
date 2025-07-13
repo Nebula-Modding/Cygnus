@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_minecraft_gold_ingot": {
+    "has_cygnus_hammer": {
       "conditions": {
         "items": [
           {
-            "items": "minecraft:gold_ingot"
+            "items": "cygnus:hammer"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "cygnus:shaped/key"
+        "recipe": "cygnus:shapeless/aluminum_rod"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_minecraft_gold_ingot"
+      "has_cygnus_hammer"
     ]
   ],
   "rewards": {
     "recipes": [
-      "cygnus:shaped/key"
+      "cygnus:shapeless/aluminum_rod"
     ]
   }
 }

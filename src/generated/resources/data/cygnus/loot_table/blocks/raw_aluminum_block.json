@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "cygnus:smooth_lunar_stone"
+          "name": "cygnus:raw_aluminum_block"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "cygnus:blocks/smooth_lunar_stone"
+  "random_sequence": "cygnus:blocks/raw_aluminum_block"
 }
