@@ -14,6 +14,10 @@ class CygnusItemTagProvider(event: GatherDataEvent) : DapperTagProvider.Companio
 {
     override fun addTags()
     {
+		"iron".apply {
+			IRON_SHEET addPlate this
+			IRON_ROD addRod this
+		}
         "steel".apply {
 			STEEL_NUGGET addNugget this
             STEEL_INGOT addIngot this

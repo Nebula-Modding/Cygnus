@@ -192,6 +192,9 @@ block.cygnus:
 
 item.cygnus:
   # Resources
+  iron_sheet: Iron Sheet
+  iron_rod: Iron Rod
+
   steel_nugget: Steel Nugget
   steel_ingot: Steel Ingot
   steel_sheet: Steel Sheet
@@ -314,7 +317,7 @@ space_station.cygnus:
 tag:
   item:
     c:
-      raw_material:
+      raw_materials:
         aluminum: Aluminium Raw Materials
         titanium: Titanium Raw Materials
       nuggets:
@@ -327,13 +330,18 @@ tag:
         titanium: Titanium Ingots
       plates:
         .: Plates
+        iron: Iron Plates
         steel: Steel Plates
         aluminum: Aluminium Plates
         titanium: Titanium Plates
       rods:
+        iron: Iron Rods
         steel: Steel Rods
         aluminum: Aluminium Rods
         titanium: Titanium Rods
+      tools:
+        drills: Drills
+        hammers: Hammers
       storage_blocks:
         steel: Steel Storage Blocks
         raw_aluminum: Raw Aluminium Storage Blocks

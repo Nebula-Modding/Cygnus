@@ -1,0 +1,112 @@
+{
+  "variants": {
+    "door_locked=false,facing=east,half=bottom,open=false": {
+      "model": "cygnus:block/aluminum_trapdoor_bottom"
+    },
+    "door_locked=false,facing=east,half=bottom,open=true": {
+      "model": "cygnus:block/aluminum_trapdoor_open",
+      "y": 90
+    },
+    "door_locked=false,facing=east,half=top,open=false": {
+      "model": "cygnus:block/aluminum_trapdoor_top"
+    },
+    "door_locked=false,facing=east,half=top,open=true": {
+      "model": "cygnus:block/aluminum_trapdoor_open",
+      "y": 90
+    },
+    "door_locked=false,facing=north,half=bottom,open=false": {
+      "model": "cygnus:block/aluminum_trapdoor_bottom"
+    },
+    "door_locked=false,facing=north,half=bottom,open=true": {
+      "model": "cygnus:block/aluminum_trapdoor_open"
+    },
+    "door_locked=false,facing=north,half=top,open=false": {
+      "model": "cygnus:block/aluminum_trapdoor_top"
+    },
+    "door_locked=false,facing=north,half=top,open=true": {
+      "model": "cygnus:block/aluminum_trapdoor_open"
+    },
+    "door_locked=false,facing=south,half=bottom,open=false": {
+      "model": "cygnus:block/aluminum_trapdoor_bottom"
+    },
+    "door_locked=false,facing=south,half=bottom,open=true": {
+      "model": "cygnus:block/aluminum_trapdoor_open",
+      "y": 180
+    },
+    "door_locked=false,facing=south,half=top,open=false": {
+      "model": "cygnus:block/aluminum_trapdoor_top"
+    },
+    "door_locked=false,facing=south,half=top,open=true": {
+      "model": "cygnus:block/aluminum_trapdoor_open",
+      "y": 180
+    },
+    "door_locked=false,facing=west,half=bottom,open=false": {
+      "model": "cygnus:block/aluminum_trapdoor_bottom"
+    },
+    "door_locked=false,facing=west,half=bottom,open=true": {
+      "model": "cygnus:block/aluminum_trapdoor_open",
+      "y": 270
+    },
+    "door_locked=false,facing=west,half=top,open=false": {
+      "model": "cygnus:block/aluminum_trapdoor_top"
+    },
+    "door_locked=false,facing=west,half=top,open=true": {
+      "model": "cygnus:block/aluminum_trapdoor_open",
+      "y": 270
+    },
+    "door_locked=true,facing=east,half=bottom,open=false": {
+      "model": "cygnus:block/aluminum_trapdoor_bottom"
+    },
+    "door_locked=true,facing=east,half=bottom,open=true": {
+      "model": "cygnus:block/aluminum_trapdoor_open",
+      "y": 90
+    },
+    "door_locked=true,facing=east,half=top,open=false": {
+      "model": "cygnus:block/aluminum_trapdoor_top"
+    },
+    "door_locked=true,facing=east,half=top,open=true": {
+      "model": "cygnus:block/aluminum_trapdoor_open",
+      "y": 90
+    },
+    "door_locked=true,facing=north,half=bottom,open=false": {
+      "model": "cygnus:block/aluminum_trapdoor_bottom"
+    },
+    "door_locked=true,facing=north,half=bottom,open=true": {
+      "model": "cygnus:block/aluminum_trapdoor_open"
+    },
+    "door_locked=true,facing=north,half=top,open=false": {
+      "model": "cygnus:block/aluminum_trapdoor_top"
+    },
+    "door_locked=true,facing=north,half=top,open=true": {
+      "model": "cygnus:block/aluminum_trapdoor_open"
+    },
+    "door_locked=true,facing=south,half=bottom,open=false": {
+      "model": "cygnus:block/aluminum_trapdoor_bottom"
+    },
+    "door_locked=true,facing=south,half=bottom,open=true": {
+      "model": "cygnus:block/aluminum_trapdoor_open",
+      "y": 180
+    },
+    "door_locked=true,facing=south,half=top,open=false": {
+      "model": "cygnus:block/aluminum_trapdoor_top"
+    },
+    "door_locked=true,facing=south,half=top,open=true": {
+      "model": "cygnus:block/aluminum_trapdoor_open",
+      "y": 180
+    },
+    "door_locked=true,facing=west,half=bottom,open=false": {
+      "model": "cygnus:block/aluminum_trapdoor_bottom"
+    },
+    "door_locked=true,facing=west,half=bottom,open=true": {
+      "model": "cygnus:block/aluminum_trapdoor_open",
+      "y": 270
+    },
+    "door_locked=true,facing=west,half=top,open=false": {
+      "model": "cygnus:block/aluminum_trapdoor_top"
+    },
+    "door_locked=true,facing=west,half=top,open=true": {
+      "model": "cygnus:block/aluminum_trapdoor_open",
+      "y": 270
+    }
+  }
+}

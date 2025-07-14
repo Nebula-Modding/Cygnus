@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_cygnus_steel_ingot": {
+    "has_cygnus_steel_sheet": {
       "conditions": {
         "items": [
           {
-            "items": "cygnus:steel_ingot"
+            "items": "cygnus:steel_sheet"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_cygnus_steel_ingot"
+      "has_cygnus_steel_sheet"
     ]
   ],
   "rewards": {

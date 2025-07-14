@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "S": {
+      "item": "cygnus:iron_sheet"
+    },
+    "T": {
+      "tag": "c:plates/iron"
+    }
+  },
+  "pattern": [
+    "TTT",
+    "TST",
+    "TTT"
+  ],
+  "result": {
+    "count": 3,
+    "id": "cygnus:iron_sheet_metal"
+  }
+}

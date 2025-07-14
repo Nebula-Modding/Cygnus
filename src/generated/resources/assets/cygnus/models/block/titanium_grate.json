@@ -1,0 +1,13 @@
+{
+  "parent": "minecraft:block/cube",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "down": "cygnus:block/titanium_grate",
+    "east": "cygnus:block/titanium_grate",
+    "north": "cygnus:block/titanium_grate",
+    "particle": "cygnus:block/titanium_grate",
+    "south": "cygnus:block/titanium_grate",
+    "up": "cygnus:block/titanium_grate",
+    "west": "cygnus:block/titanium_grate"
+  }
+}

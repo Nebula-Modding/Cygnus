@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "lit=false,powered=false": {
+      "model": "cygnus:block/aluminum_bulb"
+    },
+    "lit=false,powered=true": {
+      "model": "cygnus:block/aluminum_bulb_powered"
+    },
+    "lit=true,powered=false": {
+      "model": "cygnus:block/aluminum_bulb_lit"
+    },
+    "lit=true,powered=true": {
+      "model": "cygnus:block/aluminum_bulb_lit_powered"
+    }
+  }
+}

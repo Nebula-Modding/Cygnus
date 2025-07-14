@@ -1,9 +1,6 @@
 package top.girlkisser.cygnus.datagen.server
 
 import martian.dapper.api.server.recipe.DapperRecipeProvider
-import martian.dapper.api.server.recipe.DapperShapedRecipeUtil.define
-import martian.dapper.api.server.recipe.DapperShapedRecipeUtil.pattern
-import martian.dapper.api.server.recipe.DapperShapedRecipeUtil.pattern2x2
 import martian.dapper.api.server.recipe.DapperShapedRecipeUtil.shapedRecipeBuilder
 import martian.dapper.api.server.recipe.DapperShapedRecipeUtil.unlockWith
 import martian.dapper.api.server.recipe.DapperShapelessRecipeUtil.shapelessRecipeBuilder
@@ -56,6 +53,17 @@ class CygnusRecipeProvider(event: GatherDataEvent) : DapperRecipeProvider(event)
 		// region Items
         // region Items/Resources
 		basicResource(
+			"iron",
+			null,
+			null,
+			null,
+			CygnusItems.IRON_SHEET,
+			CygnusItems.IRON_ROD,
+			null,
+			null,
+			setOf(),
+		)
+		basicResource(
 			"steel",
 			null, // Steel does not have a raw variant... yet >:3
 			CygnusItems.STEEL_NUGGET,
@@ -74,7 +82,7 @@ class CygnusRecipeProvider(event: GatherDataEvent) : DapperRecipeProvider(event)
 			CygnusItems.ALUMINIUM_SHEET,
 			CygnusItems.ALUMINIUM_ROD,
 			CygnusBlocks.ALUMINIUM_BLOCK,
-			CygnusBlocks.ALUMINIUM_RAW_BLOCK,
+			CygnusBlocks.RAW_ALUMINIUM_BLOCK,
 			setOf(
 				CygnusBlocks.ALUMINIUM_ORE,
 				CygnusBlocks.DEEPSLATE_ALUMINIUM_ORE,
@@ -96,7 +104,7 @@ class CygnusRecipeProvider(event: GatherDataEvent) : DapperRecipeProvider(event)
 			CygnusItems.TITANIUM_SHEET,
 			CygnusItems.TITANIUM_ROD,
 			CygnusBlocks.TITANIUM_BLOCK,
-			CygnusBlocks.TITANIUM_RAW_BLOCK,
+			CygnusBlocks.RAW_TITANIUM_BLOCK,
 			setOf(
 				CygnusBlocks.TITANIUM_ORE,
 				CygnusBlocks.DEEPSLATE_TITANIUM_ORE,
@@ -173,11 +181,30 @@ class CygnusRecipeProvider(event: GatherDataEvent) : DapperRecipeProvider(event)
         // region Blocks
         // region Blocks/Decorational
 		metalDecorationSet(
+			"iron",
+			null,
+			CygnusItems.IRON_SHEET,
+			CygnusBlocks.IRON_SHEET_METAL,
+			CygnusBlocks.IRON_CHISELLED,
+			CygnusBlocks.IRON_GRATE,
+			CygnusBlocks.IRON_CUT,
+			CygnusBlocks.IRON_CUT_STAIRS,
+			CygnusBlocks.IRON_CUT_SLAB,
+			CygnusBlocks.IRON_CUT_PRESSURE_PLATE,
+			CygnusBlocks.IRON_CUT_BUTTON,
+			CygnusBlocks.IRON_WINDOW,
+			CygnusBlocks.IRON_PILLAR,
+			null,
+			null,
+			null,
+			CygnusBlocks.IRON_BULB,
+		)
+		metalDecorationSet(
 			"steel",
 			CygnusItems.STEEL_INGOT,
 			CygnusItems.STEEL_SHEET,
 			CygnusBlocks.STEEL_SHEET_METAL,
-			CygnusBlocks.STEEL_CHISELED,
+			CygnusBlocks.STEEL_CHISELLED,
 			CygnusBlocks.STEEL_GRATE,
 			CygnusBlocks.STEEL_CUT,
 			CygnusBlocks.STEEL_CUT_STAIRS,
@@ -196,7 +223,7 @@ class CygnusRecipeProvider(event: GatherDataEvent) : DapperRecipeProvider(event)
 			CygnusItems.ALUMINIUM_INGOT,
 			CygnusItems.ALUMINIUM_SHEET,
 			CygnusBlocks.ALUMINIUM_SHEET_METAL,
-			CygnusBlocks.ALUMINIUM_CHISELED,
+			CygnusBlocks.ALUMINIUM_CHISELLED,
 			CygnusBlocks.ALUMINIUM_GRATE,
 			CygnusBlocks.ALUMINIUM_CUT,
 			CygnusBlocks.ALUMINIUM_CUT_STAIRS,
@@ -215,7 +242,7 @@ class CygnusRecipeProvider(event: GatherDataEvent) : DapperRecipeProvider(event)
 			CygnusItems.TITANIUM_INGOT,
 			CygnusItems.TITANIUM_SHEET,
 			CygnusBlocks.TITANIUM_SHEET_METAL,
-			CygnusBlocks.TITANIUM_CHISELED,
+			CygnusBlocks.TITANIUM_CHISELLED,
 			CygnusBlocks.TITANIUM_GRATE,
 			CygnusBlocks.TITANIUM_CUT,
 			CygnusBlocks.TITANIUM_CUT_STAIRS,
@@ -276,8 +303,8 @@ class CygnusRecipeProvider(event: GatherDataEvent) : DapperRecipeProvider(event)
 	fun basicResource(
 		id: String,
 		raw: ItemLike?,
-		nugget: ItemLike,
-		ingot: ItemLike,
+		nugget: ItemLike?,
+		ingot: ItemLike?,
 		sheet: ItemLike?,
 		rod: ItemLike?,
 		block: ItemLike?,
@@ -290,9 +317,11 @@ class CygnusRecipeProvider(event: GatherDataEvent) : DapperRecipeProvider(event)
 		val ingotTag = CygnusTags.Items.c("ingots/${id}")
 		val sheetTag = CygnusTags.Items.c("plates/${id}")
 
-		raw?.smeltsTo(ingot)?.apply {
-			unlockWith(raw)
-			save(id("smelting/${id}_ingot"))
+		if (ingot != null) {
+			raw?.smeltsTo(ingot)?.apply {
+				unlockWith(raw)
+				save(id("smelting/${id}_ingot"))
+			}
 		}
 
 		if (raw != null && rawBlock != null) {
@@ -313,13 +342,17 @@ class CygnusRecipeProvider(event: GatherDataEvent) : DapperRecipeProvider(event)
 			}
 		}
 
-		nugget.shapelessRecipeBuilder(9).apply {
+		nugget?.shapelessRecipeBuilder(9)?.apply {
+			if (ingot == null)
+				throw IllegalStateException("${id}_nuggets_from_ingot needs ingots to be generated using CygnusRecipeProvider#basicResource")
 			requires(ingot)
 			unlockWith(ingot)
 			save(id("shapeless/${id}_nuggets_from_ingot"))
 		}
 
-		ingot.shapedRecipeBuilder().apply {
+		ingot?.shapedRecipeBuilder()?.apply {
+			if (nugget == null)
+				throw IllegalStateException("${id}_ingot_from_nuggets needs nuggets to be generated using CygnusRecipeProvider#basicResource")
 			pattern("TTT")
 			pattern("TNT")
 			pattern("TTT")
@@ -329,7 +362,7 @@ class CygnusRecipeProvider(event: GatherDataEvent) : DapperRecipeProvider(event)
 			save(id("shaped/${id}_ingot_from_nuggets"))
 		}
 
-		if (block != null) {
+		if (block != null && ingot != null) {
 			ingot.shapelessRecipeBuilder(9).apply {
 				requires(block)
 				unlockWith(block)
@@ -352,6 +385,8 @@ class CygnusRecipeProvider(event: GatherDataEvent) : DapperRecipeProvider(event)
 		}
 
 		block?.shapedRecipeBuilder()?.apply {
+			if (ingot == null)
+				throw IllegalStateException("${id}_block needs ingots to be generated using CygnusRecipeProvider#basicResource")
 			pattern("TTT")
 			pattern("TIT")
 			pattern("TTT")
@@ -362,6 +397,8 @@ class CygnusRecipeProvider(event: GatherDataEvent) : DapperRecipeProvider(event)
 		}
 
 		ores.forEach {
+			if (ingot == null)
+				throw IllegalStateException("${id}_ingot_from_${it.id.path} needs ingots to be generated using CygnusRecipeProvider#basicResource")
 			(it smeltsTo ingot).apply {
 				unlockWith(it)
 				save(id("smelting/${id}_ingot_from_${it.id.path}"))
@@ -371,7 +408,7 @@ class CygnusRecipeProvider(event: GatherDataEvent) : DapperRecipeProvider(event)
 
 	fun metalDecorationSet(
 		id: String,
-		ingot: ItemLike,
+		ingot: ItemLike?,
 		sheet: ItemLike,
 		sheetMetal: ItemLike?,
 		chiseled: ItemLike?,
@@ -406,7 +443,7 @@ class CygnusRecipeProvider(event: GatherDataEvent) : DapperRecipeProvider(event)
 			pattern("TTT")
 			define('T', sheetTag)
 			define('S', sheet)
-			unlockWith(ingot)
+			unlockWith(sheet)
 			save(id("shaped/${id}_sheet_metal"))
 		}
 
@@ -488,6 +525,8 @@ class CygnusRecipeProvider(event: GatherDataEvent) : DapperRecipeProvider(event)
 		}
 
 		bars?.shapedRecipeBuilder(16)?.apply {
+			if (ingot == null)
+				throw IllegalStateException("${id}_bars needs ingots to be generated using CygnusRecipeProvider#basicResource")
 			pattern("TTT")
 			pattern("TIT")
 			define('T', ingotTag)
@@ -497,6 +536,8 @@ class CygnusRecipeProvider(event: GatherDataEvent) : DapperRecipeProvider(event)
 		}
 
 		door?.shapedRecipeBuilder(3)?.apply {
+			if (ingot == null)
+				throw IllegalStateException("${id}_door needs ingots to be generated using CygnusRecipeProvider#basicResource")
 			pattern("TT")
 			pattern("TI")
 			pattern("TT")
@@ -507,6 +548,8 @@ class CygnusRecipeProvider(event: GatherDataEvent) : DapperRecipeProvider(event)
 		}
 
 		trapDoor?.shapedRecipeBuilder()?.apply {
+			if (ingot == null)
+				throw IllegalStateException("${id}_trapdoor needs ingots to be generated using CygnusRecipeProvider#basicResource")
 			pattern("TT")
 			pattern("TI")
 			define('T', ingotTag)

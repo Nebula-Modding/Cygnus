@@ -108,18 +108,18 @@ public interface CygnusBlocks
 		return basicGlassProperties(of());
 	}
 
-	// Order: Sheet Metal, Block, Chiseled, Grate, Cut, Stairs, Slabs, Pressure Plate, Button, Window, Pillar, Bars, Door, Trapdoor, Bulb
+	// Order: Sheet Metal, Block, Chiselled, Grate, Cut, Stairs, Slabs, Pressure Plate, Button, Window, Pillar, Bars, Door, Trapdoor, Bulb
 
 	// @formatter:off
 	DeferredBlock<?>
 	// Raw Blocks
-		ALUMINIUM_RAW_BLOCK = reg("raw_aluminum_block", copy(Blocks.RAW_IRON_BLOCK).mapColor(MapColor.QUARTZ)),
-		TITANIUM_RAW_BLOCK = reg("raw_titanium_block", copy(Blocks.RAW_IRON_BLOCK).mapColor(MapColor.CLAY)),
+		RAW_ALUMINIUM_BLOCK = reg("raw_aluminum_block", copy(Blocks.RAW_IRON_BLOCK).mapColor(MapColor.QUARTZ)),
+		RAW_TITANIUM_BLOCK = reg("raw_titanium_block", copy(Blocks.RAW_IRON_BLOCK).mapColor(MapColor.CLAY)),
 
 	// Decorational blocks
 		// Iron
 		IRON_SHEET_METAL = reg("iron_sheet_metal", Blocks.IRON_BLOCK),
-		IRON_CHISELED = reg("chiseled_iron", Blocks.IRON_BLOCK),
+		IRON_CHISELLED = reg("chiseled_iron", Blocks.IRON_BLOCK),
 		IRON_GRATE = reg("iron_grate", WaterloggedTransparentBlock::new, basicGlassProperties(copy(Blocks.COPPER_GRATE).sound(CygnusSoundTypes.METAL_GRATE))),
 		IRON_CUT = reg("cut_iron", Blocks.IRON_BLOCK),
 		IRON_CUT_STAIRS = reg("cut_iron_stairs", () -> new StairBlock(CygnusBlocks.IRON_CUT.get().defaultBlockState(), copy(Blocks.IRON_BLOCK))),
@@ -137,7 +137,7 @@ public interface CygnusBlocks
 		// Steel
 		STEEL_SHEET_METAL = reg("steel_sheet_metal", copy(Blocks.IRON_BLOCK).mapColor(MapColor.COLOR_BLACK)),
 		STEEL_BLOCK = reg("steel_block", copy(Blocks.IRON_BLOCK).mapColor(MapColor.COLOR_BLACK)),
-		STEEL_CHISELED = reg("chiseled_steel", copy(Blocks.IRON_BLOCK).mapColor(MapColor.COLOR_BLACK)),
+		STEEL_CHISELLED = reg("chiseled_steel", copy(Blocks.IRON_BLOCK).mapColor(MapColor.COLOR_BLACK)),
 		STEEL_GRATE = reg("steel_grate", WaterloggedTransparentBlock::new, basicGlassProperties(copy(Blocks.COPPER_GRATE).sound(CygnusSoundTypes.METAL_GRATE).mapColor(MapColor.COLOR_BLACK))),
 		STEEL_CUT = reg("cut_steel", copy(Blocks.IRON_BLOCK).mapColor(MapColor.COLOR_BLACK)),
 		STEEL_CUT_STAIRS = reg("cut_steel_stairs", () -> new StairBlock(CygnusBlocks.STEEL_CUT.get().defaultBlockState(), copy(Blocks.IRON_BLOCK).mapColor(MapColor.COLOR_BLACK))),
@@ -157,7 +157,7 @@ public interface CygnusBlocks
 		// Aluminium
 		ALUMINIUM_SHEET_METAL = reg("aluminum_sheet_metal", copy(Blocks.IRON_BLOCK).mapColor(MapColor.QUARTZ)),
 		ALUMINIUM_BLOCK = reg("aluminum_block", copy(Blocks.IRON_BLOCK).mapColor(MapColor.QUARTZ)),
-		ALUMINIUM_CHISELED = reg("chiseled_aluminum", copy(Blocks.IRON_BLOCK).mapColor(MapColor.QUARTZ)),
+		ALUMINIUM_CHISELLED = reg("chiseled_aluminum", copy(Blocks.IRON_BLOCK).mapColor(MapColor.QUARTZ)),
 		ALUMINIUM_GRATE = reg("aluminum_grate", WaterloggedTransparentBlock::new, basicGlassProperties(copy(Blocks.COPPER_GRATE).sound(CygnusSoundTypes.METAL_GRATE).mapColor(MapColor.QUARTZ))),
 		ALUMINIUM_CUT = reg("cut_aluminum", copy(Blocks.IRON_BLOCK).mapColor(MapColor.QUARTZ)),
 		ALUMINIUM_CUT_STAIRS = reg("cut_aluminum_stairs", () -> new StairBlock(CygnusBlocks.ALUMINIUM_CUT.get().defaultBlockState(), copy(Blocks.IRON_BLOCK).mapColor(MapColor.QUARTZ))),
@@ -177,7 +177,7 @@ public interface CygnusBlocks
 		// Titanium
 		TITANIUM_SHEET_METAL = reg("titanium_sheet_metal", copy(Blocks.IRON_BLOCK).mapColor(MapColor.CLAY)),
 		TITANIUM_BLOCK = reg("titanium_block", copy(Blocks.IRON_BLOCK).mapColor(MapColor.CLAY)),
-		TITANIUM_CHISELED = reg("chiseled_titanium", copy(Blocks.IRON_BLOCK).mapColor(MapColor.CLAY)),
+		TITANIUM_CHISELLED = reg("chiseled_titanium", copy(Blocks.IRON_BLOCK).mapColor(MapColor.CLAY)),
 		TITANIUM_GRATE = reg("titanium_grate", WaterloggedTransparentBlock::new, basicGlassProperties(copy(Blocks.COPPER_GRATE).sound(CygnusSoundTypes.METAL_GRATE).mapColor(MapColor.CLAY))),
 		TITANIUM_CUT = reg("cut_titanium", copy(Blocks.IRON_BLOCK).mapColor(MapColor.CLAY)),
 		TITANIUM_CUT_STAIRS = reg("cut_titanium_stairs", () -> new StairBlock(CygnusBlocks.TITANIUM_CUT.get().defaultBlockState(), copy(Blocks.IRON_BLOCK).mapColor(MapColor.CLAY))),

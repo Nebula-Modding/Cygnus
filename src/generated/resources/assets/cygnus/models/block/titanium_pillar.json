@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "cygnus:block/titanium_pillar_end",
+    "side": "cygnus:block/titanium_pillar_side"
+  }
+}

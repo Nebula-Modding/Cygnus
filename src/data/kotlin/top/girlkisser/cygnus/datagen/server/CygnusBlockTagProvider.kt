@@ -50,7 +50,7 @@ class CygnusBlockTagProvider(event: GatherDataEvent) : DapperTagProvider.Compani
 		// Pickaxe mineable with at least a stone tool
 		addToMultipleTags(
 			setOf(pickaxeMineable, mcTag("needs_stone_tool")),
-			ALUMINIUM_RAW_BLOCK,
+			RAW_ALUMINIUM_BLOCK,
 
 			ALUMINIUM_SHEET_METAL,
 			ALUMINIUM_BLOCK,
@@ -102,7 +102,7 @@ class CygnusBlockTagProvider(event: GatherDataEvent) : DapperTagProvider.Compani
 		// Pickaxe mineable with at least an iron tool
         addToMultipleTags(
             setOf(pickaxeMineable, mcTag("needs_iron_tool")),
-			TITANIUM_RAW_BLOCK,
+			RAW_TITANIUM_BLOCK,
 
 			STEEL_SHEET_METAL,
 			STEEL_BLOCK,
@@ -178,9 +178,9 @@ class CygnusBlockTagProvider(event: GatherDataEvent) : DapperTagProvider.Compani
 		shovelMineable.add(LUNAR_REGOLITH)
 
 		STEEL_BLOCK addTo "c:storage_blocks/steel"
-		ALUMINIUM_RAW_BLOCK addTo "c:storage_blocks/raw_aluminum"
+		RAW_ALUMINIUM_BLOCK addTo "c:storage_blocks/raw_aluminum"
 		ALUMINIUM_BLOCK addTo "c:storage_blocks/aluminum"
-		TITANIUM_RAW_BLOCK addTo "c:storage_blocks/raw_titanium"
+		RAW_TITANIUM_BLOCK addTo "c:storage_blocks/raw_titanium"
 		TITANIUM_BLOCK addTo "c:storage_blocks/titanium"
     }
 }

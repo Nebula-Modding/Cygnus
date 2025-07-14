@@ -41,8 +41,8 @@ class CygnusBlockDropsProvider(event: GatherDataEvent) : DapperLootTableProvider
 		{
 			// Drops self
 			setOf(
-				ALUMINIUM_RAW_BLOCK,
-				TITANIUM_RAW_BLOCK,
+				RAW_ALUMINIUM_BLOCK,
+				RAW_TITANIUM_BLOCK,
 
 				IRON_SHEET_METAL,
 				IRON_GRATE,
