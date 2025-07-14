@@ -1,6 +1,6 @@
 package top.girlkisser.cygnus.datagen.server
 
-import martian.dapper.api.server.DapperTagProvider
+import martian.dapper.api.server.tag.DapperTagProvider
 import net.minecraft.world.item.Items
 import net.minecraft.world.level.ItemLike
 import net.neoforged.neoforge.data.event.GatherDataEvent

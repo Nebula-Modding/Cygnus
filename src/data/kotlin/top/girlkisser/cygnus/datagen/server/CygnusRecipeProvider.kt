@@ -5,20 +5,27 @@ import martian.dapper.api.server.recipe.DapperShapedRecipeUtil.shapedRecipeBuild
 import martian.dapper.api.server.recipe.DapperShapedRecipeUtil.unlockWith
 import martian.dapper.api.server.recipe.DapperShapelessRecipeUtil.shapelessRecipeBuilder
 import martian.dapper.api.server.recipe.DapperShapelessRecipeUtil.unlockWith
+import martian.dapper.api.server.recipe.DapperSmeltingRecipeUtil.blasting
 import martian.dapper.api.server.recipe.DapperSmeltingRecipeUtil.smeltsTo
+import martian.dapper.api.server.recipe.DapperSmeltingRecipeUtil.blastsTo
+import martian.dapper.api.server.recipe.DapperSmeltingRecipeUtil.smelting
 import martian.dapper.api.server.recipe.DapperSmeltingRecipeUtil.unlockWith
 import net.minecraft.core.registries.Registries
+import net.minecraft.data.recipes.RecipeCategory
 import net.minecraft.resources.ResourceLocation
 import net.minecraft.tags.TagKey
+import net.minecraft.world.item.ItemStack
 import net.minecraft.world.item.Items
 import net.minecraft.world.item.crafting.Ingredient
 import net.minecraft.world.level.ItemLike
+import net.minecraft.world.level.block.Blocks
 import net.neoforged.neoforge.data.event.GatherDataEvent
 import net.neoforged.neoforge.registries.DeferredBlock
 import top.girlkisser.cygnus.Cygnus.id
 import top.girlkisser.cygnus.content.CygnusTags
 import top.girlkisser.cygnus.content.registry.CygnusBlocks
 import top.girlkisser.cygnus.content.registry.CygnusItems
+import kotlin.math.exp
 
 class CygnusRecipeProvider(event: GatherDataEvent) : DapperRecipeProvider(event)
 {
@@ -52,6 +59,20 @@ class CygnusRecipeProvider(event: GatherDataEvent) : DapperRecipeProvider(event)
 
 		// region Items
         // region Items/Resources
+		oreSmelting(
+			"coal",
+			Items.COAL,
+			setOf(
+				CygnusBlocks.LUNAR_COAL_ORE,
+				CygnusBlocks.LUNAR_DEEPSLATE_COAL_ORE,
+//				CygnusBlocks.MARTIAN_COAL_ORE,
+//				CygnusBlocks.MARTIAN_DEEPSLATE_COAL_ORE,
+//				CygnusBlocks.MERCURIAL_COAL_ORE,
+//				CygnusBlocks.MERCURIAL_DEEPSLATE_COAL_ORE,
+//				CygnusBlocks.VENUSIAN_COAL_ORE,
+//				CygnusBlocks.VENUSIAN_DEEPSLATE_COAL_ORE,
+			),
+		)
 		basicResource(
 			"iron",
 			null,
@@ -61,7 +82,112 @@ class CygnusRecipeProvider(event: GatherDataEvent) : DapperRecipeProvider(event)
 			CygnusItems.IRON_ROD,
 			null,
 			null,
-			setOf(),
+			null,
+		)
+		oreSmelting(
+			"iron_ingot",
+			Items.IRON_INGOT,
+			setOf(
+				CygnusBlocks.LUNAR_IRON_ORE,
+				CygnusBlocks.LUNAR_DEEPSLATE_IRON_ORE,
+//				CygnusBlocks.MARTIAN_IRON_ORE,
+//				CygnusBlocks.MARTIAN_DEEPSLATE_IRON_ORE,
+//				CygnusBlocks.MERCURIAL_IRON_ORE,
+//				CygnusBlocks.MERCURIAL_DEEPSLATE_IRON_ORE,
+//				CygnusBlocks.VENUSIAN_IRON_ORE,
+//				CygnusBlocks.VENUSIAN_DEEPSLATE_IRON_ORE,
+			),
+			0.7f
+		)
+		oreSmelting(
+			"copper_ingot",
+			Items.COPPER_INGOT,
+			setOf(
+				CygnusBlocks.LUNAR_COPPER_ORE,
+				CygnusBlocks.LUNAR_DEEPSLATE_COPPER_ORE,
+//				CygnusBlocks.MARTIAN_COPPER_ORE,
+//				CygnusBlocks.MARTIAN_DEEPSLATE_COPPER_ORE,
+//				CygnusBlocks.MERCURIAL_COPPER_ORE,
+//				CygnusBlocks.MERCURIAL_DEEPSLATE_COPPER_ORE,
+//				CygnusBlocks.VENUSIAN_COPPER_ORE,
+//				CygnusBlocks.VENUSIAN_DEEPSLATE_COPPER_ORE,
+			),
+			0.7f
+		)
+		oreSmelting(
+			"gold_ingot",
+			Items.GOLD_INGOT,
+			setOf(
+				CygnusBlocks.LUNAR_GOLD_ORE,
+				CygnusBlocks.LUNAR_DEEPSLATE_GOLD_ORE,
+//				CygnusBlocks.MARTIAN_GOLD_ORE,
+//				CygnusBlocks.MARTIAN_DEEPSLATE_GOLD_ORE,
+//				CygnusBlocks.MERCURIAL_GOLD_ORE,
+//				CygnusBlocks.MERCURIAL_DEEPSLATE_GOLD_ORE,
+//				CygnusBlocks.VENUSIAN_GOLD_ORE,
+//				CygnusBlocks.VENUSIAN_DEEPSLATE_GOLD_ORE,
+			),
+			1.0f
+		)
+		oreSmelting(
+			"redstone",
+			Items.REDSTONE,
+			setOf(
+				CygnusBlocks.LUNAR_REDSTONE_ORE,
+				CygnusBlocks.LUNAR_DEEPSLATE_REDSTONE_ORE,
+//				CygnusBlocks.MARTIAN_REDSTONE_ORE,
+//				CygnusBlocks.MARTIAN_DEEPSLATE_REDSTONE_ORE,
+//				CygnusBlocks.MERCURIAL_REDSTONE_ORE,
+//				CygnusBlocks.MERCURIAL_DEEPSLATE_REDSTONE_ORE,
+//				CygnusBlocks.VENUSIAN_REDSTONE_ORE,
+//				CygnusBlocks.VENUSIAN_DEEPSLATE_REDSTONE_ORE,
+			),
+			0.7f
+		)
+		oreSmelting(
+			"emerald",
+			Items.EMERALD,
+			setOf(
+				CygnusBlocks.LUNAR_EMERALD_ORE,
+				CygnusBlocks.LUNAR_DEEPSLATE_EMERALD_ORE,
+//				CygnusBlocks.MARTIAN_EMERALD_ORE,
+//				CygnusBlocks.MARTIAN_DEEPSLATE_EMERALD_ORE,
+//				CygnusBlocks.MERCURIAL_EMERALD_ORE,
+//				CygnusBlocks.MERCURIAL_DEEPSLATE_EMERALD_ORE,
+//				CygnusBlocks.VENUSIAN_EMERALD_ORE,
+//				CygnusBlocks.VENUSIAN_DEEPSLATE_EMERALD_ORE,
+			),
+			1.0f
+		)
+		oreSmelting(
+			"lapis_lazuli",
+			Items.LAPIS_LAZULI,
+			setOf(
+				CygnusBlocks.LUNAR_LAPIS_ORE,
+				CygnusBlocks.LUNAR_DEEPSLATE_LAPIS_ORE,
+//				CygnusBlocks.MARTIAN_LAPIS_ORE,
+//				CygnusBlocks.MARTIAN_DEEPSLATE_LAPIS_ORE,
+//				CygnusBlocks.MERCURIAL_LAPIS_ORE,
+//				CygnusBlocks.MERCURIAL_DEEPSLATE_LAPIS_ORE,
+//				CygnusBlocks.VENUSIAN_LAPIS_ORE,
+//				CygnusBlocks.VENUSIAN_DEEPSLATE_LAPIS_ORE,
+			),
+			0.2f
+		)
+		oreSmelting(
+			"diamond",
+			Items.DIAMOND,
+			setOf(
+				CygnusBlocks.LUNAR_DIAMOND_ORE,
+				CygnusBlocks.LUNAR_DEEPSLATE_DIAMOND_ORE,
+//				CygnusBlocks.MARTIAN_DIAMOND_ORE,
+//				CygnusBlocks.MARTIAN_DEEPSLATE_DIAMOND_ORE,
+//				CygnusBlocks.MERCURIAL_DIAMOND_ORE,
+//				CygnusBlocks.MERCURIAL_DEEPSLATE_DIAMOND_ORE,
+//				CygnusBlocks.VENUSIAN_DIAMOND_ORE,
+//				CygnusBlocks.VENUSIAN_DEEPSLATE_DIAMOND_ORE,
+			),
+			1.0f,
 		)
 		basicResource(
 			"steel",
@@ -72,7 +198,7 @@ class CygnusRecipeProvider(event: GatherDataEvent) : DapperRecipeProvider(event)
 			CygnusItems.STEEL_ROD,
 			CygnusBlocks.STEEL_BLOCK,
 			null,
-			setOf(),
+			null,
 		)
 		basicResource(
 			"aluminum",
@@ -95,6 +221,7 @@ class CygnusRecipeProvider(event: GatherDataEvent) : DapperRecipeProvider(event)
 //				CygnusBlocks.VENUSIAN_ALUMINIUM_ORE,
 //				CygnusBlocks.VENUSIAN_DEEPSLATE_ALUMINIUM_ORE,
 			),
+			0.7f
 		)
 		basicResource(
 			"titanium",
@@ -117,6 +244,7 @@ class CygnusRecipeProvider(event: GatherDataEvent) : DapperRecipeProvider(event)
 //				CygnusBlocks.VENUSIAN_TITANIUM_ORE,
 //				CygnusBlocks.VENUSIAN_DEEPSLATE_TITANIUM_ORE,
 			),
+			0.7f
 		)
         // endregion Items/Resources
 
@@ -199,6 +327,18 @@ class CygnusRecipeProvider(event: GatherDataEvent) : DapperRecipeProvider(event)
 			null,
 			CygnusBlocks.IRON_BULB,
 		)
+		CygnusBlocks.IRON_AIRTIGHT_DOOR.shapelessRecipeBuilder().apply {
+			requires(Blocks.IRON_DOOR)
+			requires(cTag("glass_panes/colorless"))
+			unlockWith(Blocks.IRON_DOOR)
+			save(id("shapeless/airtight_iron_door"))
+		}
+		CygnusBlocks.IRON_AIRTIGHT_TRAPDOOR.shapelessRecipeBuilder().apply {
+			requires(Blocks.IRON_TRAPDOOR)
+			requires(cTag("glass_panes/colorless"))
+			unlockWith(Blocks.IRON_TRAPDOOR)
+			save(id("shapeless/airtight_iron_trapdoor"))
+		}
 		metalDecorationSet(
 			"steel",
 			CygnusItems.STEEL_INGOT,
@@ -309,7 +449,8 @@ class CygnusRecipeProvider(event: GatherDataEvent) : DapperRecipeProvider(event)
 		rod: ItemLike?,
 		block: ItemLike?,
 		rawBlock: ItemLike?,
-		ores: Set<DeferredBlock<*>>,
+		ores: Set<DeferredBlock<*>>?,
+		experience: Float = 0.1f,
 	)
 	{
 		val rawTag = CygnusTags.Items.c("raw_materials/${id}")
@@ -396,12 +537,36 @@ class CygnusRecipeProvider(event: GatherDataEvent) : DapperRecipeProvider(event)
 			save(id("shaped/${id}_block"))
 		}
 
-		ores.forEach {
+		ores?.forEach {
 			if (ingot == null)
-				throw IllegalStateException("${id}_ingot_from_${it.id.path} needs ingots to be generated using CygnusRecipeProvider#basicResource")
-			(it smeltsTo ingot).apply {
+				throw IllegalStateException("${id}_ingot_from_${it.id.path} recipes need ingots to be generated using CygnusRecipeProvider#basicResource")
+			if (experience == null)
+				throw IllegalStateException("${id}_ingot_from_${it.id.path} recipes need experience to be generated using CygnusRecipeProvider#basicResource")
+			(smelting(ingot, Ingredient.of(it), RecipeCategory.MISC, experience)).apply {
 				unlockWith(it)
-				save(id("smelting/${id}_ingot_from_${it.id.path}"))
+				save(id("smelting/${id}_ingot_from_smelting_${it.id.path}"))
+			}
+			(blasting(ingot, Ingredient.of(it), RecipeCategory.MISC, experience)).apply {
+				unlockWith(it)
+				save(id("blasting/${id}_ingot_from_blasting_${it.id.path}"))
+			}
+		}
+	}
+
+	fun oreSmelting(
+		id: String,
+		product: ItemLike,
+		ores: Set<DeferredBlock<*>>?,
+		experience: Float = 0.1f,
+	) {
+		ores?.forEach {
+			(smelting(product, Ingredient.of(it), RecipeCategory.MISC, experience)).apply {
+				unlockWith(it)
+				save(id("smelting/${id}_ingot_from_smelting_${it.id.path}"))
+			}
+			(blasting(product, Ingredient.of(it), RecipeCategory.MISC, experience)).apply {
+				unlockWith(it)
+				save(id("blasting/${id}_ingot_from_blasting_${it.id.path}"))
 			}
 		}
 	}

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:iron_door"
+    },
+    {
+      "tag": "c:glass_panes/colorless"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "cygnus:airtight_iron_door"
+  }
+}

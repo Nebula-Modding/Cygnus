@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_cygnus_lunar_deepslate_emerald_ore": {
+      "conditions": {
+        "items": [
+          {
+            "items": "cygnus:lunar_deepslate_emerald_ore"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "cygnus:blasting/emerald_ingot_from_blasting_lunar_deepslate_emerald_ore"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_cygnus_lunar_deepslate_emerald_ore"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "cygnus:blasting/emerald_ingot_from_blasting_lunar_deepslate_emerald_ore"
+    ]
+  }
+}

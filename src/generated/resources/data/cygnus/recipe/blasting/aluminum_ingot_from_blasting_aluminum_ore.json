@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.7,
+  "ingredient": {
+    "item": "cygnus:aluminum_ore"
+  },
+  "result": {
+    "count": 1,
+    "id": "cygnus:aluminum_ingot"
+  }
+}
