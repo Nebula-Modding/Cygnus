@@ -5,8 +5,8 @@ plugins {
     id("maven-publish")
 	id("idea")
 	id("org.jetbrains.kotlin.jvm") version "2.0.0"
-	id("dev.architectury.loom") version "1.7-SNAPSHOT"
-	id("me.fallenbreath.yamlang") version "1.4.0"
+	id("dev.architectury.loom") version "1.10-SNAPSHOT"
+	id("me.fallenbreath.yamlang") version "1.4.1"
 }
 
 fun prop(key: String) = property(key) as String
@@ -20,14 +20,38 @@ repositories {
 	maven("https://maven.neoforged.net")
 	maven("https://maven.parchmentmc.org")
 
+	maven("https://raw.githubusercontent.com/EmmaTheMartian/Fractal-NeoForge/refs/heads/1.21.1/repo/")
+
 	// KFF+Dapper
 	maven("https://thedarkcolour.github.io/KotlinForForge/")
 	maven("https://codeberg.org/EmmaTheMartian/dapper/raw/branch/main/repo/")
 
 	// EMI
-	maven("https://maven.terraformersmc.com/")
+	maven("https://maven.terraformersmc.com/releases/") {
+		content {
+			includeGroup("dev.emi")
+			includeGroup("com.terraformersmc")
+		}
+	}
 
-	// Mekanism, Lazuli
+	// REI
+	maven("https://maven.shedaniel.me/") {
+		content {
+			includeGroup("me.shedaniel")
+			includeGroup("me.shedaniel.cloth")
+			includeGroup("me.shedaniel.cloth.api")
+			includeGroup("dev.architectury")
+		}
+	}
+
+	// JEI
+	maven("https://maven.blamejared.com/") {
+		content {
+			includeGroup("mezz.jei")
+		}
+	}
+
+	// Lazuli
 	exclusiveContent {
 		forRepository {
 			maven("https://api.modrinth.com/maven")
@@ -109,21 +133,31 @@ dependencies {
 
 	neoForge("net.neoforged:neoforge:${prop("neo_version")}")
 
+	// Lazuli
 	modImplementation(modrinth("lazuli"))
 
-	// KotlinForForge (for datagen)
+	// Fractal
+	include(modImplementation("top.girlkisser:fractal:${prop("fractal_version")}")!!)
+
+	// Datagen
+	implementation("martian:dapper:${prop("dapper_version")}")
 	implementation("thedarkcolour:kotlinforforge-neoforge:${prop("kff_version")}") {
 		// https://github.com/thedarkcolour/KotlinForForge/issues/103
 		exclude(group = "net.neoforged.fancymodloader", module = "loader")
 	}
 
-	implementation("martian:dapper:${prop("dapper_version")}")
-
+	compileOnly("mezz.jei:jei-${prop("minecraft_version")}-neoforge-api:${prop("jei_version")}")
+	modCompileOnly("me.shedaniel:RoughlyEnoughItems-api-neoforge:${prop("rei_version")}")
+	modCompileOnly("me.shedaniel:RoughlyEnoughItems-default-plugin-neoforge:${prop("rei_version")}")
 	compileOnly("dev.emi:emi-neoforge:${prop("emi_version")}:api")
-	runtimeOnly("dev.emi:emi-neoforge:${prop("emi_version")}")
 
-	if (enabled("mekanism"))
-		modLocalRuntime(modrinth("mekanism"))
+	when (prop("recipe_viewer").lowercase()) {
+		"jei" -> runtimeOnly("mezz.jei:jei-${prop("minecraft_version")}-neoforge:${prop("jei_version")}")
+		"rei" -> modLocalRuntime("me.shedaniel:RoughlyEnoughItems-neoforge:${prop("rei_version")}")
+		"emi" -> modLocalRuntime("dev.emi:emi-neoforge:${prop("emi_version")}")
+		"disabled" -> {}
+		else -> println("Unknown recipe viewer specified: ${prop("recipe_viewer")}. Must be jei, rei, emi, or disabled.")
+	}
 }
 
 // This block of code expands all declared replace properties in the specified resource targets.

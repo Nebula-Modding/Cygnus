@@ -6,15 +6,13 @@ import martian.dapper.api.server.recipe.DapperShapedRecipeUtil.unlockWith
 import martian.dapper.api.server.recipe.DapperShapelessRecipeUtil.shapelessRecipeBuilder
 import martian.dapper.api.server.recipe.DapperShapelessRecipeUtil.unlockWith
 import martian.dapper.api.server.recipe.DapperSmeltingRecipeUtil.blasting
-import martian.dapper.api.server.recipe.DapperSmeltingRecipeUtil.smeltsTo
-import martian.dapper.api.server.recipe.DapperSmeltingRecipeUtil.blastsTo
 import martian.dapper.api.server.recipe.DapperSmeltingRecipeUtil.smelting
+import martian.dapper.api.server.recipe.DapperSmeltingRecipeUtil.smeltsTo
 import martian.dapper.api.server.recipe.DapperSmeltingRecipeUtil.unlockWith
 import net.minecraft.core.registries.Registries
 import net.minecraft.data.recipes.RecipeCategory
 import net.minecraft.resources.ResourceLocation
 import net.minecraft.tags.TagKey
-import net.minecraft.world.item.ItemStack
 import net.minecraft.world.item.Items
 import net.minecraft.world.item.crafting.Ingredient
 import net.minecraft.world.level.ItemLike
@@ -25,12 +23,9 @@ import top.girlkisser.cygnus.Cygnus.id
 import top.girlkisser.cygnus.content.CygnusTags
 import top.girlkisser.cygnus.content.registry.CygnusBlocks
 import top.girlkisser.cygnus.content.registry.CygnusItems
-import kotlin.math.exp
 
-class CygnusRecipeProvider(event: GatherDataEvent) : DapperRecipeProvider(event)
-{
-	override fun buildRecipes()
-	{
+class CygnusRecipeProvider(event: GatherDataEvent) : DapperRecipeProvider(event) {
+	override fun buildRecipes() {
 		/**
 		 * Hey, you! Yes, you! If you are editing this file:
 		 * USE REGIONS!!! Please help me keep this code clean!
@@ -58,7 +53,7 @@ class CygnusRecipeProvider(event: GatherDataEvent) : DapperRecipeProvider(event)
 		 */
 
 		// region Items
-        // region Items/Resources
+		// region Items/Resources
 		oreSmelting(
 			"coal",
 			Items.COAL,
@@ -246,31 +241,31 @@ class CygnusRecipeProvider(event: GatherDataEvent) : DapperRecipeProvider(event)
 			),
 			0.7f
 		)
-        // endregion Items/Resources
+		// endregion Items/Resources
 
-        // region Items/Ingredients
-        CygnusItems.ELECTRONIC_CIRCUIT.shapedRecipeBuilder().apply {
-            pattern(" Q ")
-            pattern("CCC")
-            pattern(" S ")
-            define('Q', cTag("gems/quartz"))
-            define('C', cTag("ingots/copper"))
-            define('S', CygnusTags.Items.PLATES_STEEL)
-            unlockWith(Items.QUARTZ)
-            save(id("shaped/electronic_circuit"))
-        }
+		// region Items/Ingredients
+		CygnusItems.ELECTRONIC_CIRCUIT.shapedRecipeBuilder().apply {
+			pattern(" Q ")
+			pattern("CCC")
+			pattern(" S ")
+			define('Q', cTag("gems/quartz"))
+			define('C', cTag("ingots/copper"))
+			define('S', CygnusTags.Items.PLATES_STEEL)
+			unlockWith(Items.QUARTZ)
+			save(id("shaped/electronic_circuit"))
+		}
 
-        CygnusItems.CHRONITE_CIRCUIT.shapedRecipeBuilder().apply {
-            pattern(" C ")
-            pattern("TTT")
-            pattern(" E ")
-            define('T', CygnusTags.Items.PLATES_TITANIUM)
-            define('C', CygnusItems.CHRONITE_SHARD)
-            define('E', CygnusItems.ELECTRONIC_CIRCUIT)
-            unlockWith(Items.QUARTZ)
-            save(id("shaped/chronite_circuit"))
-        }
-        // endregion Items/Ingredients
+		CygnusItems.CHRONITE_CIRCUIT.shapedRecipeBuilder().apply {
+			pattern(" C ")
+			pattern("TTT")
+			pattern(" E ")
+			define('T', CygnusTags.Items.PLATES_TITANIUM)
+			define('C', CygnusItems.CHRONITE_SHARD)
+			define('E', CygnusItems.ELECTRONIC_CIRCUIT)
+			unlockWith(Items.QUARTZ)
+			save(id("shaped/chronite_circuit"))
+		}
+		// endregion Items/Ingredients
 
 		// region Items/Tools
 		CygnusItems.HAMMER.shapedRecipeBuilder().apply {
@@ -306,8 +301,8 @@ class CygnusRecipeProvider(event: GatherDataEvent) : DapperRecipeProvider(event)
 		// endregion Items/Tools
 		// endregion Items
 
-        // region Blocks
-        // region Blocks/Decorational
+		// region Blocks
+		// region Blocks/Decorational
 		metalDecorationSet(
 			"iron",
 			null,
@@ -396,12 +391,12 @@ class CygnusRecipeProvider(event: GatherDataEvent) : DapperRecipeProvider(event)
 			CygnusBlocks.TITANIUM_TRAPDOOR,
 			CygnusBlocks.TITANIUM_BULB,
 		)
-        // endregion Blocks/Decorational
+		// endregion Blocks/Decorational
 
 		// region Blocks/Environmental
 		// endregion Blocks/Environmental
 
-        // region Blocks/Functional
+		// region Blocks/Functional
 		CygnusBlocks.COMMAND_CENTRE.shapedRecipeBuilder().apply {
 			pattern(" S ")
 			pattern("SCS")
@@ -413,31 +408,31 @@ class CygnusRecipeProvider(event: GatherDataEvent) : DapperRecipeProvider(event)
 			save(id("shaped/command_center"))
 		}
 
-        CygnusBlocks.TELEPAD.shapedRecipeBuilder().apply {
-            pattern(" G ")
-            pattern("SCS")
-            pattern("STS")
+		CygnusBlocks.TELEPAD.shapedRecipeBuilder().apply {
+			pattern(" G ")
+			pattern("SCS")
+			pattern("STS")
 			define('G', cTag("glass_panes/colorless"))
-            define('S', CygnusTags.Items.PLATES_STEEL)
-            define('C', CygnusItems.CHRONITE_CIRCUIT)
-            define('T', CygnusBlocks.STEEL_CUT_SLAB)
-            unlockWith(CygnusItems.CHRONITE_CIRCUIT)
-            save(id("shaped/telepad"))
-        }
+			define('S', CygnusTags.Items.PLATES_STEEL)
+			define('C', CygnusItems.CHRONITE_CIRCUIT)
+			define('T', CygnusBlocks.STEEL_CUT_SLAB)
+			unlockWith(CygnusItems.CHRONITE_CIRCUIT)
+			save(id("shaped/telepad"))
+		}
 
-        CygnusBlocks.CHRONITE_BLAST_FURNACE.shapedRecipeBuilder().apply {
-            pattern("TTT")
-            pattern("TBT")
-            pattern("DCD")
+		CygnusBlocks.CHRONITE_BLAST_FURNACE.shapedRecipeBuilder().apply {
+			pattern("TTT")
+			pattern("TBT")
+			pattern("DCD")
 			define('T', CygnusTags.Items.INGOTS_TITANIUM)
 			define('B', Items.BLAST_FURNACE)
-            define('D', Items.POLISHED_DEEPSLATE)
-            define('C', CygnusItems.CHRONITE_SHARD)
-            unlockWith(CygnusItems.CHRONITE_SHARD)
-            save(id("shaped/chronite_blast_furnace"))
-        }
-        // endregion Blocks/Functional
-        // endregion Blocks
+			define('D', Items.POLISHED_DEEPSLATE)
+			define('C', CygnusItems.CHRONITE_SHARD)
+			unlockWith(CygnusItems.CHRONITE_SHARD)
+			save(id("shaped/chronite_blast_furnace"))
+		}
+		// endregion Blocks/Functional
+		// endregion Blocks
 	}
 
 	fun basicResource(
@@ -451,8 +446,7 @@ class CygnusRecipeProvider(event: GatherDataEvent) : DapperRecipeProvider(event)
 		rawBlock: ItemLike?,
 		ores: Set<DeferredBlock<*>>?,
 		experience: Float = 0.1f,
-	)
-	{
+	) {
 		val rawTag = CygnusTags.Items.c("raw_materials/${id}")
 		val nuggetTag = CygnusTags.Items.c("nuggets/${id}")
 		val ingotTag = CygnusTags.Items.c("ingots/${id}")
@@ -540,13 +534,11 @@ class CygnusRecipeProvider(event: GatherDataEvent) : DapperRecipeProvider(event)
 		ores?.forEach {
 			if (ingot == null)
 				throw IllegalStateException("${id}_ingot_from_${it.id.path} recipes need ingots to be generated using CygnusRecipeProvider#basicResource")
-			if (experience == null)
-				throw IllegalStateException("${id}_ingot_from_${it.id.path} recipes need experience to be generated using CygnusRecipeProvider#basicResource")
-			(smelting(ingot, Ingredient.of(it), RecipeCategory.MISC, experience)).apply {
+			smelting(ingot, Ingredient.of(it), RecipeCategory.MISC, experience).apply {
 				unlockWith(it)
 				save(id("smelting/${id}_ingot_from_smelting_${it.id.path}"))
 			}
-			(blasting(ingot, Ingredient.of(it), RecipeCategory.MISC, experience)).apply {
+			blasting(ingot, Ingredient.of(it), RecipeCategory.MISC, experience).apply {
 				unlockWith(it)
 				save(id("blasting/${id}_ingot_from_blasting_${it.id.path}"))
 			}
@@ -589,8 +581,7 @@ class CygnusRecipeProvider(event: GatherDataEvent) : DapperRecipeProvider(event)
 		door: ItemLike?,
 		trapDoor: ItemLike?,
 		bulb: ItemLike?,
-	)
-	{
+	) {
 		val ingotTag = CygnusTags.Items.c("ingots/${id}")
 		val sheetTag = CygnusTags.Items.c("plates/${id}")
 
@@ -631,7 +622,7 @@ class CygnusRecipeProvider(event: GatherDataEvent) : DapperRecipeProvider(event)
 			save(id("shaped/${id}_grate"))
 		}
 
-		if(cut != null) {
+		if (cut != null) {
 			cut.shapedRecipeBuilder(2).apply {
 				pattern("SS")
 				pattern("SS")
@@ -735,5 +726,5 @@ class CygnusRecipeProvider(event: GatherDataEvent) : DapperRecipeProvider(event)
 		}
 	}
 
-    private fun cTag(path: String) = TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", path))
+	private fun cTag(path: String) = TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", path))
 }

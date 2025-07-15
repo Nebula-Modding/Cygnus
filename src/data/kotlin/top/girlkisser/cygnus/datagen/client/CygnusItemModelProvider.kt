@@ -6,10 +6,8 @@ import top.girlkisser.cygnus.Cygnus
 import top.girlkisser.cygnus.content.registry.CygnusBlocks
 import top.girlkisser.cygnus.content.registry.CygnusItems
 
-class CygnusItemModelProvider(event: GatherDataEvent) : DapperItemModelProvider(event, Cygnus.MODID)
-{
-	override fun registerModels()
-	{
+class CygnusItemModelProvider(event: GatherDataEvent) : DapperItemModelProvider(event, Cygnus.MODID) {
+	override fun registerModels() {
 		CygnusItems.IRON_SHEET.basicModel()
 		CygnusItems.IRON_ROD.basicHandheldModel()
 
@@ -37,7 +35,7 @@ class CygnusItemModelProvider(event: GatherDataEvent) : DapperItemModelProvider(
 
 		CygnusItems.KEY.basicModel()
 		CygnusItems.HAMMER.basicHandheldModel()
-        CygnusItems.OXYGEN_DRILL.basicHandheldModel()
+		CygnusItems.OXYGEN_DRILL.basicHandheldModel()
 
 		setOf(
 			CygnusBlocks.STEEL_BARS,

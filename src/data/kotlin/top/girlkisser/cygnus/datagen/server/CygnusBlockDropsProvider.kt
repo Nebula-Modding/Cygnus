@@ -33,12 +33,9 @@ class CygnusBlockDropsProvider(event: GatherDataEvent) : DapperLootTableProvider
 	listOf(
 		SubProviderEntry({ BlockLoot(it) }, LootContextParamSets.BLOCK)
 	)
-)
-{
-	private class BlockLoot(registries: HolderLookup.Provider) : Companion.BlockProvider(registries)
-	{
-		override fun generate()
-		{
+) {
+	private class BlockLoot(registries: HolderLookup.Provider) : Companion.BlockProvider(registries) {
+		override fun generate() {
 			// Drops self
 			setOf(
 				RAW_ALUMINIUM_BLOCK,
@@ -257,9 +254,17 @@ class CygnusBlockDropsProvider(event: GatherDataEvent) : DapperLootTableProvider
 						}
 						alternatives {
 							item(CygnusItems.CHRONITE_SHARD) {
-								condition(MatchTool.toolMatches(ItemPredicate.Builder.item().of(ItemTags.CLUSTER_MAX_HARVESTABLES)))
+								condition(
+									MatchTool.toolMatches(
+										ItemPredicate.Builder.item().of(ItemTags.CLUSTER_MAX_HARVESTABLES)
+									)
+								)
 								applyFunction(SetItemCountFunction.setCount(ConstantValue.exactly(1f), false))
-								applyFunction(ApplyBonusCount.addOreBonusCount(registries.lookupOrThrow(Registries.ENCHANTMENT).get(Enchantments.FORTUNE).get()))
+								applyFunction(
+									ApplyBonusCount.addOreBonusCount(
+										registries.lookupOrThrow(Registries.ENCHANTMENT).get(Enchantments.FORTUNE).get()
+									)
+								)
 							}
 							item(CygnusItems.CHRONITE_SHARD) {
 								applyFunction(SetItemCountFunction.setCount(ConstantValue.exactly(1f), false))
@@ -271,8 +276,7 @@ class CygnusBlockDropsProvider(event: GatherDataEvent) : DapperLootTableProvider
 			}.builder)
 		}
 
-		fun createStoneDrops(stoneBlock: Block, cobblestoneBlock: Block)
-		{
+		fun createStoneDrops(stoneBlock: Block, cobblestoneBlock: Block) {
 			add(stoneBlock, DapperLootTableBuilder().apply {
 				addPool {
 					setRolls(1)
@@ -289,74 +293,82 @@ class CygnusBlockDropsProvider(event: GatherDataEvent) : DapperLootTableProvider
 
 	//TODO: Move this to Dapper
 	@Suppress("Unused")
-	companion object
-	{
-		class DapperLootTableBuilder
-		{
+	companion object {
+		class DapperLootTableBuilder {
 			var builder: LootTable.Builder = LootTable.lootTable()
 
-			fun addPool(func: DapperLootPoolBuilder.() -> Unit)
-			{
+			fun addPool(func: DapperLootPoolBuilder.() -> Unit) {
 				val b = DapperLootPoolBuilder()
 				func.invoke(b)
 				builder.withPool(b.builder)
 			}
 		}
 
-		interface IDapperLootEntriesExtension
-		{
+		interface IDapperLootEntriesExtension {
 			fun entry(b: DapperLootPoolEntryBuilder)
 
-			fun alternatives(func: DapperLootPoolEntryBuilder.Companion.Alternatives.() -> Unit)
-			{
+			fun alternatives(func: DapperLootPoolEntryBuilder.Companion.Alternatives.() -> Unit) {
 				val b = DapperLootPoolEntryBuilder.Companion.Alternatives()
 				func.invoke(b)
 				entry(b)
 			}
 
-			fun item(item: ItemLike, func: DapperLootPoolEntryBuilder.Companion.Item.() -> Unit)
-			{
+			fun item(item: ItemLike, func: DapperLootPoolEntryBuilder.Companion.Item.() -> Unit) {
 				val b = DapperLootPoolEntryBuilder.Companion.Item(item)
 				func.invoke(b)
 				entry(b)
 			}
 		}
 
-		class DapperLootPoolBuilder : IDapperLootEntriesExtension
-		{
+		class DapperLootPoolBuilder : IDapperLootEntriesExtension {
 			var builder: LootPool.Builder = LootPool.lootPool()
 
-			fun setRolls(rolls: NumberProvider) { builder.setRolls(rolls) }
-			fun setBonusRolls(rolls: NumberProvider) { builder.setBonusRolls(rolls) }
+			fun setRolls(rolls: NumberProvider) {
+				builder.setRolls(rolls)
+			}
 
-			fun setRolls(rolls: Int) { builder.setRolls(ConstantValue.exactly(rolls.toFloat())) }
-			fun setBonusRolls(rolls: Int) { builder.setBonusRolls(ConstantValue.exactly(rolls.toFloat())) }
+			fun setBonusRolls(rolls: NumberProvider) {
+				builder.setBonusRolls(rolls)
+			}
 
-			override fun entry(b: DapperLootPoolEntryBuilder) { builder.add(b.build()) }
+			fun setRolls(rolls: Int) {
+				builder.setRolls(ConstantValue.exactly(rolls.toFloat()))
+			}
+
+			fun setBonusRolls(rolls: Int) {
+				builder.setBonusRolls(ConstantValue.exactly(rolls.toFloat()))
+			}
+
+			override fun entry(b: DapperLootPoolEntryBuilder) {
+				builder.add(b.build())
+			}
 		}
 
-		interface DapperLootPoolEntryBuilder
-		{
+		interface DapperLootPoolEntryBuilder {
 			fun build(): LootPoolEntryContainer.Builder<*>
 
-			companion object
-			{
-				class Alternatives : DapperLootPoolEntryBuilder, IDapperLootEntriesExtension
-				{
+			companion object {
+				class Alternatives : DapperLootPoolEntryBuilder, IDapperLootEntriesExtension {
 					var alternatives = mutableListOf<DapperLootPoolEntryBuilder>()
 
-					override fun entry(b: DapperLootPoolEntryBuilder) { alternatives.add(b) }
+					override fun entry(b: DapperLootPoolEntryBuilder) {
+						alternatives.add(b)
+					}
 
-					override fun build(): AlternativesEntry.Builder = AlternativesEntry.alternatives(alternatives, { it.build() })
+					override fun build(): AlternativesEntry.Builder =
+						AlternativesEntry.alternatives(alternatives, { it.build() })
 				}
 
-				class Item(item: ItemLike) : DapperLootPoolEntryBuilder
-				{
+				class Item(item: ItemLike) : DapperLootPoolEntryBuilder {
 					var builder: LootPoolSingletonContainer.Builder<*> = LootItem.lootTableItem(item)
 
-					fun condition(condition: LootItemCondition.Builder) { builder.`when`(condition) }
+					fun condition(condition: LootItemCondition.Builder) {
+						builder.`when`(condition)
+					}
 
-					fun applyFunction(function: LootItemFunction.Builder) { builder.apply(function) }
+					fun applyFunction(function: LootItemFunction.Builder) {
+						builder.apply(function)
+					}
 
 					override fun build() = builder
 				}

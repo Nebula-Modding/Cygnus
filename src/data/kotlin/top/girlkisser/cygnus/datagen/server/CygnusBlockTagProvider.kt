@@ -6,10 +6,8 @@ import net.neoforged.neoforge.data.event.GatherDataEvent
 import top.girlkisser.cygnus.Cygnus
 import top.girlkisser.cygnus.content.registry.CygnusBlocks.*
 
-class CygnusBlockTagProvider(event: GatherDataEvent) : DapperTagProvider.Companion.Blocks(event, Cygnus.MODID)
-{
-    override fun addTags()
-    {
+class CygnusBlockTagProvider(event: GatherDataEvent) : DapperTagProvider.Companion.Blocks(event, Cygnus.MODID) {
+	override fun addTags() {
 		val pickaxeMineable = mcTag("mineable/pickaxe")
 		val shovelMineable = mcTag("mineable/shovel")
 
@@ -100,8 +98,8 @@ class CygnusBlockTagProvider(event: GatherDataEvent) : DapperTagProvider.Compani
 		)
 
 		// Pickaxe mineable with at least an iron tool
-        addToMultipleTags(
-            setOf(pickaxeMineable, mcTag("needs_iron_tool")),
+		addToMultipleTags(
+			setOf(pickaxeMineable, mcTag("needs_iron_tool")),
 			RAW_TITANIUM_BLOCK,
 
 			STEEL_SHEET_METAL,
@@ -169,10 +167,10 @@ class CygnusBlockTagProvider(event: GatherDataEvent) : DapperTagProvider.Compani
 //			VENUSIAN_TITANIUM_ORE,
 //			VENUSIAN_DEEPSLATE_TITANIUM_ORE,
 
-            COMMAND_CENTRE,
-            TELEPAD,
-            CHRONITE_BLAST_FURNACE
-        )
+			COMMAND_CENTRE,
+			TELEPAD,
+			CHRONITE_BLAST_FURNACE
+		)
 
 		// Shovel mineable with any tier
 		shovelMineable.add(LUNAR_REGOLITH)
@@ -182,5 +180,5 @@ class CygnusBlockTagProvider(event: GatherDataEvent) : DapperTagProvider.Compani
 		ALUMINIUM_BLOCK addTo "c:storage_blocks/aluminum"
 		RAW_TITANIUM_BLOCK addTo "c:storage_blocks/raw_titanium"
 		TITANIUM_BLOCK addTo "c:storage_blocks/titanium"
-    }
+	}
 }

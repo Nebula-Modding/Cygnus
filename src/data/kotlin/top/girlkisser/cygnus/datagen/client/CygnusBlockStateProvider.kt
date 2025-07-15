@@ -19,10 +19,8 @@ import top.girlkisser.cygnus.content.block.BlockTerminal
 import top.girlkisser.cygnus.content.registry.CygnusBlocks.*
 import top.girlkisser.cygnus.content.registry.CygnusFluids
 
-class CygnusBlockStateProvider(event: GatherDataEvent) : DapperBlockStateProvider(event, Cygnus.MODID)
-{
-	override fun registerStatesAndModels()
-	{
+class CygnusBlockStateProvider(event: GatherDataEvent) : DapperBlockStateProvider(event, Cygnus.MODID) {
+	override fun registerStatesAndModels() {
 		setOf(
 			IRON_SHEET_METAL,
 //			IRON_CHISELLED,
@@ -137,7 +135,7 @@ class CygnusBlockStateProvider(event: GatherDataEvent) : DapperBlockStateProvide
 //			MERCURIAL_DEEPSLATE_TITANIUM_ORE,
 //			VENUSIAN_TITANIUM_ORE,
 //			VENUSIAN_DEEPSLATE_TITANIUM_ORE,
-			
+
 			CHRONITE_BLOCK,
 			BUDDING_CHRONITE,
 		).forEach { it.addModel(CubeModel() all it.id.withPrefix("block/")) }
@@ -169,7 +167,10 @@ class CygnusBlockStateProvider(event: GatherDataEvent) : DapperBlockStateProvide
 			ALUMINIUM_CUT_PRESSURE_PLATE,
 			TITANIUM_CUT_PRESSURE_PLATE,
 		).forEach {
-			pressurePlateBlock(it.get() as PressurePlateBlock, it.id.withPath(it.id.withPrefix("block/").path.replace("_pressure_plate", "")))
+			pressurePlateBlock(
+				it.get() as PressurePlateBlock,
+				it.id.withPath(it.id.withPrefix("block/").path.replace("_pressure_plate", ""))
+			)
 			simpleBlockItem(it.get(), ModelFile.UncheckedModelFile(it.id.withPrefix("block/")))
 		}
 
@@ -217,7 +218,12 @@ class CygnusBlockStateProvider(event: GatherDataEvent) : DapperBlockStateProvide
 			ALUMINIUM_BARS,
 			TITANIUM_BARS,
 		).forEach {
-			paneBlockWithRenderType(it.get() as IronBarsBlock, it.id.withPrefix("block/"), it.id.withPrefix("block/"), "translucent")
+			paneBlockWithRenderType(
+				it.get() as IronBarsBlock,
+				it.id.withPrefix("block/"),
+				it.id.withPrefix("block/"),
+				"translucent"
+			)
 		}
 
 		setOf(
@@ -235,7 +241,12 @@ class CygnusBlockStateProvider(event: GatherDataEvent) : DapperBlockStateProvide
 			ALUMINIUM_DOOR,
 			TITANIUM_DOOR,
 		).forEach {
-			doorBlockWithRenderType(it.get() as DoorBlock, it.id.withPrefix("block/").withSuffix("_bottom"), it.id.withPrefix("block/").withSuffix("_top"), "translucent")
+			doorBlockWithRenderType(
+				it.get() as DoorBlock,
+				it.id.withPrefix("block/").withSuffix("_bottom"),
+				it.id.withPrefix("block/").withSuffix("_top"),
+				"translucent"
+			)
 		}
 
 		setOf(
@@ -268,26 +279,31 @@ class CygnusBlockStateProvider(event: GatherDataEvent) : DapperBlockStateProvide
 				val powered = state.getValue(CopperBulbBlock.POWERED)
 				val lit = state.getValue(CopperBulbBlock.LIT)
 				ConfiguredModel.builder()
-					.modelFile(when (lit) {
-						true -> when (powered) {
-							true -> ModelFile.UncheckedModelFile(idLitPowered)
-							false -> ModelFile.UncheckedModelFile(idLit)
+					.modelFile(
+						when (lit) {
+							true -> when (powered) {
+								true -> ModelFile.UncheckedModelFile(idLitPowered)
+								false -> ModelFile.UncheckedModelFile(idLit)
+							}
+
+							false -> when (powered) {
+								true -> ModelFile.UncheckedModelFile(idPowered)
+								false -> ModelFile.UncheckedModelFile(idNormal)
+							}
 						}
-						false -> when (powered) {
-							true -> ModelFile.UncheckedModelFile(idPowered)
-							false -> ModelFile.UncheckedModelFile(idNormal)
-						}
-					})
+					)
 					.build()
 			}
 
 			simpleBlockItem(it.get(), ModelFile.UncheckedModelFile(it.id.withPrefix("block/")))
 		}
 
-		COMMAND_CENTRE.addModel(CubeModel()
-			all id("block/command_center_side")
-			up id("block/command_center_top")
-			down id("block/steel_block"))
+		COMMAND_CENTRE.addModel(
+			CubeModel()
+				all id("block/command_center_side")
+				up id("block/command_center_top")
+				down id("block/steel_block")
+		)
 
 		TELEPAD.addModel(ModelFile.UncheckedModelFile(id("block/telepad")))
 
@@ -295,10 +311,12 @@ class CygnusBlockStateProvider(event: GatherDataEvent) : DapperBlockStateProvide
 			val dir = it.getValue(HorizontalDirectionalBlock.FACING)
 			val half = it.getValue(BlockTerminal.HALF)
 			ConfiguredModel.builder()
-				.modelFile(when (half) {
-					DoubleBlockHalf.UPPER -> ModelFile.UncheckedModelFile(id("block/terminal_upper"))
-					DoubleBlockHalf.LOWER -> ModelFile.UncheckedModelFile(id("block/terminal_lower"))
-				})
+				.modelFile(
+					when (half) {
+						DoubleBlockHalf.UPPER -> ModelFile.UncheckedModelFile(id("block/terminal_upper"))
+						DoubleBlockHalf.LOWER -> ModelFile.UncheckedModelFile(id("block/terminal_lower"))
+					}
+				)
 				.rotationY((dir.toYRot().toInt() + 180) % 360)
 				.build()
 		}
@@ -308,8 +326,7 @@ class CygnusBlockStateProvider(event: GatherDataEvent) : DapperBlockStateProvide
 		blankState(CygnusFluids.OXYGEN_GAS_BLOCK)
 	}
 
-	private fun blankState(block: DeferredBlock<*>)
-	{
+	private fun blankState(block: DeferredBlock<*>) {
 		this.registeredBlocks[block.get()] = IGeneratedBlockState { JsonObject() }
 	}
 }
