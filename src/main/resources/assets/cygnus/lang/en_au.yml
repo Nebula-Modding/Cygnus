@@ -1,5 +1,13 @@
 # This is just copied and pasted from en_gb
-itemGroup.cygnus: Cygnus
+itemGroup.cygnus:
+  .: Cygnus
+  machinery: Machinery
+  items: Items
+  blocks: Blocks
+  moon: The Moon
+  mars: Mars
+  venus: Venus
+  mercury: Mercury
 
 block.cygnus:
   # Decorational
