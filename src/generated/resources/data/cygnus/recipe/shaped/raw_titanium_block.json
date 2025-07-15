@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "R": {
+      "item": "cygnus:raw_titanium"
+    },
+    "T": {
+      "tag": "c:raw_materials/titanium"
+    }
+  },
+  "pattern": [
+    "TTT",
+    "TRT",
+    "TTT"
+  ],
+  "result": {
+    "count": 1,
+    "id": "cygnus:raw_titanium_block"
+  }
+}

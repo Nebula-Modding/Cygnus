@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "cygnus:iron_sheet_metal"
+    }
+  ],
+  "result": {
+    "count": 3,
+    "id": "cygnus:iron_sheet"
+  }
+}

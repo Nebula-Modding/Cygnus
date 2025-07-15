@@ -3,19 +3,19 @@
   "category": "misc",
   "key": {
     "C": {
-      "item": "cygnus:electronic_circuit"
+      "item": "cygnus:chronite_shard"
     },
-    "H": {
-      "item": "cygnus:chronite"
+    "E": {
+      "item": "cygnus:electronic_circuit"
     },
     "T": {
       "tag": "c:plates/titanium"
     }
   },
   "pattern": [
-    " T ",
-    "THT",
-    " C "
+    " C ",
+    "TTT",
+    " E "
   ],
   "result": {
     "count": 1,

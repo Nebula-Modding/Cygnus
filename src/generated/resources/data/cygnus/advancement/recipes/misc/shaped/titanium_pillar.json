@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_cygnus_cut_titanium": {
+      "conditions": {
+        "items": [
+          {
+            "items": "cygnus:cut_titanium"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "cygnus:shaped/titanium_pillar"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_cygnus_cut_titanium"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "cygnus:shaped/titanium_pillar"
+    ]
+  }
+}

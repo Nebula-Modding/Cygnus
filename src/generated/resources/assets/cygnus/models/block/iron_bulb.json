@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "cygnus:block/iron_bulb",
+    "east": "cygnus:block/iron_bulb",
+    "north": "cygnus:block/iron_bulb",
+    "particle": "cygnus:block/iron_bulb",
+    "south": "cygnus:block/iron_bulb",
+    "up": "cygnus:block/iron_bulb",
+    "west": "cygnus:block/iron_bulb"
+  }
+}

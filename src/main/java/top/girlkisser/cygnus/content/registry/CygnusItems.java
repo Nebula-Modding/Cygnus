@@ -39,21 +39,23 @@ public interface CygnusItems
 
 	// Resources
 	DeferredItem<?>
+		IRON_SHEET = reg("iron_sheet"),
+		IRON_ROD = reg("iron_rod"),
+		STEEL_NUGGET = reg("steel_nugget"),
 		STEEL_INGOT = reg("steel_ingot"),
 		STEEL_SHEET = reg("steel_sheet"),
 		STEEL_ROD = reg("steel_rod"),
-		STEEL_NUGGET = reg("steel_nugget"),
-		RAW_ALUMINIUM = reg("raw_aluminium"),
-		ALUMINIUM_INGOT = reg("aluminium_ingot"),
-		ALUMINIUM_SHEET = reg("aluminium_sheet"),
-		ALUMINIUM_ROD = reg("aluminium_rod"),
-		ALUMINIUM_NUGGET = reg("aluminium_nugget"),
+		RAW_ALUMINIUM = reg("raw_aluminum"),
+		ALUMINIUM_NUGGET = reg("aluminum_nugget"),
+		ALUMINIUM_INGOT = reg("aluminum_ingot"),
+		ALUMINIUM_SHEET = reg("aluminum_sheet"),
+		ALUMINIUM_ROD = reg("aluminum_rod"),
 		RAW_TITANIUM = reg("raw_titanium"),
+		TITANIUM_NUGGET = reg("titanium_nugget"),
 		TITANIUM_INGOT = reg("titanium_ingot"),
 		TITANIUM_SHEET = reg("titanium_sheet"),
 		TITANIUM_ROD = reg("titanium_rod"),
-		TITANIUM_NUGGET = reg("titanium_nugget"),
-		CHRONITE = reg("chronite", () -> new ItemChronite(new Item.Properties().rarity(Rarity.UNCOMMON)));
+		CHRONITE_SHARD = reg("chronite_shard", () -> new ItemChronite(new Item.Properties().rarity(Rarity.UNCOMMON)));
 
 	// Ingredients
 	DeferredItem<?>
@@ -66,8 +68,8 @@ public interface CygnusItems
 
 	// Tools
 	DeferredItem<?>
-		HAMMER = reg("hammer", () -> new ItemHammer(new Item.Properties().stacksTo(1).durability(512))),
 		KEY = reg("key", () -> new ItemKey(new Item.Properties().stacksTo(1))),
+		HAMMER = reg("hammer", () -> new ItemHammer(new Item.Properties().stacksTo(1).durability(512))),
 		OXYGEN_DRILL = reg("oxygen_drill", () -> new ItemOxygenDrill(new Item.Properties()
 			.stacksTo(1)
 			.component(CygnusDataComponents.GENERIC_FLUID, SimpleFluidContent.EMPTY)));

@@ -1,6 +1,8 @@
 package top.girlkisser.cygnus.content.registry;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.util.valueproviders.ConstantInt;
+import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -9,6 +11,7 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
@@ -107,98 +110,218 @@ public interface CygnusBlocks
 		return basicGlassProperties(of());
 	}
 
-	// Order: Block, Sheet Metal, Grate, Tiles, Stairs, Slabs, Pressure Plate, Button, Window, Pillar, Bars, Door, Trapdoor, Bulb
+	// Order: Sheet Metal, Block, Chiselled, Grate, Cut, Stairs, Slabs, Pressure Plate, Button, Window, Pillar, Bars, Door, Trapdoor, Bulb
 
 	// @formatter:off
 	DeferredBlock<?>
+	// Raw Blocks
+		RAW_ALUMINIUM_BLOCK = reg("raw_aluminum_block", copy(Blocks.RAW_IRON_BLOCK).mapColor(MapColor.QUARTZ)),
+		RAW_TITANIUM_BLOCK = reg("raw_titanium_block", copy(Blocks.RAW_IRON_BLOCK).mapColor(MapColor.CLAY)),
+
 	// Decorational blocks
-		// Steel
-		STEEL_BLOCK = reg("steel_block", Blocks.IRON_BLOCK),
-		STEEL_SHEET_METAL = reg("steel_sheet_metal", Blocks.IRON_BLOCK),
-		STEEL_PLATING = reg("steel_plating", Blocks.IRON_BLOCK),
-		STEEL_GRATE = reg("steel_grate", WaterloggedTransparentBlock::new, basicGlassProperties(copy(Blocks.COPPER_GRATE).sound(CygnusSoundTypes.METAL_GRATE))),
-		STEEL_WINDOW = reg("steel_window", TransparentBlock::new, basicGlassProperties(copy(Blocks.IRON_BLOCK).sound(CygnusSoundTypes.METAL_WINDOW))),
-		STEEL_PILLAR = reg("steel_pillar", RotatedPillarBlock::new, copy(Blocks.IRON_BLOCK)),
-		STEEL_BARS = reg("steel_bars", () -> new IronBarsBlock(copy(Blocks.IRON_BARS))),
-		STEEL_DOOR = reg("steel_door", () -> new BlockLockingDoor(BlockLockingDoor.IRON_UNLOCKED, copy(Blocks.IRON_DOOR))),
-		STEEL_TRAPDOOR = reg("steel_trapdoor", () -> new BlockLockingTrapdoor(BlockLockingDoor.IRON_UNLOCKED, copy(Blocks.IRON_TRAPDOOR))),
-		STEEL_BULB = reg("steel_bulb", () -> new CopperBulbBlock(copy(Blocks.IRON_BLOCK)
+		// Iron
+		IRON_SHEET_METAL = reg("iron_sheet_metal", Blocks.IRON_BLOCK),
+		IRON_CHISELLED = reg("chiseled_iron", Blocks.IRON_BLOCK),
+		IRON_GRATE = reg("iron_grate", WaterloggedTransparentBlock::new, basicGlassProperties(copy(Blocks.COPPER_GRATE).sound(CygnusSoundTypes.METAL_GRATE))),
+		IRON_CUT = reg("cut_iron", Blocks.IRON_BLOCK),
+		IRON_CUT_STAIRS = reg("cut_iron_stairs", () -> new StairBlock(CygnusBlocks.IRON_CUT.get().defaultBlockState(), copy(Blocks.IRON_BLOCK))),
+		IRON_CUT_SLAB = reg("cut_iron_slab", () -> new SlabBlock(copy(Blocks.IRON_BLOCK))),
+		IRON_CUT_PRESSURE_PLATE = reg("cut_iron_pressure_plate", () -> new PressurePlateBlock(BlockSetType.IRON, copy(Blocks.IRON_BLOCK).noCollission().strength(0.5F).pushReaction(PushReaction.DESTROY))),
+		IRON_CUT_BUTTON = reg("cut_iron_button", () -> new ButtonBlock(BlockSetType.IRON, 20, copy(Blocks.IRON_BLOCK).noCollission().strength(0.5F).pushReaction(PushReaction.DESTROY))),
+		IRON_WINDOW = reg("iron_window", TransparentBlock::new, basicGlassProperties(copy(Blocks.IRON_BLOCK).sound(CygnusSoundTypes.METAL_WINDOW))),
+		IRON_PILLAR = reg("iron_pillar", RotatedPillarBlock::new, copy(Blocks.IRON_BLOCK)),
+		IRON_AIRTIGHT_DOOR = reg("airtight_iron_door", () -> new BlockLockingDoor(BlockLockingDoor.IRON_UNLOCKED, copy(Blocks.IRON_DOOR))),
+		IRON_AIRTIGHT_TRAPDOOR = reg("airtight_iron_trapdoor", () -> new BlockLockingTrapdoor(BlockLockingDoor.IRON_UNLOCKED, copy(Blocks.IRON_TRAPDOOR))),
+		IRON_BULB = reg("iron_bulb", () -> new CopperBulbBlock(copy(Blocks.IRON_BLOCK)
 			.isRedstoneConductor(CygnusBlocks::never)
 			.lightLevel(litBlockEmission(15))
 			.sound(CygnusSoundTypes.METAL_BULB))),
+		// Steel
+		STEEL_SHEET_METAL = reg("steel_sheet_metal", copy(Blocks.IRON_BLOCK).mapColor(MapColor.COLOR_BLACK)),
+		STEEL_BLOCK = reg("steel_block", copy(Blocks.IRON_BLOCK).mapColor(MapColor.COLOR_BLACK)),
+		STEEL_CHISELLED = reg("chiseled_steel", copy(Blocks.IRON_BLOCK).mapColor(MapColor.COLOR_BLACK)),
+		STEEL_GRATE = reg("steel_grate", WaterloggedTransparentBlock::new, basicGlassProperties(copy(Blocks.COPPER_GRATE).sound(CygnusSoundTypes.METAL_GRATE).mapColor(MapColor.COLOR_BLACK))),
+		STEEL_CUT = reg("cut_steel", copy(Blocks.IRON_BLOCK).mapColor(MapColor.COLOR_BLACK)),
+		STEEL_CUT_STAIRS = reg("cut_steel_stairs", () -> new StairBlock(CygnusBlocks.STEEL_CUT.get().defaultBlockState(), copy(Blocks.IRON_BLOCK).mapColor(MapColor.COLOR_BLACK))),
+		STEEL_CUT_SLAB = reg("cut_steel_slab", () -> new SlabBlock(copy(Blocks.IRON_BLOCK).mapColor(MapColor.COLOR_BLACK))),
+		STEEL_CUT_PRESSURE_PLATE = reg("cut_steel_pressure_plate", () -> new PressurePlateBlock(BlockSetType.IRON, copy(Blocks.IRON_BLOCK).noCollission().strength(0.5F).pushReaction(PushReaction.DESTROY).mapColor(MapColor.COLOR_BLACK))),
+		STEEL_CUT_BUTTON = reg("cut_steel_button", () -> new ButtonBlock(BlockSetType.IRON, 20, copy(Blocks.IRON_BLOCK).noCollission().strength(0.5F).pushReaction(PushReaction.DESTROY).mapColor(MapColor.COLOR_BLACK))),
+		STEEL_WINDOW = reg("steel_window", TransparentBlock::new, basicGlassProperties(copy(Blocks.IRON_BLOCK).sound(CygnusSoundTypes.METAL_WINDOW).mapColor(MapColor.COLOR_BLACK))),
+		STEEL_PILLAR = reg("steel_pillar", RotatedPillarBlock::new, copy(Blocks.IRON_BLOCK).mapColor(MapColor.COLOR_BLACK)),
+		STEEL_BARS = reg("steel_bars", () -> new IronBarsBlock(copy(Blocks.IRON_BARS).mapColor(MapColor.COLOR_BLACK))),
+		STEEL_DOOR = reg("steel_door", () -> new BlockLockingDoor(BlockLockingDoor.IRON_UNLOCKED, copy(Blocks.IRON_DOOR).mapColor(MapColor.COLOR_BLACK))),
+		STEEL_TRAPDOOR = reg("steel_trapdoor", () -> new BlockLockingTrapdoor(BlockLockingDoor.IRON_UNLOCKED, copy(Blocks.IRON_TRAPDOOR).mapColor(MapColor.COLOR_BLACK))),
+		STEEL_BULB = reg("steel_bulb", () -> new CopperBulbBlock(copy(Blocks.IRON_BLOCK)
+			.isRedstoneConductor(CygnusBlocks::never)
+			.lightLevel(litBlockEmission(15))
+			.sound(CygnusSoundTypes.METAL_BULB)
+			.mapColor(MapColor.COLOR_BLACK))),
 		// Aluminium
-		ALUMINIUM_BLOCK = reg("aluminium_block", Blocks.IRON_BLOCK),
-		ALUMINIUM_SHEET_METAL = reg("aluminium_sheet_metal", Blocks.IRON_BLOCK),
-		ALUMINIUM_TILES = reg("aluminium_tiles", Blocks.IRON_BLOCK),
+		ALUMINIUM_SHEET_METAL = reg("aluminum_sheet_metal", copy(Blocks.IRON_BLOCK).mapColor(MapColor.QUARTZ)),
+		ALUMINIUM_BLOCK = reg("aluminum_block", copy(Blocks.IRON_BLOCK).mapColor(MapColor.QUARTZ)),
+		ALUMINIUM_CHISELLED = reg("chiseled_aluminum", copy(Blocks.IRON_BLOCK).mapColor(MapColor.QUARTZ)),
+		ALUMINIUM_GRATE = reg("aluminum_grate", WaterloggedTransparentBlock::new, basicGlassProperties(copy(Blocks.COPPER_GRATE).sound(CygnusSoundTypes.METAL_GRATE).mapColor(MapColor.QUARTZ))),
+		ALUMINIUM_CUT = reg("cut_aluminum", copy(Blocks.IRON_BLOCK).mapColor(MapColor.QUARTZ)),
+		ALUMINIUM_CUT_STAIRS = reg("cut_aluminum_stairs", () -> new StairBlock(CygnusBlocks.ALUMINIUM_CUT.get().defaultBlockState(), copy(Blocks.IRON_BLOCK).mapColor(MapColor.QUARTZ))),
+		ALUMINIUM_CUT_SLAB = reg("cut_aluminum_slab", () -> new SlabBlock(copy(Blocks.IRON_BLOCK).mapColor(MapColor.QUARTZ))),
+		ALUMINIUM_CUT_PRESSURE_PLATE = reg("cut_aluminum_pressure_plate", () -> new PressurePlateBlock(BlockSetType.IRON, copy(Blocks.IRON_BLOCK).noCollission().strength(0.5F).pushReaction(PushReaction.DESTROY).mapColor(MapColor.QUARTZ))),
+		ALUMINIUM_CUT_BUTTON = reg("cut_aluminum_button", () -> new ButtonBlock(BlockSetType.IRON, 20, copy(Blocks.IRON_BLOCK).noCollission().strength(0.5F).pushReaction(PushReaction.DESTROY).mapColor(MapColor.QUARTZ))),
+		ALUMINIUM_WINDOW = reg("aluminum_window", TransparentBlock::new, basicGlassProperties(copy(Blocks.IRON_BLOCK).sound(CygnusSoundTypes.METAL_WINDOW).mapColor(MapColor.QUARTZ))),
+		ALUMINIUM_PILLAR = reg("aluminum_pillar", RotatedPillarBlock::new, copy(Blocks.IRON_BLOCK).mapColor(MapColor.QUARTZ)),
+		ALUMINIUM_BARS = reg("aluminum_bars", () -> new IronBarsBlock(copy(Blocks.IRON_BARS).mapColor(MapColor.QUARTZ))),
+		ALUMINIUM_DOOR = reg("aluminum_door", () -> new BlockLockingDoor(BlockLockingDoor.IRON_UNLOCKED, copy(Blocks.IRON_DOOR).mapColor(MapColor.QUARTZ))),
+		ALUMINIUM_TRAPDOOR = reg("aluminum_trapdoor", () -> new BlockLockingTrapdoor(BlockLockingDoor.IRON_UNLOCKED, copy(Blocks.IRON_TRAPDOOR).mapColor(MapColor.QUARTZ))),
+		ALUMINIUM_BULB = reg("aluminum_bulb", () -> new CopperBulbBlock(copy(Blocks.IRON_BLOCK)
+			.isRedstoneConductor(CygnusBlocks::never)
+			.lightLevel(litBlockEmission(15))
+			.sound(CygnusSoundTypes.METAL_BULB)
+			.mapColor(MapColor.QUARTZ))),
 		// Titanium
-		TITANIUM_BLOCK = reg("titanium_block", Blocks.IRON_BLOCK),
-		TITANIUM_SHEET_METAL = reg("titanium_sheet_metal", Blocks.IRON_BLOCK),
-		TITANIUM_TILES = reg("titanium_tiles", Blocks.IRON_BLOCK),
-		TITANIUM_PLATING = reg("titanium_plating", Blocks.IRON_BLOCK),
-		TITANIUM_WINDOW = reg("titanium_window", TransparentBlock::new, basicGlassProperties(copy(Blocks.IRON_BLOCK).sound(CygnusSoundTypes.METAL_WINDOW))),
+		TITANIUM_SHEET_METAL = reg("titanium_sheet_metal", copy(Blocks.IRON_BLOCK).mapColor(MapColor.CLAY)),
+		TITANIUM_BLOCK = reg("titanium_block", copy(Blocks.IRON_BLOCK).mapColor(MapColor.CLAY)),
+		TITANIUM_CHISELLED = reg("chiseled_titanium", copy(Blocks.IRON_BLOCK).mapColor(MapColor.CLAY)),
+		TITANIUM_GRATE = reg("titanium_grate", WaterloggedTransparentBlock::new, basicGlassProperties(copy(Blocks.COPPER_GRATE).sound(CygnusSoundTypes.METAL_GRATE).mapColor(MapColor.CLAY))),
+		TITANIUM_CUT = reg("cut_titanium", copy(Blocks.IRON_BLOCK).mapColor(MapColor.CLAY)),
+		TITANIUM_CUT_STAIRS = reg("cut_titanium_stairs", () -> new StairBlock(CygnusBlocks.TITANIUM_CUT.get().defaultBlockState(), copy(Blocks.IRON_BLOCK).mapColor(MapColor.CLAY))),
+		TITANIUM_CUT_SLAB = reg("cut_titanium_slab", () -> new SlabBlock(copy(Blocks.IRON_BLOCK).mapColor(MapColor.CLAY))),
+		TITANIUM_CUT_PRESSURE_PLATE = reg("cut_titanium_pressure_plate", () -> new PressurePlateBlock(BlockSetType.IRON, copy(Blocks.IRON_BLOCK).noCollission().strength(0.5F).pushReaction(PushReaction.DESTROY).mapColor(MapColor.CLAY))),
+		TITANIUM_CUT_BUTTON = reg("cut_titanium_button", () -> new ButtonBlock(BlockSetType.IRON, 20, copy(Blocks.IRON_BLOCK).noCollission().strength(0.5F).pushReaction(PushReaction.DESTROY).mapColor(MapColor.CLAY))),
+		TITANIUM_WINDOW = reg("titanium_window", TransparentBlock::new, basicGlassProperties(copy(Blocks.IRON_BLOCK).sound(CygnusSoundTypes.METAL_WINDOW).mapColor(MapColor.CLAY))),
+		TITANIUM_PILLAR = reg("titanium_pillar", RotatedPillarBlock::new, copy(Blocks.IRON_BLOCK).mapColor(MapColor.CLAY)),
+		TITANIUM_BARS = reg("titanium_bars", () -> new IronBarsBlock(copy(Blocks.IRON_BARS).mapColor(MapColor.CLAY))),
+		TITANIUM_DOOR = reg("titanium_door", () -> new BlockLockingDoor(BlockLockingDoor.IRON_UNLOCKED, copy(Blocks.IRON_DOOR).mapColor(MapColor.CLAY))),
+		TITANIUM_TRAPDOOR = reg("titanium_trapdoor", () -> new BlockLockingTrapdoor(BlockLockingDoor.IRON_UNLOCKED, copy(Blocks.IRON_TRAPDOOR).mapColor(MapColor.CLAY))),
+		TITANIUM_BULB = reg("titanium_bulb", () -> new CopperBulbBlock(copy(Blocks.IRON_BLOCK)
+			.isRedstoneConductor(CygnusBlocks::never)
+			.lightLevel(litBlockEmission(15))
+			.sound(CygnusSoundTypes.METAL_BULB)
+			.mapColor(MapColor.CLAY))),
 
 	// Lunar Blocks
 		// Lunar Regolith
-		LUNAR_REGOLITH = reg("lunar_regolith", () -> new ColoredFallingBlock(new UnpackedColour(85, 88, 96).toColorRGBA(), copy(Blocks.SAND))),
+		LUNAR_REGOLITH = reg("lunar_regolith", () -> new ColoredFallingBlock(new UnpackedColour(85, 88, 96).toColorRGBA(), copy(Blocks.SAND).mapColor(MapColor.STONE))),
 		// Lunar Stone
-		LUNAR_STONE = reg("lunar_stone", Blocks.STONE),
-		LUNAR_COBBLESTONE = reg("lunar_cobblestone", Blocks.COBBLESTONE),
-		SMOOTH_LUNAR_STONE = reg("smooth_lunar_stone", Blocks.SMOOTH_STONE),
-		CHISELED_LUNAR_STONE = reg("chiseled_lunar_stone", Blocks.CHISELED_STONE_BRICKS),
-		LUNAR_STONE_BRICKS = reg("lunar_stone_bricks", Blocks.STONE_BRICKS),
-		CRACKED_LUNAR_STONE_BRICKS = reg("cracked_lunar_stone_bricks", Blocks.CRACKED_STONE_BRICKS),
-		LUNAR_STONE_PILLAR = reg("lunar_stone_pillar", RotatedPillarBlock::new, copy(Blocks.STONE_BRICKS)),
+		LUNAR_STONE = reg("lunar_stone", copy(Blocks.STONE).mapColor(MapColor.TERRACOTTA_CYAN)),
+		LUNAR_COBBLESTONE = reg("lunar_cobblestone", copy(Blocks.COBBLESTONE).mapColor(MapColor.TERRACOTTA_CYAN)),
+		POLISHED_LUNAR_STONE = reg("polished_lunar_stone", copy(Blocks.SMOOTH_STONE).mapColor(MapColor.TERRACOTTA_CYAN)),
+		CHISELED_LUNAR_STONE = reg("chiseled_lunar_stone", copy(Blocks.CHISELED_STONE_BRICKS).mapColor(MapColor.TERRACOTTA_CYAN)),
+		LUNAR_STONE_BRICKS = reg("lunar_stone_bricks", copy(Blocks.STONE_BRICKS).mapColor(MapColor.TERRACOTTA_CYAN)),
+		CRACKED_LUNAR_STONE_BRICKS = reg("cracked_lunar_stone_bricks", copy(Blocks.CRACKED_STONE_BRICKS).mapColor(MapColor.TERRACOTTA_CYAN)),
+		LUNAR_STONE_PILLAR = reg("lunar_stone_pillar", RotatedPillarBlock::new, copy(Blocks.STONE_BRICKS).mapColor(MapColor.TERRACOTTA_CYAN)),
 		// Lunar Deepslate
-		LUNAR_DEEPSLATE = reg("lunar_deepslate", Blocks.DEEPSLATE),
-		COBBLED_LUNAR_DEEPSLATE = reg("cobbled_lunar_deepslate", Blocks.COBBLED_DEEPSLATE),
-		SMOOTH_LUNAR_DEEPSLATE = reg("smooth_lunar_deepslate", Blocks.DEEPSLATE),
-		CHISELED_LUNAR_DEEPSLATE = reg("chiseled_lunar_deepslate", Blocks.CHISELED_DEEPSLATE),
-		LUNAR_DEEPSLATE_BRICKS = reg("lunar_deepslate_bricks", Blocks.DEEPSLATE_BRICKS),
-		CRACKED_LUNAR_DEEPSLATE_BRICKS = reg("cracked_lunar_deepslate_bricks", Blocks.CRACKED_DEEPSLATE_BRICKS),
-		LUNAR_DEEPSLATE_PILLAR = reg("lunar_deepslate_pillar", RotatedPillarBlock::new, copy(Blocks.DEEPSLATE_BRICKS)),
+		LUNAR_DEEPSLATE = reg("lunar_deepslate", copy(Blocks.DEEPSLATE).mapColor(MapColor.COLOR_GRAY)),
+		COBBLED_LUNAR_DEEPSLATE = reg("cobbled_lunar_deepslate", copy(Blocks.COBBLED_DEEPSLATE).mapColor(MapColor.COLOR_GRAY)),
+		POLISHED_LUNAR_DEEPSLATE = reg("polished_lunar_deepslate", copy(Blocks.POLISHED_DEEPSLATE).mapColor(MapColor.COLOR_GRAY)),
+		CHISELED_LUNAR_DEEPSLATE = reg("chiseled_lunar_deepslate", copy(Blocks.CHISELED_DEEPSLATE).mapColor(MapColor.COLOR_GRAY)),
+		LUNAR_DEEPSLATE_BRICKS = reg("lunar_deepslate_bricks", copy(Blocks.DEEPSLATE_BRICKS).mapColor(MapColor.COLOR_GRAY)),
+		CRACKED_LUNAR_DEEPSLATE_BRICKS = reg("cracked_lunar_deepslate_bricks", copy(Blocks.CRACKED_DEEPSLATE_BRICKS).mapColor(MapColor.COLOR_GRAY)),
+		LUNAR_DEEPSLATE_PILLAR = reg("lunar_deepslate_pillar", RotatedPillarBlock::new, copy(Blocks.DEEPSLATE_BRICKS).mapColor(MapColor.COLOR_GRAY)),
 
 	// Environmental/nature blocks
 		// Ores
 			// Coal Ores
-		LUNAR_COAL_ORE = reg("lunar_coal_ore", Blocks.COAL_ORE),
-		LUNAR_DEEPSLATE_COAL_ORE = reg("lunar_deepslate_coal_ore", Blocks.DEEPSLATE_COAL_ORE),
+		LUNAR_COAL_ORE = reg("lunar_coal_ore", () -> new DropExperienceBlock(UniformInt.of(1, 2), copy(Blocks.COAL_ORE).mapColor(MapColor.TERRACOTTA_CYAN))),
+		LUNAR_DEEPSLATE_COAL_ORE = reg("lunar_deepslate_coal_ore", () -> new DropExperienceBlock(UniformInt.of(1, 2), copy(Blocks.DEEPSLATE_COAL_ORE).mapColor(MapColor.COLOR_GRAY))),
+//		MARTIAN_COAL_ORE = reg("martian_coal_ore", () -> new DropExperienceBlock(UniformInt.of(1, 2), copy(Blocks.COAL_ORE).mapColor(MapColor.COLOR_PINK))),
+//		MARTIAN_DEEPSLATE_COAL_ORE = reg("martian_deepslate_coal_ore", () -> new DropExperienceBlock(UniformInt.of(1, 2), copy(Blocks.DEEPSLATE_COAL_ORE).mapColor(MapColor.TERRACOTTA_PINK))),
+//		MERCURIAL_COAL_ORE = reg("mercurial_coal_ore", () -> new DropExperienceBlock(UniformInt.of(1, 2), copy(Blocks.COAL_ORE).mapColor(MapColor.COLOR_PINK))),
+//		MERCURIAL_DEEPSLATE_COAL_ORE = reg("mercurial_deepslate_coal_ore", () -> new DropExperienceBlock(UniformInt.of(1, 2), copy(Blocks.DEEPSLATE_COAL_ORE).mapColor(MapColor.TERRACOTTA_PINK))),
+//		VENUSIAN_COAL_ORE = reg("venusian_coal_ore", () -> new DropExperienceBlock(UniformInt.of(1, 2), copy(Blocks.COAL_ORE).mapColor(MapColor.COLOR_PINK))),
+//		VENUSIAN_DEEPSLATE_COAL_ORE = reg("venusian_deepslate_coal_ore", () -> new DropExperienceBlock(UniformInt.of(1, 2), copy(Blocks.DEEPSLATE_COAL_ORE).mapColor(MapColor.TERRACOTTA_PINK))),
 			// Iron Ores
-		LUNAR_IRON_ORE = reg("lunar_iron_ore", Blocks.IRON_ORE),
-		LUNAR_DEEPSLATE_IRON_ORE = reg("lunar_deepslate_iron_ore", Blocks.DEEPSLATE_IRON_ORE),
+		LUNAR_IRON_ORE = reg("lunar_iron_ore", () -> new DropExperienceBlock(ConstantInt.of(0), copy(Blocks.IRON_ORE).mapColor(MapColor.TERRACOTTA_CYAN))),
+		LUNAR_DEEPSLATE_IRON_ORE = reg("lunar_deepslate_iron_ore", () -> new DropExperienceBlock(ConstantInt.of(0), copy(Blocks.DEEPSLATE_IRON_ORE).mapColor(MapColor.COLOR_GRAY))),
+//		MARTIAN_IRON_ORE = reg("martian_iron_ore", () -> new DropExperienceBlock(ConstantInt.of(0), copy(Blocks.IRON_ORE).mapColor(MapColor.COLOR_PINK))),
+//		MARTIAN_DEEPSLATE_IRON_ORE = reg("martian_deepslate_iron_ore", () -> new DropExperienceBlock(ConstantInt.of(0), copy(Blocks.DEEPSLATE_IRON_ORE).mapColor(MapColor.TERRACOTTA_PINK))),
+//		MERCURIAL_IRON_ORE = reg("mercurial_iron_ore", () -> new DropExperienceBlock(ConstantInt.of(0), copy(Blocks.IRON_ORE).mapColor(MapColor.COLOR_PINK))),
+//		MERCURIAL_DEEPSLATE_IRON_ORE = reg("mercurial_deepslate_iron_ore", () -> new DropExperienceBlock(ConstantInt.of(0), copy(Blocks.DEEPSLATE_IRON_ORE).mapColor(MapColor.TERRACOTTA_PINK))),
+//		VENUSIAN_IRON_ORE = reg("venusian_iron_ore", () -> new DropExperienceBlock(ConstantInt.of(0), copy(Blocks.IRON_ORE).mapColor(MapColor.COLOR_PINK))),
+//		VENUSIAN_DEEPSLATE_IRON_ORE = reg("venusian_deepslate_iron_ore", () -> new DropExperienceBlock(ConstantInt.of(0), copy(Blocks.DEEPSLATE_IRON_ORE).mapColor(MapColor.TERRACOTTA_PINK))),
+			// Copper Ores
+		LUNAR_COPPER_ORE = reg("lunar_copper_ore", () -> new DropExperienceBlock(ConstantInt.of(0), copy(Blocks.COPPER_ORE).mapColor(MapColor.TERRACOTTA_CYAN))),
+		LUNAR_DEEPSLATE_COPPER_ORE = reg("lunar_deepslate_copper_ore", () -> new DropExperienceBlock(ConstantInt.of(0), copy(Blocks.DEEPSLATE_COPPER_ORE).mapColor(MapColor.COLOR_GRAY))),
+//		MARTIAN_COPPER_ORE = reg("martian_copper_ore", () -> new DropExperienceBlock(ConstantInt.of(0), copy(Blocks.COPPER_ORE).mapColor(MapColor.COLOR_PINK))),
+//		MARTIAN_DEEPSLATE_COPPER_ORE = reg("martian_deepslate_copper_ore", () -> new DropExperienceBlock(ConstantInt.of(0), copy(Blocks.DEEPSLATE_COPPER_ORE).mapColor(MapColor.TERRACOTTA_PINK))),
+//		MERCURIAL_COPPER_ORE = reg("mercurial_copper_ore", () -> new DropExperienceBlock(ConstantInt.of(0), copy(Blocks.COPPER_ORE).mapColor(MapColor.COLOR_PINK))),
+//		MERCURIAL_DEEPSLATE_COPPER_ORE = reg("mercurial_deepslate_copper_ore", () -> new DropExperienceBlock(ConstantInt.of(0), copy(Blocks.DEEPSLATE_COPPER_ORE).mapColor(MapColor.TERRACOTTA_PINK))),
+//		VENUSIAN_COPPER_ORE = reg("venusian_copper_ore", () -> new DropExperienceBlock(ConstantInt.of(0), copy(Blocks.COPPER_ORE).mapColor(MapColor.COLOR_PINK))),
+//		VENUSIAN_DEEPSLATE_COPPER_ORE = reg("venusian_deepslate_copper_ore", () -> new DropExperienceBlock(ConstantInt.of(0), copy(Blocks.DEEPSLATE_COPPER_ORE).mapColor(MapColor.TERRACOTTA_PINK))),
 			// Gold Ores
-		LUNAR_GOLD_ORE = reg("lunar_gold_ore", Blocks.GOLD_ORE),
-		LUNAR_DEEPSLATE_GOLD_ORE = reg("lunar_deepslate_gold_ore", Blocks.DEEPSLATE_GOLD_ORE),
+		LUNAR_GOLD_ORE = reg("lunar_gold_ore", () -> new DropExperienceBlock(ConstantInt.of(0), copy(Blocks.GOLD_ORE).mapColor(MapColor.TERRACOTTA_CYAN))),
+		LUNAR_DEEPSLATE_GOLD_ORE = reg("lunar_deepslate_gold_ore", () -> new DropExperienceBlock(ConstantInt.of(0), copy(Blocks.DEEPSLATE_GOLD_ORE).mapColor(MapColor.COLOR_GRAY))),
+//		MARTIAN_GOLD_ORE = reg("martian_gold_ore", () -> new DropExperienceBlock(ConstantInt.of(0), copy(Blocks.GOLD_ORE).mapColor(MapColor.COLOR_PINK))),
+//		MARTIAN_DEEPSLATE_GOLD_ORE = reg("martian_deepslate_gold_ore", () -> new DropExperienceBlock(ConstantInt.of(0), copy(Blocks.DEEPSLATE_GOLD_ORE).mapColor(MapColor.TERRACOTTA_PINK))),
+//		MERCURIAL_GOLD_ORE = reg("mercurial_gold_ore", () -> new DropExperienceBlock(ConstantInt.of(0), copy(Blocks.GOLD_ORE).mapColor(MapColor.COLOR_PINK))),
+//		MERCURIAL_DEEPSLATE_GOLD_ORE = reg("mercurial_deepslate_gold_ore", () -> new DropExperienceBlock(ConstantInt.of(0), copy(Blocks.DEEPSLATE_GOLD_ORE).mapColor(MapColor.TERRACOTTA_PINK))),
+//		VENUSIAN_GOLD_ORE = reg("venusian_gold_ore", () -> new DropExperienceBlock(ConstantInt.of(0), copy(Blocks.GOLD_ORE).mapColor(MapColor.COLOR_PINK))),
+//		VENUSIAN_DEEPSLATE_GOLD_ORE = reg("venusian_deepslate_gold_ore", () -> new DropExperienceBlock(ConstantInt.of(0), copy(Blocks.DEEPSLATE_GOLD_ORE).mapColor(MapColor.TERRACOTTA_PINK))),
 			// Redstone Ores
 		LUNAR_REDSTONE_ORE = reg("lunar_redstone_ore", RedStoneOreBlock::new, copy(Blocks.REDSTONE_ORE)),
 		LUNAR_DEEPSLATE_REDSTONE_ORE = reg("lunar_deepslate_redstone_ore", RedStoneOreBlock::new, copy(Blocks.DEEPSLATE_REDSTONE_ORE)),
+//		MARTIAN_REDSTONE_ORE = reg("martian_redstone_ore", RedStoneOreBlock::new, copy(Blocks.REDSTONE_ORE).mapColor(MapColor.COLOR_PINK)),
+//		MARTIAN_DEEPSLATE_REDSTONE_ORE = reg("martian_deepslate_redstone_ore", RedStoneOreBlock::new, copy(Blocks.DEEPSLATE_REDSTONE_ORE).mapColor(MapColor.TERRACOTTA_PINK)),
+//		MERCURIAL_REDSTONE_ORE = reg("mercurial_redstone_ore", RedStoneOreBlock::new, copy(Blocks.REDSTONE_ORE).mapColor(MapColor.COLOR_PINK)),
+//		MERCURIAL_DEEPSLATE_REDSTONE_ORE = reg("mercurial_deepslate_redstone_ore", RedStoneOreBlock::new, copy(Blocks.DEEPSLATE_REDSTONE_ORE).mapColor(MapColor.TERRACOTTA_PINK)),
+//		VENUSIAN_REDSTONE_ORE = reg("venusian_redstone_ore", RedStoneOreBlock::new, copy(Blocks.REDSTONE_ORE).mapColor(MapColor.COLOR_PINK)),
+//		VENUSIAN_DEEPSLATE_REDSTONE_ORE = reg("venusian_deepslate_redstone_ore", RedStoneOreBlock::new, copy(Blocks.DEEPSLATE_REDSTONE_ORE).mapColor(MapColor.TERRACOTTA_PINK)),
 			// Emerald Ores
-		LUNAR_EMERALD_ORE = reg("lunar_emerald_ore", Blocks.EMERALD_ORE),
-		LUNAR_DEEPSLATE_EMERALD_ORE = reg("lunar_deepslate_emerald_ore", Blocks.DEEPSLATE_EMERALD_ORE),
+		LUNAR_EMERALD_ORE = reg("lunar_emerald_ore", () -> new DropExperienceBlock(UniformInt.of(3, 7), copy(Blocks.EMERALD_ORE).mapColor(MapColor.TERRACOTTA_CYAN))),
+		LUNAR_DEEPSLATE_EMERALD_ORE = reg("lunar_deepslate_emerald_ore", () -> new DropExperienceBlock(UniformInt.of(3, 7), copy(Blocks.DEEPSLATE_EMERALD_ORE).mapColor(MapColor.COLOR_GRAY))),
+//		MARTIAN_EMERALD_ORE = reg("martian_emerald_ore", () -> new DropExperienceBlock(UniformInt.of(3, 7), copy(Blocks.EMERALD_ORE).mapColor(MapColor.COLOR_PINK))),
+//		MARTIAN_DEEPSLATE_EMERALD_ORE = reg("martian_deepslate_emerald_ore", () -> new DropExperienceBlock(UniformInt.of(3, 7), copy(Blocks.DEEPSLATE_EMERALD_ORE).mapColor(MapColor.TERRACOTTA_PINK))),
+//		MERCURIAL_EMERALD_ORE = reg("mercurial_emerald_ore", () -> new DropExperienceBlock(UniformInt.of(3, 7), copy(Blocks.EMERALD_ORE).mapColor(MapColor.COLOR_PINK))),
+//		MERCURIAL_DEEPSLATE_EMERALD_ORE = reg("mercurial_deepslate_emerald_ore", () -> new DropExperienceBlock(UniformInt.of(3, 7), copy(Blocks.DEEPSLATE_EMERALD_ORE).mapColor(MapColor.TERRACOTTA_PINK))),
+//		VENUSIAN_EMERALD_ORE = reg("venusian_emerald_ore", () -> new DropExperienceBlock(UniformInt.of(3, 7), copy(Blocks.EMERALD_ORE).mapColor(MapColor.COLOR_PINK))),
+//		VENUSIAN_DEEPSLATE_EMERALD_ORE = reg("venusian_deepslate_emerald_ore", () -> new DropExperienceBlock(UniformInt.of(3, 7), copy(Blocks.DEEPSLATE_EMERALD_ORE).mapColor(MapColor.TERRACOTTA_PINK))),
 			// Lapis Ores
-		LUNAR_LAPIS_ORE = reg("lunar_lapis_ore", Blocks.LAPIS_ORE),
-		LUNAR_DEEPSLATE_LAPIS_ORE = reg("lunar_deepslate_lapis_ore", Blocks.DEEPSLATE_LAPIS_ORE),
+		LUNAR_LAPIS_ORE = reg("lunar_lapis_ore", () -> new DropExperienceBlock(UniformInt.of(2, 5), copy(Blocks.LAPIS_ORE).mapColor(MapColor.TERRACOTTA_CYAN))),
+		LUNAR_DEEPSLATE_LAPIS_ORE = reg("lunar_deepslate_lapis_ore", () -> new DropExperienceBlock(UniformInt.of(2, 5), copy(Blocks.DEEPSLATE_LAPIS_ORE).mapColor(MapColor.COLOR_GRAY))),
+//		MARTIAN_LAPIS_ORE = reg("martian_lapis_ore", () -> new DropExperienceBlock(UniformInt.of(2, 5), copy(Blocks.LAPIS_ORE).mapColor(MapColor.COLOR_PINK))),
+//		MARTIAN_DEEPSLATE_LAPIS_ORE = reg("martian_deepslate_lapis_ore", () -> new DropExperienceBlock(UniformInt.of(2, 5), copy(Blocks.DEEPSLATE_LAPIS_ORE).mapColor(MapColor.TERRACOTTA_PINK))),
+//		MERCURIAL_LAPIS_ORE = reg("mercurial_lapis_ore", () -> new DropExperienceBlock(UniformInt.of(2, 5), copy(Blocks.LAPIS_ORE).mapColor(MapColor.COLOR_PINK))),
+//		MERCURIAL_DEEPSLATE_LAPIS_ORE = reg("mercurial_deepslate_lapis_ore", () -> new DropExperienceBlock(UniformInt.of(2, 5), copy(Blocks.DEEPSLATE_LAPIS_ORE).mapColor(MapColor.TERRACOTTA_PINK))),
+//		VENUSIAN_LAPIS_ORE = reg("venusian_lapis_ore", () -> new DropExperienceBlock(UniformInt.of(2, 5), copy(Blocks.LAPIS_ORE).mapColor(MapColor.COLOR_PINK))),
+//		VENUSIAN_DEEPSLATE_LAPIS_ORE = reg("venusian_deepslate_lapis_ore", () -> new DropExperienceBlock(UniformInt.of(2, 5), copy(Blocks.DEEPSLATE_LAPIS_ORE).mapColor(MapColor.TERRACOTTA_PINK))),
 			// Diamond Ores
-		LUNAR_DIAMOND_ORE = reg("lunar_diamond_ore", Blocks.DIAMOND_ORE),
-		LUNAR_DEEPSLATE_DIAMOND_ORE = reg("lunar_deepslate_diamond_ore", Blocks.DEEPSLATE_DIAMOND_ORE),
+		LUNAR_DIAMOND_ORE = reg("lunar_diamond_ore", () -> new DropExperienceBlock(UniformInt.of(3, 7), copy(Blocks.DIAMOND_ORE).mapColor(MapColor.TERRACOTTA_CYAN))),
+		LUNAR_DEEPSLATE_DIAMOND_ORE = reg("lunar_deepslate_diamond_ore", () -> new DropExperienceBlock(UniformInt.of(3, 7), copy(Blocks.DEEPSLATE_DIAMOND_ORE).mapColor(MapColor.COLOR_GRAY))),
+//		MARTIAN_DIAMOND_ORE = reg("martian_diamond_ore", () -> new DropExperienceBlock(UniformInt.of(3, 7), copy(Blocks.DIAMOND_ORE).mapColor(MapColor.COLOR_PINK))),
+//		MARTIAN_DEEPSLATE_DIAMOND_ORE = reg("martian_deepslate_diamond_ore", () -> new DropExperienceBlock(UniformInt.of(3, 7), copy(Blocks.DEEPSLATE_DIAMOND_ORE).mapColor(MapColor.TERRACOTTA_PINK))),
+//		MERCURIAL_DIAMOND_ORE = reg("mercurial_diamond_ore", () -> new DropExperienceBlock(UniformInt.of(3, 7), copy(Blocks.DIAMOND_ORE).mapColor(MapColor.COLOR_PINK))),
+//		MERCURIAL_DEEPSLATE_DIAMOND_ORE = reg("mercurial_deepslate_diamond_ore", () -> new DropExperienceBlock(UniformInt.of(3, 7), copy(Blocks.DEEPSLATE_DIAMOND_ORE).mapColor(MapColor.TERRACOTTA_PINK))),
+//		VENUSIAN_DIAMOND_ORE = reg("venusian_diamond_ore", () -> new DropExperienceBlock(UniformInt.of(3, 7), copy(Blocks.DIAMOND_ORE).mapColor(MapColor.COLOR_PINK))),
+//		VENUSIAN_DEEPSLATE_DIAMOND_ORE = reg("venusian_deepslate_diamond_ore", () -> new DropExperienceBlock(UniformInt.of(3, 7), copy(Blocks.DEEPSLATE_DIAMOND_ORE).mapColor(MapColor.TERRACOTTA_PINK))),
 			// Aluminium Ores
-		ALUMINIUM_ORE = reg("aluminium_ore", Blocks.IRON_ORE),
-		DEEPSLATE_ALUMINIUM_ORE = reg("deepslate_aluminium_ore", Blocks.IRON_ORE),
-		LUNAR_ALUMINIUM_ORE = reg("lunar_aluminium_ore", Blocks.IRON_ORE),
-		LUNAR_DEEPSLATE_ALUMINIUM_ORE = reg("lunar_deepslate_aluminium_ore", Blocks.IRON_ORE),
+		ALUMINIUM_ORE = reg("aluminum_ore", () -> new DropExperienceBlock(ConstantInt.of(0), copy(Blocks.IRON_ORE))),
+		DEEPSLATE_ALUMINIUM_ORE = reg("deepslate_aluminum_ore", () -> new DropExperienceBlock(ConstantInt.of(0), copy(Blocks.DEEPSLATE_IRON_ORE))),
+		LUNAR_ALUMINIUM_ORE = reg("lunar_aluminum_ore", () -> new DropExperienceBlock(ConstantInt.of(0), copy(Blocks.IRON_ORE).mapColor(MapColor.TERRACOTTA_CYAN))),
+		LUNAR_DEEPSLATE_ALUMINIUM_ORE = reg("lunar_deepslate_aluminum_ore", () -> new DropExperienceBlock(ConstantInt.of(0), copy(Blocks.DEEPSLATE_IRON_ORE).mapColor(MapColor.COLOR_GRAY))),
+//		MARTIAN_ALUMINIUM_ORE = reg("martian_aluminum_ore", () -> new DropExperienceBlock(ConstantInt.of(0), copy(Blocks.IRON_ORE).mapColor(MapColor.COLOR_PINK))),
+//		MARTIAN_DEEPSLATE_ALUMINIUM_ORE = reg("martian_deepslate_aluminum_ore", () -> new DropExperienceBlock(ConstantInt.of(0), copy(Blocks.DEEPSLATE_IRON_ORE).mapColor(MapColor.TERRACOTTA_PINK))),
+//		MERCURIAL_ALUMINIUM_ORE = reg("mercurial_aluminum_ore", () -> new DropExperienceBlock(ConstantInt.of(0), copy(Blocks.IRON_ORE).mapColor(MapColor.COLOR_PINK))),
+//		MERCURIAL_DEEPSLATE_ALUMINIUM_ORE = reg("mercurial_deepslate_aluminum_ore", () -> new DropExperienceBlock(ConstantInt.of(0), copy(Blocks.DEEPSLATE_IRON_ORE).mapColor(MapColor.TERRACOTTA_PINK))),
+//		VENUSIAN_ALUMINIUM_ORE = reg("venusian_aluminum_ore", () -> new DropExperienceBlock(ConstantInt.of(0), copy(Blocks.IRON_ORE).mapColor(MapColor.COLOR_PINK))),
+//		VENUSIAN_DEEPSLATE_ALUMINIUM_ORE = reg("venusian_deepslate_aluminum_ore", () -> new DropExperienceBlock(ConstantInt.of(0), copy(Blocks.DEEPSLATE_IRON_ORE).mapColor(MapColor.TERRACOTTA_PINK))),
 			// Titanium Ores
-		TITANIUM_ORE = reg("titanium_ore", Blocks.GOLD_ORE),
-		DEEPSLATE_TITANIUM_ORE = reg("deepslate_titanium_ore", Blocks.GOLD_ORE),
-		LUNAR_TITANIUM_ORE = reg("lunar_titanium_ore", Blocks.GOLD_ORE),
-		LUNAR_DEEPSLATE_TITANIUM_ORE = reg("lunar_deepslate_titanium_ore", Blocks.GOLD_ORE),
+		TITANIUM_ORE = reg("titanium_ore", () -> new DropExperienceBlock(ConstantInt.of(0), copy(Blocks.IRON_ORE))),
+		DEEPSLATE_TITANIUM_ORE = reg("deepslate_titanium_ore", () -> new DropExperienceBlock(ConstantInt.of(0), copy(Blocks.DEEPSLATE_IRON_ORE))),
+		LUNAR_TITANIUM_ORE = reg("lunar_titanium_ore", () -> new DropExperienceBlock(ConstantInt.of(0), copy(Blocks.IRON_ORE).mapColor(MapColor.TERRACOTTA_CYAN))),
+		LUNAR_DEEPSLATE_TITANIUM_ORE = reg("lunar_deepslate_titanium_ore", () -> new DropExperienceBlock(ConstantInt.of(0), copy(Blocks.DEEPSLATE_IRON_ORE).mapColor(MapColor.COLOR_GRAY))),
+//		MARTIAN_TITANIUM_ORE = reg("martian_titanium_ore", () -> new DropExperienceBlock(ConstantInt.of(0), copy(Blocks.IRON_ORE).mapColor(MapColor.COLOR_PINK))),
+//		MARTIAN_DEEPSLATE_TITANIUM_ORE = reg("martian_deepslate_titanium_ore", () -> new DropExperienceBlock(ConstantInt.of(0), copy(Blocks.DEEPSLATE_IRON_ORE).mapColor(MapColor.TERRACOTTA_PINK))),
+//		MERCURIAL_TITANIUM_ORE = reg("mercurial_titanium_ore", () -> new DropExperienceBlock(ConstantInt.of(0), copy(Blocks.IRON_ORE).mapColor(MapColor.COLOR_PINK))),
+//		MERCURIAL_DEEPSLATE_TITANIUM_ORE = reg("mercurial_deepslate_titanium_ore", () -> new DropExperienceBlock(ConstantInt.of(0), copy(Blocks.DEEPSLATE_IRON_ORE).mapColor(MapColor.TERRACOTTA_PINK))),
+//		VENUSIAN_TITANIUM_ORE = reg("venusian_titanium_ore", () -> new DropExperienceBlock(ConstantInt.of(0), copy(Blocks.IRON_ORE).mapColor(MapColor.COLOR_PINK))),
+//		VENUSIAN_DEEPSLATE_TITANIUM_ORE = reg("venusian_deepslate_titanium_ore", () -> new DropExperienceBlock(ConstantInt.of(0), copy(Blocks.DEEPSLATE_IRON_ORE).mapColor(MapColor.TERRACOTTA_PINK))),
 		// Chronite
 		CHRONITE_BLOCK = reg("chronite_block", () -> new BlockChronite(of()
-			.mapColor(MapColor.COLOR_LIGHT_GREEN)
+			.mapColor(MapColor.GRASS)
 			.strength(1.5F)
 			.lightLevel(s -> 9)
 			.sound(SoundType.AMETHYST)
 			.requiresCorrectToolForDrops())),
 		BUDDING_CHRONITE = reg("budding_chronite", () -> new BlockBuddingChroniteCrystal(of()
-			.mapColor(MapColor.COLOR_LIGHT_GREEN)
+			.mapColor(MapColor.GRASS)
 			.randomTicks()
 			.strength(1.5F)
 			.lightLevel(s -> 9)
@@ -206,7 +329,7 @@ public interface CygnusBlocks
 			.requiresCorrectToolForDrops()
 			.pushReaction(PushReaction.DESTROY))),
 		CHRONITE_CLUSTER = reg("chronite_cluster", () -> new BlockChroniteCluster(7.0F, 3.0F, of()
-			.mapColor(MapColor.COLOR_LIGHT_GREEN)
+			.mapColor(MapColor.GRASS)
 			.forceSolidOn()
 			.noOcclusion()
 			.sound(SoundType.AMETHYST_CLUSTER)
@@ -224,11 +347,11 @@ public interface CygnusBlocks
 			.lightLevel(s -> 4))),
 
 	// Functional blocks
-		COMMAND_CENTRE = reg("command_centre", () -> new BlockCommandCentre(copy(Blocks.IRON_BLOCK))),
-		TERMINAL = reg("terminal", () -> new BlockTerminal(copy(Blocks.IRON_BLOCK).strength(-1.0F, 3600000.0F).noLootTable())),
+		COMMAND_CENTRE = reg("command_center", () -> new BlockCommandCentre(copy(Blocks.IRON_BLOCK).mapColor(MapColor.COLOR_BLACK))),
+		TERMINAL = reg("terminal", () -> new BlockTerminal(copy(Blocks.IRON_BLOCK).strength(1.0F, 3600000.0F).mapColor(MapColor.COLOR_BLACK))),
 		TELEPAD = reg("telepad",
-			() -> new BlockTelepad(copy(Blocks.IRON_BLOCK)),
+			() -> new BlockTelepad(copy(Blocks.IRON_BLOCK).mapColor(MapColor.EMERALD)),
 			() -> new BlockItemTelepad(new Item.Properties().fireResistant().rarity(Rarity.RARE))),
-		CHRONITE_BLAST_FURNACE = reg("chronite_blast_furnace", () -> new BlockChroniteBlastFurnace(copy(Blocks.IRON_BLOCK)));
+		CHRONITE_BLAST_FURNACE = reg("chronite_blast_furnace", () -> new BlockChroniteBlastFurnace(copy(Blocks.IRON_BLOCK).mapColor(MapColor.CLAY)));
 	// @formatter:on
 }

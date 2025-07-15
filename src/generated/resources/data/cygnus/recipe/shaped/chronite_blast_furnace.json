@@ -2,20 +2,23 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "A": {
-      "tag": "c:ingots/aluminum"
+    "B": {
+      "item": "minecraft:blast_furnace"
     },
     "C": {
-      "item": "cygnus:chronite"
+      "item": "cygnus:chronite_shard"
     },
-    "F": {
-      "item": "minecraft:blast_furnace"
+    "D": {
+      "item": "minecraft:polished_deepslate"
+    },
+    "T": {
+      "tag": "c:ingots/titanium"
     }
   },
   "pattern": [
-    " A ",
-    "AFA",
-    "ACA"
+    "TTT",
+    "TBT",
+    "DCD"
   ],
   "result": {
     "count": 1,

@@ -1,0 +1,13 @@
+{
+  "parent": "minecraft:block/cube",
+  "render_type": "minecraft:translucent",
+  "textures": {
+    "down": "cygnus:block/iron_window",
+    "east": "cygnus:block/iron_window",
+    "north": "cygnus:block/iron_window",
+    "particle": "cygnus:block/iron_window",
+    "south": "cygnus:block/iron_window",
+    "up": "cygnus:block/iron_window",
+    "west": "cygnus:block/iron_window"
+  }
+}

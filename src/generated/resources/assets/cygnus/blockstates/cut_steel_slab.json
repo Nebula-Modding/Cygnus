@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "cygnus:block/cut_steel_slab"
+    },
+    "type=double": {
+      "model": "cygnus:block/cut_steel"
+    },
+    "type=top": {
+      "model": "cygnus:block/cut_steel_slab_top"
+    }
+  }
+}

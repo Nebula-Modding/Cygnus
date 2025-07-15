@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "cygnus:block/lunar_iron_ore",
+    "east": "cygnus:block/lunar_iron_ore",
+    "north": "cygnus:block/lunar_iron_ore",
+    "particle": "cygnus:block/lunar_iron_ore",
+    "south": "cygnus:block/lunar_iron_ore",
+    "up": "cygnus:block/lunar_iron_ore",
+    "west": "cygnus:block/lunar_iron_ore"
+  }
+}

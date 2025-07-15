@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "item": "cygnus:cut_aluminum"
+    }
+  },
+  "pattern": [
+    "CC"
+  ],
+  "result": {
+    "count": 4,
+    "id": "cygnus:cut_aluminum_pressure_plate"
+  }
+}

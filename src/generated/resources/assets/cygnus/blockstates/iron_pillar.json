@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "cygnus:block/iron_pillar_horizontal",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "cygnus:block/iron_pillar"
+    },
+    "axis=z": {
+      "model": "cygnus:block/iron_pillar_horizontal",
+      "x": 90
+    }
+  }
+}

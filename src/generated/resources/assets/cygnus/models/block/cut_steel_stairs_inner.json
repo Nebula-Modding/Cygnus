@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "cygnus:block/cut_steel",
+    "side": "cygnus:block/cut_steel",
+    "top": "cygnus:block/cut_steel"
+  }
+}

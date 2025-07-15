@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "I": {
+      "item": "cygnus:aluminum_ingot"
+    },
+    "T": {
+      "tag": "c:ingots/aluminum"
+    }
+  },
+  "pattern": [
+    "TTT",
+    "TIT"
+  ],
+  "result": {
+    "count": 16,
+    "id": "cygnus:aluminum_bars"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "cygnus:block/cut_iron",
+    "east": "cygnus:block/cut_iron",
+    "north": "cygnus:block/cut_iron",
+    "particle": "cygnus:block/cut_iron",
+    "south": "cygnus:block/cut_iron",
+    "up": "cygnus:block/cut_iron",
+    "west": "cygnus:block/cut_iron"
+  }
+}

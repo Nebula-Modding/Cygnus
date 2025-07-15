@@ -1,6 +1,6 @@
 package top.girlkisser.cygnus.datagen.server
 
-import martian.dapper.api.server.DapperTagProvider
+import martian.dapper.api.server.tag.DapperTagProvider
 import net.minecraft.world.item.Items
 import net.minecraft.world.level.ItemLike
 import net.neoforged.neoforge.data.event.GatherDataEvent
@@ -14,25 +14,29 @@ class CygnusItemTagProvider(event: GatherDataEvent) : DapperTagProvider.Companio
 {
     override fun addTags()
     {
+		"iron".apply {
+			IRON_SHEET addPlate this
+			IRON_ROD addRod this
+		}
         "steel".apply {
+			STEEL_NUGGET addNugget this
             STEEL_INGOT addIngot this
             STEEL_SHEET addPlate this
             STEEL_ROD addRod this
-            STEEL_NUGGET addNugget this
         }
         "aluminum".apply {
 			RAW_ALUMINIUM addRaw this
+			ALUMINIUM_NUGGET addNugget this
             ALUMINIUM_INGOT addIngot this
             ALUMINIUM_SHEET addPlate this
             ALUMINIUM_ROD addRod this
-            ALUMINIUM_NUGGET addNugget this
         }
         "titanium".apply {
 			RAW_TITANIUM addRaw this
+			TITANIUM_NUGGET addNugget this
 			TITANIUM_INGOT addIngot this
             TITANIUM_SHEET addPlate this
             TITANIUM_ROD addRod this
-            TITANIUM_NUGGET addNugget this
         }
 
 		HAMMER addTo "c:tools/hammers"

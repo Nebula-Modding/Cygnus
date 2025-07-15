@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "I": {
+      "item": "cygnus:titanium_ingot"
+    },
+    "T": {
+      "tag": "c:ingots/titanium"
+    }
+  },
+  "pattern": [
+    "TTT",
+    "TIT"
+  ],
+  "result": {
+    "count": 16,
+    "id": "cygnus:titanium_bars"
+  }
+}

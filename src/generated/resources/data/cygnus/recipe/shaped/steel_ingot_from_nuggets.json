@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "N": {
+      "item": "cygnus:steel_nugget"
+    },
+    "T": {
+      "tag": "c:nuggets/steel"
+    }
+  },
+  "pattern": [
+    "TTT",
+    "TNT",
+    "TTT"
+  ],
+  "result": {
+    "count": 1,
+    "id": "cygnus:steel_ingot"
+  }
+}

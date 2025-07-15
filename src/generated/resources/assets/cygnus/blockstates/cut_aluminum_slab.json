@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "cygnus:block/cut_aluminum_slab"
+    },
+    "type=double": {
+      "model": "cygnus:block/cut_aluminum"
+    },
+    "type=top": {
+      "model": "cygnus:block/cut_aluminum_slab_top"
+    }
+  }
+}

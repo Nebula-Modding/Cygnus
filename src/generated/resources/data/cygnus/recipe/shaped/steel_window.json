@@ -2,20 +2,19 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": {
-      "tag": "c:plates/steel"
-    },
     "G": {
       "tag": "c:glass_blocks/colorless"
+    },
+    "S": {
+      "tag": "c:plates/steel"
     }
   },
   "pattern": [
-    " G ",
-    "G#G",
-    " G "
+    "SG",
+    "GS"
   ],
   "result": {
-    "count": 4,
+    "count": 2,
     "id": "cygnus:steel_window"
   }
 }

@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "cygnus:block/polished_lunar_deepslate",
+    "east": "cygnus:block/polished_lunar_deepslate",
+    "north": "cygnus:block/polished_lunar_deepslate",
+    "particle": "cygnus:block/polished_lunar_deepslate",
+    "south": "cygnus:block/polished_lunar_deepslate",
+    "up": "cygnus:block/polished_lunar_deepslate",
+    "west": "cygnus:block/polished_lunar_deepslate"
+  }
+}

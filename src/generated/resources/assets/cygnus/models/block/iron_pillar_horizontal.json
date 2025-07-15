@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column_horizontal",
+  "textures": {
+    "end": "cygnus:block/iron_pillar_end",
+    "side": "cygnus:block/iron_pillar_side"
+  }
+}

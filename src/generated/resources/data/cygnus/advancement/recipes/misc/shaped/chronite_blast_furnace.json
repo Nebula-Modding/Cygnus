@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_cygnus_chronite": {
+    "has_cygnus_chronite_shard": {
       "conditions": {
         "items": [
           {
-            "items": "cygnus:chronite"
+            "items": "cygnus:chronite_shard"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_cygnus_chronite"
+      "has_cygnus_chronite_shard"
     ]
   ],
   "rewards": {

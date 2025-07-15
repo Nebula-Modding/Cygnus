@@ -201,7 +201,7 @@ public class CygnusClientListeners
 
 			if (
 				event.getScreen() instanceof MenuAccess<?> menuAccess &&
-				menuAccess.getMenu().getCarried().is(CygnusItems.CHRONITE) &&
+				menuAccess.getMenu().getCarried().is(CygnusItems.CHRONITE_SHARD) &&
 				CygnusClient.RANDOM.nextFloat() >= .5f
 			)
 			{

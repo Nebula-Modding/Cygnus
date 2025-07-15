@@ -41,36 +41,56 @@ class CygnusBlockDropsProvider(event: GatherDataEvent) : DapperLootTableProvider
 		{
 			// Drops self
 			setOf(
-				STEEL_BLOCK,
+				RAW_ALUMINIUM_BLOCK,
+				RAW_TITANIUM_BLOCK,
+
+				IRON_SHEET_METAL,
+				IRON_GRATE,
+				IRON_CUT,
+				IRON_WINDOW,
+				IRON_PILLAR,
+				IRON_AIRTIGHT_TRAPDOOR,
+				IRON_BULB,
+
 				STEEL_SHEET_METAL,
-				STEEL_PLATING,
+				STEEL_BLOCK,
 				STEEL_GRATE,
+				STEEL_CUT,
 				STEEL_WINDOW,
 				STEEL_PILLAR,
 				STEEL_BARS,
-				STEEL_DOOR,
 				STEEL_TRAPDOOR,
 				STEEL_BULB,
 
-				ALUMINIUM_BLOCK,
 				ALUMINIUM_SHEET_METAL,
-				ALUMINIUM_TILES,
+				ALUMINIUM_BLOCK,
+				ALUMINIUM_GRATE,
+				ALUMINIUM_CUT,
+				ALUMINIUM_WINDOW,
+				ALUMINIUM_PILLAR,
+				ALUMINIUM_BARS,
+				ALUMINIUM_TRAPDOOR,
+				ALUMINIUM_BULB,
 
-				TITANIUM_BLOCK,
 				TITANIUM_SHEET_METAL,
-				TITANIUM_TILES,
-				TITANIUM_PLATING,
+				TITANIUM_BLOCK,
+				TITANIUM_GRATE,
+				TITANIUM_CUT,
 				TITANIUM_WINDOW,
+				TITANIUM_PILLAR,
+				TITANIUM_BARS,
+				TITANIUM_TRAPDOOR,
+				TITANIUM_BULB,
 
 				LUNAR_REGOLITH,
 				LUNAR_COBBLESTONE,
-				SMOOTH_LUNAR_STONE,
+				POLISHED_LUNAR_STONE,
 				CHISELED_LUNAR_STONE,
 				LUNAR_STONE_BRICKS,
 				CRACKED_LUNAR_STONE_BRICKS,
 				LUNAR_STONE_PILLAR,
 				COBBLED_LUNAR_DEEPSLATE,
-				SMOOTH_LUNAR_DEEPSLATE,
+				POLISHED_LUNAR_DEEPSLATE,
 				CHISELED_LUNAR_DEEPSLATE,
 				LUNAR_DEEPSLATE_BRICKS,
 				CRACKED_LUNAR_DEEPSLATE_BRICKS,
@@ -78,10 +98,21 @@ class CygnusBlockDropsProvider(event: GatherDataEvent) : DapperLootTableProvider
 				CHRONITE_BLOCK,
 
 				COMMAND_CENTRE,
+				TERMINAL,
 				TELEPAD,
 				CHRONITE_BLAST_FURNACE,
 			).forEach {
 				dropSelf(it.get())
+			}
+
+			// Door drops
+			setOf(
+				IRON_AIRTIGHT_DOOR,
+				STEEL_DOOR,
+				ALUMINIUM_DOOR,
+				TITANIUM_DOOR,
+			).forEach {
+				add(it.get(), createDoorTable(it.get()))
 			}
 
 			// Stones->Cobblestones
@@ -96,30 +127,92 @@ class CygnusBlockDropsProvider(event: GatherDataEvent) : DapperLootTableProvider
 			mapOf(
 				LUNAR_COAL_ORE to Items.COAL,
 				LUNAR_DEEPSLATE_COAL_ORE to Items.COAL,
+//				MARTIAN_COAL_ORE to Items.COAL,
+//				MARTIAN_DEEPSLATE_COAL_ORE to Items.COAL,
+//				MERCURIAL_COAL_ORE to Items.COAL,
+//				MERCURIAL_DEEPSLATE_COAL_ORE to Items.COAL,
+//				VENUSIAN_COAL_ORE to Items.COAL,
+//				VENUSIAN_DEEPSLATE_COAL_ORE to Items.COAL,
 				LUNAR_IRON_ORE to Items.RAW_IRON,
 				LUNAR_DEEPSLATE_IRON_ORE to Items.RAW_IRON,
+//				MARTIAN_IRON_ORE to Items.RAW_IRON,
+//				MARTIAN_DEEPSLATE_IRON_ORE to Items.RAW_IRON,
+//				MERCURIAL_IRON_ORE to Items.RAW_IRON,
+//				MERCURIAL_DEEPSLATE_IRON_ORE to Items.RAW_IRON,
+//				VENUSIAN_IRON_ORE to Items.RAW_IRON,
+//				VENUSIAN_DEEPSLATE_IRON_ORE to Items.RAW_IRON,
 				LUNAR_GOLD_ORE to Items.RAW_GOLD,
 				LUNAR_DEEPSLATE_GOLD_ORE to Items.RAW_GOLD,
+//				MARTIAN_GOLD_ORE to Items.RAW_GOLD,
+//				MARTIAN_DEEPSLATE_GOLD_ORE to Items.RAW_GOLD,
+//				MERCURIAL_GOLD_ORE to Items.RAW_GOLD,
+//				MERCURIAL_DEEPSLATE_GOLD_ORE to Items.RAW_GOLD,
+//				VENUSIAN_GOLD_ORE to Items.RAW_GOLD,
+//				VENUSIAN_DEEPSLATE_GOLD_ORE to Items.RAW_GOLD,
 				LUNAR_EMERALD_ORE to Items.EMERALD,
 				LUNAR_DEEPSLATE_EMERALD_ORE to Items.EMERALD,
+//				MARTIAN_EMERALD_ORE to Items.EMERALD,
+//				MARTIAN_DEEPSLATE_EMERALD_ORE to Items.EMERALD,
+//				MERCURIAL_EMERALD_ORE to Items.EMERALD,
+//				MERCURIAL_DEEPSLATE_EMERALD_ORE to Items.EMERALD,
+//				VENUSIAN_EMERALD_ORE to Items.EMERALD,
+//				VENUSIAN_DEEPSLATE_EMERALD_ORE to Items.EMERALD,
 				LUNAR_DIAMOND_ORE to Items.DIAMOND,
 				LUNAR_DEEPSLATE_DIAMOND_ORE to Items.DIAMOND,
+//				MARTIAN_DIAMOND_ORE to Items.DIAMOND,
+//				MARTIAN_DEEPSLATE_DIAMOND_ORE to Items.DIAMOND,
+//				MERCURIAL_DIAMOND_ORE to Items.DIAMOND,
+//				MERCURIAL_DEEPSLATE_DIAMOND_ORE to Items.DIAMOND,
+//				VENUSIAN_DIAMOND_ORE to Items.DIAMOND,
+//				VENUSIAN_DEEPSLATE_DIAMOND_ORE to Items.DIAMOND,
 				ALUMINIUM_ORE to CygnusItems.RAW_ALUMINIUM,
 				DEEPSLATE_ALUMINIUM_ORE to CygnusItems.RAW_ALUMINIUM,
 				LUNAR_ALUMINIUM_ORE to CygnusItems.RAW_ALUMINIUM,
 				LUNAR_DEEPSLATE_ALUMINIUM_ORE to CygnusItems.RAW_ALUMINIUM,
+//				MARTIAN_ALUMINIUM_ORE to CygnusItems.RAW_ALUMINIUM,
+//				MARTIAN_DEEPSLATE_ALUMINIUM_ORE to CygnusItems.RAW_ALUMINIUM,
+//				MERCURIAL_ALUMINIUM_ORE to CygnusItems.RAW_ALUMINIUM,
+//				MERCURIAL_DEEPSLATE_ALUMINIUM_ORE to CygnusItems.RAW_ALUMINIUM,
+//				VENUSIAN_ALUMINIUM_ORE to CygnusItems.RAW_ALUMINIUM,
+//				VENUSIAN_DEEPSLATE_ALUMINIUM_ORE to CygnusItems.RAW_ALUMINIUM,
 				TITANIUM_ORE to CygnusItems.RAW_TITANIUM,
 				DEEPSLATE_TITANIUM_ORE to CygnusItems.RAW_TITANIUM,
 				LUNAR_TITANIUM_ORE to CygnusItems.RAW_TITANIUM,
 				LUNAR_DEEPSLATE_TITANIUM_ORE to CygnusItems.RAW_TITANIUM,
+//				MARTIAN_TITANIUM_ORE to CygnusItems.RAW_TITANIUM,
+//				MARTIAN_DEEPSLATE_TITANIUM_ORE to CygnusItems.RAW_TITANIUM,
+//				MERCURIAL_TITANIUM_ORE to CygnusItems.RAW_TITANIUM,
+//				MERCURIAL_DEEPSLATE_TITANIUM_ORE to CygnusItems.RAW_TITANIUM,
+//				VENUSIAN_TITANIUM_ORE to CygnusItems.RAW_TITANIUM,
+//				VENUSIAN_DEEPSLATE_TITANIUM_ORE to CygnusItems.RAW_TITANIUM,
 			).forEach {
 				this.add(it.key.get(), createOreDrop(it.key.get(), it.value.asItem()))
+			}
+
+			// Copper ore drops
+			setOf(
+				LUNAR_COPPER_ORE,
+				LUNAR_DEEPSLATE_COPPER_ORE,
+//				MARTIAN_COPPER_ORE,
+//				MARTIAN_DEEPSLATE_COPPER_ORE,
+//				MERCURIAL_COPPER_ORE,
+//				MERCURIAL_DEEPSLATE_COPPER_ORE,
+//				VENUSIAN_COPPER_ORE,
+//				VENUSIAN_DEEPSLATE_COPPER_ORE,
+			).forEach {
+				add(it.get(), createCopperOreDrops(it.get()))
 			}
 
 			// Redstone ore drops
 			setOf(
 				LUNAR_REDSTONE_ORE,
 				LUNAR_DEEPSLATE_REDSTONE_ORE,
+//				MARTIAN_REDSTONE_ORE,
+//				MARTIAN_DEEPSLATE_REDSTONE_ORE,
+//				MERCURIAL_REDSTONE_ORE,
+//				MERCURIAL_DEEPSLATE_REDSTONE_ORE,
+//				VENUSIAN_REDSTONE_ORE,
+//				VENUSIAN_DEEPSLATE_REDSTONE_ORE,
 			).forEach {
 				add(it.get(), createRedstoneOreDrops(it.get()))
 			}
@@ -128,6 +221,12 @@ class CygnusBlockDropsProvider(event: GatherDataEvent) : DapperLootTableProvider
 			setOf(
 				LUNAR_LAPIS_ORE,
 				LUNAR_DEEPSLATE_LAPIS_ORE,
+//				MARTIAN_LAPIS_ORE,
+//				MARTIAN_DEEPSLATE_LAPIS_ORE,
+//				MERCURIAL_LAPIS_ORE,
+//				MERCURIAL_DEEPSLATE_LAPIS_ORE,
+//				VENUSIAN_LAPIS_ORE,
+//				VENUSIAN_DEEPSLATE_LAPIS_ORE,
 			).forEach {
 				add(it.get(), createLapisOreDrops(it.get()))
 			}
@@ -157,12 +256,12 @@ class CygnusBlockDropsProvider(event: GatherDataEvent) : DapperLootTableProvider
 							condition(hasSilkTouch())
 						}
 						alternatives {
-							item(CygnusItems.CHRONITE) {
+							item(CygnusItems.CHRONITE_SHARD) {
 								condition(MatchTool.toolMatches(ItemPredicate.Builder.item().of(ItemTags.CLUSTER_MAX_HARVESTABLES)))
 								applyFunction(SetItemCountFunction.setCount(ConstantValue.exactly(1f), false))
 								applyFunction(ApplyBonusCount.addOreBonusCount(registries.lookupOrThrow(Registries.ENCHANTMENT).get(Enchantments.FORTUNE).get()))
 							}
-							item(CygnusItems.CHRONITE) {
+							item(CygnusItems.CHRONITE_SHARD) {
 								applyFunction(SetItemCountFunction.setCount(ConstantValue.exactly(1f), false))
 								applyFunction(ApplyExplosionDecay.explosionDecay())
 							}

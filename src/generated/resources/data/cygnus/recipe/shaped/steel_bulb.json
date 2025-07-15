@@ -2,20 +2,20 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": {
-      "tag": "c:plates/steel"
-    },
     "B": {
       "item": "minecraft:blaze_rod"
     },
     "R": {
       "tag": "c:dusts/redstone"
+    },
+    "S": {
+      "tag": "c:plates/steel"
     }
   },
   "pattern": [
-    " # ",
-    "#B#",
-    " R "
+    "SSS",
+    "SBS",
+    "SRS"
   ],
   "result": {
     "count": 4,

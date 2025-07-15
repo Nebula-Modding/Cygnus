@@ -22,7 +22,7 @@ public class CommandCentreStateMainMenu extends AbstractButtonTerminalState
 		createNewButtons.add((x, y, state) -> new TerminalButton(
 			x,
 			y,
-			Component.translatable("screen.cygnus.command_centre.construct"),
+			Component.translatable("screen.cygnus.command_center.construct"),
 			Supplier::get,
 			button -> state.screen().setState(CommandCentreStateConstruct::new),
 			TerminalButton.CONSTRUCT,
@@ -32,7 +32,7 @@ public class CommandCentreStateMainMenu extends AbstractButtonTerminalState
 		buttons.add((x, y, state) -> new TerminalButton(
 			x,
 			y,
-			Component.translatable("screen.cygnus.command_centre.stats"),
+			Component.translatable("screen.cygnus.command_center.stats"),
 			Supplier::get,
 			button -> state.screen().setState(CommandCentreStateStats::new),
 			TerminalButton.STATS,
@@ -41,7 +41,7 @@ public class CommandCentreStateMainMenu extends AbstractButtonTerminalState
 		buttons.add((x, y, state) -> new TerminalButton(
 			x,
 			y,
-			Component.translatable("screen.cygnus.command_centre.retrieve"),
+			Component.translatable("screen.cygnus.command_center.retrieve"),
 			Supplier::get,
 			button ->
 			{
@@ -74,7 +74,7 @@ public class CommandCentreStateMainMenu extends AbstractButtonTerminalState
 	public String getMenuName()
 	{
 		return screen().getMenu().getSpaceStation() == null ?
-			Component.translatable("block.cygnus.command_centre").getString() :
+			Component.translatable("block.cygnus.command_center").getString() :
 			screen().getMenu().getSpaceStation().name();
 	}
 }

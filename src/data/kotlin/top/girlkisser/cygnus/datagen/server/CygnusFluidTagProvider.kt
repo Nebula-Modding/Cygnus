@@ -1,6 +1,6 @@
 package top.girlkisser.cygnus.datagen.server
 
-import martian.dapper.api.server.DapperTagProvider
+import martian.dapper.api.server.tag.DapperTagProvider
 import net.neoforged.neoforge.data.event.GatherDataEvent
 import top.girlkisser.cygnus.Cygnus
 import top.girlkisser.cygnus.content.registry.CygnusFluids.*

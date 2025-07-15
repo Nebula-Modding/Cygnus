@@ -6,13 +6,13 @@
       "item": "cygnus:chronite_circuit"
     },
     "G": {
-      "tag": "c:glass_blocks/colorless"
+      "tag": "c:glass_panes/colorless"
     },
     "S": {
       "tag": "c:plates/steel"
     },
     "T": {
-      "item": "cygnus:steel_plating"
+      "item": "cygnus:cut_steel_slab"
     }
   },
   "pattern": [

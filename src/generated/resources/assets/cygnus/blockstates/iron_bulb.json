@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "lit=false,powered=false": {
+      "model": "cygnus:block/iron_bulb"
+    },
+    "lit=false,powered=true": {
+      "model": "cygnus:block/iron_bulb_powered"
+    },
+    "lit=true,powered=false": {
+      "model": "cygnus:block/iron_bulb_lit"
+    },
+    "lit=true,powered=true": {
+      "model": "cygnus:block/iron_bulb_lit_powered"
+    }
+  }
+}

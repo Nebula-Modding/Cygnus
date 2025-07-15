@@ -1,15 +1,25 @@
 {
   "values": [
-    "cygnus:aluminium_block",
-    "cygnus:aluminium_sheet_metal",
-    "cygnus:aluminium_tiles",
+    "cygnus:raw_aluminum_block",
+    "cygnus:aluminum_sheet_metal",
+    "cygnus:aluminum_block",
+    "cygnus:aluminum_grate",
+    "cygnus:cut_aluminum",
+    "cygnus:aluminum_window",
+    "cygnus:aluminum_pillar",
+    "cygnus:aluminum_bars",
+    "cygnus:aluminum_door",
+    "cygnus:aluminum_trapdoor",
+    "cygnus:aluminum_bulb",
     "cygnus:lunar_iron_ore",
     "cygnus:lunar_deepslate_iron_ore",
+    "cygnus:lunar_copper_ore",
+    "cygnus:lunar_deepslate_copper_ore",
     "cygnus:lunar_lapis_ore",
     "cygnus:lunar_deepslate_lapis_ore",
-    "cygnus:aluminium_ore",
-    "cygnus:deepslate_aluminium_ore",
-    "cygnus:lunar_aluminium_ore",
-    "cygnus:lunar_deepslate_aluminium_ore"
+    "cygnus:aluminum_ore",
+    "cygnus:deepslate_aluminum_ore",
+    "cygnus:lunar_aluminum_ore",
+    "cygnus:lunar_deepslate_aluminum_ore"
   ]
 }

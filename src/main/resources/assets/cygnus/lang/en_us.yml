@@ -2,66 +2,90 @@ itemGroup.cygnus: Cygnus
 
 block.cygnus:
   # Decorational
-  steel_block: Block of Steel
-  steel_plating: Steel Plating
+  iron_sheet_metal: Iron Sheet Metal
+  chiseled_iron: Chiseled Iron
+  iron_grate: Iron Grate
+  cut_iron: Cut Iron
+  cut_iron_stairs: Cut Iron Stairs
+  cut_iron_slab: Cut Iron Slab
+  cut_iron_pressure_plate: Cut Iron Pressure Plate
+  cut_iron_button: Cut Iron Button
+  iron_window: Iron Window
+  iron_pillar: Iron Pillar
+  airtight_iron_door: Airtight Iron Door
+  airtight_iron_trapdoor: Airtight Iron Trapdoor
+  iron_bulb: Iron Bulb
+  iron_airlock: Iron Airlock
+
   steel_sheet_metal: Steel Sheet Metal
+  steel_block: Block of Steel
+  chiseled_steel: Chiseled Steel
+  steel_grate: Steel Grate
+  cut_steel: Cut Steel
+  cut_steel_stairs: Cut Steel Stairs
+  cut_steel_slab: Cut Steel Slab
+  cut_steel_pressure_plate: Cut Steel Pressure Plate
+  cut_steel_button: Cut Steel Button
   steel_window: Steel Window
+  steel_pillar: Steel Pillar
+  steel_bars: Steel Bars
   steel_door: Steel Door
   steel_trapdoor: Steel Trapdoor
-  steel_grate: Steel Grate
-  steel_pillar: Steel Pillar
   steel_bulb: Steel Bulb
-  steel_bars: Steel Bars
+  steel_airlock: Steel Airlock
 
-  aluminium_block: Block of Aluminum
-  aluminium_tiles: Aluminum Tiles
-  aluminium_sheet_metal: Aluminum Sheet Metal
+  raw_aluminum_block: Block of Raw Aluminum
+  aluminum_sheet_metal: Aluminum Sheet Metal
+  aluminum_block: Block of Aluminum
+  chiseled_aluminum: Chiseled Aluminum
+  aluminum_grate: Aluminum Grate
+  cut_aluminum: Cut Aluminum
+  cut_aluminum_stairs: Cut Aluminum Stairs
+  cut_aluminum_slab: Cut Aluminum Slab
+  cut_aluminum_pressure_plate: Cut Aluminum Pressure Plate
+  cut_aluminum_button: Cut Aluminum Button
+  aluminum_window: Aluminum Window
+  aluminum_pillar: Aluminum Pillar
+  aluminum_bars: Aluminum Bars
+  aluminum_door: Aluminum Door
+  aluminum_trapdoor: Aluminum Trapdoor
+  aluminum_bulb: Aluminum Bulb
+  aluminum_airlock: Aluminum Airlock
 
-  titanium_block: Block of Titanium
-  titanium_tiles: Titanium Tiles
+  raw_titanium_block: Block of Raw Titanium
   titanium_sheet_metal: Titanium Sheet Metal
-  titanium_plating: Titanium Plating
+  titanium_block: Block of Titanium
+  chiseled_titanium: Chiseled Titanium
+  titanium_grate: Titanium Grate
+  cut_titanium: Cut Titanium
+  cut_titanium_stairs: Cut Titanium Stairs
+  cut_titanium_slab: Cut Titanium Slab
+  cut_titanium_pressure_plate: Cut Titanium Pressure Plate
+  cut_titanium_button: Cut Titanium Button
   titanium_window: Titanium Window
+  titanium_pillar: Titanium Pillar
+  titanium_bars: Titanium Bars
+  titanium_door: Titanium Door
+  titanium_trapdoor: Titanium Trapdoor
+  titanium_bulb: Titanium Bulb
+  titanium_airlock: Titanium Airlock
 
   # Environmental
   lunar_regolith: Lunar Regolith
   lunar_stone: Lunar Stone
   lunar_cobblestone: Lunar Cobblestone
-  smooth_lunar_stone: Smooth Lunar Stone
+  polished_lunar_stone: Polished Lunar Stone
   chiseled_lunar_stone: Chiseled Lunar Stone
   lunar_stone_bricks: Lunar Stone Bricks
   cracked_lunar_stone_bricks: Cracked Lunar Stone Bricks
   lunar_stone_pillar: Lunar Stone Pillar
   lunar_deepslate: Lunar Deepslate
   cobbled_lunar_deepslate: Cobbled Lunar Deepslate
-  smooth_lunar_deepslate: Smooth Lunar Deepslate
+  polished_lunar_deepslate: Polished Lunar Deepslate
   chiseled_lunar_deepslate: Chiseled Lunar Deepslate
   lunar_deepslate_bricks: Lunar Deepslate Bricks
   cracked_lunar_deepslate_bricks: Cracked Lunar Deepslate Bricks
   lunar_deepslate_pillar: Lunar Deepslate Pillar
-
-  lunar_coal_ore: Lunar Coal Ore
-  lunar_deepslate_coal_ore: Lunar Deepslate Coal Ore
-  lunar_iron_ore: Lunar Iron Ore
-  lunar_deepslate_iron_ore: Lunar Deepslate Iron Ore
-  lunar_gold_ore: Lunar Gold Ore
-  lunar_deepslate_gold_ore: Lunar Deepslate Gold Ore
-  lunar_redstone_ore: Lunar Redstone Ore
-  lunar_deepslate_redstone_ore: Lunar Deepslate Redstone Ore
-  lunar_emerald_ore: Lunar Emerald Ore
-  lunar_deepslate_emerald_ore: Lunar Deepslate Emerald Ore
-  lunar_lapis_ore: Lunar Lapis Ore
-  lunar_deepslate_lapis_ore: Lunar Deepslate Lapis Ore
-  lunar_diamond_ore: Lunar Diamond Ore
-  lunar_deepslate_diamond_ore: Lunar Deepslate Diamond Ore
-  aluminium_ore: Aluminum Ore
-  deepslate_aluminium_ore: Deepslate Aluminum Ore
-  lunar_aluminium_ore: Lunar Aluminum Ore
-  lunar_deepslate_aluminium_ore: Lunar Deepslate Aluminum Ore
-  titanium_ore: Titanium Ore
-  deepslate_titanium_ore: Deepslate Titanium Ore
-  lunar_titanium_ore: Lunar Titanium Ore
-  lunar_deepslate_titanium_ore: Lunar Deepslate Titanium Ore
 
   chronite_block: Chronite Block
   budding_chronite: Budding Chronite
@@ -70,35 +94,124 @@ block.cygnus:
   medium_chronite_bud: Medium Chronite Bud
   small_chronite_bud: Small Chronite Bud
 
+  # Ores
+  lunar_coal_ore: Lunar Coal Ore
+  lunar_deepslate_coal_ore: Lunar Deepslate Coal Ore
+  martian_coal_ore: Martian Coal Ore
+  martian_deepslate_coal_ore: Martian Deepslate Coal Ore
+  mercurial_coal_ore: Mercurial Coal Ore
+  mercurial_deepslate_coal_ore: Mercurial Deepslate Coal Ore
+  venusian_coal_ore: Venusian Coal Ore
+  venusian_deepslate_coal_ore: Venusian Deepslate Coal Ore
+  lunar_iron_ore: Lunar Iron Ore
+  lunar_deepslate_iron_ore: Lunar Deepslate Iron Ore
+  martian_iron_ore: Martian Iron Ore
+  martian_deepslate_iron_ore: Martian Deepslate Iron Ore
+  mercurial_iron_ore: Mercurial Iron Ore
+  mercurial_deepslate_iron_ore: Mercurial Deepslate Iron Ore
+  venusian_iron_ore: Venusian Iron Ore
+  venusian_deepslate_iron_ore: Venusian Deepslate Iron Ore
+  lunar_copper_ore: Lunar Copper Ore
+  lunar_deepslate_copper_ore: Lunar Deepslate Copper Ore
+  martian_copper_ore: Martian Copper Ore
+  martian_deepslate_copper_ore: Martian Deepslate Copper Ore
+  mercurial_copper_ore: Mercurial Copper Ore
+  mercurial_deepslate_copper_ore: Mercurial Deepslate Copper Ore
+  venusian_copper_ore: Venusian Copper Ore
+  venusian_deepslate_copper_ore: Venusian Deepslate Copper Ore
+  lunar_gold_ore: Lunar Gold Ore
+  lunar_deepslate_gold_ore: Lunar Deepslate Gold Ore
+  martian_gold_ore: Martian Gold Ore
+  martian_deepslate_gold_ore: Martian Deepslate Gold Ore
+  mercurial_gold_ore: Mercurial Gold Ore
+  mercurial_deepslate_gold_ore: Mercurial Deepslate Gold Ore
+  venusian_gold_ore: Venusian Gold Ore
+  venusian_deepslate_gold_ore: Venusian Deepslate Gold Ore
+  lunar_redstone_ore: Lunar Redstone Ore
+  lunar_deepslate_redstone_ore: Lunar Deepslate Redstone Ore
+  martian_redstone_ore: Martian Redstone Ore
+  martian_deepslate_redstone_ore: Martian Deepslate Redstone Ore
+  mercurial_redstone_ore: Mercurial Redstone Ore
+  mercurial_deepslate_redstone_ore: Mercurial Deepslate Redstone Ore
+  venusian_redstone_ore: Venusian Redstone Ore
+  venusian_deepslate_redstone_ore: Venusian Deepslate Redstone Ore
+  lunar_emerald_ore: Lunar Emerald Ore
+  lunar_deepslate_emerald_ore: Lunar Deepslate Emerald Ore
+  martian_emerald_ore: Martian Emerald Ore
+  martian_deepslate_emerald_ore: Martian Deepslate Emerald Ore
+  mercurial_emerald_ore: Mercurial Emerald Ore
+  mercurial_deepslate_emerald_ore: Mercurial Deepslate Emerald Ore
+  venusian_emerald_ore: Venusian Emerald Ore
+  venusian_deepslate_emerald_ore: Venusian Deepslate Emerald Ore
+  lunar_lapis_ore: Lunar Lapis Lazuli Ore
+  lunar_deepslate_lapis_ore: Lunar Deepslate Lapis Lazuli Ore
+  martian_lapis_ore: Martian Lapis Lazuli Ore
+  martian_deepslate_lapis_ore: Martian Deepslate Lapis Lazuli Ore
+  mercurial_lapis_ore: Mercurial Lapis Lazuli Ore
+  mercurial_deepslate_lapis_ore: Mercurial Deepslate Lapis Lazuli Ore
+  venusian_lapis_ore: Venusian Lapis Lazuli Ore
+  venusian_deepslate_lapis_ore: Venusian Deepslate Lapis Lazuli Ore
+  lunar_diamond_ore: Lunar Diamond Ore
+  lunar_deepslate_diamond_ore: Lunar Deepslate Diamond Ore
+  martian_diamond_ore: Martian Diamond Ore
+  martian_deepslate_diamond_ore: Martian Deepslate Diamond Ore
+  mercurial_diamond_ore: Mercurial Diamond Ore
+  mercurial_deepslate_diamond_ore: Mercurial Deepslate Diamond Ore
+  venusian_diamond_ore: Venusian Diamond Ore
+  venusian_deepslate_diamond_ore: Venusian Deepslate Diamond Ore
+  aluminum_ore: Aluminum Ore
+  deepslate_aluminum_ore: Deepslate Aluminum Ore
+  lunar_aluminum_ore: Lunar Aluminum Ore
+  lunar_deepslate_aluminum_ore: Lunar Deepslate Aluminum Ore
+  martian_aluminum_ore: Martian Aluminum Ore
+  martian_deepslate_aluminum_ore: Martian Deepslate Aluminum Ore
+  mercurial_aluminum_ore: Mercurial Aluminum Ore
+  mercurial_deepslate_aluminum_ore: Mercurial Deepslate Aluminum Ore
+  venusian_aluminum_ore: Venusian Aluminum Ore
+  venusian_deepslate_aluminum_ore: Venusian Deepslate Aluminum Ore
+  titanium_ore: Titanium Ore
+  deepslate_titanium_ore: Deepslate Titanium Ore
+  lunar_titanium_ore: Lunar Titanium Ore
+  lunar_deepslate_titanium_ore: Lunar Deepslate Titanium Ore
+  martian_titanium_ore: Martian Titanium Ore
+  martian_deepslate_titanium_ore: Martian Deepslate Titanium Ore
+  mercurial_titanium_ore: Mercurial Titanium Ore
+  mercurial_deepslate_titanium_ore: Mercurial Deepslate Titanium Ore
+  venusian_titanium_ore: Venusian Titanium Ore
+  venusian_deepslate_titanium_ore: Venusian Deepslate Titanium Ore
+
   # Functional
   terminal: Terminal
   telepad: Telepad
   telepad.tooltip: Teleports you between your space station and the planet your space station is orbiting
-  command_centre: Command Center
-  command_centre.tooltip: The Space Station Creation Station
+  command_center: Command Center
+  command_center.tooltip: The Space Station Creation Station
   chronite_blast_furnace: Chronite Blast Furnace
   chronite_blast_furnace.tooltip: Utilizes the heat of a Chronite Crystal to alloy metals together
 
 item.cygnus:
   # Resources
+  iron_sheet: Iron Sheet
+  iron_rod: Iron Rod
+
+  steel_nugget: Steel Nugget
   steel_ingot: Steel Ingot
   steel_sheet: Steel Sheet
   steel_rod: Steel Rod
-  steel_nugget: Steel Nugget
 
-  raw_aluminium: Raw Aluminum
-  aluminium_ingot: Aluminum Ingot
-  aluminium_sheet: Aluminum Sheet
-  aluminium_rod: Aluminum Rod
-  aluminium_nugget: Aluminum Nugget
+  aluminum_nugget: Aluminum Nugget
+  raw_aluminum: Raw Aluminum
+  aluminum_ingot: Aluminum Ingot
+  aluminum_sheet: Aluminum Sheet
+  aluminum_rod: Aluminum Rod
 
+  titanium_nugget: Titanium Nugget
   raw_titanium: Raw Titanium
   titanium_ingot: Titanium Ingot
   titanium_sheet: Titanium Sheet
   titanium_rod: Titanium Rod
-  titanium_nugget: Titanium Nugget
 
-  chronite: Chronite Crystal Shard
+  chronite_shard: Chronite Shard
   chronite.tooltip: A mysterious crystal with intense luminosity and scorching heat
 
   # Ingredients
@@ -180,7 +293,7 @@ screen.cygnus:
       dangerous: "Radiation: Dangerous amounts"
       lethal: "Radiation: Lethal amounts"
 
-  command_centre:
+  command_center:
     # Buttons
     construct: Construct
     stats: Stats
@@ -188,7 +301,7 @@ screen.cygnus:
 
 message.cygnus:
   # Shared tooltips
-  door_lockable: Use a key to lock to redstone
+  door_lockable: Use a key to lock
 
   # Errors
   failed_to_place_space_station: Failed to place space station
@@ -199,3 +312,55 @@ message.cygnus:
 
 space_station.cygnus:
   space_station: Space Station
+
+tag:
+  item:
+    c:
+      raw_materials:
+        aluminum: Aluminum Raw Materials
+        titanium: Titanium Raw Materials
+      nuggets:
+        steel: Steel Nuggets
+        aluminum: Aluminum Nuggets
+        titanium: Titanium Nuggets
+      ingots:
+        steel: Steel Ingots
+        aluminum: Aluminum Ingots
+        titanium: Titanium Ingots
+      plates:
+        .: Plates
+        iron: Iron Plates
+        steel: Steel Plates
+        aluminum: Aluminum Plates
+        titanium: Titanium Plates
+      rods:
+        iron: Iron Rods
+        steel: Steel Rods
+        aluminum: Aluminum Rods
+        titanium: Titanium Rods
+      tools:
+        drills: Drills
+        hammers: Hammers
+      storage_blocks:
+        steel: Steel Storage Blocks
+        raw_aluminum: Raw Aluminum Storage Blocks
+        aluminum: Aluminum Storage Blocks
+        raw_titanium: Raw Titanium Storage Blocks
+        titanium: Titanium Storage Blocks
+  cygnus:
+    can_walk_on_chronite: Can Walk on Chronite
+
+  block:
+    c:
+      storage_blocks:
+        steel: Steel Storage Blocks
+        raw_aluminum: Raw Aluminum Storage Blocks
+        aluminum: Aluminum Storage Blocks
+        raw_titanium: Raw Titanium Storage Blocks
+        titanium: Titanium Storage Blocks
+    cygnus:
+      incorrect_for_oxygen_drill: Incorrect for Oxygen Drill
+
+  fluid:
+    c:
+      oxygen: Oxygen
