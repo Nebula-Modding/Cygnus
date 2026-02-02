@@ -136,10 +136,8 @@ public class TerminalStateNavigation implements ITerminalState
 		//      of the body that the moon orbits, then factor that into the position.
 		if (followingPlanet && selectedStarId != null && Minecraft.getInstance().level != null)
 		{
-			StarmapStarConfig starRenderConfig = StarmapStarConfigLoader.getRenderConfigOrThrow(selectedStarId);
-			Rect2i region = new Rect2i(screen.getGuiLeft() + MAP_MIN_X, screen.getGuiTop() + MAP_MIN_Y, MAP_MAX_X - MAP_MIN_X, MAP_MAX_Y - MAP_MIN_Y);
-			Vector2i origin = StarmapRenderer.getCentreForSprite(region.getX(), region.getY(), region.getX() + region.getWidth(), region.getY() + region.getHeight(), (int)(starRenderConfig.size() * mapZoom), (int)(starRenderConfig.size() * mapZoom));
-			Vector2f pos = new Vector2f(origin.x, origin.y);
+			// start at (0, 0) always
+			Vector2f pos = new Vector2f();
 			for (var planet : selectedPlanetIdStack)
 			{
 				StarmapPlanetConfig planetRenderConfig = StarmapPlanetConfigLoader.getRenderConfigOrThrow(planet);
@@ -150,19 +148,21 @@ public class TerminalStateNavigation implements ITerminalState
 					(int)pos.y
 				);
 			}
-			mapPanX = -(int)(pos.x - region.getX() /*- planetRenderConfig.size() / 2f*/ + starRenderConfig.size() / 2f - region.getWidth() / 2f);
-			mapPanY = -(int)(pos.y - region.getY() /*- planetRenderConfig.size() / 2f*/ + starRenderConfig.size() / 2f - region.getHeight() / 2f);
+			mapPanX = - pos.x;
+			mapPanY = - pos.y;
 		}
 
 		StarmapRenderer starmapRenderer = new StarmapRenderer(
 			graphics,
 			new Rect2i(
-				screen.getGuiLeft() + MAP_MIN_X + (int) (mapPanX * mapZoom),
-				screen.getGuiTop() + MAP_MIN_Y + (int) (mapPanY * mapZoom),
+				screen.getGuiLeft() + MAP_MIN_X,
+				screen.getGuiTop() + MAP_MIN_Y,
 				MAP_MAX_X - MAP_MIN_X,
 				MAP_MAX_Y - MAP_MIN_Y
 			),
-			mapZoom
+			mapZoom,
+			mapPanX,
+			mapPanY
 		);
 
 		graphics.enableScissor(
