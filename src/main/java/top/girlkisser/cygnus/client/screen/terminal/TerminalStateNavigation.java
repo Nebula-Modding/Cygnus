@@ -125,7 +125,7 @@ public class TerminalStateNavigation implements ITerminalState
 		if (followingPlanet && selectedStarId != null && Minecraft.getInstance().level != null)
 		{
 			StarmapStarConfig starRenderConfig = StarmapStarConfigLoader.getRenderConfigOrThrow(selectedStarId);
-			Rect2i region = new Rect2i(screen.getGuiLeft() + MAP_MIN_X, screen.getGuiTop() + MAP_MIN_Y, MAP_MAX_X, MAP_MAX_Y);
+			Rect2i region = new Rect2i(screen.getGuiLeft() + MAP_MIN_X, screen.getGuiTop() + MAP_MIN_Y, MAP_MAX_X - MAP_MIN_X, MAP_MAX_Y - MAP_MIN_Y);
 			Vector2i origin = StarmapRenderer.getCentreForSprite(region.getX(), region.getY(), region.getX() + region.getWidth(), region.getY() + region.getHeight(), (int)(starRenderConfig.size() * mapZoom), (int)(starRenderConfig.size() * mapZoom));
 			Vector2f pos = new Vector2f(origin.x, origin.y);
 			for (var planet : selectedPlanetIdStack)
@@ -147,8 +147,8 @@ public class TerminalStateNavigation implements ITerminalState
 			new Rect2i(
 				screen.getGuiLeft() + MAP_MIN_X + mapPanX,
 				screen.getGuiTop() + MAP_MIN_Y + mapPanY,
-				MAP_MAX_X,
-				MAP_MAX_Y
+				MAP_MAX_X - MAP_MIN_X,
+				MAP_MAX_Y - MAP_MIN_Y
 			),
 			mapZoom
 		);
