@@ -90,7 +90,19 @@ public class TerminalStateNavigation implements ITerminalState
 		{
 			if (CygnusClient.mouseScrollY != 0)
 			{
+				var oldZoom = mapZoom;
 				mapZoom = Math.clamp(mapZoom * (CygnusClient.mouseScrollY > 0 ? 1.05f : 0.95f), 0.1f, 3f);
+
+				// mouse offset from map center (screen space)
+				float centerX = screen.getGuiLeft() + (MAP_MIN_X + MAP_MAX_X) / 2f;
+				float centerY = screen.getGuiTop() + (MAP_MIN_Y + MAP_MAX_Y) / 2f;
+				float mouseFromCenterX = mouseX - centerX;
+				float mouseFromCenterY = mouseY - centerY;
+
+				// Preserve world point under mouse while changing zoom:
+				// mapPan_new = mapPan_old + mouseFromCenter * (1/newZoom - 1/oldZoom)
+				mapPanX += mouseFromCenterX * (1.0f / mapZoom - 1.0f / oldZoom);
+				mapPanY += mouseFromCenterY * (1.0f / mapZoom - 1.0f / oldZoom);
 			}
 
 			if (CygnusClient.isLeftMouseButtonDown)
