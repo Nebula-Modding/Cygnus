@@ -42,7 +42,7 @@ public class TerminalStateNavigation implements ITerminalState
 	protected List<Planet> selectedPlanetStack = new ArrayList<>();
 
 	private int previousMouseX, previousMouseY;
-	protected int mapPanX = 0, mapPanY = 0;
+	protected float mapPanX = 0, mapPanY = 0;
 	protected float mapZoom = 1f;
 	protected float buttonScrollY = 0;
 	// When not null, the map pan will follow the orbit of the selected planet/moon.
@@ -98,10 +98,10 @@ public class TerminalStateNavigation implements ITerminalState
 				followingPlanet = false;
 
 				if (previousMouseX != mouseX)
-					mapPanX -= previousMouseX - mouseX;
+					mapPanX -= (previousMouseX - mouseX) / mapZoom;
 
 				if (previousMouseY != mouseY)
-					mapPanY -= previousMouseY - mouseY;
+					mapPanY -= (previousMouseY - mouseY) / mapZoom;
 			}
 		}
 		else if (isMouseInButtonList(mouseX, mouseY) && CygnusClient.mouseScrollY != 0)
@@ -145,8 +145,8 @@ public class TerminalStateNavigation implements ITerminalState
 		StarmapRenderer starmapRenderer = new StarmapRenderer(
 			graphics,
 			new Rect2i(
-				screen.getGuiLeft() + MAP_MIN_X + mapPanX,
-				screen.getGuiTop() + MAP_MIN_Y + mapPanY,
+				screen.getGuiLeft() + MAP_MIN_X + (int) (mapPanX * mapZoom),
+				screen.getGuiTop() + MAP_MIN_Y + (int) (mapPanY * mapZoom),
 				MAP_MAX_X - MAP_MIN_X,
 				MAP_MAX_Y - MAP_MIN_Y
 			),
