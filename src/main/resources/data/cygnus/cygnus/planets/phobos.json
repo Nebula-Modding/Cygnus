@@ -1,9 +1,9 @@
 {
 	"gravity": 0.006,
 	"has_oxygen": false,
-	"day_length": 1595,
-	"night_length": 1595,
-	"year_length": 3.19,
+	"day_length": 3829,
+	"night_length": 3829,
+	"year_length": 3.19, // Todo: Change to 0.319 once star map crashing is fixed
 	"ambient_temperature_curve": [
 		{ "x": 0.00, "y": -108.9 }, // dawn
 		{ "x": 0.25, "y": -4.2 }, // midday

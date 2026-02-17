@@ -2,8 +2,8 @@
 	"dimension": "cygnus:space",
 	"gravity": 0,
 	"has_oxygen": false,
-	"day_length": 12000,
-	"night_length": 12000,
+	"day_length": 0,
+	"night_length": 0,
 	"year_length": 0,
 	"ambient_temperature_curve": [
 		{ "x": 0.00, "y": -270.5 }, // dawn
