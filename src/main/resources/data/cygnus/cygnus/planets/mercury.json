@@ -2,8 +2,8 @@
 	"dimension": "cygnus:mercury",
 	"gravity": 3.70,
 	"has_oxygen": false,
-	"day_length": 88000,
-	"night_length": 88000,
+	"day_length": 50671200,
+	"night_length": 50671200,
 	"year_length": 88,
 	"ambient_temperature_curve": [
 		{ "x": 0.00, "y": 257.5 }, // dawn

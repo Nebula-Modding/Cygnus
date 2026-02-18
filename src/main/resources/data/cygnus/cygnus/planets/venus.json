@@ -2,8 +2,8 @@
 	"dimension": "cygnus:venus",
 	"gravity": 8.87,
 	"has_oxygen": true,
-	"day_length": 12000,
-	"night_length": 12000,
+	"day_length": 1401000,
+	"night_length": 1401000,
 	"year_length": 687,
 	"ambient_temperature_curve": [
 		{ "x": 0.00, "y": 464.7 }, // dawn
