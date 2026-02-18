@@ -1,5 +1,5 @@
 {
-	"texture": "cygnus:textures/environment/solar_system/ganymede.png",
+	"texture": "cygnus:textures/environment/solar_system/16x16/ganymede.png",
 	"size": 12.32,
 	"orbit_distance": 100.0
 }

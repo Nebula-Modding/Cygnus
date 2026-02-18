@@ -1,5 +1,5 @@
 {
-	"texture": "cygnus:textures/environment/solar_system/titan.png",
+	"texture": "cygnus:textures/environment/solar_system/16x16/titan.png",
 	"size": 12.25,
 	"orbit_distance": 130.0
 }

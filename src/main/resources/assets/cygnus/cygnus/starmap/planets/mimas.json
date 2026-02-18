@@ -1,5 +1,5 @@
 {
-	"texture": "cygnus:textures/environment/solar_system/mimas.png",
+	"texture": "cygnus:textures/environment/solar_system/8x8/mimas.png",
 	"size": 1.9,
 	"orbit_distance": 35.0
 }

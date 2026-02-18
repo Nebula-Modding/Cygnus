@@ -1,5 +1,5 @@
 {
-	"texture": "cygnus:textures/environment/solar_system/europa.png",
+	"texture": "cygnus:textures/environment/solar_system/8x8/europa.png",
 	"size": 7.2,
 	"orbit_distance": 70.0
 }

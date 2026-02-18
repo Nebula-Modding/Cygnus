@@ -1,5 +1,5 @@
 {
-	"texture": "cygnus:textures/environment/solar_system/earth.png",
+	"texture": "cygnus:textures/environment/solar_system/16x16/earth.png",
 	"size": 20.0,
 	"orbit_distance": 153.0
 }

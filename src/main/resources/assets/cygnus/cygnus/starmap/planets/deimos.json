@@ -1,5 +1,5 @@
 {
-	"texture": "cygnus:textures/environment/solar_system/deimos.png",
+	"texture": "cygnus:textures/environment/solar_system/6x6/deimos.png",
 	"size": 3.0,
 	"orbit_distance": 25.0
 }

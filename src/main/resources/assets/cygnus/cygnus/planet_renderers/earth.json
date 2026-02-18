@@ -7,7 +7,7 @@
 			"sunset_color": [216, 95, 51],
 			"layers": [{
 				"texture": "cygnus:textures/environment/star/8x8/g_class.png",
-				"size": 7.5
+				"size": 7.516
 			}],
 			"transforms": [
 				{ "axis": "x", "value": "cygnus:time", "args": { "multiplier": 1.0 } }
@@ -39,7 +39,7 @@
 
 		{
 			"layers": [{
-				"texture": "cygnus:textures/environment/solar_system/moon.png",
+				"texture": "cygnus:textures/environment/solar_system/8x8/moon.png",
 				"size": 5.0
 			}],
 			"transforms": [
@@ -58,7 +58,7 @@
 		{
 			"is_for_orbit": true,
 			"layers": [{
-				"texture": "cygnus:textures/environment/solar_system/earth.png",
+				"texture": "cygnus:textures/environment/solar_system/16x16/earth.png",
 				"size": 60.0
 			}],
 			"transforms": [
@@ -66,7 +66,7 @@
 			],
 			"texture_rotation": [0, 90, 0],
 			"backlight": {
-				"texture": "cygnus:textures/environment/backlights/32x32/circle.png",
+				"texture": "cygnus:textures/environment/backlights/64x64/circle.png",
 				"size": 180.0,
 				"color": [61, 90, 210, 150]
 			}

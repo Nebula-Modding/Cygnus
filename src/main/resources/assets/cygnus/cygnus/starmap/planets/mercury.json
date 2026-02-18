@@ -1,5 +1,5 @@
 {
-	"texture": "cygnus:textures/environment/solar_system/mercury.png",
+	"texture": "cygnus:textures/environment/solar_system/16x16/mercury.png",
 	"size": 10.0,
 	"orbit_distance": 62.1
 }

@@ -1,5 +1,5 @@
 {
-	"texture": "cygnus:textures/environment/solar_system/mars.png",
+	"texture": "cygnus:textures/environment/solar_system/16x16/mars.png",
 	"size": 14.0,
 	"orbit_distance": 228.0
 }

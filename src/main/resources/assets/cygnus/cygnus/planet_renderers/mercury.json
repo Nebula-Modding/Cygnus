@@ -21,7 +21,7 @@
 		{
 			"is_for_orbit": true,
 			"layers": [{
-				"texture": "cygnus:textures/environment/solar_system/mercury.png",
+				"texture": "cygnus:textures/environment/solar_system/16x16/mercury.png",
 				"size": 60.0
 			}],
 			"transforms": [ 
@@ -29,7 +29,7 @@
 			],
 			"texture_rotation": [0, 90, 0],
 			"backlight": {
-				"texture": "cygnus:textures/environment/backlights/32x32/circle.png",
+				"texture": "cygnus:textures/environment/backlights/64x64/circle.png",
 				"size": 240.0,
 				"color": [224, 203, 154, 175]
 			}
