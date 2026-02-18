@@ -1,5 +1,5 @@
 {
-	"dimension": "minecraft:the_nether",
+	"dimension": "cygnus:venus",
 	"gravity": 8.87,
 	"has_oxygen": true,
 	"day_length": 12000,

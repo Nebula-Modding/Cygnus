@@ -6,10 +6,10 @@
 	"night_length": 354000,
 	"year_length": 27.3,
 	"ambient_temperature_curve": [
-		{ "x": 0.00, "y": -10 }, // dawn
-		{ "x": 0.25, "y": 120 }, // midday
-		{ "x": 0.50, "y": -130 }, // midnight
-		{ "x": 1.00, "y": -10 } // dawn
+		{ "x": 0.00, "y": -10.1 }, // dawn
+		{ "x": 0.25, "y": 122.9 }, // midday
+		{ "x": 0.50, "y": -130.4 }, // midnight
+		{ "x": 1.00, "y": -10.1 } // dawn
 	],
 	"ambient_radiation": 0, // todo
 	"moons": [],

@@ -1,4 +1,5 @@
 {
+	"dimension": "cygnus:mercury",
 	"gravity": 3.70,
 	"has_oxygen": false,
 	"day_length": 88000,

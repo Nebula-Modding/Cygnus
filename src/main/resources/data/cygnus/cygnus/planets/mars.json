@@ -1,4 +1,5 @@
 {
+	"dimension": "cygnus:mars",
 	"gravity": 3.728,
 	"has_oxygen": false,
 	"day_length": 12335,
