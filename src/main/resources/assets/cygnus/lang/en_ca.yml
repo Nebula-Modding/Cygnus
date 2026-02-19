@@ -255,12 +255,76 @@ planet.cygnus:
   space: Outer Space
 
   mercury: Mercury
+
   venus: Venus
+
   earth: Earth
   the_moon: The Moon
+
   mars: Mars
   deimos: Deimos
   phobos: Phobos
+
+  vesta: Vesta
+
+  ceres: Ceres
+
+  jupiter: Jupiter
+  io: Io
+  europa: Europa
+  ganymede: Ganymede
+  callisto: Callisto
+
+  saturn: Saturn
+  mimas: Mimas
+  enceladus: Enceladus
+  tethys: Tethys
+  dione: Dione
+  rhea: Rhea
+  titan: Titan
+  hyperion: Hyperion
+  iapetus: Iapetus
+
+  uranus: Uranus
+  miranda: Miranda
+  ariel: Ariel
+  umbriel: Umbriel
+  titania: Titania
+  oberon: Oberon
+
+  neptune: Neptune
+  triton: Triton
+
+  orcus: Orcus
+  vanth: Vanth
+
+  pluto: Pluto
+  charon: Charon
+  styx: Styx
+  nix: Nix
+  kerberos: Kerberos
+  hydra: Hydra
+
+  salacia: Salacia
+  actaea: Actaea
+
+  haumea: Haumea
+  namaka: Namaka
+  hiiaka: Hiʻiaka
+
+  quaoar: Quaoar
+  weywot: Weywot
+
+  makemake: Makemake
+  mk2: Kenatea
+
+  gonggong: Gonggong
+  xiangliu: Xiangliu
+
+  eris: Eris
+  dysnomia: Dysnomia
+
+  sedna: Sedna
 
 screen.cygnus:
   terminal:
