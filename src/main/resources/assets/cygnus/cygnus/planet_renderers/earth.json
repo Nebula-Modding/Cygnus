@@ -39,7 +39,7 @@
 
 		{
 			"layers": [{
-				"texture": "cygnus:textures/environment/solar_system/8x8/moon.png",
+				"texture": "cygnus:textures/environment/solar_system/8x8/luna.png",
 				"size": 5.0
 			}],
 			"transforms": [
