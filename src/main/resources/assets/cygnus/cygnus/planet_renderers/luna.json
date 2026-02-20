@@ -35,7 +35,7 @@
 		{
 			"is_for_orbit": true,
 			"layers": [{
-				"texture": "cygnus:textures/environment/solar_system/16x16/moon.png",
+				"texture": "cygnus:textures/environment/solar_system/16x16/luna.png",
 				"size": 60.0
 			}],
 			"transforms": [

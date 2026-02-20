@@ -13,7 +13,7 @@
 	],
 	"ambient_radiation": 0,
 	"moons": [
-		"cygnus:the_moon"
+		"cygnus:luna"
 	],
 	"atmospheric_pressure": 1,
 	"danger_index": "habitable"
