@@ -12,7 +12,7 @@
 			],
 			"texture_rotation": [0, 90, 0],
 			"backlight": {
-				"texture": "cygnus:textures/environment/backlights/32x32/circle.png",
+				"texture": "cygnus:textures/environment/backlight/32x32/circle.png",
 				"size": 18.8,
 				"color": [249, 248, 200, 175]
 			}
@@ -30,7 +30,7 @@
 			],
 			"texture_rotation": [0, 270, 0],
 			"backlight": {
-				"texture": "cygnus:textures/environment/backlights/32x32/circle.png",
+				"texture": "cygnus:textures/environment/backlight/32x32/circle.png",
 				"size": 2.0,
 				"color": [184, 180, 166, 125]
 			}
@@ -43,7 +43,7 @@
 			}],
 			"texture_rotation": [0, 90, 0],
 			"backlight": {
-				"texture": "cygnus:textures/environment/backlights/64x64/circle.png",
+				"texture": "cygnus:textures/environment/backlight/64x64/circle.png",
 				"size": 180.0,
 				"color": [166, 78, 33, 150]
 			}
@@ -60,7 +60,7 @@
 			],
 			"texture_rotation": [0, 90, 0],
 			"backlight": {
-				"texture": "cygnus:textures/environment/backlights/32x32/circle.png",
+				"texture": "cygnus:textures/environment/backlight/32x32/circle.png",
 				"size": 180.0,
 				"color": [177, 166, 159, 125]
 			}
