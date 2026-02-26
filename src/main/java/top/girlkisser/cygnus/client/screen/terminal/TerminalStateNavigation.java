@@ -42,7 +42,7 @@ public class TerminalStateNavigation implements ITerminalState
 	protected List<Planet> selectedPlanetStack = new ArrayList<>();
 
 	private int previousMouseX, previousMouseY;
-	protected int mapPanX = 0, mapPanY = 0;
+	protected float mapPanX = 0, mapPanY = 0;
 	protected float mapZoom = 1f;
 	protected float buttonScrollY = 0;
 	// When not null, the map pan will follow the orbit of the selected planet/moon.
@@ -90,7 +90,19 @@ public class TerminalStateNavigation implements ITerminalState
 		{
 			if (CygnusClient.mouseScrollY != 0)
 			{
-				mapZoom = Math.clamp(mapZoom + (CygnusClient.mouseScrollY > 0 ? 0.05f : -0.05f), 0.1f, 3f);
+				var oldZoom = mapZoom;
+				mapZoom = Math.clamp(mapZoom * (1.0f + (float) CygnusClient.mouseScrollY * 0.075F), 0.1f, 3f);
+
+				// mouse offset from map center (screen space)
+				float centerX = screen.getGuiLeft() + (MAP_MIN_X + MAP_MAX_X) / 2f;
+				float centerY = screen.getGuiTop() + (MAP_MIN_Y + MAP_MAX_Y) / 2f;
+				float mouseFromCenterX = mouseX - centerX;
+				float mouseFromCenterY = mouseY - centerY;
+
+				// Preserve world point under mouse while changing zoom:
+				// mapPan_new = mapPan_old + mouseFromCenter * (1/newZoom - 1/oldZoom)
+				mapPanX += mouseFromCenterX * (1.0f / mapZoom - 1.0f / oldZoom);
+				mapPanY += mouseFromCenterY * (1.0f / mapZoom - 1.0f / oldZoom);
 			}
 
 			if (CygnusClient.isLeftMouseButtonDown)
@@ -98,10 +110,10 @@ public class TerminalStateNavigation implements ITerminalState
 				followingPlanet = false;
 
 				if (previousMouseX != mouseX)
-					mapPanX -= previousMouseX - mouseX;
+					mapPanX -= (previousMouseX - mouseX) / mapZoom;
 
 				if (previousMouseY != mouseY)
-					mapPanY -= previousMouseY - mouseY;
+					mapPanY -= (previousMouseY - mouseY) / mapZoom;
 			}
 		}
 		else if (isMouseInButtonList(mouseX, mouseY) && CygnusClient.mouseScrollY != 0)
@@ -124,10 +136,8 @@ public class TerminalStateNavigation implements ITerminalState
 		//      of the body that the moon orbits, then factor that into the position.
 		if (followingPlanet && selectedStarId != null && Minecraft.getInstance().level != null)
 		{
-			StarmapStarConfig starRenderConfig = StarmapStarConfigLoader.getRenderConfigOrThrow(selectedStarId);
-			Rect2i region = new Rect2i(screen.getGuiLeft() + MAP_MIN_X, screen.getGuiTop() + MAP_MIN_Y, MAP_MAX_X, MAP_MAX_Y);
-			Vector2i origin = StarmapRenderer.getCentreForSprite(region.getX(), region.getY(), region.getX() + region.getWidth(), region.getY() + region.getHeight(), (int)(starRenderConfig.size() * mapZoom), (int)(starRenderConfig.size() * mapZoom));
-			Vector2f pos = new Vector2f(origin.x, origin.y);
+			// start at (0, 0) always
+			Vector2f pos = new Vector2f();
 			for (var planet : selectedPlanetIdStack)
 			{
 				StarmapPlanetConfig planetRenderConfig = StarmapPlanetConfigLoader.getRenderConfigOrThrow(planet);
@@ -138,19 +148,21 @@ public class TerminalStateNavigation implements ITerminalState
 					(int)pos.y
 				);
 			}
-			mapPanX = -(int)(pos.x - region.getX() /*- planetRenderConfig.size() / 2f*/ + starRenderConfig.size() / 2f - region.getWidth() / 2f);
-			mapPanY = -(int)(pos.y - region.getY() /*- planetRenderConfig.size() / 2f*/ + starRenderConfig.size() / 2f - region.getHeight() / 2f);
+			mapPanX = - pos.x;
+			mapPanY = - pos.y;
 		}
 
 		StarmapRenderer starmapRenderer = new StarmapRenderer(
 			graphics,
 			new Rect2i(
-				screen.getGuiLeft() + MAP_MIN_X + mapPanX,
-				screen.getGuiTop() + MAP_MIN_Y + mapPanY,
-				MAP_MAX_X,
-				MAP_MAX_Y
+				screen.getGuiLeft() + MAP_MIN_X,
+				screen.getGuiTop() + MAP_MIN_Y,
+				MAP_MAX_X - MAP_MIN_X,
+				MAP_MAX_Y - MAP_MIN_Y
 			),
-			mapZoom
+			mapZoom,
+			mapPanX,
+			mapPanY
 		);
 
 		graphics.enableScissor(

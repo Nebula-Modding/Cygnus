@@ -26,13 +26,16 @@ public class StarmapRenderer
 	protected GuiGraphics graphics;
 	protected Rect2i region;
 	protected float scale;
+	protected float panX, panY;
 	public ResourceLocation highlighted;
 
-	public StarmapRenderer(GuiGraphics graphics, Rect2i region, float scale)
+	public StarmapRenderer(GuiGraphics graphics, Rect2i region, float scale, float panX, float panY)
 	{
 		this.graphics = graphics;
 		this.region = region;
 		this.scale = scale;
+		this.panX = panX;
+		this.panY = panY;
 	}
 
 	public void renderBody(float orbitX, float orbitY, double yearLength, float orbitDistance, float size, ResourceLocation texture, @Nullable ResourceLocation bodyId)
@@ -97,7 +100,7 @@ public class StarmapRenderer
 
 	public void renderStar(ResourceLocation starId, Star star, StarmapStarConfig renderConfig, boolean renderWholeSolarSystem)
 	{
-		Vector2i origin = getCentreForSprite(region.getX(), region.getY(), region.getX() + region.getWidth(), region.getY() + region.getHeight(), (int)(renderConfig.size() * scale), (int)(renderConfig.size() * scale));
+		Vector2i origin = getSpaceCenter();
 
 		renderBody(origin.x, origin.y, 1, 0, renderConfig.size(), renderConfig.texture(), starId);
 
@@ -114,16 +117,25 @@ public class StarmapRenderer
 
 	public void renderGalaxy(StarmapGalaxyConfig renderConfig)
 	{
-		Vector2i origin = getCentreForSprite(region.getX(), region.getY(), region.getX() + region.getWidth(), region.getY() + region.getHeight(), (int)(renderConfig.size() * scale), (int)(renderConfig.size() * scale));
+		Vector2i origin = getSpaceCenter();
 		renderBody(origin.x, origin.y, 1, 0, renderConfig.size(), renderConfig.texture(), null);
 	}
 
-	public static Vector2i getCentreForSprite(int minX, int minY, int maxX, int maxY, int spriteWidth, int spriteHeight)
+	public Vector2i getSpaceCenter()
 	{
-		return new Vector2i(
-			minX + (maxX - minX) / 2 - spriteWidth / 2,
-			minY + (maxY - minY) / 2 - spriteHeight / 2
-		);
+		// step 1: initialize x and y to top left of map screen
+		int x = region.getX();
+		int y = region.getY();
+
+		// step 2: go to center of map screen
+		x += region.getWidth() / 2;
+		y += region.getHeight() / 2;
+
+		// step 3: offset by zoomed pan
+		x += panX * scale;
+		y += panY * scale;
+
+		return new Vector2i(x, y);
 	}
 
 	public static Vector2f getOrbitPositionOfPlanet(Planet planet, StarmapPlanetConfig renderConfig, int orbitX, int orbitY)
